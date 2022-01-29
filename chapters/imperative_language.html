@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Императивы языка &mdash; learn.adacore.com</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Введение в язык программирования Ada" href="../index.html" />
+  <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-117428-14"></script>
+<script type="text/javascript">
+  if(!Cookies.get('AdaCore_staff')) {
+    // Global site tag (gtag.js) - Google Analytics
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-117428-14');
+    // End Global site tag (gtag.js) - Google Analytics
+
+    // Google Tag Manager
+    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-KD5HNRR');
+    // End Google Tag Manager
+
+    // Twitter universal website tag code
+    !function(e,t,n,s,u,a){e.twq||(s=e.twq=function(){s.exe?s.exe.apply(s,arguments):s.queue.push(arguments);},s.version='1.1',s.queue=[],u=t.createElement(n),u.async=!0,u.src='//static.ads-twitter.com/uwt.js',a=t.getElementsByTagName(n)[0],a.parentNode.insertBefore(u,a))}(window,document,'script');
+    // Insert Twitter Pixel ID and Standard Event data below
+    twq('init','o3mlc');
+    twq('track','PageView');
+    // End Twitter universal website tag code
+
+    // LinkedIn Tracking Tags
+    _linkedin_partner_id = "482585"; window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || []; window._linkedin_data_partner_ids.push(_linkedin_partner_id);
+    (function(){var s = document.getElementsByTagName("script")[0]; var b = document.createElement("script"); b.type = "text/javascript";b.async = true; b.src = "https://snap.licdn.com/li.lms-analytics/insight.min.js"; s.parentNode.insertBefore(b, s);})();
+    // End LinkedIn Tracking Tags
+  }
+</script>
+  <!--  Essential META Tags -->
+<meta property="og:title" content=“learn.adacore.com">
+<meta property="og:description" content="An interactive learning platform to teach the Ada and SPARK programming languages.">
+<meta property="og:image" content="https://learn.adacore.com/_static/learn_meta_img.jpeg">
+<meta property="og:url" content="https://learn.adacore.com">
+<meta name="twitter:card" content="summary_large_image">
+
+<!--  Non-Essential, But Recommended -->
+<meta property="og:site_name" content="learn.adacore.com">
+<meta name="twitter:image:alt" content="An interactive learning platform to teach the Ada and SPARK programming languages.">
+
+<!--  Non-Essential, But Required for Analytics -->
+<meta name="twitter:site" content="@AdaCoreCompany">
+
+</head>
+
+<body class="wy-body-for-nav">
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KD5HNRR"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  <!-- LinkedIn Tracking Tags (noscript) -->
+  <noscript> <img height="1" width="1" style="display:none;" alt="" src="https://dc.ads.linkedin.com/collect/?pid=482585&fmt=gif" /> </noscript>
+  <!-- End LinkedIn Tracking Tags (noscript) -->
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html">
+            <img src="../_static/logo.svg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Императивы языка</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#hello-world">Hello world</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#if-then-else">Императивы языка ‑ If / Then / Else</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#loops">Императивы языка ‑ Loops</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#for">Циклы For</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">Простой цикл</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#while">Циклы While</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#case">Императивы языка – оператор Case</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">Императивы языка – декларативные регионы</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">Императивы языка – условные выражения</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#if">Выражение If</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">Выражение Case</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+  <i data-toggle="wy-nav-top" class="fas fa-bars"></i>
+    <a href="../index.html">
+    <img src="../_static/logo.svg" class="logo" alt="Logo"/>
+  </a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="id1">
+<h1>Императивы языка<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h1>
+<p>Язык Ada ‑ это многопарадигмальный язык с поддержкой объектной
+ориентации и некоторых элементов функционального программирования, но
+его ядром является простой, последовательный процедурный/императивный
+язык, похожий на C или Pascal.</p>
+<div class="admonition- admonition">
+<p class="admonition-title">На других языках</p>
+<p>Одно важное различие между Ada и таким языком, как C, заключается в
+том, что операторы и выражения очень четко различаются. В Ada, если вы
+попытаетесь использовать выражение, в котором требуется оператор, ваша
+программа не сможет скомпилироваться. Это правило поддерживает
+полезный стилистический принцип: выражения предназначены для передачи
+значений, а не для побочных эффектов. Это также может предотвратить
+некоторые ошибки программирования, такие как ошибочное использование
+оператора равенства <code class="code highlight ada docutils literal notranslate"><span class="operator"><span class="pre">=</span></span></code> вместо операции присваивания <code class="code highlight ada docutils literal notranslate"><span class="punctuation"><span class="pre">:=</span></span></code>
+в операторе присваивания.</p>
+</div>
+<section id="hello-world">
+<h2>Hello world<a class="headerlink" href="#hello-world" title="Permalink to this headline"></a></h2>
+<p>Вот очень простая императивная программа Ada:</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kn">with</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>
+
+<span class="kd">procedure</span> <span class="nf">Greet</span> <span class="kr">is</span>
+<span class="kr">begin</span>
+   <span class="c1">--  Print &quot;Hello, World!&quot; to the screen</span>
+   <span class="n">Ada</span><span class="p">.</span><span class="n">Text_IO</span><span class="p">.</span><span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;Hello, World!&quot;</span><span class="p">);</span>
+<span class="kr">end</span> <span class="nf">Greet</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Текс программы, как мы предполагаем, находится в исходном файле <code class="file docutils literal notranslate"><span class="pre">greet.adb</span></code>.</p>
+<p>В вышеупомянутой программе есть несколько примечательных вещей:</p>
+<ul class="simple">
+<li><p>Подпрограмма в Ada может быть либо процедурой, либо функцией.
+Процедура, как показано выше, не возвращает значение при вызове.</p></li>
+<li><p><code class="code highlight ada docutils literal notranslate"><span class="keyword namespace"><span class="pre">with</span></span></code> используется для ссылки на внешние модули, которые необходимы в
+процедуре. Это похоже на <code class="docutils literal notranslate"><span class="pre">import</span></code> на разных языках или примерно похоже
+на <code class="code highlight c docutils literal notranslate"><span class="comment preproc"><span class="pre">#include</span></span></code> в C и C++. Позже мы увидим, как они работают в деталях.
+Здесь мы запрашиваем стандартный библиотечный модуль, пакет <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Ada</span></span><span class="punctuation"><span class="pre">.</span></span><span class="name"><span class="pre">Text_IO</span></span></code>,
+который содержит процедуру печати текста на экране: <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Put_Line</span></span></code>.</p></li>
+<li><p><code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Greet</span></span></code> ‑ это процедура и основная точка входа в нашу первую программу.
+В отличие от C или C++, его можно назвать как угодно по вашему
+усмотрению. Построитель (builder) определит точку входа. В нашем
+простом примере <strong class="program">gprbuild</strong>, построитель GNAT, будет использовать
+файл, который вы передали в качестве параметра.</p></li>
+<li><p><code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Put_Line</span></span></code> ‑ это такая же процедура, как и <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Greet</span></span></code>, за исключением
+того, что она объявлена в модуле <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Ada</span></span><span class="punctuation"><span class="pre">.</span></span><span class="name"><span class="pre">Text_IO</span></span></code>.
+Это Ada-эквивалент <code class="code highlight c docutils literal notranslate"><span class="name"><span class="pre">printf</span></span></code> в Си.</p></li>
+<li><p>Комментарии начинаются с <code class="code highlight ada docutils literal notranslate"><span class="comment single"><span class="pre">--</span></span></code>. Комментарии идут до конца строки. Синтаксис
+многострочных комментариев отсутствует, то есть невозможно начать
+комментарий в одной строке и продолжить его в следующей строке.
+Единственный способ создать несколько строк комментариев в Ada ‑ это
+использовать &quot;<code class="code highlight ada docutils literal notranslate"><span class="comment single"><span class="pre">--</span></span></code>&quot; в каждой строке. Например:</p></li>
+</ul>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="c1">--  We start a comment in this line...</span>
+<span class="c1">--  and we continue on the second line...</span>
+</pre></div>
+</div>
+<div class="admonition- admonition">
+<p class="admonition-title">На других языках</p>
+<p>Процедуры аналогичны функциям в C или C++, которые возвращают значение
+<code class="code highlight c docutils literal notranslate"><span class="keyword type"><span class="pre">void</span></span></code>. Позже мы увидим, как объявлять функции в Ada.</p>
+</div>
+<p>Вот минорный вариант примера «Hello, World»:</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kn">with</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span> <span class="kn">use</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>
+
+<span class="kd">procedure</span> <span class="nf">Greet</span> <span class="kr">is</span>
+<span class="kr">begin</span>
+   <span class="c1">--  Print &quot;Hello, World!&quot; to the screen</span>
+   <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;Hello, World!&quot;</span><span class="p">);</span>
+<span class="kr">end</span> <span class="nf">Greet</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>В этой версии используется свойство Ada, известное как предложение <code class="code highlight ada docutils literal notranslate"><span class="keyword namespace"><span class="pre">use</span></span></code>,
+которое имеет форму <code class="code highlight ada docutils literal notranslate"><span class="keyword namespace"><span class="pre">use</span></span></code> <em>package-name</em>. Как показано вызовом на <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Put_Line</span></span></code>,
+эффект заключается в том, что на объекты из именованного пакета можно ссылаться
+напрямую, без имени пакета – нет необходимости использовать <em>package-name.</em>
+как префикс.</p>
+</section>
+<section id="if-then-else">
+<h2>Императивы языка ‑ If / Then / Else<a class="headerlink" href="#if-then-else" title="Permalink to this headline"></a></h2>
+<p>В этом разделе описывается оператор <code class="code highlight ada docutils literal notranslate"><span class="keyword reserved"><span class="pre">if</span></span></code> в Ada, и вводятся некоторые
+другие возможности фундаментального языка, включая целочисленный
+ввод-вывод, объявления данных и режимы параметров подпрограммы.</p>
+<p>Оператор <code class="code highlight ada docutils literal notranslate"><span class="keyword reserved"><span class="pre">if</span></span></code> в Ada довольно неудивителен по форме и функциям:</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kn">with</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span> <span class="kn">use</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>
+<span class="kn">with</span> <span class="nn">Ada.Integer_Text_IO</span><span class="p">;</span> <span class="kn">use</span> <span class="nn">Ada.Integer_Text_IO</span><span class="p">;</span>
+
+<span class="kd">procedure</span> <span class="nf">Check_Positive</span> <span class="kr">is</span>
+   <span class="n">N</span> <span class="p">:</span> <span class="kt">Integer</span><span class="p">;</span>
+<span class="kr">begin</span>
+   <span class="c1">--  Put a String</span>
+   <span class="n">Put</span> <span class="p">(</span><span class="s">&quot;Enter an integer value: &quot;</span><span class="p">);</span>
+
+   <span class="c1">--  Read in an integer value</span>
+   <span class="n">Get</span> <span class="p">(</span><span class="n">N</span><span class="p">);</span>
+
+   <span class="kr">if</span> <span class="n">N</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="kr">then</span>
+      <span class="c1">--  Put an Integer</span>
+      <span class="n">Put</span> <span class="p">(</span><span class="n">N</span><span class="p">);</span>
+      <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot; is a positive number&quot;</span><span class="p">);</span>
+   <span class="kr">end</span> <span class="kr">if</span><span class="p">;</span>
+<span class="kr">end</span> <span class="nf">Check_Positive</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Оператор <code class="code highlight ada docutils literal notranslate"><span class="keyword reserved"><span class="pre">if</span></span></code> минимально состоит из зарезервированного слова <code class="code highlight ada docutils literal notranslate"><span class="keyword reserved"><span class="pre">if</span></span></code>, условия
+(которое должно быть логическим значением), зарезервированного слова <code class="code highlight ada docutils literal notranslate"><span class="keyword reserved"><span class="pre">then</span></span></code>
+и непустой последовательности операторов (часть <code class="code highlight ada docutils literal notranslate"><span class="keyword reserved"><span class="pre">then</span></span></code>), которая
+выполняется, если условие оценивается как True, и завершающий <code class="code highlight ada docutils literal notranslate"><span class="keyword reserved"><span class="pre">end</span></span> <span class="keyword reserved"><span class="pre">if</span></span></code>.</p>
+<p>В этом примере объявляется целочисленная переменная N, запрашивается у
+пользователя целое число, проверяется, является ли значение
+положительным, и, если да, отображается значение целого числа, за
+которым следует строка &quot;является положительным числом&quot; (is a positive
+number). Если значение не является положительным, то процедура не
+выводит никаких выходных данных.</p>
+<p>Тип Integer является предопределенным типом со знаком, и его диапазон
+зависит от архитектуры компьютера. На типичных современных процессорах
+целое число имеет 32-разрядный знак.</p>
+<p>Пример иллюстрирует некоторые основные функциональные возможности для
+целочисленного ввода-вывода. Соответствующие подпрограммы находятся в
+предопределенном пакете <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Ada</span></span><span class="punctuation"><span class="pre">.</span></span><span class="name"><span class="pre">Integer_Text_IO</span></span></code> и включают процедуру
+<code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Get</span></span></code> (которая считывает число с клавиатуры) и процедуру <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Put</span></span></code>
+(которая отображает целое значение).</p>
+<p>Вот небольшое изменение в примере, которое иллюстрирует оператор <code class="code highlight ada docutils literal notranslate"><span class="keyword reserved"><span class="pre">if</span></span></code> с
+частью <code class="code highlight ada docutils literal notranslate"><span class="keyword reserved"><span class="pre">else</span></span></code>:</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kn">with</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span> <span class="kn">use</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>
+<span class="kn">with</span> <span class="nn">Ada.Integer_Text_IO</span><span class="p">;</span> <span class="kn">use</span> <span class="nn">Ada.Integer_Text_IO</span><span class="p">;</span>
+
+<span class="kd">procedure</span> <span class="nf">Check_Positive</span> <span class="kr">is</span>
+   <span class="n">N</span> <span class="p">:</span> <span class="kt">Integer</span><span class="p">;</span>
+<span class="kr">begin</span>
+   <span class="c1">--  Put a String</span>
+   <span class="n">Put</span> <span class="p">(</span><span class="s">&quot;Enter an integer value: &quot;</span><span class="p">);</span>
+
+   <span class="c1">--  Reads in an integer value</span>
+   <span class="n">Get</span> <span class="p">(</span><span class="n">N</span><span class="p">);</span>
+
+   <span class="c1">--  Put an Integer</span>
+   <span class="n">Put</span> <span class="p">(</span><span class="n">N</span><span class="p">);</span>
+
+   <span class="kr">if</span> <span class="n">N</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="kr">then</span>
+      <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot; is a positive number&quot;</span><span class="p">);</span>
+   <span class="kr">else</span>
+      <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot; is not a positive number&quot;</span><span class="p">);</span>
+   <span class="kr">end</span> <span class="kr">if</span><span class="p">;</span>
+<span class="kr">end</span> <span class="nf">Check_Positive</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>В этом примере, если входное значение не является положительным, то
+программа отображает значение, за которым следует строка &quot;не является
+положительным числом&quot; (is not a positive number).</p>
+<p>Наш последний вариант иллюстрирует оператор <code class="code highlight ada docutils literal notranslate"><span class="keyword reserved"><span class="pre">if</span></span></code> с разделами <code class="code highlight ada docutils literal notranslate"><span class="keyword reserved"><span class="pre">elsif</span></span></code>:</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kn">with</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span> <span class="kn">use</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>
+<span class="kn">with</span> <span class="nn">Ada.Integer_Text_IO</span><span class="p">;</span> <span class="kn">use</span> <span class="nn">Ada.Integer_Text_IO</span><span class="p">;</span>
+
+<span class="kd">procedure</span> <span class="nf">Check_Direction</span> <span class="kr">is</span>
+   <span class="n">N</span> <span class="p">:</span> <span class="kt">Integer</span><span class="p">;</span>
+<span class="kr">begin</span>
+   <span class="n">Put</span> <span class="p">(</span><span class="s">&quot;Enter an integer value: &quot;</span><span class="p">);</span>
+   <span class="n">Get</span> <span class="p">(</span><span class="n">N</span><span class="p">);</span>
+   <span class="n">Put</span> <span class="p">(</span><span class="n">N</span><span class="p">);</span>
+
+   <span class="kr">if</span> <span class="n">N</span> <span class="o">=</span> <span class="mi">0</span> <span class="kr">or</span> <span class="n">N</span> <span class="o">=</span> <span class="mi">360</span> <span class="kr">then</span>
+      <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot; is due north&quot;</span><span class="p">);</span>
+   <span class="kr">elsif</span> <span class="n">N</span> <span class="ow">in</span> <span class="mi">1</span> <span class="p">..</span> <span class="mi">89</span> <span class="kr">then</span>
+      <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot; is in the northeast quadrant&quot;</span><span class="p">);</span>
+   <span class="kr">elsif</span> <span class="n">N</span> <span class="o">=</span> <span class="mi">90</span> <span class="kr">then</span>
+      <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot; is due east&quot;</span><span class="p">);</span>
+   <span class="kr">elsif</span> <span class="n">N</span> <span class="ow">in</span> <span class="mi">91</span> <span class="p">..</span> <span class="mi">179</span> <span class="kr">then</span>
+      <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot; is in the southeast quadrant&quot;</span><span class="p">);</span>
+   <span class="kr">elsif</span> <span class="n">N</span> <span class="o">=</span> <span class="mi">180</span> <span class="kr">then</span>
+      <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot; is due south&quot;</span><span class="p">);</span>
+   <span class="kr">elsif</span> <span class="n">N</span> <span class="ow">in</span> <span class="mi">181</span> <span class="p">..</span> <span class="mi">269</span> <span class="kr">then</span>
+      <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot; is in the southwest quadrant&quot;</span><span class="p">);</span>
+   <span class="kr">elsif</span> <span class="n">N</span> <span class="o">=</span> <span class="mi">270</span> <span class="kr">then</span>
+      <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot; is due west&quot;</span><span class="p">);</span>
+   <span class="kr">elsif</span> <span class="n">N</span> <span class="ow">in</span> <span class="mi">271</span> <span class="p">..</span> <span class="mi">359</span> <span class="kr">then</span>
+      <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot; is in the northwest quadrant&quot;</span><span class="p">);</span>
+   <span class="kr">else</span>
+      <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot; is not in the range 0..360&quot;</span><span class="p">);</span>
+   <span class="kr">end</span> <span class="kr">if</span><span class="p">;</span>
+<span class="kr">end</span> <span class="nf">Check_Direction</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>В этом примере ожидается, что пользователь введет целое число от 0 до
+360 включительно, и отобразит, какому квадранту или оси соответствует
+значение. Оператор <code class="code highlight ada docutils literal notranslate"><span class="operator word"><span class="pre">in</span></span></code> в Ada проверяет, находится ли скалярное значение в
+указанном диапазоне, и возвращает логический результат. Эффект
+программы должен быть очевиден; позже мы увидим альтернативный и более
+эффективный стиль для достижения того же эффекта используя оператор <code class="code highlight ada docutils literal notranslate"><span class="keyword reserved"><span class="pre">case</span></span></code>.</p>
+<p>Ключевое слово <code class="code highlight ada docutils literal notranslate"><span class="keyword reserved"><span class="pre">elsif</span></span></code> в Ada отличается от C или C ++, где вместо него будут
+использоваться блоки <code class="code highlight ada docutils literal notranslate"><span class="keyword reserved"><span class="pre">else</span></span> <span class="punctuation"><span class="pre">..</span></span> <span class="keyword reserved"><span class="pre">if</span></span></code>. И еще одно отличие ‑ это наличие конца
+<code class="code highlight ada docutils literal notranslate"><span class="keyword reserved"><span class="pre">end</span></span> <span class="keyword reserved"><span class="pre">if</span></span></code> в Аде, что позволяет избежать проблемы, известной как «dangling else»
+(неоконченное else).</p>
+</section>
+<section id="loops">
+<h2>Императивы языка ‑ Loops<a class="headerlink" href="#loops" title="Permalink to this headline"></a></h2>
+<p>У Ada есть три способа задания циклов. Однако они отличаются от цикла
+for в C / Java / Javascript. Цикл for-loop обладает более простым
+синтаксисом и семантикой в соответствии с философией Ada.</p>
+<section id="for">
+<h3>Циклы For<a class="headerlink" href="#for" title="Permalink to this headline"></a></h3>
+<p>Первый вид цикла ‑ это цикл <code class="code highlight ada docutils literal notranslate"><span class="keyword reserved"><span class="pre">for</span></span></code>, который позволяет выполнять итерацию
+через дискретный диапазон.</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kn">with</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span> <span class="kn">use</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>
+
+<span class="kd">procedure</span> <span class="nf">Greet_5a</span> <span class="kr">is</span>
+<span class="kr">begin</span>
+   <span class="kr">for</span> <span class="n">I</span> <span class="ow">in</span> <span class="mi">1</span> <span class="p">..</span> <span class="mi">5</span> <span class="kr">loop</span>
+      <span class="c1">--  Put_Line is a procedure call</span>
+      <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;Hello, World!&quot;</span> <span class="o">&amp;</span> <span class="kt">Integer</span><span class="p">&#39;</span><span class="na">Image</span> <span class="p">(</span><span class="n">I</span><span class="p">));</span>
+      <span class="c1">--        ^ Procedure parameter</span>
+   <span class="kr">end</span> <span class="kr">loop</span><span class="p">;</span>
+<span class="kr">end</span> <span class="nf">Greet_5a</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Несколько вещей, которые следует отметить:</p>
+<ul class="simple">
+<li><p><code class="code highlight ada docutils literal notranslate"><span class="literal number integer"><span class="pre">1</span></span> <span class="punctuation"><span class="pre">..</span></span> <span class="literal number integer"><span class="pre">5</span></span></code> ‑ это дискретный диапазон, от <code class="code highlight ada docutils literal notranslate"><span class="literal number integer"><span class="pre">1</span></span></code> до <code class="code highlight ada docutils literal notranslate"><span class="literal number integer"><span class="pre">5</span></span></code> включительно.</p></li>
+<li><p>Параметр цикла <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">I</span></span></code> (имя произвольное) в теле цикла имеет значение в этом
+диапазоне.</p></li>
+<li><p><code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">I</span></span></code> является локальным для цикла, поэтому вы не можете ссылаться на <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">I</span></span></code>
+вне цикла.</p></li>
+<li><p>Хотя значение <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">I</span></span></code> увеличивается на каждой итерации, с точки зрения
+программы оно является постоянным. Попытка изменить его значение
+является незаконной; компилятор отклонит это действие в программе.</p></li>
+<li><p><code class="code highlight ada docutils literal notranslate"><span class="keyword type"><span class="pre">Integer</span></span><span class="punctuation"><span class="pre">'</span></span><span class="name attribute"><span class="pre">Image</span></span></code> ‑ это функция, которая принимает целое число и преобразует
+его в строку. Это пример языковой конструкции, известной как <em>атрибут</em>,
+обозначенной синтаксисом <code class="code highlight ada docutils literal notranslate"><span class="punctuation"><span class="pre">'</span></span></code>, который будет рассмотрен более подробно
+позже.</p></li>
+<li><p>Символ <code class="code highlight ada docutils literal notranslate"><span class="operator"><span class="pre">&amp;</span></span></code> является оператором конкатенации для строковых значений.</p></li>
+<li><p>The <code class="code highlight ada docutils literal notranslate"><span class="keyword reserved"><span class="pre">end</span></span> <span class="keyword reserved"><span class="pre">loop</span></span></code> обозначает конец цикла</p></li>
+</ul>
+<p>&quot;Шаг&quot; цикла ограничен 1 (направление вперед) и -1 (назад). Чтобы
+выполнить итерацию в обратном направлении по диапазону, используйте
+ключевое слово <code class="code highlight ada docutils literal notranslate"><span class="keyword reserved"><span class="pre">reverse</span></span></code>:</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kn">with</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span> <span class="kn">use</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>
+
+<span class="kd">procedure</span> <span class="nf">Greet_5a_Reverse</span> <span class="kr">is</span>
+<span class="kr">begin</span>
+   <span class="kr">for</span> <span class="n">I</span> <span class="ow">in</span> <span class="kr">reverse</span> <span class="mi">1</span> <span class="p">..</span> <span class="mi">5</span> <span class="kr">loop</span>
+      <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;Hello, World!&quot;</span>
+                <span class="o">&amp;</span> <span class="kt">Integer</span><span class="p">&#39;</span><span class="na">Image</span> <span class="p">(</span><span class="n">I</span><span class="p">));</span>
+   <span class="kr">end</span> <span class="kr">loop</span><span class="p">;</span>
+<span class="kr">end</span> <span class="nf">Greet_5a_Reverse</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Границы цикла <code class="code highlight ada docutils literal notranslate"><span class="keyword reserved"><span class="pre">for</span></span></code> могут быть вычислены во время выполнения; они
+вычисляются один раз, перед выполнением тела цикла. Если значение
+верхней границы меньше значения нижней границы, то цикл вообще не
+выполняется. Это относится и к обратным циклам. Таким образом, в
+следующем примере вывод не производится:</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kn">with</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span> <span class="kn">use</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>
+
+<span class="kd">procedure</span> <span class="nf">Greet_No_Op</span> <span class="kr">is</span>
+<span class="kr">begin</span>
+   <span class="kr">for</span> <span class="n">I</span> <span class="ow">in</span> <span class="kr">reverse</span> <span class="mi">5</span> <span class="p">..</span> <span class="mi">1</span> <span class="kr">loop</span>
+      <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;Hello, World!&quot;</span>
+                <span class="o">&amp;</span> <span class="kt">Integer</span><span class="p">&#39;</span><span class="na">Image</span> <span class="p">(</span><span class="n">I</span><span class="p">));</span>
+   <span class="kr">end</span> <span class="kr">loop</span><span class="p">;</span>
+<span class="kr">end</span> <span class="nf">Greet_No_Op</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Цикл <code class="code highlight ada docutils literal notranslate"><span class="keyword reserved"><span class="pre">for</span></span></code> является более общим, чем то, что мы проиллюстрировали здесь;
+подробнее об этом позже.</p>
+</section>
+<section id="id2">
+<h3>Простой цикл<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h3>
+<p>Самый простой цикл в Ada ‑ это голый цикл, который образует основу
+других видов циклов Ada.</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kn">with</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span> <span class="kn">use</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>
+
+<span class="kd">procedure</span> <span class="nf">Greet_5b</span> <span class="kr">is</span>
+   <span class="c1">--  Variable declaration:</span>
+   <span class="n">I</span> <span class="p">:</span> <span class="kt">Integer</span> <span class="p">:=</span> <span class="mi">1</span><span class="p">;</span>
+   <span class="c1">--  ^ Type</span>
+   <span class="c1">--             ^ Initial value</span>
+<span class="kr">begin</span>
+   <span class="kr">loop</span>
+      <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;Hello, World!&quot;</span>
+                <span class="o">&amp;</span> <span class="kt">Integer</span><span class="p">&#39;</span><span class="na">Image</span> <span class="p">(</span><span class="n">I</span><span class="p">));</span>
+
+      <span class="c1">--  Exit statement:</span>
+      <span class="kr">exit</span> <span class="kr">when</span> <span class="n">I</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+      <span class="c1">--        ^ Boolean condition</span>
+
+      <span class="c1">--  Assignment:</span>
+      <span class="n">I</span> <span class="p">:=</span> <span class="n">I</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+      <span class="c1">--  There is no I++ short form to</span>
+      <span class="c1">--  increment a variable</span>
+   <span class="kr">end</span> <span class="kr">loop</span><span class="p">;</span>
+<span class="kr">end</span> <span class="nf">Greet_5b</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Этот пример имеет тот же эффект, что и <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Greet_5a</span></span></code>, показанный ранее.</p>
+<p>Это иллюстрирует несколько концепций:</p>
+<ul class="simple">
+<li><p>Мы объявили переменную с именем <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">I</span></span></code> между <code class="code highlight ada docutils literal notranslate"><span class="keyword reserved"><span class="pre">is</span></span></code> и <code class="code highlight ada docutils literal notranslate"><span class="keyword reserved"><span class="pre">begin</span></span></code>.
+Это представляет собой
+<em>декларативную область</em>. Ada чётко отделяет декларативную область от
+операторской части подпрограммы. Объявление может отображаться в
+декларативной области, но не допускается в качестве инструкции.</p></li>
+<li><p>Оператор простого цикла начинается с ключевого слова <code class="code highlight ada docutils literal notranslate"><span class="keyword reserved"><span class="pre">loop</span></span></code> и, как и любой
+другой тип оператора цикла, завершается комбинацией ключевых слов <code class="code highlight ada docutils literal notranslate"><span class="keyword reserved"><span class="pre">end</span></span> <span class="keyword reserved"><span class="pre">loop</span></span></code>.
+Сам по себе это бесконечный цикл. Вы можете выйти из этого цикла с
+помощью оператора выхода <code class="code highlight ada docutils literal notranslate"><span class="keyword reserved"><span class="pre">exit</span></span></code>.</p></li>
+<li><p>Синтаксис для присваивания «<code class="code highlight ada docutils literal notranslate"><span class="punctuation"><span class="pre">:=</span></span></code>», а синтаксис для равенства «<code class="code highlight ada docutils literal notranslate"><span class="operator"><span class="pre">=</span></span></code>». Их
+невозможно перепутать, потому что, как отмечалось ранее, в Ada
+операторы и выражения различны, а выражения не являются допустимыми
+операторами.</p></li>
+</ul>
+</section>
+<section id="while">
+<h3>Циклы While<a class="headerlink" href="#while" title="Permalink to this headline"></a></h3>
+<p>Последний вид цикла в Ada ‑ это цикл <code class="code highlight ada docutils literal notranslate"><span class="keyword reserved"><span class="pre">while</span></span></code>.</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kn">with</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span> <span class="kn">use</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>
+
+<span class="kd">procedure</span> <span class="nf">Greet_5c</span> <span class="kr">is</span>
+   <span class="n">I</span> <span class="p">:</span> <span class="kt">Integer</span> <span class="p">:=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="kr">begin</span>
+   <span class="c1">--  Condition must be a Boolean value</span>
+   <span class="c1">--  (no Integers).</span>
+   <span class="c1">--  Operator &quot;&lt;=&quot; returns a Boolean</span>
+   <span class="kr">while</span> <span class="n">I</span> <span class="o">&lt;=</span> <span class="mi">5</span> <span class="kr">loop</span>
+      <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;Hello, World!&quot;</span>
+                <span class="o">&amp;</span> <span class="kt">Integer</span><span class="p">&#39;</span><span class="na">Image</span> <span class="p">(</span><span class="n">I</span><span class="p">));</span>
+
+      <span class="n">I</span> <span class="p">:=</span> <span class="n">I</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+   <span class="kr">end</span> <span class="kr">loop</span><span class="p">;</span>
+<span class="kr">end</span> <span class="nf">Greet_5c</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Условие оценивается перед каждой итерацией. Если результат равен
+false, то цикл завершается.</p>
+<p>Эта программа имеет тот же эффект, что и предыдущие примеры.</p>
+<div class="admonition- admonition">
+<p class="admonition-title">На других языках</p>
+<p>Обратите внимание, что Ada имеет иную семантику, чем языки на основе
+C, в отношении условия в цикле while. В Ada условие должно быть
+логическим значением, иначе компилятор отклонит программу; условие не
+является целым числом, которое рассматривается как истинное или
+ложное в зависимости от того, является ли оно ненулевым или
+нулевым.</p>
+</div>
+</section>
+</section>
+<section id="case">
+<h2>Императивы языка – оператор Case<a class="headerlink" href="#case" title="Permalink to this headline"></a></h2>
+<p>Оператор Ada <code class="code highlight ada docutils literal notranslate"><span class="keyword reserved"><span class="pre">case</span></span></code> аналогичен оператору C и C++ <code class="code highlight c docutils literal notranslate"><span class="keyword"><span class="pre">switch</span></span></code>,
+но с некоторыми важными отличиями.</p>
+<p>Вот пример, вариация программы, которая была показана ранее с
+инструкцией <code class="code highlight ada docutils literal notranslate"><span class="keyword reserved"><span class="pre">if</span></span></code>:</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kn">with</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span> <span class="kn">use</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>
+<span class="kn">with</span> <span class="nn">Ada.Integer_Text_IO</span><span class="p">;</span> <span class="kn">use</span> <span class="nn">Ada.Integer_Text_IO</span><span class="p">;</span>
+
+<span class="kd">procedure</span> <span class="nf">Check_Direction</span> <span class="kr">is</span>
+   <span class="n">N</span> <span class="p">:</span> <span class="kt">Integer</span><span class="p">;</span>
+<span class="kr">begin</span>
+   <span class="kr">loop</span>
+      <span class="n">Put</span> <span class="p">(</span><span class="s">&quot;Enter an integer value: &quot;</span><span class="p">);</span>
+      <span class="n">Get</span> <span class="p">(</span><span class="n">N</span><span class="p">);</span>
+      <span class="n">Put</span> <span class="p">(</span><span class="n">N</span><span class="p">);</span>
+
+      <span class="kr">case</span> <span class="n">N</span> <span class="kr">is</span>
+         <span class="kr">when</span> <span class="mi">0</span> <span class="p">|</span> <span class="mi">360</span> <span class="p">=&gt;</span>
+            <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot; is due north&quot;</span><span class="p">);</span>
+         <span class="kr">when</span> <span class="mi">1</span> <span class="p">..</span> <span class="mi">89</span> <span class="p">=&gt;</span>
+            <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot; is in the northeast quadrant&quot;</span><span class="p">);</span>
+         <span class="kr">when</span> <span class="mi">90</span> <span class="p">=&gt;</span>
+            <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot; is due east&quot;</span><span class="p">);</span>
+         <span class="kr">when</span> <span class="mi">91</span> <span class="p">..</span> <span class="mi">179</span> <span class="p">=&gt;</span>
+            <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot; is in the southeast quadrant&quot;</span><span class="p">);</span>
+         <span class="kr">when</span> <span class="mi">180</span> <span class="p">=&gt;</span>
+            <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot; is due south&quot;</span><span class="p">);</span>
+         <span class="kr">when</span> <span class="mi">181</span> <span class="p">..</span> <span class="mi">269</span> <span class="p">=&gt;</span>
+            <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot; is in the southwest quadrant&quot;</span><span class="p">);</span>
+         <span class="kr">when</span> <span class="mi">270</span> <span class="p">=&gt;</span>
+            <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot; is due west&quot;</span><span class="p">);</span>
+         <span class="kr">when</span> <span class="mi">271</span> <span class="p">..</span> <span class="mi">359</span> <span class="p">=&gt;</span>
+            <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot; is in the northwest quadrant&quot;</span><span class="p">);</span>
+         <span class="kr">when</span> <span class="kr">others</span> <span class="p">=&gt;</span>
+            <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot; Au revoir&quot;</span><span class="p">);</span>
+            <span class="kr">exit</span><span class="p">;</span>
+      <span class="kr">end</span> <span class="kr">case</span><span class="p">;</span>
+   <span class="kr">end</span> <span class="kr">loop</span><span class="p">;</span>
+<span class="kr">end</span> <span class="nf">Check_Direction</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Эта программа неоднократно запрашивает целочисленное значение, а
+затем, если значение находится в диапазоне <code class="code highlight ada docutils literal notranslate"><span class="literal number integer"><span class="pre">0</span></span> <span class="punctuation"><span class="pre">..</span></span> <span class="literal number integer"><span class="pre">360</span></span></code>, отображает
+соответствующий квадрант или ось. Если значение является целым числом
+за пределами этого диапазона, цикл (и программа) завершаются после
+вывода прощального сообщения.</p>
+<p>Эффект оператора case аналогичен оператору if в предыдущем примере, но
+оператор case может быть более эффективным, поскольку он не включает
+несколько тестов диапазона.</p>
+<p>Примечательные моменты в операторе Ada case:</p>
+<ul class="simple">
+<li><p>Выражение case (здесь переменная <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">N</span></span></code>) должно быть дискретного типа, то
+есть либо целочисленного типа, либо типа перечисления.
+<a class="reference external" href="https://learn.adacore.com/courses/intro-to-ada/chapters/strongly_typed_language.html#whatisatype" title="(in learn.adacore.com v2021.12)"><span class="xref std std-ref">Дискретные типы</span></a> будут рассмотрены более подробно позже.</p></li>
+<li><p>Каждое возможное значение для выражения case должно быть охвачено
+уникальной ветвью оператора case. Это будет проверено во время
+компиляции.</p></li>
+<li><p>Ветвь может указывать одно значение, например <code class="code highlight ada docutils literal notranslate"><span class="literal number integer"><span class="pre">0</span></span></code>; диапазон значений,
+например <code class="code highlight ada docutils literal notranslate"><span class="literal number integer"><span class="pre">1</span></span> <span class="punctuation"><span class="pre">..</span></span> <span class="literal number integer"><span class="pre">89</span></span></code>; или любая их комбинация (разделенные знаком <cite>|</cite>).</p></li>
+<li><p>В качестве особого случая необязательная конечная ветвь может быть
+задана ключевым словом <code class="code highlight ada docutils literal notranslate"><span class="keyword reserved"><span class="pre">others</span></span></code>, которая охватывает все значения, не
+включенные в более ранние ветки.</p></li>
+<li><p>Выполнение состоит из вычисления выражения case, а затем передачи
+управления последовательности инструкций в уникальной ветви, которая
+охватывает это значение.</p></li>
+<li><p>Когда выполнение операторов в выбранной ветви завершено, управление
+возобновляется после последней ветви (после <code class="code highlight ada docutils literal notranslate"><span class="keyword reserved"><span class="pre">end</span></span> <span class="keyword reserved"><span class="pre">case</span></span></code>).
+В отличие от C, выполнение не
+попадает в следующую ветвь. Таким образом, Ada не нужен (и не имеет)
+оператор <code class="code highlight c docutils literal notranslate"><span class="keyword"><span class="pre">break</span></span></code>.</p></li>
+</ul>
+</section>
+<section id="id3">
+<h2>Императивы языка – декларативные регионы<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h2>
+<p>Как упоминалось ранее, Ada проводит четкое синтаксическое разделение
+между объявлениями, которые вводят имена для сущностей, которые будут
+использоваться в программе, и операторами, выполняющими обработку.
+Области в программе, в которых могут появляться объявления, называются
+декларативными областями.</p>
+<p>В любой подпрограмме раздел между <code class="code highlight ada docutils literal notranslate"><span class="keyword reserved"><span class="pre">is</span></span></code> и <code class="code highlight ada docutils literal notranslate"><span class="keyword reserved"><span class="pre">begin</span></span></code> является
+декларативной областью. Там могут быть переменные, константы, типы,
+внутренние подпрограммы и другие сущности.</p>
+<p>Мы кратко упоминали объявления переменных в предыдущем подразделе.
+Давайте посмотрим на простой пример, где мы объявляем целочисленную
+переменную <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">X</span></span></code> в декларативной области и выполняем инициализацию и
+добавление к ней единицы:</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kn">with</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span> <span class="kn">use</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>
+
+<span class="kd">procedure</span> <span class="nf">Main</span> <span class="kr">is</span>
+   <span class="n">X</span> <span class="p">:</span> <span class="kt">Integer</span><span class="p">;</span>
+<span class="kr">begin</span>
+   <span class="n">X</span> <span class="p">:=</span> <span class="mi">0</span><span class="p">;</span>
+   <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;The initial value of X is &quot;</span>
+             <span class="o">&amp;</span> <span class="kt">Integer</span><span class="p">&#39;</span><span class="na">Image</span> <span class="p">(</span><span class="n">X</span><span class="p">));</span>
+
+   <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;Performing operation on X...&quot;</span><span class="p">);</span>
+   <span class="n">X</span> <span class="p">:=</span> <span class="n">X</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+
+   <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;The value of X now is &quot;</span>
+             <span class="o">&amp;</span> <span class="kt">Integer</span><span class="p">&#39;</span><span class="na">Image</span> <span class="p">(</span><span class="n">X</span><span class="p">));</span>
+<span class="kr">end</span> <span class="nf">Main</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Давайте рассмотрим пример вложенной процедуры:</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kn">with</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span> <span class="kn">use</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>
+
+<span class="kd">procedure</span> <span class="nf">Main</span> <span class="kr">is</span>
+   <span class="kd">procedure</span> <span class="nf">Nested</span> <span class="kr">is</span>
+   <span class="kr">begin</span>
+      <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;Hello World&quot;</span><span class="p">);</span>
+   <span class="kr">end</span> <span class="nf">Nested</span><span class="p">;</span>
+<span class="kr">begin</span>
+   <span class="n">Nested</span><span class="p">;</span>
+   <span class="c1">--  Call to Nested</span>
+<span class="kr">end</span> <span class="nf">Main</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Объявление не может отображаться как оператор. Если вам нужно объявить
+локальную переменную среди операторов, вы можете ввести новую
+декларативную область с помощью блочного оператора:</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kn">with</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span> <span class="kn">use</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>
+
+<span class="kd">procedure</span> <span class="nf">Greet</span> <span class="kr">is</span>
+<span class="kr">begin</span>
+   <span class="kr">loop</span>
+      <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;Please enter your name: &quot;</span><span class="p">);</span>
+
+      <span class="kr">declare</span>
+         <span class="n">Name</span> <span class="p">:</span> <span class="kt">String</span> <span class="p">:=</span> <span class="n">Get_Line</span><span class="p">;</span>
+         <span class="c1">--               ^ Call to the</span>
+         <span class="c1">--                 Get_Line function</span>
+      <span class="kr">begin</span>
+         <span class="kr">exit</span> <span class="kr">when</span> <span class="n">Name</span> <span class="o">=</span> <span class="s">&quot;&quot;</span><span class="p">;</span>
+         <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;Hi &quot;</span> <span class="o">&amp;</span> <span class="n">Name</span> <span class="o">&amp;</span> <span class="s">&quot;!&quot;</span><span class="p">);</span>
+      <span class="kr">end</span><span class="p">;</span>
+
+      <span class="c1">--  Name is undefined here</span>
+   <span class="kr">end</span> <span class="kr">loop</span><span class="p">;</span>
+
+  <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;Bye!&quot;</span><span class="p">);</span>
+<span class="kr">end</span> <span class="nf">Greet</span><span class="p">;</span>
+</pre></div>
+</div>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>Функция <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Get_Line</span></span></code> позволяет получать входные данные от пользователя и выдавать
+результат в виде строки. Это более или менее эквивалентно функции <code class="code highlight c docutils literal notranslate"><span class="name"><span class="pre">scanf</span></span></code> C.</p>
+<p>Функция Get_Line возвращает строку (тип <code class="code highlight ada docutils literal notranslate"><span class="keyword type"><span class="pre">String</span></span></code>), которая, как мы увидим позже,
+является <a class="reference external" href="https://learn.adacore.com/courses/intro-to-ada/chapters/arrays.html#unconstrainedarraytypes" title="(in learn.adacore.com v2021.12)"><span class="xref std std-ref">неограниченным типом массива</span></a>.
+Пока мы просто отмечаем, что,
+если вы хотите объявить строковую переменную (с типом <code class="code highlight ada docutils literal notranslate"><span class="keyword type"><span class="pre">String</span></span></code>) и заранее не
+знаете ее размер, вам необходимо инициализировать переменную во время ее
+объявления.</p>
+</div>
+</section>
+<section id="id4">
+<h2>Императивы языка – условные выражения<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h2>
+<p>В Ada 2012 был введен аналог выражения для условных операторов (<code class="code highlight ada docutils literal notranslate"><span class="keyword reserved"><span class="pre">if</span></span></code> и <code class="code highlight ada docutils literal notranslate"><span class="keyword reserved"><span class="pre">case</span></span></code>).</p>
+<section id="if">
+<h3>Выражение If<a class="headerlink" href="#if" title="Permalink to this headline"></a></h3>
+<p>Вот альтернативная версия примера приведённого выше; операторы <code class="code highlight ada docutils literal notranslate"><span class="keyword reserved"><span class="pre">if</span></span></code>
+заменены на <code class="code highlight ada docutils literal notranslate"><span class="keyword reserved"><span class="pre">if</span></span></code> выражения:</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kn">with</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span> <span class="kn">use</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>
+<span class="kn">with</span> <span class="nn">Ada.Integer_Text_IO</span><span class="p">;</span> <span class="kn">use</span> <span class="nn">Ada.Integer_Text_IO</span><span class="p">;</span>
+
+<span class="kd">procedure</span> <span class="nf">Check_Positive</span> <span class="kr">is</span>
+   <span class="n">N</span> <span class="p">:</span> <span class="kt">Integer</span><span class="p">;</span>
+<span class="kr">begin</span>
+   <span class="n">Put</span> <span class="p">(</span><span class="s">&quot;Enter an integer value: &quot;</span><span class="p">);</span>
+   <span class="n">Get</span> <span class="p">(</span><span class="n">N</span><span class="p">);</span>
+   <span class="n">Put</span> <span class="p">(</span><span class="n">N</span><span class="p">);</span>
+
+   <span class="kr">declare</span>
+      <span class="no">S</span> <span class="p">:</span> <span class="kr">constant</span> <span class="kt">String</span> <span class="p">:=</span>
+        <span class="p">(</span><span class="kr">if</span> <span class="n">N</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="kr">then</span> <span class="s">&quot; is a positive number&quot;</span>
+         <span class="kr">else</span> <span class="s">&quot; is not a positive number&quot;</span><span class="p">);</span>
+   <span class="kr">begin</span>
+      <span class="n">Put_Line</span> <span class="p">(</span><span class="n">S</span><span class="p">);</span>
+   <span class="kr">end</span><span class="p">;</span>
+<span class="kr">end</span> <span class="nf">Check_Positive</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Выражение <code class="code highlight ada docutils literal notranslate"><span class="keyword reserved"><span class="pre">if</span></span></code> вычисляет одну из двух строк в зависимости от N и
+присваивает это значение локальной переменной S.</p>
+<p>Выражения <code class="code highlight ada docutils literal notranslate"><span class="keyword reserved"><span class="pre">if</span></span></code> Ada аналогичны операторам <code class="code highlight ada docutils literal notranslate"><span class="keyword reserved"><span class="pre">if</span></span></code>. Однако есть несколько отличий,
+которые проистекают из того факта, что это выражение:</p>
+<ul class="simple">
+<li><p>Выражения всех ветвей должны быть одного типа</p></li>
+<li><p>Оно <em>должно</em> быть заключено в круглые скобки, если окружающее выражение
+их еще не содержит</p></li>
+<li><p>Ветвь <code class="code highlight ada docutils literal notranslate"><span class="keyword reserved"><span class="pre">else</span></span></code> обязательна, если только следующее за <code class="code highlight ada docutils literal notranslate"><span class="keyword reserved"><span class="pre">then</span></span></code> выражение не имеет
+логического значения. В этом случае ветвь <code class="code highlight ada docutils literal notranslate"><span class="keyword reserved"><span class="pre">else</span></span></code> является необязательной и,
+если она отсутствует, по умолчанию имеет значение <code class="code highlight ada docutils literal notranslate"><span class="keyword reserved"><span class="pre">else</span></span> <span class="keyword constant"><span class="pre">True</span></span></code>.</p></li>
+</ul>
+<p>Вот еще один пример:</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kn">with</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span> <span class="kn">use</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>
+
+<span class="kd">procedure</span> <span class="nf">Main</span> <span class="kr">is</span>
+<span class="kr">begin</span>
+   <span class="kr">for</span> <span class="n">I</span> <span class="ow">in</span> <span class="mi">1</span> <span class="p">..</span> <span class="mi">10</span> <span class="kr">loop</span>
+      <span class="n">Put_Line</span> <span class="p">(</span><span class="kr">if</span> <span class="n">I</span> <span class="ow">mod</span> <span class="mi">2</span> <span class="o">=</span> <span class="mi">0</span> <span class="kr">then</span> <span class="s">&quot;Even&quot;</span> <span class="kr">else</span> <span class="s">&quot;Odd&quot;</span><span class="p">);</span>
+   <span class="kr">end</span> <span class="kr">loop</span><span class="p">;</span>
+<span class="kr">end</span> <span class="nf">Main</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Эта программа выдает 10 строк вывода, чередующихся между &quot;Нечетными&quot; и
+&quot;Четными&quot; (&quot;Odd&quot; и &quot;Even&quot;).</p>
+</section>
+<section id="id5">
+<h3>Выражение Case<a class="headerlink" href="#id5" title="Permalink to this headline"></a></h3>
+<p>Аналогично выражениям <code class="code highlight ada docutils literal notranslate"><span class="keyword reserved"><span class="pre">if</span></span></code>, в Ada также есть выражения <code class="code highlight ada docutils literal notranslate"><span class="keyword reserved"><span class="pre">case</span></span></code>. Они работают
+именно так, как вы и ожидали.</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kn">with</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span> <span class="kn">use</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>
+
+<span class="kd">procedure</span> <span class="nf">Main</span> <span class="kr">is</span>
+<span class="kr">begin</span>
+   <span class="kr">for</span> <span class="n">I</span> <span class="ow">in</span> <span class="mi">1</span> <span class="p">..</span> <span class="mi">10</span> <span class="kr">loop</span>
+      <span class="n">Put_Line</span> <span class="p">(</span><span class="kr">case</span> <span class="n">I</span> <span class="kr">is</span>
+                <span class="kr">when</span> <span class="mi">1</span> <span class="p">|</span> <span class="mi">3</span> <span class="p">|</span> <span class="mi">5</span> <span class="p">|</span> <span class="mi">7</span> <span class="p">|</span> <span class="mi">9</span> <span class="p">=&gt;</span> <span class="s">&quot;Odd&quot;</span><span class="p">,</span>
+                <span class="kr">when</span> <span class="mi">2</span> <span class="p">|</span> <span class="mi">4</span> <span class="p">|</span> <span class="mi">6</span> <span class="p">|</span> <span class="mi">8</span> <span class="p">|</span> <span class="mi">10</span> <span class="p">=&gt;</span> <span class="s">&quot;Even&quot;</span><span class="p">);</span>
+   <span class="kr">end</span> <span class="kr">loop</span><span class="p">;</span>
+<span class="kr">end</span> <span class="nf">Main</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Эта программа имеет тот же эффект, что и в предыдущем примере.</p>
+<p>Синтаксис отличается от операторов <code class="code highlight ada docutils literal notranslate"><span class="keyword reserved"><span class="pre">case</span></span></code>, ветви разделены запятыми.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          
+
+
+<footer>
+    
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+          
+          
+            <a href="../index.html" class="btn btn-neutral" title="Введение в язык программирования Ada" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+          
+        </div>
+  
+
+
+  <hr/>
+
+  <div class="legal">
+              Copyright &copy; 2022 AdaCore. All rights reserved.
+              &nbsp;&nbsp;
+              <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/80x15.png" /></a>
+              <br>
+              <a href="https://www.adacore.com/company/legal">Legal</a>
+              &nbsp; |  &nbsp;
+              <a href="https://www.adacore.com/company/privacy">Privacy Policy</a>
+              &nbsp; |  &nbsp;
+              <a href="https://github.com/AdaCore/learn/issues">Report an Issue</a>
+            </div> 
+
+</footer>
+
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+  <button id="scrollToTopBtn" title="Go to top"><i class="fas fa-caret-square-up"></i></button>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+</script>
+
+
+</body>
+</html>
