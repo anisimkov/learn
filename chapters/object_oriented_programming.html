@@ -1,0 +1,1069 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Объектно-ориентированное программирование &mdash; learn.adacore.com</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Стандартная библиотека: Контейнеры" href="standard_library_containers.html" />
+    <link rel="prev" title="Взаимодействие с языком C" href="interfacing_with_c.html" />
+  <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-117428-14"></script>
+<script type="text/javascript">
+  if(!Cookies.get('AdaCore_staff')) {
+    // Global site tag (gtag.js) - Google Analytics
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-117428-14');
+    // End Global site tag (gtag.js) - Google Analytics
+
+    // Google Tag Manager
+    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-KD5HNRR');
+    // End Google Tag Manager
+
+    // Twitter universal website tag code
+    !function(e,t,n,s,u,a){e.twq||(s=e.twq=function(){s.exe?s.exe.apply(s,arguments):s.queue.push(arguments);},s.version='1.1',s.queue=[],u=t.createElement(n),u.async=!0,u.src='//static.ads-twitter.com/uwt.js',a=t.getElementsByTagName(n)[0],a.parentNode.insertBefore(u,a))}(window,document,'script');
+    // Insert Twitter Pixel ID and Standard Event data below
+    twq('init','o3mlc');
+    twq('track','PageView');
+    // End Twitter universal website tag code
+
+    // LinkedIn Tracking Tags
+    _linkedin_partner_id = "482585"; window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || []; window._linkedin_data_partner_ids.push(_linkedin_partner_id);
+    (function(){var s = document.getElementsByTagName("script")[0]; var b = document.createElement("script"); b.type = "text/javascript";b.async = true; b.src = "https://snap.licdn.com/li.lms-analytics/insight.min.js"; s.parentNode.insertBefore(b, s);})();
+    // End LinkedIn Tracking Tags
+  }
+</script>
+  <!--  Essential META Tags -->
+<meta property="og:title" content=“learn.adacore.com">
+<meta property="og:description" content="An interactive learning platform to teach the Ada and SPARK programming languages.">
+<meta property="og:image" content="https://learn.adacore.com/_static/learn_meta_img.jpeg">
+<meta property="og:url" content="https://learn.adacore.com">
+<meta name="twitter:card" content="summary_large_image">
+
+<!--  Non-Essential, But Recommended -->
+<meta property="og:site_name" content="learn.adacore.com">
+<meta name="twitter:image:alt" content="An interactive learning platform to teach the Ada and SPARK programming languages.">
+
+<!--  Non-Essential, But Required for Analytics -->
+<meta name="twitter:site" content="@AdaCoreCompany">
+
+</head>
+
+<body class="wy-body-for-nav">
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KD5HNRR"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  <!-- LinkedIn Tracking Tags (noscript) -->
+  <noscript> <img height="1" width="1" style="display:none;" alt="" src="https://dc.ads.linkedin.com/collect/?pid=482585&fmt=gif" /> </noscript>
+  <!-- End LinkedIn Tracking Tags (noscript) -->
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html">
+            <img src="../_static/logo.svg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Введение</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#id2">История</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#ada">Ada сегодня</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#id6">Философия</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#spark">SPARK</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="imperative_language.html">Императивы языка</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="imperative_language.html#hello-world">Hello world</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imperative_language.html#if-then-else">Императивы языка ‑ If / Then / Else</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imperative_language.html#loops">Императивы языка ‑ Loops</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="imperative_language.html#for">Циклы For</a></li>
+<li class="toctree-l3"><a class="reference internal" href="imperative_language.html#id2">Простой цикл</a></li>
+<li class="toctree-l3"><a class="reference internal" href="imperative_language.html#while">Циклы While</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="imperative_language.html#case">Императивы языка – оператор Case</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imperative_language.html#id3">Императивы языка – декларативные регионы</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imperative_language.html#id4">Императивы языка – условные выражения</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="imperative_language.html#if">Выражение If</a></li>
+<li class="toctree-l3"><a class="reference internal" href="imperative_language.html#id5">Выражение Case</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="subprograms.html">Подпрограммы</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="subprograms.html#id2">Подпрограммы</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="subprograms.html#id3">Вызовы подпрограмм</a></li>
+<li class="toctree-l3"><a class="reference internal" href="subprograms.html#id4">Вложенные подпрограммы</a></li>
+<li class="toctree-l3"><a class="reference internal" href="subprograms.html#id5">Вызов функций</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="subprograms.html#id6">Режимы параметров</a></li>
+<li class="toctree-l2"><a class="reference internal" href="subprograms.html#id7">Вызов процедуры</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="subprograms.html#in">Параметры in</a></li>
+<li class="toctree-l3"><a class="reference internal" href="subprograms.html#in-out">Параметры in out</a></li>
+<li class="toctree-l3"><a class="reference internal" href="subprograms.html#out">Параметры out</a></li>
+<li class="toctree-l3"><a class="reference internal" href="subprograms.html#id8">Предварительное объявление подпрограмм</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="subprograms.html#subprogram-renaming">Переименование</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="modular_programming.html">Модульное программирование</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="modular_programming.html#id2">Пакеты</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modular_programming.html#id3">Использование пакета</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modular_programming.html#id4">Тело пакета</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modular_programming.html#childpackages">Дочерние пакеты</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="modular_programming.html#id6">Дочерний пакет от дочернего пакета</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modular_programming.html#id7">Множественные потомки</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modular_programming.html#id8">Видимость</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="modular_programming.html#package-renaming">Переименование</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="strongly_typed_language.html">Сильно типизированный язык</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="strongly_typed_language.html#whatisatype">Что такое тип?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="strongly_typed_language.html#integers">Целочисленные типы ‑ Integers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="strongly_typed_language.html#id3">Семантика операций</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="strongly_typed_language.html#id4">Беззнаковые типы</a></li>
+<li class="toctree-l2"><a class="reference internal" href="strongly_typed_language.html#enumtypes">Перечисления</a></li>
+<li class="toctree-l2"><a class="reference internal" href="strongly_typed_language.html#id7">Типы с плавающей запятой</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="strongly_typed_language.html#id8">Основные свойства</a></li>
+<li class="toctree-l3"><a class="reference internal" href="strongly_typed_language.html#id9">Точность типов с плавающей запятой</a></li>
+<li class="toctree-l3"><a class="reference internal" href="strongly_typed_language.html#id10">Диапазон типов с плавающей запятой</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="strongly_typed_language.html#id11">Строгая типизация</a></li>
+<li class="toctree-l2"><a class="reference internal" href="strongly_typed_language.html#id12">Производные типы</a></li>
+<li class="toctree-l2"><a class="reference internal" href="strongly_typed_language.html#id13">Подтипы</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="strongly_typed_language.html#subtypealiases">Подтипы в качестве псевдонимов типов</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="records.html">Записи</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="records.html#id2">Объявление типа записи</a></li>
+<li class="toctree-l2"><a class="reference internal" href="records.html#id3">Агрегаты</a></li>
+<li class="toctree-l2"><a class="reference internal" href="records.html#id4">Выбор компонентов</a></li>
+<li class="toctree-l2"><a class="reference internal" href="records.html#record-comp-renaming">Переименование</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="arrays.html">Массивы</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="arrays.html#id2">Объявление типа массива</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays.html#id3">Индексирование</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays.html#id4">Более простые объявления массива</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays.html#id5">Атрибут диапазона</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays.html#unconstrainedarraytypes">Неограниченные массивы</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays.html#string">Предопределенный тип массива: String</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays.html#id7">Ограничения</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays.html#id8">Возврат неограниченных массивов</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays.html#id9">Объявление массивов (2)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays.html#id10">Срезы массива</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays.html#object-renaming">Переименование</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="more_about_types.html">Подробнее о типах</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="more_about_types.html#id2">Агрегаты: краткая информация</a></li>
+<li class="toctree-l2"><a class="reference internal" href="more_about_types.html#id3">Перегрузка и квалифицированные выражения</a></li>
+<li class="toctree-l2"><a class="reference internal" href="more_about_types.html#access">Типы Access (указатели)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="more_about_types.html#allocation">Распределение (по типу) ‑ Allocation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="more_about_types.html#id5">Разыменование</a></li>
+<li class="toctree-l3"><a class="reference internal" href="more_about_types.html#id6">Другие особенности</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="more_about_types.html#id7">Взаимно рекурсивные типы</a></li>
+<li class="toctree-l2"><a class="reference internal" href="more_about_types.html#id8">Подробнее о записях</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="more_about_types.html#id9">Типы записей с динамически изменяемым размером</a></li>
+<li class="toctree-l3"><a class="reference internal" href="more_about_types.html#id10">Записи с дискриминантом</a></li>
+<li class="toctree-l3"><a class="reference internal" href="more_about_types.html#c">Записи c вариантами</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="more_about_types.html#id11">Типы с фиксированной точкой</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="more_about_types.html#id12">Десятичные типы с фиксированной точкой</a></li>
+<li class="toctree-l3"><a class="reference internal" href="more_about_types.html#id13">Типы фиксированных точек</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="more_about_types.html#id14">Типы символов</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="privacy.html">Конфиденциальность</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="privacy.html#id3">Базовая инкапсуляция</a></li>
+<li class="toctree-l2"><a class="reference internal" href="privacy.html#id4">Абстрактные типы данных</a></li>
+<li class="toctree-l2"><a class="reference internal" href="privacy.html#id5">Ограниченные типы</a></li>
+<li class="toctree-l2"><a class="reference internal" href="privacy.html#id7">Дочерние пакеты и конфиденциальность</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="generics.html">Настраиваемые модули</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="generics.html#id2">Введение</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generics.html#id3">Формальное объявление типа</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generics.html#id4">Формальное объявление объекта</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generics.html#generic">Определение тела generic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generics.html#id5">Создание экземпляра generic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generics.html#id6">Generic пакеты</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generics.html#id7">Формальные подпрограммы</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generics.html#id8">Пример: экземпляры ввода / вывода</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generics.html#id9">Пример: АТД</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generics.html#swap">Пример: Обмен (Swap)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generics.html#reversing">Пример: Реверсирование (Reversing)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generics.html#id10">Пример: Тестовое приложение</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="exceptions.html">Исключения</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="exceptions.html#id2">Объявление исключения</a></li>
+<li class="toctree-l2"><a class="reference internal" href="exceptions.html#id3">Возбуждение исключения</a></li>
+<li class="toctree-l2"><a class="reference internal" href="exceptions.html#id4">Обработка исключения</a></li>
+<li class="toctree-l2"><a class="reference internal" href="exceptions.html#id5">Предопределенные исключения</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="contracts.html">Контрактное проектирование</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="contracts.html#id2">Пред- и постусловия</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contracts.html#id3">Предикаты</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contracts.html#id4">Инварианты типа</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="interfacing_with_c.html">Взаимодействие с языком C</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="interfacing_with_c.html#id1">Многоязычный проект</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interfacing_with_c.html#id2">Соглашение о типах</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interfacing_with_c.html#id3">Подпрограммы на других языках</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="interfacing_with_c.html#c-ada">Вызов подпрограмм C в Ada</a></li>
+<li class="toctree-l3"><a class="reference internal" href="interfacing_with_c.html#ada-c">Вызов подпрограмм Ada в C</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="interfacing_with_c.html#id4">Внешние переменные</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="interfacing_with_c.html#id5">Использование глобальных переменных C в Ada</a></li>
+<li class="toctree-l3"><a class="reference internal" href="interfacing_with_c.html#id6">Использование переменных Ada в C</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="interfacing_with_c.html#id7">Создание привязок</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="interfacing_with_c.html#id8">Адаптация привязок</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Объектно-ориентированное программирование</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">Производные типы</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">Типы с тегами</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id5">Типы расширяемые классами</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id6">Операции диспетчеризации</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id7">Точечная нотация</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id8">Частные и ограниченные типы с тегами</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id9">Типы доступа в классах</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="standard_library_containers.html">Стандартная библиотека: Контейнеры</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_containers.html#id2">Векторы</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_containers.html#id3">Создание экземпляра</a></li>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_containers.html#id4">Инициализация</a></li>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_containers.html#prepend-append">Добавление элементов - Prepend и Append</a></li>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_containers.html#id5">Доступ к первому и последнему элементам</a></li>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_containers.html#id6">Итерация</a></li>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_containers.html#id7">Поиск и изменение элементов</a></li>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_containers.html#id8">Вставка элементов</a></li>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_containers.html#id9">Удаление элементов</a></li>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_containers.html#id10">Другие операции</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_containers.html#id11">Множества</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_containers.html#id12">Инициализация и итерация</a></li>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_containers.html#id13">Операции с элементами</a></li>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_containers.html#id14">Другие операции</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_containers.html#id15">Неопределенные карты</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_containers.html#id16">Хэшированные карты</a></li>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_containers.html#id17">Упорядоченные карты</a></li>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_containers.html#id18">Сложность</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="standard_library_dates_times.html">Стандартная библиотека: Дата и время</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_dates_times.html#datestimes">Обработка даты и времени</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_dates_times.html#id3">Задержка с использованием даты</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_dates_times.html#id4">В режиме реального времени</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_dates_times.html#id5">Сравнительный анализ</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="standard_library_strings.html">Стандартная библиотека: Строки</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_strings.html#id2">Операции со строками</a></li>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_strings.html#id3">Ограничение строк фиксированной длины</a></li>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_strings.html#id4">Ограниченные строки</a></li>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_strings.html#unboundedstrings">Неограниченные строки</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="standard_library_files_streams.html">Стандартная библиотека: Файлы и потоки</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_files_streams.html#id2">Ввод/вывод текста</a></li>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_files_streams.html#id3">Последовательный ввод-вывод</a></li>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_files_streams.html#id4">Прямой ввод / вывод</a></li>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_files_streams.html#id5">Потоковый ввод-вывод</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="standard_library_numerics.html">Стандартная библиотека: Numerics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_numerics.html#id1">Элементарные функции</a></li>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_numerics.html#id2">Генерация случайных чисел</a></li>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_numerics.html#id3">Тип комплексного числа</a></li>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_numerics.html#id4">Манипулирование векторами и матрицами</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="appendices.html">Приложения</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="appendices.html#a">Приложение A: Формальные типы настройки</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="appendices.html#id2">Неограниченная версия типа</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="appendices.html#b">Приложение B: Контейнеры</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+  <i data-toggle="wy-nav-top" class="fas fa-bars"></i>
+    <a href="../index.html">
+    <img src="../_static/logo.svg" class="logo" alt="Logo"/>
+  </a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="id1">
+<h1>Объектно-ориентированное программирование<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h1>
+<p>Объектно-ориентированное программирование (ООП) - это большая и плохо
+определенная концепция в языках программирования, которая имеет
+тенденцию включать в себя множество разных значений, потому что разные
+языки часто реализуют свое собственное видение этого, со сходствами и
+отличиями от реализаций на других языках.</p>
+<p>Однако одна модель в основном «выиграла» битву за то, что такое
+объектно-ориентированный подход, хотя бы благодаря чистой
+популярности. Это модель, используемая в языке программирования Java,
+которая очень похожа на модель, используемую в C ++. Вот некоторые
+определяющие характеристики:</p>
+<ul class="simple">
+<li><p>Вывод и расширение типов: Большинство объектно-ориентированных языков
+позволяют пользователю добавлять поля в производные типы.</p></li>
+<li><p>Подтипирование: Объекты типа, производного от базового типа, в
+некоторых случаях могут быть заменены объектами базового типа.</p></li>
+<li><p>Полиморфизм среды выполнения: Вызов подпрограммы, обычно называемой
+<em>методом</em>, прикрепленной к типу объекта, может выполняться во время
+выполнения в зависимости от точного типа объекта.</p></li>
+<li><p>Инкапсуляция: Объекты могут скрывать некоторые свои данные.</p></li>
+<li><p>Расширяемость: пользователи &quot;извне&quot; вашего пакета или даже всей вашей
+библиотеки могут извлекать данные из ваших типов объектов и определять
+свое собственное поведение.</p></li>
+</ul>
+<p>Ada появилась еще до того, как объектно-ориентированное
+программирование стало таким же популярным, как и сегодня. Некоторые
+механизмы и концепции из приведенного выше списка были в самой ранней
+версии Ada еще до того, как было добавлено то, что мы бы назвали ООП:</p>
+<ul class="simple">
+<li><p>Как мы видели, инкапсуляция реализована не на уровне типа в Ada, а на
+уровне пакета.</p></li>
+<li><p>Подтипирование может быть реализовано с использованием, ну, подтипов,
+которые имеют полную и разрешительную статическую модель замещаемости.
+Замена завершится неудачно во время выполнения, если динамические
+ограничения подтипа не будут выполнены.</p></li>
+<li><p>Полиморфизм времени выполнения может быть реализован с использованием
+записей вариантов.</p></li>
+</ul>
+<p>Однако в этом списке не указаны расширения типов, если вы не
+учитываете записи вариантов и расширяемость.</p>
+<p>Редакция Ada 1995 года добавила функцию, заполняющую пробелы, которая
+позволила людям проще программировать, следуя объектно-ориентированной
+парадигме. Эта функция называется <em>помеченными</em> (маркированными или
+тегированными) <em>типами</em>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Примечание: В Ada можно программировать, даже не создавая помеченные
+типы. Если это ваш предпочтительный стиль программирования или у вас
+нет специального применения для помеченных типов, не стесняйтесь не
+использовать их, как в случае со многими функциями Ada.</p>
+<p>Тем не менее, они могут быть лучшим способом выразить решения
+определенных проблем, и они могут быть лучшим способом решить вашу
+проблему. Если это так, читайте дальше!</p>
+</div>
+<section id="id2">
+<h2>Производные типы<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h2>
+<p>Прежде чем представить помеченные типы, мы должны обсудить тему,
+которую мы затронули, но на самом деле не затрагивали до сих пор:</p>
+<p>Вы можете создать один или несколько новых типов из каждого типа в
+Ada. Вывод типов встроен в язык.</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kd">package</span> <span class="nc">Newtypes</span> <span class="kr">is</span>
+   <span class="kd">type</span> <span class="kt">Point</span> <span class="kr">is</span> <span class="kr">record</span>
+       <span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="p">:</span> <span class="kt">Integer</span><span class="p">;</span>
+   <span class="kr">end record</span><span class="p">;</span>
+
+   <span class="kd">type</span> <span class="kt">New_Point</span> <span class="kr">is</span> <span class="kr">new</span> <span class="n">Point</span><span class="p">;</span>
+<span class="kr">end</span> <span class="nf">Newtypes</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Наследование типов полезно для обеспечения строгой типизации,
+поскольку система типов рассматривает эти два типа как несовместимые.</p>
+<p>Но преимущества этим не ограничиваются: вы можете унаследовать вещи от
+того типа, от которого произошли. Вы не только наследуете
+представление данных, но также можете наследовать поведение.</p>
+<p>Когда вы наследуете тип, вы также наследуете так называемые
+примитивные операции. <em>Примитивная операция</em> (или просто <em>примитив</em>) -
+это подпрограмма, прикрепленная к типу. Ada определяет примитивы как
+подпрограммы, определенные в той же области, что и тип.</p>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>Обратите внимание: подпрограмма станет примитивом этого типа только в
+том случае, если:</p>
+<ol class="arabic simple">
+<li><p>Подпрограмма объявляется в той же области, что и тип и</p></li>
+<li><p>Тип и подпрограмма объявляются в пакете.</p></li>
+</ol>
+</div>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kn">with</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span> <span class="kn">use</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>
+
+<span class="kd">procedure</span> <span class="nf">Primitives</span> <span class="kr">is</span>
+  <span class="kd">package</span> <span class="nc">Week</span> <span class="kr">is</span>
+    <span class="kd">type</span> <span class="kt">Days</span> <span class="kr">is</span> <span class="p">(</span><span class="nv">Monday</span><span class="p">,</span> <span class="nv">Tuesday</span><span class="p">,</span> <span class="nv">Wednesday</span><span class="p">,</span>
+                  <span class="nv">Thursday</span><span class="p">,</span> <span class="nv">Friday</span><span class="p">,</span>
+                  <span class="nv">Saturday</span><span class="p">,</span> <span class="nv">Sunday</span><span class="p">);</span>
+
+     <span class="c1">--  Print_Day is a primitive</span>
+     <span class="c1">--  of the type Days</span>
+    <span class="kd">procedure</span> <span class="nf">Print_Day</span> <span class="p">(</span><span class="nv">D</span> <span class="p">: </span><span class="nv">Days</span><span class="p">);</span>
+  <span class="kr">end</span> <span class="nf">Week</span><span class="p">;</span>
+
+  <span class="kd">package</span> <span class="kd">body</span> <span class="nc">Week</span> <span class="kr">is</span>
+    <span class="kd">procedure</span> <span class="nf">Print_Day</span> <span class="p">(</span><span class="nv">D</span> <span class="p">: </span><span class="nv">Days</span><span class="p">)</span> <span class="kr">is</span>
+    <span class="kr">begin</span>
+       <span class="n">Put_Line</span> <span class="p">(</span><span class="n">Days</span><span class="p">&#39;</span><span class="na">Image</span> <span class="p">(</span><span class="n">D</span><span class="p">));</span>
+    <span class="kr">end</span> <span class="nf">Print_Day</span><span class="p">;</span>
+  <span class="kr">end</span> <span class="nf">Week</span><span class="p">;</span>
+
+  <span class="kn">use</span> <span class="nn">Week</span><span class="p">;</span>
+  <span class="kd">type</span> <span class="kt">Weekend_Days</span> <span class="kr">is</span> <span class="kr">new</span>
+    <span class="n">Days</span> <span class="kr">range</span> <span class="n">Saturday</span> <span class="p">..</span> <span class="n">Sunday</span><span class="p">;</span>
+
+  <span class="c1">--  A procedure Print_Day is automatically</span>
+  <span class="c1">--  inherited here. It is as if the procedure</span>
+  <span class="c1">--</span>
+  <span class="c1">--  procedure Print_Day (D : Weekend_Days);</span>
+  <span class="c1">--</span>
+  <span class="c1">--  has been declared with the same body</span>
+
+  <span class="n">Sat</span> <span class="p">:</span> <span class="n">Weekend_Days</span> <span class="p">:=</span> <span class="n">Saturday</span><span class="p">;</span>
+<span class="kr">begin</span>
+   <span class="n">Print_Day</span> <span class="p">(</span><span class="n">Sat</span><span class="p">);</span>
+<span class="kr">end</span> <span class="nf">Primitives</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Этот вид наследования может быть очень полезным и не ограничивается
+типами записей (вы можете использовать его для дискретных типов, как в
+примере выше), но он лишь внешне похож на объектно-ориентированное
+наследование:</p>
+<ul class="simple">
+<li><p>Записи не могут быть расширены только с помощью этого механизма. Вы
+также не можете указать новое представление для нового типа: оно
+<strong>всегда</strong> будет иметь то же представление, что и базовый тип.</p></li>
+<li><p>Нет возможности для динамической диспетчеризации или полиморфизма.
+Объекты имеют фиксированный, статический тип.</p></li>
+</ul>
+<p>Есть и другие различия, но перечислять их все здесь бесполезно. Просто
+помните, что это своего рода наследование, которое вы можете
+использовать, если хотите только статически наследовать поведение без
+дублирования кода или использования композиции, но которое вы не
+можете использовать, если вам нужны какие-либо динамические функции,
+которые обычно связаны с ООП.</p>
+</section>
+<section id="id3">
+<h2>Типы с тегами<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h2>
+<p>Версия языка Ada 1995 года представила тегированные типы, чтобы
+удовлетворить потребность в унифицированном решении, которое позволяет
+программировать в объектно-ориентированном стиле, аналогичном тому,
+который описан в начале этой главы.</p>
+<p>Типы с тегами очень похожи на обычные записи, за исключением того, что
+добавлены некоторые функции:</p>
+<ul class="simple">
+<li><p>Типы имеют <em>тег</em>, хранящийся внутри каждого объекта, который определяет
+<a class="reference external" href="https://ru.wikipedia.org/wiki/Динамическая_идентификация_типа_данных">тип среды выполнения</a>
+этого объекта.</p></li>
+<li><p>Примитивы можно отправлять. Примитив для помеченного типа - это то,
+что вы бы назвали <em>методом</em> в Java или C ++. Если вы производите
+базовый тип и переопределяете его примитив, вы часто можете вызвать
+его для объекта, в результате чего то, какой примитив вызывается,
+зависит от точного типа среды выполнения объекта.</p></li>
+<li><p>Введены правила выделения подтипов, позволяющие тегированному типу,
+производному от базового типа, быть статически совместимым с базовым
+типом.</p></li>
+</ul>
+<p>Давайте посмотрим на наши первые объявления тегированного типа:</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kd">package</span> <span class="nc">P</span> <span class="kr">is</span>
+   <span class="kd">type</span> <span class="kt">My_Class</span> <span class="kr">is</span> <span class="kr">tagged</span> <span class="kr">null record</span><span class="p">;</span>
+   <span class="c1">--  Just like a regular record, but</span>
+   <span class="c1">--  with tagged qualifier</span>
+
+   <span class="c1">--  Methods are outside of the type</span>
+   <span class="c1">--  definition:</span>
+
+   <span class="kd">procedure</span> <span class="nf">Foo</span> <span class="p">(</span><span class="nv">Self</span> <span class="p">: </span><span class="nv">in</span> <span class="nv">out</span> <span class="nv">My_Class</span><span class="p">);</span>
+   <span class="c1">--  If you define a procedure taking a</span>
+   <span class="c1">--  My_Class argument in the same package,</span>
+   <span class="c1">--  it will be a method.</span>
+
+   <span class="c1">--  Here&#39;s how you derive a tagged type:</span>
+
+   <span class="kd">type</span> <span class="kt">Derived</span> <span class="kr">is</span> <span class="kr">new</span> <span class="n">My_Class</span> <span class="kr">with</span> <span class="kr">record</span>
+       <span class="n">A</span> <span class="p">:</span> <span class="kt">Integer</span><span class="p">;</span>
+       <span class="c1">--  You can add fields in derived types.</span>
+   <span class="kr">end record</span><span class="p">;</span>
+
+   <span class="kr">overriding</span> <span class="kd">procedure</span> <span class="nf">Foo</span> <span class="p">(</span><span class="nv">Self</span> <span class="p">: </span><span class="nv">in</span> <span class="nv">out</span> <span class="nv">Derived</span><span class="p">);</span>
+   <span class="c1">--  The &quot;overriding&quot; qualifier is optional,</span>
+   <span class="c1">--  but if it is present, it must be valid.</span>
+<span class="kr">end</span> <span class="nf">P</span><span class="p">;</span>
+
+<span class="kn">with</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span> <span class="kn">use</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>
+
+<span class="kd">package</span> <span class="kd">body</span> <span class="nc">P</span> <span class="kr">is</span>
+   <span class="kd">procedure</span> <span class="nf">Foo</span> <span class="p">(</span><span class="nv">Self</span> <span class="p">: </span><span class="nv">in</span> <span class="nv">out</span> <span class="nv">My_Class</span><span class="p">)</span> <span class="kr">is</span>
+   <span class="kr">begin</span>
+      <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;In My_Class.Foo&quot;</span><span class="p">);</span>
+   <span class="kr">end</span> <span class="nf">Foo</span><span class="p">;</span>
+
+   <span class="kd">procedure</span> <span class="nf">Foo</span> <span class="p">(</span><span class="nv">Self</span> <span class="p">: </span><span class="nv">in</span> <span class="nv">out</span> <span class="nv">Derived</span><span class="p">)</span> <span class="kr">is</span>
+   <span class="kr">begin</span>
+      <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;In Derived.Foo, A = &quot;</span>
+                <span class="o">&amp;</span> <span class="kt">Integer</span><span class="p">&#39;</span><span class="na">Image</span> <span class="p">(</span><span class="n">Self</span><span class="p">.</span><span class="n">A</span><span class="p">));</span>
+   <span class="kr">end</span> <span class="nf">Foo</span><span class="p">;</span>
+<span class="kr">end</span> <span class="nf">P</span><span class="p">;</span>
+</pre></div>
+</div>
+</section>
+<section id="id5">
+<h2>Типы расширяемые классами<a class="headerlink" href="#id5" title="Permalink to this headline"></a></h2>
+<p>Чтобы оставаться согласованным с остальной частью языка, необходимо
+было ввести новую нотацию, чтобы сказать: &quot;Этот объект относится к
+этому типу или любому потомку, производному от тегированного типа&quot;.</p>
+<p>В Ada мы называем это типы <em>расширяемые классами</em>. Он используется в
+ООП, как только вам понадобится полиморфизм. Например, вы не можете
+выполнить следующие действия:</p>
+<div class="ada-expect-compile-error highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kn">with</span> <span class="nn">P</span><span class="p">;</span> <span class="kn">use</span> <span class="nn">P</span><span class="p">;</span>
+
+<span class="kd">procedure</span> <span class="nf">Main</span> <span class="kr">is</span>
+
+   <span class="n">O1</span> <span class="p">:</span> <span class="n">My_Class</span><span class="p">;</span>
+   <span class="c1">--  Declaring an object of type My_Class</span>
+
+   <span class="n">O2</span> <span class="p">:</span> <span class="n">Derived</span> <span class="p">:=</span> <span class="p">(</span><span class="n">A</span> <span class="p">=&gt;</span> <span class="mi">12</span><span class="p">);</span>
+   <span class="c1">--  Declaring an object of type Derived</span>
+
+   <span class="n">O3</span> <span class="p">:</span> <span class="n">My_Class</span> <span class="p">:=</span> <span class="n">O2</span><span class="p">;</span>
+   <span class="c1">--  INVALID: Trying to assign a value</span>
+   <span class="c1">--  of type derived to a variable of</span>
+   <span class="c1">--  type My_Class.</span>
+<span class="kr">begin</span>
+   <span class="kc">null</span><span class="p">;</span>
+<span class="kr">end</span> <span class="nf">Main</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Это связано с тем, что объект типа <code class="code ada docutils literal notranslate"><span class="name"><span class="pre">T</span></span></code> точно соответствует типу <code class="code ada docutils literal notranslate"><span class="name"><span class="pre">T</span></span></code>,
+независимо от того, <code class="code ada docutils literal notranslate"><span class="name"><span class="pre">T</span></span></code> помечен как теговый или нет. То, что вы хотите
+сказать как программист, это «Я хочу, чтобы O3 могли держать объект
+типа <code class="code ada docutils literal notranslate"><span class="name"><span class="pre">My_Class</span></span></code> или любого типа, нисходящего от <code class="code ada docutils literal notranslate"><span class="name"><span class="pre">My_Class</span></span></code>.»
+Вот как вы это делаете:</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kn">with</span> <span class="nn">P</span><span class="p">;</span> <span class="kn">use</span> <span class="nn">P</span><span class="p">;</span>
+
+<span class="kd">procedure</span> <span class="nf">Main</span> <span class="kr">is</span>
+   <span class="n">O1</span> <span class="p">:</span> <span class="n">My_Class</span><span class="p">;</span>
+   <span class="c1">--  Declare an object of type My_Class</span>
+
+   <span class="n">O2</span> <span class="p">:</span> <span class="n">Derived</span> <span class="p">:=</span> <span class="p">(</span><span class="n">A</span> <span class="p">=&gt;</span> <span class="mi">12</span><span class="p">);</span>
+   <span class="c1">--  Declare an object of type Derived</span>
+
+   <span class="n">O3</span> <span class="p">:</span> <span class="n">My_Class</span><span class="p">&#39;</span><span class="na">Class</span> <span class="p">:=</span> <span class="n">O2</span><span class="p">;</span>
+   <span class="c1">--  Now valid: My_Class&#39;Class designates</span>
+   <span class="c1">--  the classwide type for My_Class,</span>
+   <span class="c1">--  which is the set of all types</span>
+   <span class="c1">--  descending from My_Class (including</span>
+   <span class="c1">--  My_Class).</span>
+<span class="kr">begin</span>
+   <span class="kc">null</span><span class="p">;</span>
+<span class="kr">end</span> <span class="nf">Main</span><span class="p">;</span>
+</pre></div>
+</div>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>Обратите внимание: Поскольку объект типа класса может быть размером
+любого потомка его базового типа, он имеет неизвестный размер. Таким
+образом, это неопределенный тип с ожидаемыми ограничениями:</p>
+<ul class="simple">
+<li><p>Он не может быть сохранен как поле/компонент записи</p></li>
+<li><p>Объект типа класса должен быть инициализирован немедленно (вы не
+можете указать ограничения такого типа каким-либо иным способом, кроме
+как путем его инициализации).</p></li>
+</ul>
+</div>
+</section>
+<section id="id6">
+<h2>Операции диспетчеризации<a class="headerlink" href="#id6" title="Permalink to this headline"></a></h2>
+<p>Мы увидели, что можно переопределить операции в типах, производных от
+другого типа с тегами. Конечной целью ООП является выполнение
+диспетчерского вызова: вызова примитива (метода), который зависит от
+точного типа объекта.</p>
+<p>Но если задуматься, переменная типа <code class="code ada docutils literal notranslate"><span class="name"><span class="pre">My_Class</span></span></code> всегда содержит объект
+именно такого типа. Если требуется переменная, которая может содержать
+<code class="code ada docutils literal notranslate"><span class="name"><span class="pre">My_Class</span></span></code> или любой производный тип, она должна иметь тип
+<code class="code ada docutils literal notranslate"><span class="name"><span class="pre">My_Class</span></span><span class="punctuation"><span class="pre">'</span></span><span class="name attribute"><span class="pre">Class</span></span></code>.</p>
+<p>Другими словами, чтобы сделать вызов диспетчеризации, вы должны
+сначала иметь объект, который может быть либо конкретным типом, либо
+любым типом, производным от этого конкретного типа, а именно объект
+классового типа.</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kn">with</span> <span class="nn">P</span><span class="p">;</span> <span class="kn">use</span> <span class="nn">P</span><span class="p">;</span>
+
+<span class="kd">procedure</span> <span class="nf">Main</span> <span class="kr">is</span>
+   <span class="n">O1</span> <span class="p">:</span> <span class="n">My_Class</span><span class="p">;</span>
+   <span class="c1">--  Declare an object of type My_Class</span>
+
+   <span class="n">O2</span> <span class="p">:</span> <span class="n">Derived</span> <span class="p">:=</span> <span class="p">(</span><span class="n">A</span> <span class="p">=&gt;</span> <span class="mi">12</span><span class="p">);</span>
+   <span class="c1">--  Declare an object of type Derived</span>
+
+   <span class="n">O3</span> <span class="p">:</span> <span class="n">My_Class</span><span class="p">&#39;</span><span class="na">Class</span> <span class="p">:=</span> <span class="n">O2</span><span class="p">;</span>
+
+   <span class="n">O4</span> <span class="p">:</span> <span class="n">My_Class</span><span class="p">&#39;</span><span class="na">Class</span> <span class="p">:=</span> <span class="n">O1</span><span class="p">;</span>
+<span class="kr">begin</span>
+   <span class="n">Foo</span> <span class="p">(</span><span class="n">O1</span><span class="p">);</span>
+   <span class="c1">--  Non dispatching: Calls My_Class.Foo</span>
+   <span class="n">Foo</span> <span class="p">(</span><span class="n">O2</span><span class="p">);</span>
+   <span class="c1">--  Non dispatching: Calls Derived.Foo</span>
+   <span class="n">Foo</span> <span class="p">(</span><span class="n">O3</span><span class="p">);</span>
+   <span class="c1">--  Dispatching: Calls Derived.Foo</span>
+   <span class="n">Foo</span> <span class="p">(</span><span class="n">O4</span><span class="p">);</span>
+   <span class="c1">--  Dispatching: Calls My_Class.Foo</span>
+<span class="kr">end</span> <span class="nf">Main</span><span class="p">;</span>
+</pre></div>
+</div>
+<div class="admonition- admonition">
+<p class="admonition-title">Внимание</p>
+<p>Вы можете преобразовать объект типа <code class="code ada docutils literal notranslate"><span class="name"><span class="pre">Derived</span></span></code> в объект типа
+<code class="code ada docutils literal notranslate"><span class="name"><span class="pre">My_Class</span></span></code>. Это называется
+<em>преобразованием представления</em> на языке Ada и полезно, например, если
+вы хотите вызвать родительский метод.</p>
+<p>В этом случае объект действительно преобразуется в объект <code class="code ada docutils literal notranslate"><span class="name"><span class="pre">My_Class</span></span></code>,
+что означает изменение его тега. Поскольку теговые объекты всегда
+передаются по ссылке, вы можете использовать этот вид преобразования
+для изменения состояния объекта: изменения в преобразованном объекте
+повлияют на оригинал.</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kn">with</span> <span class="nn">P</span><span class="p">;</span> <span class="kn">use</span> <span class="nn">P</span><span class="p">;</span>
+
+<span class="kd">procedure</span> <span class="nf">Main</span> <span class="kr">is</span>
+   <span class="n">O1</span> <span class="p">:</span> <span class="n">Derived</span> <span class="p">:=</span> <span class="p">(</span><span class="n">A</span> <span class="p">=&gt;</span> <span class="mi">12</span><span class="p">);</span>
+   <span class="c1">--  Declare an object of type Derived</span>
+
+   <span class="n">O2</span> <span class="p">:</span> <span class="n">My_Class</span> <span class="p">:=</span> <span class="n">My_Class</span> <span class="p">(</span><span class="n">O1</span><span class="p">);</span>
+
+   <span class="n">O3</span> <span class="p">:</span> <span class="n">My_Class</span><span class="p">&#39;</span><span class="na">Class</span> <span class="p">:=</span> <span class="n">O2</span><span class="p">;</span>
+<span class="kr">begin</span>
+   <span class="n">Foo</span> <span class="p">(</span><span class="n">O1</span><span class="p">);</span>
+   <span class="c1">--  Non dispatching: Calls Derived.Foo</span>
+   <span class="n">Foo</span> <span class="p">(</span><span class="n">O2</span><span class="p">);</span>
+   <span class="c1">--  Non dispatching: Calls My_Class.Foo</span>
+
+   <span class="n">Foo</span> <span class="p">(</span><span class="n">O3</span><span class="p">);</span>
+   <span class="c1">--  Dispatching: Calls My_Class.Foo</span>
+<span class="kr">end</span> <span class="nf">Main</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="id7">
+<h2>Точечная нотация<a class="headerlink" href="#id7" title="Permalink to this headline"></a></h2>
+<p>Вы также можете вызывать примитивы тегированных типов с помощью
+нотации, более знакомой объектно-ориентированным программистам.
+Учитывая приведенный выше примитив Foo, вы также можете написать
+указанную выше программу следующим образом:</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kn">with</span> <span class="nn">P</span><span class="p">;</span> <span class="kn">use</span> <span class="nn">P</span><span class="p">;</span>
+
+<span class="kd">procedure</span> <span class="nf">Main</span> <span class="kr">is</span>
+   <span class="n">O1</span> <span class="p">:</span> <span class="n">My_Class</span><span class="p">;</span>
+   <span class="c1">--  Declare an object of type My_Class</span>
+
+   <span class="n">O2</span> <span class="p">:</span> <span class="n">Derived</span> <span class="p">:=</span> <span class="p">(</span><span class="n">A</span> <span class="p">=&gt;</span> <span class="mi">12</span><span class="p">);</span>
+   <span class="c1">--  Declare an object of type Derived</span>
+
+   <span class="n">O3</span> <span class="p">:</span> <span class="n">My_Class</span><span class="p">&#39;</span><span class="na">Class</span> <span class="p">:=</span> <span class="n">O2</span><span class="p">;</span>
+
+   <span class="n">O4</span> <span class="p">:</span> <span class="n">My_Class</span><span class="p">&#39;</span><span class="na">Class</span> <span class="p">:=</span> <span class="n">O1</span><span class="p">;</span>
+<span class="kr">begin</span>
+   <span class="n">O1</span><span class="p">.</span><span class="n">Foo</span><span class="p">;</span>
+   <span class="c1">--  Non dispatching: Calls My_Class.Foo</span>
+   <span class="n">O2</span><span class="p">.</span><span class="n">Foo</span><span class="p">;</span>
+   <span class="c1">--  Non dispatching: Calls Derived.Foo</span>
+   <span class="n">O3</span><span class="p">.</span><span class="n">Foo</span><span class="p">;</span>
+   <span class="c1">--  Dispatching: Calls Derived.Foo</span>
+   <span class="n">O4</span><span class="p">.</span><span class="n">Foo</span><span class="p">;</span>
+   <span class="c1">--  Dispatching: Calls My_Class.Foo</span>
+<span class="kr">end</span> <span class="nf">Main</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Если диспетчерский параметр примитива является первым параметром, как
+в наших примерах, вы можете вызвать примитив, используя точечную
+нотацию. Любой оставшийся параметр передается нормально:</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kn">with</span> <span class="nn">P</span><span class="p">;</span> <span class="kn">use</span> <span class="nn">P</span><span class="p">;</span>
+
+<span class="kd">procedure</span> <span class="nf">Main</span> <span class="kr">is</span>
+   <span class="kd">package</span> <span class="nc">Extend</span> <span class="kr">is</span>
+      <span class="kd">type</span> <span class="kt">D2</span> <span class="kr">is</span> <span class="kr">new</span> <span class="n">Derived</span> <span class="kr">with</span> <span class="kr">null record</span><span class="p">;</span>
+
+      <span class="kd">procedure</span> <span class="nf">Bar</span> <span class="p">(</span><span class="nv">Self</span> <span class="p">: </span><span class="nv">in</span> <span class="nv">out</span> <span class="nv">D2</span><span class="p">;</span>
+                     <span class="nv">Val</span>  <span class="p">: </span>       <span class="nv">Integer</span><span class="p">);</span>
+   <span class="kr">end</span> <span class="nf">Extend</span><span class="p">;</span>
+
+   <span class="kd">package</span> <span class="kd">body</span> <span class="nc">Extend</span> <span class="kr">is</span>
+      <span class="kd">procedure</span> <span class="nf">Bar</span> <span class="p">(</span><span class="nv">Self</span> <span class="p">: </span><span class="nv">in</span> <span class="nv">out</span> <span class="nv">D2</span><span class="p">;</span>
+                     <span class="nv">Val</span>  <span class="p">: </span>       <span class="nv">Integer</span><span class="p">)</span> <span class="kr">is</span>
+      <span class="kr">begin</span>
+         <span class="n">Self</span><span class="p">.</span><span class="n">A</span> <span class="p">:=</span> <span class="n">Self</span><span class="p">.</span><span class="n">A</span> <span class="o">+</span> <span class="n">Val</span><span class="p">;</span>
+      <span class="kr">end</span> <span class="nf">Bar</span><span class="p">;</span>
+   <span class="kr">end</span> <span class="nf">Extend</span><span class="p">;</span>
+
+   <span class="kn">use</span> <span class="nn">Extend</span><span class="p">;</span>
+
+   <span class="n">Obj</span> <span class="p">:</span> <span class="n">D2</span> <span class="p">:=</span> <span class="p">(</span><span class="n">A</span> <span class="p">=&gt;</span> <span class="mi">15</span><span class="p">);</span>
+<span class="kr">begin</span>
+   <span class="n">Obj</span><span class="p">.</span><span class="n">Bar</span> <span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+   <span class="n">Obj</span><span class="p">.</span><span class="n">Foo</span><span class="p">;</span>
+<span class="kr">end</span> <span class="nf">Main</span><span class="p">;</span>
+</pre></div>
+</div>
+</section>
+<section id="id8">
+<h2>Частные и ограниченные типы с тегами<a class="headerlink" href="#id8" title="Permalink to this headline"></a></h2>
+<p>Ранее мы видели (в главе <a class="reference internal" href="privacy.html"><span class="doc">Конфиденциальность</span></a>), что типы могут быть
+объявлены ограниченными или частными. Эти методы инкапсуляции также
+могут применяться к тегированным типам, как мы увидим в этом разделе.</p>
+<p>Это пример закрытого типа с тегами:</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kd">package</span> <span class="nc">P</span> <span class="kr">is</span>
+   <span class="kd">type</span> <span class="kt">T</span> <span class="kr">is</span> <span class="kr">tagged</span> <span class="kd">private</span><span class="p">;</span>
+<span class="kd">private</span>
+   <span class="kd">type</span> <span class="kt">T</span> <span class="kr">is</span> <span class="kr">tagged</span> <span class="kr">record</span>
+       <span class="n">E</span> <span class="p">:</span> <span class="kt">Integer</span><span class="p">;</span>
+   <span class="kr">end record</span><span class="p">;</span>
+<span class="kr">end</span> <span class="nf">P</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Это пример ограниченного типа с тегами:</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kd">package</span> <span class="nc">P</span> <span class="kr">is</span>
+   <span class="kd">type</span> <span class="kt">T</span> <span class="kr">is</span> <span class="kr">tagged</span> <span class="kr">limited</span> <span class="kr">record</span>
+       <span class="n">E</span> <span class="p">:</span> <span class="kt">Integer</span><span class="p">;</span>
+   <span class="kr">end record</span><span class="p">;</span>
+<span class="kr">end</span> <span class="nf">P</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Естественно, вы можете комбинировать как <em>ограниченные</em>, так и <em>частные</em>
+типы и объявить ограниченный частный тип с тегами:</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kd">package</span> <span class="nc">P</span> <span class="kr">is</span>
+   <span class="kd">type</span> <span class="kt">T</span> <span class="kr">is</span> <span class="kr">tagged</span> <span class="kr">limited</span> <span class="kd">private</span><span class="p">;</span>
+
+   <span class="kd">procedure</span> <span class="nf">Init</span> <span class="p">(</span><span class="nv">A</span> <span class="p">: </span><span class="nv">in</span> <span class="nv">out</span> <span class="nv">T</span><span class="p">);</span>
+<span class="kd">private</span>
+   <span class="kd">type</span> <span class="kt">T</span> <span class="kr">is</span> <span class="kr">tagged</span> <span class="kr">limited</span> <span class="kr">record</span>
+       <span class="n">E</span> <span class="p">:</span> <span class="kt">Integer</span><span class="p">;</span>
+   <span class="kr">end record</span><span class="p">;</span>
+<span class="kr">end</span> <span class="nf">P</span><span class="p">;</span>
+
+<span class="kd">package</span> <span class="kd">body</span> <span class="nc">P</span> <span class="kr">is</span>
+
+   <span class="kd">procedure</span> <span class="nf">Init</span> <span class="p">(</span><span class="nv">A</span> <span class="p">: </span><span class="nv">in</span> <span class="nv">out</span> <span class="nv">T</span><span class="p">)</span> <span class="kr">is</span>
+   <span class="kr">begin</span>
+      <span class="n">A</span><span class="p">.</span><span class="n">E</span> <span class="p">:=</span> <span class="mi">0</span><span class="p">;</span>
+   <span class="kr">end</span> <span class="nf">Init</span><span class="p">;</span>
+
+<span class="kr">end</span> <span class="nf">P</span><span class="p">;</span>
+
+<span class="kn">with</span> <span class="nn">P</span><span class="p">;</span> <span class="kn">use</span> <span class="nn">P</span><span class="p">;</span>
+
+<span class="kd">procedure</span> <span class="nf">Main</span> <span class="kr">is</span>
+  <span class="n">T1</span><span class="p">,</span> <span class="n">T2</span> <span class="p">:</span> <span class="n">T</span><span class="p">;</span>
+<span class="kr">begin</span>
+  <span class="n">T1</span><span class="p">.</span><span class="n">Init</span><span class="p">;</span>
+  <span class="n">T2</span><span class="p">.</span><span class="n">Init</span><span class="p">;</span>
+
+  <span class="c1">--  The following line doesn&#39;t work</span>
+  <span class="c1">--  because type T is private:</span>
+  <span class="c1">--</span>
+  <span class="c1">--  T1.E := 0;</span>
+
+  <span class="c1">--  The following line doesn&#39;t work</span>
+  <span class="c1">--  because type T is limited:</span>
+  <span class="c1">--</span>
+  <span class="c1">--  T2 := T1;</span>
+<span class="kr">end</span> <span class="nf">Main</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Обратите внимание, что код в процедуре <code class="code ada docutils literal notranslate"><span class="name"><span class="pre">Main</span></span></code> представляет два назначения,
+которые вызывают ошибки компиляции, потому что тип <code class="code ada docutils literal notranslate"><span class="name"><span class="pre">T</span></span></code> является
+ограниченным частным. Фактически, вы не можете:</p>
+<ul class="simple">
+<li><p>присваивать <code class="code ada docutils literal notranslate"><span class="name"><span class="pre">T1</span></span><span class="punctuation"><span class="pre">.</span></span><span class="name"><span class="pre">E</span></span></code> напрямую, потому что тип <code class="code ada docutils literal notranslate"><span class="name"><span class="pre">T</span></span></code> является частным;</p></li>
+<li><p>присваивать <code class="code ada docutils literal notranslate"><span class="name"><span class="pre">T1</span></span></code> в <code class="code ada docutils literal notranslate"><span class="name"><span class="pre">T2</span></span></code>, потому что тип <code class="code ada docutils literal notranslate"><span class="name"><span class="pre">T</span></span></code> ограничен.</p></li>
+</ul>
+<p>В этом случае нет различия между тегами и без тегов: эти ошибки
+компиляции также могут возникать для типов и без тегов.</p>
+</section>
+<section id="id9">
+<h2>Типы доступа в классах<a class="headerlink" href="#id9" title="Permalink to this headline"></a></h2>
+<p>В этом разделе мы обсудим полезный шаблон для
+объектно-ориентированного программирования в Ada: общеклассовый тип
+доступа. Начнем с примера, в котором мы объявляем тегированный тип <code class="code ada docutils literal notranslate"><span class="name"><span class="pre">T</span></span></code> и
+производный тип <code class="code ada docutils literal notranslate"><span class="name"><span class="pre">T_New</span></span></code>:</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kd">package</span> <span class="nc">P</span> <span class="kr">is</span>
+   <span class="kd">type</span> <span class="kt">T</span> <span class="kr">is</span> <span class="kr">tagged</span> <span class="kr">null record</span><span class="p">;</span>
+
+   <span class="kd">procedure</span> <span class="nf">Show</span> <span class="p">(</span><span class="nv">Dummy</span> <span class="p">: </span><span class="nv">T</span><span class="p">);</span>
+
+   <span class="kd">type</span> <span class="kt">T_New</span> <span class="kr">is</span> <span class="kr">new</span> <span class="n">T</span> <span class="kr">with</span> <span class="kr">null record</span><span class="p">;</span>
+
+   <span class="kd">procedure</span> <span class="nf">Show</span> <span class="p">(</span><span class="nv">Dummy</span> <span class="p">: </span><span class="nv">T_New</span><span class="p">);</span>
+<span class="kr">end</span> <span class="nf">P</span><span class="p">;</span>
+
+<span class="kn">with</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span> <span class="kn">use</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>
+
+<span class="kd">package</span> <span class="kd">body</span> <span class="nc">P</span> <span class="kr">is</span>
+
+   <span class="kd">procedure</span> <span class="nf">Show</span> <span class="p">(</span><span class="nv">Dummy</span> <span class="p">: </span><span class="nv">T</span><span class="p">)</span> <span class="kr">is</span>
+   <span class="kr">begin</span>
+      <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;Using type &quot;</span>
+                <span class="o">&amp;</span> <span class="n">T</span><span class="p">&#39;</span><span class="na">External_Tag</span><span class="p">);</span>
+   <span class="kr">end</span> <span class="nf">Show</span><span class="p">;</span>
+
+   <span class="kd">procedure</span> <span class="nf">Show</span> <span class="p">(</span><span class="nv">Dummy</span> <span class="p">: </span><span class="nv">T_New</span><span class="p">)</span> <span class="kr">is</span>
+   <span class="kr">begin</span>
+      <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;Using type &quot;</span>
+                <span class="o">&amp;</span> <span class="n">T_New</span><span class="p">&#39;</span><span class="na">External_Tag</span><span class="p">);</span>
+   <span class="kr">end</span> <span class="nf">Show</span><span class="p">;</span>
+
+<span class="kr">end</span> <span class="nf">P</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Обратите внимание, что мы используем null записи для типов <code class="code ada docutils literal notranslate"><span class="name"><span class="pre">T</span></span></code> и
+<code class="code ada docutils literal notranslate"><span class="name"><span class="pre">T_New</span></span></code>. Хотя эти типы на самом деле не имеют каких-либо компонентов,
+мы по-прежнему можем использовать их для демонстрации диспетчеризации.
+Также обратите внимание, что в приведенном выше примере используется
+атрибут <code class="code ada docutils literal notranslate"><span class="punctuation"><span class="pre">'</span></span><span class="name attribute"><span class="pre">External_Tag</span></span></code> в реализации процедуры <code class="code ada docutils literal notranslate"><span class="name"><span class="pre">Show</span></span></code> для
+получения строки для соответствующего типа тегов.</p>
+<p>Как мы видели ранее, мы должны использовать классический тип для
+создания объектов, которые могут выполнять диспетчерские вызовы.
+Другими словами, будут отправляться объекты типа <code class="code ada docutils literal notranslate"><span class="name"><span class="pre">T</span></span><span class="punctuation"><span class="pre">'</span></span><span class="name attribute"><span class="pre">Class</span></span></code>. Например:</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kn">with</span> <span class="nn">P</span><span class="p">;</span> <span class="kn">use</span> <span class="nn">P</span><span class="p">;</span>
+
+<span class="kd">procedure</span> <span class="nf">Dispatching_Example</span> <span class="kr">is</span>
+  <span class="n">T2</span>         <span class="p">:</span>          <span class="n">T_New</span><span class="p">;</span>
+  <span class="no">T_Dispatch</span> <span class="p">:</span> <span class="kr">constant</span> <span class="n">T</span><span class="p">&#39;</span><span class="na">Class</span> <span class="p">:=</span> <span class="n">T2</span><span class="p">;</span>
+<span class="kr">begin</span>
+  <span class="n">T_Dispatch</span><span class="p">.</span><span class="n">Show</span><span class="p">;</span>
+<span class="kr">end</span> <span class="nf">Dispatching_Example</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Более полезным приложением является объявление массива объектов,
+которые могут выполнять диспетчеризацию. Например, мы хотели бы
+объявить массив <code class="code ada docutils literal notranslate"><span class="name"><span class="pre">T_Arr</span></span></code>, выполнить цикл по этому массиву и выполнять
+диспетчеризацию в соответствии с фактическим типом каждого отдельного
+элемента:</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kr">for</span> <span class="n">I</span> <span class="ow">in</span> <span class="n">T_Arr</span><span class="p">&#39;</span><span class="na">Range</span> <span class="kr">loop</span>
+   <span class="n">T_Arr</span> <span class="p">(</span><span class="n">I</span><span class="p">).</span><span class="n">Show</span><span class="p">;</span>
+   <span class="c1">--  Call Show procedure according</span>
+   <span class="c1">--  to actual type of T_Arr (I)</span>
+<span class="kr">end</span> <span class="kr">loop</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Однако напрямую объявить массив типа <code class="code ada docutils literal notranslate"><span class="name"><span class="pre">T</span></span><span class="punctuation"><span class="pre">'</span></span><span class="name attribute"><span class="pre">Class</span></span></code> невозможно:</p>
+<div class="ada-expect-compile-error highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kn">with</span> <span class="nn">P</span><span class="p">;</span> <span class="kn">use</span> <span class="nn">P</span><span class="p">;</span>
+
+<span class="kd">procedure</span> <span class="nf">Classwide_Compilation_Error</span> <span class="kr">is</span>
+  <span class="n">T_Arr</span>  <span class="p">:</span> <span class="kr">array</span> <span class="p">(</span><span class="mi">1</span> <span class="p">..</span> <span class="mi">2</span><span class="p">)</span> <span class="kr">of</span> <span class="n">T</span><span class="p">&#39;</span><span class="na">Class</span><span class="p">;</span>
+  <span class="c1">--                         ^</span>
+  <span class="c1">--               Compilation Error!</span>
+<span class="kr">begin</span>
+  <span class="kr">for</span> <span class="n">I</span> <span class="ow">in</span> <span class="n">T_Arr</span><span class="p">&#39;</span><span class="na">Range</span> <span class="kr">loop</span>
+     <span class="n">T_Arr</span> <span class="p">(</span><span class="n">I</span><span class="p">).</span><span class="n">Show</span><span class="p">;</span>
+  <span class="kr">end</span> <span class="kr">loop</span><span class="p">;</span>
+<span class="kr">end</span> <span class="nf">Classwide_Compilation_Error</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Фактически, компилятор не может знать, какой тип фактически будет
+использоваться для каждого элемента массива. Если мы используем
+динамическое распределение через типы доступа, мы можем выделять
+объекты разных типов для отдельных элементов массива <code class="code ada docutils literal notranslate"><span class="name"><span class="pre">T_Arr</span></span></code>.
+Мы делаем это с помощью общеклассовых типов доступа, которые имеют
+следующий формат:</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kd">type</span> <span class="kt">T_Class</span> <span class="kr">is</span> <span class="kr">access</span> <span class="n">T</span><span class="p">&#39;</span><span class="na">Class</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Мы можем переписать предыдущий пример, используя тип <code class="code ada docutils literal notranslate"><span class="name"><span class="pre">T_Class</span></span></code>.
+В этом случае динамически выделяемые объекты этого типа будут отправляться
+в соответствии с фактическим типом, используемым во время выделения.
+Также давайте представим процедуру <code class="code ada docutils literal notranslate"><span class="name"><span class="pre">Init</span></span></code>, которая не будет
+переопределена для производного типа <code class="code ada docutils literal notranslate"><span class="name"><span class="pre">T_New</span></span></code>. Это адаптированный код:</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kd">package</span> <span class="nc">P</span> <span class="kr">is</span>
+   <span class="kd">type</span> <span class="kt">T</span> <span class="kr">is</span> <span class="kr">tagged</span> <span class="kr">record</span>
+       <span class="n">E</span> <span class="p">:</span> <span class="kt">Integer</span><span class="p">;</span>
+   <span class="kr">end record</span><span class="p">;</span>
+
+   <span class="kd">type</span> <span class="kt">T_Class</span> <span class="kr">is</span> <span class="kr">access</span> <span class="n">T</span><span class="p">&#39;</span><span class="na">Class</span><span class="p">;</span>
+
+   <span class="kd">procedure</span> <span class="nf">Init</span> <span class="p">(</span><span class="nv">A</span> <span class="p">: </span><span class="nv">in</span> <span class="nv">out</span> <span class="nv">T</span><span class="p">);</span>
+
+   <span class="kd">procedure</span> <span class="nf">Show</span> <span class="p">(</span><span class="nv">Dummy</span> <span class="p">: </span><span class="nv">T</span><span class="p">);</span>
+
+   <span class="kd">type</span> <span class="kt">T_New</span> <span class="kr">is</span> <span class="kr">new</span> <span class="n">T</span> <span class="kr">with</span> <span class="kr">null record</span><span class="p">;</span>
+
+   <span class="kd">procedure</span> <span class="nf">Show</span> <span class="p">(</span><span class="nv">Dummy</span> <span class="p">: </span><span class="nv">T_New</span><span class="p">);</span>
+
+<span class="kr">end</span> <span class="nf">P</span><span class="p">;</span>
+
+<span class="kn">with</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span> <span class="kn">use</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>
+
+<span class="kd">package</span> <span class="kd">body</span> <span class="nc">P</span> <span class="kr">is</span>
+
+   <span class="kd">procedure</span> <span class="nf">Init</span> <span class="p">(</span><span class="nv">A</span> <span class="p">: </span><span class="nv">in</span> <span class="nv">out</span> <span class="nv">T</span><span class="p">)</span> <span class="kr">is</span>
+   <span class="kr">begin</span>
+      <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;Initializing type T...&quot;</span><span class="p">);</span>
+      <span class="n">A</span><span class="p">.</span><span class="n">E</span> <span class="p">:=</span> <span class="mi">0</span><span class="p">;</span>
+   <span class="kr">end</span> <span class="nf">Init</span><span class="p">;</span>
+
+   <span class="kd">procedure</span> <span class="nf">Show</span> <span class="p">(</span><span class="nv">Dummy</span> <span class="p">: </span><span class="nv">T</span><span class="p">)</span> <span class="kr">is</span>
+   <span class="kr">begin</span>
+      <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;Using type &quot;</span>
+                <span class="o">&amp;</span> <span class="n">T</span><span class="p">&#39;</span><span class="na">External_Tag</span><span class="p">);</span>
+   <span class="kr">end</span> <span class="nf">Show</span><span class="p">;</span>
+
+   <span class="kd">procedure</span> <span class="nf">Show</span> <span class="p">(</span><span class="nv">Dummy</span> <span class="p">: </span><span class="nv">T_New</span><span class="p">)</span> <span class="kr">is</span>
+   <span class="kr">begin</span>
+      <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;Using type &quot;</span>
+                <span class="o">&amp;</span> <span class="n">T_New</span><span class="p">&#39;</span><span class="na">External_Tag</span><span class="p">);</span>
+   <span class="kr">end</span> <span class="nf">Show</span><span class="p">;</span>
+
+<span class="kr">end</span> <span class="nf">P</span><span class="p">;</span>
+
+<span class="kn">with</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span> <span class="kn">use</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>
+<span class="kn">with</span> <span class="nn">P</span><span class="p">;</span>           <span class="kn">use</span> <span class="nn">P</span><span class="p">;</span>
+
+<span class="kd">procedure</span> <span class="nf">Main</span> <span class="kr">is</span>
+  <span class="n">T_Arr</span>  <span class="p">:</span> <span class="kr">array</span> <span class="p">(</span><span class="mi">1</span> <span class="p">..</span> <span class="mi">2</span><span class="p">)</span> <span class="kr">of</span> <span class="n">T_Class</span><span class="p">;</span>
+<span class="kr">begin</span>
+  <span class="n">T_Arr</span> <span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="p">:=</span> <span class="kr">new</span> <span class="n">T</span><span class="p">;</span>
+  <span class="n">T_Arr</span> <span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="p">:=</span> <span class="kr">new</span> <span class="n">T_New</span><span class="p">;</span>
+
+  <span class="kr">for</span> <span class="n">I</span> <span class="ow">in</span> <span class="n">T_Arr</span><span class="p">&#39;</span><span class="na">Range</span> <span class="kr">loop</span>
+     <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;Element # &quot;</span>
+               <span class="o">&amp;</span> <span class="kt">Integer</span><span class="p">&#39;</span><span class="na">Image</span> <span class="p">(</span><span class="n">I</span><span class="p">));</span>
+
+     <span class="n">T_Arr</span> <span class="p">(</span><span class="n">I</span><span class="p">).</span><span class="n">Init</span><span class="p">;</span>
+     <span class="n">T_Arr</span> <span class="p">(</span><span class="n">I</span><span class="p">).</span><span class="n">Show</span><span class="p">;</span>
+
+     <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;-----------&quot;</span><span class="p">);</span>
+  <span class="kr">end</span> <span class="kr">loop</span><span class="p">;</span>
+<span class="kr">end</span> <span class="nf">Main</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>В этом примере первый элемент (<code class="code ada docutils literal notranslate"><span class="name"><span class="pre">T_Arr</span></span> <span class="punctuation"><span class="pre">(</span></span><span class="literal number integer"><span class="pre">1</span></span><span class="punctuation"><span class="pre">)</span></span></code>) имеет тип <code class="code ada docutils literal notranslate"><span class="name"><span class="pre">T</span></span></code>, а
+второй элемент ‑ тип <code class="code ada docutils literal notranslate"><span class="name"><span class="pre">T_New</span></span></code>. При запуске примера процедура <code class="code ada docutils literal notranslate"><span class="name"><span class="pre">Init</span></span></code>
+типа <code class="code ada docutils literal notranslate"><span class="name"><span class="pre">T</span></span></code> вызывается для обоих элементов массива <code class="code ada docutils literal notranslate"><span class="name"><span class="pre">T_Arr</span></span></code>, в то
+время как вызов процедуры <code class="code ada docutils literal notranslate"><span class="name"><span class="pre">Show</span></span></code> выбирает соответствующую
+процедуру в соответствии с типом каждого элемента <code class="code ada docutils literal notranslate"><span class="name"><span class="pre">T_Arr</span></span></code>.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          
+
+
+<footer>
+      
+      
+
+      
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+          
+            <a href="standard_library_containers.html" class="btn btn-neutral float-right" title="Стандартная библиотека: Контейнеры" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+          
+          
+            <a href="interfacing_with_c.html" class="btn btn-neutral" title="Взаимодействие с языком C" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+          
+        </div>
+  
+
+
+  <hr/>
+
+  <div class="legal">
+              Copyright &copy; 2022 AdaCore. All rights reserved.
+              &nbsp;&nbsp;
+              <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/80x15.png" /></a>
+              <br>
+              <a href="https://www.adacore.com/company/legal">Legal</a>
+              &nbsp; |  &nbsp;
+              <a href="https://www.adacore.com/company/privacy">Privacy Policy</a>
+              &nbsp; |  &nbsp;
+              <a href="https://github.com/AdaCore/learn/issues">Report an Issue</a>
+            </div> 
+
+</footer>
+
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+  <button id="scrollToTopBtn" title="Go to top"><i class="fas fa-caret-square-up"></i></button>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+</script>
+
+
+</body>
+</html>

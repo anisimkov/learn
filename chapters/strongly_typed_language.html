@@ -1,0 +1,1162 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Сильно типизированный язык &mdash; learn.adacore.com</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Записи" href="records.html" />
+    <link rel="prev" title="Модульное программирование" href="modular_programming.html" />
+  <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-117428-14"></script>
+<script type="text/javascript">
+  if(!Cookies.get('AdaCore_staff')) {
+    // Global site tag (gtag.js) - Google Analytics
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-117428-14');
+    // End Global site tag (gtag.js) - Google Analytics
+
+    // Google Tag Manager
+    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-KD5HNRR');
+    // End Google Tag Manager
+
+    // Twitter universal website tag code
+    !function(e,t,n,s,u,a){e.twq||(s=e.twq=function(){s.exe?s.exe.apply(s,arguments):s.queue.push(arguments);},s.version='1.1',s.queue=[],u=t.createElement(n),u.async=!0,u.src='//static.ads-twitter.com/uwt.js',a=t.getElementsByTagName(n)[0],a.parentNode.insertBefore(u,a))}(window,document,'script');
+    // Insert Twitter Pixel ID and Standard Event data below
+    twq('init','o3mlc');
+    twq('track','PageView');
+    // End Twitter universal website tag code
+
+    // LinkedIn Tracking Tags
+    _linkedin_partner_id = "482585"; window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || []; window._linkedin_data_partner_ids.push(_linkedin_partner_id);
+    (function(){var s = document.getElementsByTagName("script")[0]; var b = document.createElement("script"); b.type = "text/javascript";b.async = true; b.src = "https://snap.licdn.com/li.lms-analytics/insight.min.js"; s.parentNode.insertBefore(b, s);})();
+    // End LinkedIn Tracking Tags
+  }
+</script>
+  <!--  Essential META Tags -->
+<meta property="og:title" content=“learn.adacore.com">
+<meta property="og:description" content="An interactive learning platform to teach the Ada and SPARK programming languages.">
+<meta property="og:image" content="https://learn.adacore.com/_static/learn_meta_img.jpeg">
+<meta property="og:url" content="https://learn.adacore.com">
+<meta name="twitter:card" content="summary_large_image">
+
+<!--  Non-Essential, But Recommended -->
+<meta property="og:site_name" content="learn.adacore.com">
+<meta name="twitter:image:alt" content="An interactive learning platform to teach the Ada and SPARK programming languages.">
+
+<!--  Non-Essential, But Required for Analytics -->
+<meta name="twitter:site" content="@AdaCoreCompany">
+
+</head>
+
+<body class="wy-body-for-nav">
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KD5HNRR"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  <!-- LinkedIn Tracking Tags (noscript) -->
+  <noscript> <img height="1" width="1" style="display:none;" alt="" src="https://dc.ads.linkedin.com/collect/?pid=482585&fmt=gif" /> </noscript>
+  <!-- End LinkedIn Tracking Tags (noscript) -->
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html">
+            <img src="../_static/logo.svg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Введение</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#id2">История</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#ada">Ada сегодня</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#id6">Философия</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#spark">SPARK</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="imperative_language.html">Императивы языка</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="imperative_language.html#hello-world">Hello world</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imperative_language.html#if-then-else">Императивы языка ‑ If / Then / Else</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imperative_language.html#loops">Императивы языка ‑ Loops</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="imperative_language.html#for">Циклы For</a></li>
+<li class="toctree-l3"><a class="reference internal" href="imperative_language.html#id2">Простой цикл</a></li>
+<li class="toctree-l3"><a class="reference internal" href="imperative_language.html#while">Циклы While</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="imperative_language.html#case">Императивы языка – оператор Case</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imperative_language.html#id3">Императивы языка – декларативные регионы</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imperative_language.html#id4">Императивы языка – условные выражения</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="imperative_language.html#if">Выражение If</a></li>
+<li class="toctree-l3"><a class="reference internal" href="imperative_language.html#id5">Выражение Case</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="subprograms.html">Подпрограммы</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="subprograms.html#id2">Подпрограммы</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="subprograms.html#id3">Вызовы подпрограмм</a></li>
+<li class="toctree-l3"><a class="reference internal" href="subprograms.html#id4">Вложенные подпрограммы</a></li>
+<li class="toctree-l3"><a class="reference internal" href="subprograms.html#id5">Вызов функций</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="subprograms.html#id6">Режимы параметров</a></li>
+<li class="toctree-l2"><a class="reference internal" href="subprograms.html#id7">Вызов процедуры</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="subprograms.html#in">Параметры in</a></li>
+<li class="toctree-l3"><a class="reference internal" href="subprograms.html#in-out">Параметры in out</a></li>
+<li class="toctree-l3"><a class="reference internal" href="subprograms.html#out">Параметры out</a></li>
+<li class="toctree-l3"><a class="reference internal" href="subprograms.html#id8">Предварительное объявление подпрограмм</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="subprograms.html#subprogram-renaming">Переименование</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="modular_programming.html">Модульное программирование</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="modular_programming.html#id2">Пакеты</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modular_programming.html#id3">Использование пакета</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modular_programming.html#id4">Тело пакета</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modular_programming.html#childpackages">Дочерние пакеты</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="modular_programming.html#id6">Дочерний пакет от дочернего пакета</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modular_programming.html#id7">Множественные потомки</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modular_programming.html#id8">Видимость</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="modular_programming.html#package-renaming">Переименование</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Сильно типизированный язык</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#whatisatype">Что такое тип?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#integers">Целочисленные типы ‑ Integers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id3">Семантика операций</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">Беззнаковые типы</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#enumtypes">Перечисления</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id7">Типы с плавающей запятой</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id8">Основные свойства</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id9">Точность типов с плавающей запятой</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id10">Диапазон типов с плавающей запятой</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id11">Строгая типизация</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id12">Производные типы</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id13">Подтипы</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#subtypealiases">Подтипы в качестве псевдонимов типов</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="records.html">Записи</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="records.html#id2">Объявление типа записи</a></li>
+<li class="toctree-l2"><a class="reference internal" href="records.html#id3">Агрегаты</a></li>
+<li class="toctree-l2"><a class="reference internal" href="records.html#id4">Выбор компонентов</a></li>
+<li class="toctree-l2"><a class="reference internal" href="records.html#record-comp-renaming">Переименование</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="arrays.html">Массивы</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="arrays.html#id2">Объявление типа массива</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays.html#id3">Индексирование</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays.html#id4">Более простые объявления массива</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays.html#id5">Атрибут диапазона</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays.html#unconstrainedarraytypes">Неограниченные массивы</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays.html#string">Предопределенный тип массива: String</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays.html#id7">Ограничения</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays.html#id8">Возврат неограниченных массивов</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays.html#id9">Объявление массивов (2)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays.html#id10">Срезы массива</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays.html#object-renaming">Переименование</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="more_about_types.html">Подробнее о типах</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="more_about_types.html#id2">Агрегаты: краткая информация</a></li>
+<li class="toctree-l2"><a class="reference internal" href="more_about_types.html#id3">Перегрузка и квалифицированные выражения</a></li>
+<li class="toctree-l2"><a class="reference internal" href="more_about_types.html#access">Типы Access (указатели)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="more_about_types.html#allocation">Распределение (по типу) ‑ Allocation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="more_about_types.html#id5">Разыменование</a></li>
+<li class="toctree-l3"><a class="reference internal" href="more_about_types.html#id6">Другие особенности</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="more_about_types.html#id7">Взаимно рекурсивные типы</a></li>
+<li class="toctree-l2"><a class="reference internal" href="more_about_types.html#id8">Подробнее о записях</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="more_about_types.html#id9">Типы записей с динамически изменяемым размером</a></li>
+<li class="toctree-l3"><a class="reference internal" href="more_about_types.html#id10">Записи с дискриминантом</a></li>
+<li class="toctree-l3"><a class="reference internal" href="more_about_types.html#c">Записи c вариантами</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="more_about_types.html#id11">Типы с фиксированной точкой</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="more_about_types.html#id12">Десятичные типы с фиксированной точкой</a></li>
+<li class="toctree-l3"><a class="reference internal" href="more_about_types.html#id13">Типы фиксированных точек</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="more_about_types.html#id14">Типы символов</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="privacy.html">Конфиденциальность</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="privacy.html#id3">Базовая инкапсуляция</a></li>
+<li class="toctree-l2"><a class="reference internal" href="privacy.html#id4">Абстрактные типы данных</a></li>
+<li class="toctree-l2"><a class="reference internal" href="privacy.html#id5">Ограниченные типы</a></li>
+<li class="toctree-l2"><a class="reference internal" href="privacy.html#id7">Дочерние пакеты и конфиденциальность</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="generics.html">Настраиваемые модули</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="generics.html#id2">Введение</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generics.html#id3">Формальное объявление типа</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generics.html#id4">Формальное объявление объекта</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generics.html#generic">Определение тела generic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generics.html#id5">Создание экземпляра generic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generics.html#id6">Generic пакеты</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generics.html#id7">Формальные подпрограммы</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generics.html#id8">Пример: экземпляры ввода / вывода</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generics.html#id9">Пример: АТД</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generics.html#swap">Пример: Обмен (Swap)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generics.html#reversing">Пример: Реверсирование (Reversing)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generics.html#id10">Пример: Тестовое приложение</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="exceptions.html">Исключения</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="exceptions.html#id2">Объявление исключения</a></li>
+<li class="toctree-l2"><a class="reference internal" href="exceptions.html#id3">Возбуждение исключения</a></li>
+<li class="toctree-l2"><a class="reference internal" href="exceptions.html#id4">Обработка исключения</a></li>
+<li class="toctree-l2"><a class="reference internal" href="exceptions.html#id5">Предопределенные исключения</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="contracts.html">Контрактное проектирование</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="contracts.html#id2">Пред- и постусловия</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contracts.html#id3">Предикаты</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contracts.html#id4">Инварианты типа</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="interfacing_with_c.html">Взаимодействие с языком C</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="interfacing_with_c.html#id1">Многоязычный проект</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interfacing_with_c.html#id2">Соглашение о типах</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interfacing_with_c.html#id3">Подпрограммы на других языках</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="interfacing_with_c.html#c-ada">Вызов подпрограмм C в Ada</a></li>
+<li class="toctree-l3"><a class="reference internal" href="interfacing_with_c.html#ada-c">Вызов подпрограмм Ada в C</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="interfacing_with_c.html#id4">Внешние переменные</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="interfacing_with_c.html#id5">Использование глобальных переменных C в Ada</a></li>
+<li class="toctree-l3"><a class="reference internal" href="interfacing_with_c.html#id6">Использование переменных Ada в C</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="interfacing_with_c.html#id7">Создание привязок</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="interfacing_with_c.html#id8">Адаптация привязок</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="object_oriented_programming.html">Объектно-ориентированное программирование</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="object_oriented_programming.html#id2">Производные типы</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_oriented_programming.html#id3">Типы с тегами</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_oriented_programming.html#id5">Типы расширяемые классами</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_oriented_programming.html#id6">Операции диспетчеризации</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_oriented_programming.html#id7">Точечная нотация</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_oriented_programming.html#id8">Частные и ограниченные типы с тегами</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_oriented_programming.html#id9">Типы доступа в классах</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="standard_library_containers.html">Стандартная библиотека: Контейнеры</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_containers.html#id2">Векторы</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_containers.html#id3">Создание экземпляра</a></li>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_containers.html#id4">Инициализация</a></li>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_containers.html#prepend-append">Добавление элементов - Prepend и Append</a></li>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_containers.html#id5">Доступ к первому и последнему элементам</a></li>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_containers.html#id6">Итерация</a></li>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_containers.html#id7">Поиск и изменение элементов</a></li>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_containers.html#id8">Вставка элементов</a></li>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_containers.html#id9">Удаление элементов</a></li>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_containers.html#id10">Другие операции</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_containers.html#id11">Множества</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_containers.html#id12">Инициализация и итерация</a></li>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_containers.html#id13">Операции с элементами</a></li>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_containers.html#id14">Другие операции</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_containers.html#id15">Неопределенные карты</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_containers.html#id16">Хэшированные карты</a></li>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_containers.html#id17">Упорядоченные карты</a></li>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_containers.html#id18">Сложность</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="standard_library_dates_times.html">Стандартная библиотека: Дата и время</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_dates_times.html#datestimes">Обработка даты и времени</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_dates_times.html#id3">Задержка с использованием даты</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_dates_times.html#id4">В режиме реального времени</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_dates_times.html#id5">Сравнительный анализ</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="standard_library_strings.html">Стандартная библиотека: Строки</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_strings.html#id2">Операции со строками</a></li>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_strings.html#id3">Ограничение строк фиксированной длины</a></li>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_strings.html#id4">Ограниченные строки</a></li>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_strings.html#unboundedstrings">Неограниченные строки</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="standard_library_files_streams.html">Стандартная библиотека: Файлы и потоки</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_files_streams.html#id2">Ввод/вывод текста</a></li>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_files_streams.html#id3">Последовательный ввод-вывод</a></li>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_files_streams.html#id4">Прямой ввод / вывод</a></li>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_files_streams.html#id5">Потоковый ввод-вывод</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="standard_library_numerics.html">Стандартная библиотека: Numerics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_numerics.html#id1">Элементарные функции</a></li>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_numerics.html#id2">Генерация случайных чисел</a></li>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_numerics.html#id3">Тип комплексного числа</a></li>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_numerics.html#id4">Манипулирование векторами и матрицами</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="appendices.html">Приложения</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="appendices.html#a">Приложение A: Формальные типы настройки</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="appendices.html#id2">Неограниченная версия типа</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="appendices.html#b">Приложение B: Контейнеры</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+  <i data-toggle="wy-nav-top" class="fas fa-bars"></i>
+    <a href="../index.html">
+    <img src="../_static/logo.svg" class="logo" alt="Logo"/>
+  </a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="id1">
+<h1>Сильно типизированный язык<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h1>
+<p>Ada ‑ это строго типизированный язык. В этом отношении интересно то,
+что сильная статическая типизация становится все более популярной и
+набирает популярность в дизайне языков программирования благодаря
+таким факторам, как рост функционального программирования со
+статической типизацией, большой толчок со стороны исследовательского
+сообщества в области типизации и многие практические языки с сильными
+системами типов.</p>
+<section id="whatisatype">
+<span id="id2"></span><h2>Что такое тип?<a class="headerlink" href="#whatisatype" title="Permalink to this headline"></a></h2>
+<p>В статически типизированных языках тип в основном (но не только)
+является конструкцией <em>времени компиляции</em>. Это конструкция,
+обеспечивающая инварианты поведения программы. Инварианты ‑ это
+неизменяемые свойства, которые сохраняются для всех переменных данного
+типа. Их применение гарантирует, например, что переменные типа данных
+никогда не будут иметь недопустимых значений.</p>
+<p>Тип используется для описания <em>объектов</em>, которыми управляет программа
+(объект является переменной или константой). Цель состоит в том, чтобы
+классифицировать объекты по тому, что можно сделать с ними (т.е.
+разрешенные операции), и таким образом можно определить правильность
+значений объектов.</p>
+</section>
+<section id="integers">
+<h2>Целочисленные типы ‑ Integers<a class="headerlink" href="#integers" title="Permalink to this headline"></a></h2>
+<p>Хорошей особенностью Ada является то, что вы можете определить свои
+собственные целочисленные типы, основываясь на требованиях вашей
+программы (т.е. диапазон значений, которые имеют смысл). Фактически
+определительный механизм, который предоставляет Ada, образует
+семантическую основу для предопределённых целочисленных типов.
+Никакого «магического» встроенного типа в этом отношении нет, что не
+похоже на большинство языков, и, возможно, очень элегантно.</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kn">with</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span> <span class="kn">use</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>
+
+<span class="kd">procedure</span> <span class="nf">Integer_Type_Example</span> <span class="kr">is</span>
+   <span class="c1">--  Declare a signed integer type,</span>
+   <span class="c1">--  and give the bounds</span>
+   <span class="kd">type</span> <span class="kt">My_Int</span> <span class="kr">is</span> <span class="kr">range</span> <span class="o">-</span><span class="mi">1</span> <span class="p">..</span> <span class="mi">20</span><span class="p">;</span>
+   <span class="c1">--                         ^ High bound</span>
+   <span class="c1">--                   ^ Low bound</span>
+
+   <span class="c1">--  Like variables, type declarations can</span>
+   <span class="c1">--  only appear in declarative regions.</span>
+<span class="kr">begin</span>
+   <span class="kr">for</span> <span class="n">I</span> <span class="ow">in</span> <span class="n">My_Int</span> <span class="kr">loop</span>
+      <span class="n">Put_Line</span> <span class="p">(</span><span class="n">My_Int</span><span class="p">&#39;</span><span class="na">Image</span> <span class="p">(</span><span class="n">I</span><span class="p">));</span>
+      <span class="c1">--              ^ &#39;Image attribute</span>
+      <span class="c1">--                converts a value</span>
+      <span class="c1">--                to a String.</span>
+   <span class="kr">end</span> <span class="kr">loop</span><span class="p">;</span>
+<span class="kr">end</span> <span class="nf">Integer_Type_Example</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Этот пример иллюстрирует объявление целочисленного типа со знаком, и
+несколько вещей, которые мы можем сделать с ними.</p>
+<p>Каждое объявление типа в Ada начинается с ключевого слова <code class="code highlight ada docutils literal notranslate"><span class="keyword reserved"><span class="pre">type</span></span></code>
+(кроме <a class="reference external" href="https://learn.adacore.com/courses/intro-to-ada/chapters/tasking.html#tasktypes" title="(in learn.adacore.com v2022.03)"><span class="xref std std-ref">типов задач</span></a>). После ключевого слова
+типа мы можем видеть диапазон,
+который очень похож на диапазоны, которые мы используем в циклах for,
+которые определяют нижнюю и верхнюю границы типа. Каждое целое число
+во включенном диапазоне границ является допустимым значением для типа.</p>
+<div class="admonition-ada admonition">
+<p class="admonition-title">Целочисленные типы Ada</p>
+<p>В Ada целочисленный тип задается не в терминах его машинного
+представления, а скорее его диапазоном. Затем компилятор выберет
+наиболее подходящее представление.</p>
+</div>
+<p>Еще один момент, который следует отметить в приведенном выше примере,
+‑ это выражение <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">My_Int</span></span><span class="punctuation"><span class="pre">'</span></span><span class="name attribute"><span class="pre">Image</span></span> <span class="punctuation"><span class="pre">(</span></span><span class="name"><span class="pre">I</span></span><span class="punctuation"><span class="pre">)</span></span></code>. Обозначение атрибута
+<code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Name</span></span><span class="punctuation"><span class="pre">'</span></span><span class="name attribute"><span class="pre">Attribute</span></span> <span class="punctuation"><span class="pre">(</span></span><span class="name"><span class="pre">необязательные</span></span> <span class="name"><span class="pre">параметры</span></span><span class="punctuation"><span class="pre">)</span></span></code> используется для того,
+что в Ada называется атрибутом.
+Атрибут ‑ это встроенная операция над типом, значением или какой-либо
+другой программной сущностью. Доступ к нему осуществляется с помощью
+символа <code class="code highlight ada docutils literal notranslate"><span class="punctuation"><span class="pre">'</span></span></code> (апостроф ASCII).</p>
+<p>Ada имеет несколько типов, доступных как &quot;встроенные модули&quot;; <code class="code highlight ada docutils literal notranslate"><span class="keyword type"><span class="pre">Integer</span></span></code> ‑
+один из них. Вот как тип целых чисел <code class="code highlight ada docutils literal notranslate"><span class="keyword type"><span class="pre">Integer</span></span></code> может быть определен
+для типичного процессора:</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kd">type</span> <span class="kt">Integer</span> <span class="kr">is</span>
+  <span class="kr">range</span> <span class="o">-</span><span class="p">(</span><span class="nv">2</span> <span class="o">**</span> <span class="nv">31</span><span class="p">)</span> <span class="p">..</span> <span class="o">+</span><span class="p">(</span><span class="nv">2</span> <span class="o">**</span> <span class="nv">31</span> <span class="o">-</span> <span class="nv">1</span><span class="p">);</span>
+</pre></div>
+</div>
+<p><code class="code highlight ada docutils literal notranslate"><span class="operator"><span class="pre">**</span></span></code> является оператором экспоненты, что означает, что первое допустимое
+значение для целого числа типа <code class="code highlight ada docutils literal notranslate"><span class="keyword type"><span class="pre">Integer</span></span></code> равно -2<sup>31</sup>, а последнее
+допустимое значение равно 2<sup>31</sup> - 1.</p>
+<p>Ada не требует диапазона встроенного типа Integer. Реализация для
+16-битного целевого процессора, вероятно, выберет диапазон
+от - 2<sup>15</sup> до 2<sup>15</sup> - 1.</p>
+<section id="id3">
+<h3>Семантика операций<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h3>
+<p>В отличие от некоторых других языков, Ada требует, чтобы операции с
+целыми числами проверялись на переполнение.</p>
+<div class="ada-run-expect-failure highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kd">procedure</span> <span class="nf">Main</span> <span class="kr">is</span>
+   <span class="n">A</span> <span class="p">:</span> <span class="kt">Integer</span> <span class="p">:=</span> <span class="kt">Integer</span><span class="p">&#39;</span><span class="na">Last</span><span class="p">;</span>
+   <span class="n">B</span> <span class="p">:</span> <span class="kt">Integer</span><span class="p">;</span>
+<span class="kr">begin</span>
+   <span class="n">B</span> <span class="p">:=</span> <span class="n">A</span> <span class="o">+</span> <span class="mi">5</span><span class="p">;</span>
+   <span class="c1">--  This operation will overflow, eg. it</span>
+   <span class="c1">--  will raise an exception at run time.</span>
+<span class="kr">end</span> <span class="nf">Main</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Существует два типа проверок переполнения:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Переполнение на уровне процессора, когда результат операции превышает
+максимальное значение (или меньше минимального значения), которое
+может быть представлено в хранилище, зарезервированном для объекта
+данного типа, и</p></li>
+<li><p>Переполнение на уровне типа, если результат операции выходит за
+пределы диапазона, определенного для типа.</p></li>
+</ul>
+</div></blockquote>
+<p>В основном по соображениям эффективности, в то время как переполнение
+процессорного уровня всегда приводит к исключению, переполнение уровня
+типа будет проверяться только на определенных границах, таких как
+назначение:</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kn">with</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span> <span class="kn">use</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>
+
+<span class="kd">procedure</span> <span class="nf">Main</span> <span class="kr">is</span>
+   <span class="kd">type</span> <span class="kt">My_Int</span> <span class="kr">is</span> <span class="kr">range</span> <span class="mi">1</span> <span class="p">..</span> <span class="mi">20</span><span class="p">;</span>
+   <span class="n">A</span> <span class="p">:</span> <span class="n">My_Int</span> <span class="p">:=</span> <span class="mi">12</span><span class="p">;</span>
+   <span class="n">B</span> <span class="p">:</span> <span class="n">My_Int</span> <span class="p">:=</span> <span class="mi">15</span><span class="p">;</span>
+   <span class="n">M</span> <span class="p">:</span> <span class="n">My_Int</span> <span class="p">:=</span> <span class="p">(</span><span class="n">A</span> <span class="o">+</span> <span class="n">B</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
+   <span class="c1">--  No overflow here, overflow checks</span>
+   <span class="c1">--  are done at specific boundaries.</span>
+<span class="kr">begin</span>
+   <span class="kr">for</span> <span class="n">I</span> <span class="ow">in</span> <span class="mi">1</span> <span class="p">..</span> <span class="n">M</span> <span class="kr">loop</span>
+      <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;Hello, World!&quot;</span><span class="p">);</span>
+   <span class="kr">end</span> <span class="kr">loop</span><span class="p">;</span>
+   <span class="c1">--  Loop body executed 13 times</span>
+<span class="kr">end</span> <span class="nf">Main</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Переполнение уровня типа будет проверяться только в определенных
+точках выполнения. Результат, как мы видим выше, состоит в том, что у
+вас может быть операция, которая переполняется в промежуточном
+вычислении, но никаких исключений не будет, потому что конечный
+результат не переполняется.</p>
+</section>
+</section>
+<section id="id4">
+<h2>Беззнаковые типы<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h2>
+<p>Ada также поддерживает целочисленные типы без знака. На языке Ada они
+называются <em>модульными</em> типами. Причина такого обозначения связана с их
+поведением в случае переполнения: они просто &quot;оборачиваются&quot;, как если
+бы была применена операция по модулю.</p>
+<p>Для модульных типов машинного размера, например модуля 2 <sup>32</sup>, это
+имитирует наиболее распространенное поведение реализации беззнаковых
+типов. Однако преимущество Ada в том, что модуль более общий:</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kn">with</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span> <span class="kn">use</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>
+
+<span class="kd">procedure</span> <span class="nf">Main</span> <span class="kr">is</span>
+   <span class="kd">type</span> <span class="kt">Mod_Int</span> <span class="kr">is</span> <span class="ow">mod</span> <span class="mi">2</span> <span class="o">**</span> <span class="mi">5</span><span class="p">;</span>
+   <span class="c1">--              ^ Range is 0 .. 31</span>
+
+   <span class="no">A</span> <span class="p">:</span> <span class="kr">constant</span> <span class="n">Mod_Int</span> <span class="p">:=</span> <span class="mi">20</span><span class="p">;</span>
+   <span class="no">B</span> <span class="p">:</span> <span class="kr">constant</span> <span class="n">Mod_Int</span> <span class="p">:=</span> <span class="mi">15</span><span class="p">;</span>
+
+   <span class="no">M</span> <span class="p">:</span> <span class="kr">constant</span> <span class="n">Mod_Int</span> <span class="p">:=</span> <span class="n">A</span> <span class="o">+</span> <span class="n">B</span><span class="p">;</span>
+   <span class="c1">--  No overflow here,</span>
+   <span class="c1">--  M = (20 + 15) mod 32 = 3</span>
+<span class="kr">begin</span>
+   <span class="kr">for</span> <span class="n">I</span> <span class="ow">in</span> <span class="mi">1</span> <span class="p">..</span> <span class="n">M</span> <span class="kr">loop</span>
+      <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;Hello, World!&quot;</span><span class="p">);</span>
+   <span class="kr">end</span> <span class="kr">loop</span><span class="p">;</span>
+<span class="kr">end</span> <span class="nf">Main</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>В отличие от C/C++, так как такое поведение гарантировано
+спецификацией Ada, на неё можно положиться для реализации переносимого
+кода. Кроме того, для реализации определенных алгоритмов и структур
+данных, таких как
+<a class="reference external" href="https://ru.wikipedia.org/wiki/Кольцевой_буфер">кольцевые буферы</a>,
+очень полезно иметь возможность использовать обертку на произвольных
+границах ‑ модуль не обязательно должен быть степенью 2.</p>
+</section>
+<section id="enumtypes">
+<span id="id6"></span><h2>Перечисления<a class="headerlink" href="#enumtypes" title="Permalink to this headline"></a></h2>
+<p>Типы перечисления ‑ еще одна особенность системы типов Ada. В отличие
+от перечислений C, они <em>не</em> являются целыми числами, и каждый новый тип
+перечисления несовместим с другими типами перечислений. Типы
+перечисления являются частью большего семейства дискретных типов, что
+делает их пригодными для использования в определенных ситуациях,
+которые мы опишем позже, но один контекст, который мы уже видели, ‑
+это оператор case.</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kn">with</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span> <span class="kn">use</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>
+
+<span class="kd">procedure</span> <span class="nf">Enumeration_Example</span> <span class="kr">is</span>
+   <span class="kd">type</span> <span class="kt">Days</span> <span class="kr">is</span> <span class="p">(</span><span class="nv">Monday</span><span class="p">,</span> <span class="nv">Tuesday</span><span class="p">,</span> <span class="nv">Wednesday</span><span class="p">,</span>
+                 <span class="nv">Thursday</span><span class="p">,</span> <span class="nv">Friday</span><span class="p">,</span>
+                 <span class="nv">Saturday</span><span class="p">,</span> <span class="nv">Sunday</span><span class="p">);</span>
+   <span class="c1">--  An enumeration type</span>
+<span class="kr">begin</span>
+   <span class="kr">for</span> <span class="n">I</span> <span class="ow">in</span> <span class="n">Days</span> <span class="kr">loop</span>
+      <span class="kr">case</span> <span class="n">I</span> <span class="kr">is</span>
+         <span class="kr">when</span> <span class="n">Saturday</span> <span class="p">..</span> <span class="n">Sunday</span> <span class="p">=&gt;</span>
+            <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;Week end!&quot;</span><span class="p">);</span>
+
+         <span class="kr">when</span> <span class="n">Monday</span> <span class="p">..</span> <span class="n">Friday</span> <span class="p">=&gt;</span>
+            <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;Hello on &quot;</span>
+                      <span class="o">&amp;</span> <span class="n">Days</span><span class="p">&#39;</span><span class="na">Image</span> <span class="p">(</span><span class="n">I</span><span class="p">));</span>
+            <span class="c1">--  &#39;Image attribute, works on</span>
+            <span class="c1">--  enums too</span>
+      <span class="kr">end</span> <span class="kr">case</span><span class="p">;</span>
+   <span class="kr">end</span> <span class="kr">loop</span><span class="p">;</span>
+<span class="kr">end</span> <span class="nf">Enumeration_Example</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Типы перечисления достаточно мощные, поэтому, в отличие от большинства
+языков, они используются для определения стандартного логического
+типа:</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kd">type</span> <span class="kt">Boolean</span> <span class="kr">is</span> <span class="p">(</span><span class="nv">False</span><span class="p">,</span> <span class="nv">True</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Как упоминалось ранее, каждый &quot;встроенный&quot; тип в Ada определяется с
+помощью средств, обычно доступных пользователю.</p>
+</section>
+<section id="id7">
+<h2>Типы с плавающей запятой<a class="headerlink" href="#id7" title="Permalink to this headline"></a></h2>
+<section id="id8">
+<h3>Основные свойства<a class="headerlink" href="#id8" title="Permalink to this headline"></a></h3>
+<p>Как и большинство языков, Ada поддерживает типы с плавающей запятой.
+Наиболее часто используемый тип с плавающей запятой ‑ <code class="code highlight ada docutils literal notranslate"><span class="keyword type"><span class="pre">Float</span></span></code>:</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kn">with</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span> <span class="kn">use</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>
+
+<span class="kd">procedure</span> <span class="nf">Floating_Point_Demo</span> <span class="kr">is</span>
+   <span class="no">A</span> <span class="p">:</span> <span class="kr">constant</span> <span class="kt">Float</span> <span class="p">:=</span> <span class="mf">2.5</span><span class="p">;</span>
+<span class="kr">begin</span>
+   <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;The value of A is &quot;</span>
+             <span class="o">&amp;</span> <span class="kt">Float</span><span class="p">&#39;</span><span class="na">Image</span> <span class="p">(</span><span class="n">A</span><span class="p">));</span>
+<span class="kr">end</span> <span class="nf">Floating_Point_Demo</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Приложение отобразит <code class="code highlight ada docutils literal notranslate"><span class="literal number float"><span class="pre">2.5</span></span></code> как значение <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">A</span></span></code>.</p>
+<p>Язык Ada не определяет точность (количество десятичных цифр в
+мантиссе) для Float; на типичной 32-разрядной машине точность будет
+равна 6.</p>
+<p>Доступны все распространенные операции, которые можно было бы ожидать
+для типов с плавающей запятой, включая абсолютное значение и
+возведение в степень. Например:</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kn">with</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span> <span class="kn">use</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>
+
+<span class="kd">procedure</span> <span class="nf">Floating_Point_Operations</span> <span class="kr">is</span>
+   <span class="n">A</span> <span class="p">:</span> <span class="kt">Float</span> <span class="p">:=</span> <span class="mf">2.5</span><span class="p">;</span>
+<span class="kr">begin</span>
+   <span class="n">A</span> <span class="p">:=</span> <span class="kr">abs</span> <span class="p">(</span><span class="n">A</span> <span class="o">-</span> <span class="mf">4.5</span><span class="p">);</span>
+   <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;The value of A is &quot;</span>
+             <span class="o">&amp;</span> <span class="kt">Float</span><span class="p">&#39;</span><span class="na">Image</span> <span class="p">(</span><span class="n">A</span><span class="p">));</span>
+
+   <span class="n">A</span> <span class="p">:=</span> <span class="n">A</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="mf">1.0</span><span class="p">;</span>
+   <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;The value of A is &quot;</span>
+             <span class="o">&amp;</span> <span class="kt">Float</span><span class="p">&#39;</span><span class="na">Image</span> <span class="p">(</span><span class="n">A</span><span class="p">));</span>
+<span class="kr">end</span> <span class="nf">Floating_Point_Operations</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Значение <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">A</span></span></code> равно <code class="code highlight ada docutils literal notranslate"><span class="literal number float"><span class="pre">2.0</span></span></code> после первой операции и <code class="code highlight ada docutils literal notranslate"><span class="literal number float"><span class="pre">5.0</span></span></code> после второй операции.</p>
+<p>В дополнение к <code class="code highlight ada docutils literal notranslate"><span class="keyword type"><span class="pre">Float</span></span></code>, реализация Ada может предлагать типы данных с более
+высокой точностью, такие как <code class="code highlight ada docutils literal notranslate"><span class="keyword type"><span class="pre">Long_Float</span></span></code> и <code class="code highlight ada docutils literal notranslate"><span class="keyword type"><span class="pre">Long_Long_Float</span></span></code>. Как и Float, стандарт не указывает
+точную точность этих типов: он только гарантирует, что тип <code class="code highlight ada docutils literal notranslate"><span class="keyword type"><span class="pre">Long_Float</span></span></code>, например,
+имеет хотя бы точность <code class="code highlight ada docutils literal notranslate"><span class="keyword type"><span class="pre">Float</span></span></code>. Чтобы гарантировать выполнение определенного
+требования к точности, можно определить пользовательские типы с
+плавающей запятой, как будет показано в следующем разделе.</p>
+</section>
+<section id="id9">
+<h3>Точность типов с плавающей запятой<a class="headerlink" href="#id9" title="Permalink to this headline"></a></h3>
+<p>Ada позволяет пользователю задавать точность для типа с плавающей
+запятой, выраженную в виде десятичных цифр. Операции с этими
+пользовательскими типами будут иметь, по крайней мере, заданную
+точность. Синтаксис простого объявления типа с плавающей запятой:</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kd">type</span> <span class="kt">T</span> <span class="kr">is</span> <span class="kr">digits</span> <span class="o">&lt;</span><span class="n">number_of_decimal_digits</span><span class="o">&gt;</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Компилятор выберет представление с плавающей запятой, поддерживающее
+требуемую точность. Например:</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kn">with</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span> <span class="kn">use</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>
+
+<span class="kd">procedure</span> <span class="nf">Custom_Floating_Types</span> <span class="kr">is</span>
+   <span class="kd">type</span> <span class="kt">T3</span>  <span class="kr">is</span> <span class="kr">digits</span> <span class="mi">3</span><span class="p">;</span>
+   <span class="kd">type</span> <span class="kt">T15</span> <span class="kr">is</span> <span class="kr">digits</span> <span class="mi">15</span><span class="p">;</span>
+   <span class="kd">type</span> <span class="kt">T18</span> <span class="kr">is</span> <span class="kr">digits</span> <span class="mi">18</span><span class="p">;</span>
+<span class="kr">begin</span>
+   <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;T3  requires &quot;</span>
+             <span class="o">&amp;</span> <span class="kt">Integer</span><span class="p">&#39;</span><span class="na">Image</span> <span class="p">(</span><span class="n">T3</span><span class="p">&#39;</span><span class="na">Size</span><span class="p">)</span>
+             <span class="o">&amp;</span> <span class="s">&quot; bits&quot;</span><span class="p">);</span>
+   <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;T15 requires &quot;</span>
+             <span class="o">&amp;</span> <span class="kt">Integer</span><span class="p">&#39;</span><span class="na">Image</span> <span class="p">(</span><span class="n">T15</span><span class="p">&#39;</span><span class="na">Size</span><span class="p">)</span>
+             <span class="o">&amp;</span> <span class="s">&quot; bits&quot;</span><span class="p">);</span>
+   <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;T18 requires &quot;</span>
+             <span class="o">&amp;</span> <span class="kt">Integer</span><span class="p">&#39;</span><span class="na">Image</span> <span class="p">(</span><span class="n">T18</span><span class="p">&#39;</span><span class="na">Size</span><span class="p">)</span>
+             <span class="o">&amp;</span> <span class="s">&quot; bits&quot;</span><span class="p">);</span>
+<span class="kr">end</span> <span class="nf">Custom_Floating_Types</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>В этом примере атрибут «<code class="code highlight ada docutils literal notranslate"><span class="punctuation"><span class="pre">'</span></span><span class="name attribute"><span class="pre">Size</span></span></code>» используется для получения количества битов,
+используемых для указанного типа данных. Как видно из этого примера,
+компилятор выделяет 32 бита для <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">T3</span></span></code>, 64 бита для <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">T15</span></span></code> и 128 битов для <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">T18</span></span></code>. Сюда
+входят как мантисса, так и экспонента.</p>
+<p>Количество цифр, указанное в типе данных, также используется в формате
+при отображении переменных с плавающей точкой. Например:</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kn">with</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span> <span class="kn">use</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>
+
+<span class="kd">procedure</span> <span class="nf">Display_Custom_Floating_Types</span> <span class="kr">is</span>
+   <span class="kd">type</span> <span class="kt">T3</span>  <span class="kr">is</span> <span class="kr">digits</span> <span class="mi">3</span><span class="p">;</span>
+   <span class="kd">type</span> <span class="kt">T18</span> <span class="kr">is</span> <span class="kr">digits</span> <span class="mi">18</span><span class="p">;</span>
+
+   <span class="no">C1</span> <span class="p">:</span> <span class="kr">constant</span> <span class="p">:=</span> <span class="mf">1.0</span><span class="n">e</span><span class="o">-</span><span class="mi">4</span><span class="p">;</span>
+
+   <span class="no">A</span> <span class="p">:</span> <span class="kr">constant</span> <span class="n">T3</span>  <span class="p">:=</span> <span class="mf">1.0</span> <span class="o">+</span> <span class="n">C1</span><span class="p">;</span>
+   <span class="no">B</span> <span class="p">:</span> <span class="kr">constant</span> <span class="n">T18</span> <span class="p">:=</span> <span class="mf">1.0</span> <span class="o">+</span> <span class="n">C1</span><span class="p">;</span>
+<span class="kr">begin</span>
+   <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;The value of A is &quot;</span>
+             <span class="o">&amp;</span> <span class="n">T3</span><span class="p">&#39;</span><span class="na">Image</span> <span class="p">(</span><span class="n">A</span><span class="p">));</span>
+   <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;The value of B is &quot;</span>
+             <span class="o">&amp;</span> <span class="n">T18</span><span class="p">&#39;</span><span class="na">Image</span> <span class="p">(</span><span class="n">B</span><span class="p">));</span>
+<span class="kr">end</span> <span class="nf">Display_Custom_Floating_Types</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Как и ожидалось, приложение будет отображать переменные в соответствии
+с заданной точностью (1.00E + 00 и 1.00010000000000000E + 00).</p>
+</section>
+<section id="id10">
+<h3>Диапазон типов с плавающей запятой<a class="headerlink" href="#id10" title="Permalink to this headline"></a></h3>
+<p>В дополнение к точности для типа с плавающей запятой можно также
+задать диапазон. Синтаксис аналогичен используемому для целочисленных
+типов данных ‑ с использованием ключевого слова <code class="code highlight ada docutils literal notranslate"><span class="keyword reserved"><span class="pre">range</span></span></code>. В этом простом
+примере создается новый тип с плавающей запятой на основе типа <code class="code highlight ada docutils literal notranslate"><span class="keyword type"><span class="pre">Float</span></span></code> для
+нормированного диапазона от <code class="code highlight ada docutils literal notranslate"><span class="operator"><span class="pre">-</span></span><span class="literal number float"><span class="pre">1.0</span></span></code> до <code class="code highlight ada docutils literal notranslate"><span class="literal number float"><span class="pre">1.0</span></span></code>:</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kn">with</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span> <span class="kn">use</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>
+
+<span class="kd">procedure</span> <span class="nf">Floating_Point_Range</span> <span class="kr">is</span>
+   <span class="kd">type</span> <span class="kt">T_Norm</span>  <span class="kr">is</span> <span class="kr">new</span> <span class="kt">Float</span> <span class="kr">range</span> <span class="o">-</span><span class="mf">1.0</span> <span class="p">..</span> <span class="mf">1.0</span><span class="p">;</span>
+   <span class="n">A</span>  <span class="p">:</span> <span class="n">T_Norm</span><span class="p">;</span>
+<span class="kr">begin</span>
+   <span class="n">A</span> <span class="p">:=</span> <span class="mf">1.0</span><span class="p">;</span>
+   <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;The value of A is &quot;</span>
+             <span class="o">&amp;</span> <span class="n">T_Norm</span><span class="p">&#39;</span><span class="na">Image</span> <span class="p">(</span><span class="n">A</span><span class="p">));</span>
+<span class="kr">end</span> <span class="nf">Floating_Point_Range</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Приложение отвечает за обеспечение того, чтобы переменные этого типа
+находились в пределах этого диапазона; в противном случае возникает
+исключение. В этом примере <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Constraint_Error</span></span></code> исключения возникает при назначении <code class="code highlight ada docutils literal notranslate"><span class="literal number float"><span class="pre">2.0</span></span></code>
+переменной <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">A</span></span></code>:</p>
+<div class="ada-run-expect-failure highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kn">with</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span> <span class="kn">use</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>
+
+<span class="kd">procedure</span> <span class="nf">Floating_Point_Range_Exception</span> <span class="kr">is</span>
+   <span class="kd">type</span> <span class="kt">T_Norm</span>  <span class="kr">is</span> <span class="kr">new</span> <span class="kt">Float</span> <span class="kr">range</span> <span class="o">-</span><span class="mf">1.0</span> <span class="p">..</span> <span class="mf">1.0</span><span class="p">;</span>
+   <span class="n">A</span>  <span class="p">:</span> <span class="n">T_Norm</span><span class="p">;</span>
+<span class="kr">begin</span>
+   <span class="n">A</span> <span class="p">:=</span> <span class="mf">2.0</span><span class="p">;</span>
+   <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;The value of A is &quot;</span>
+             <span class="o">&amp;</span> <span class="n">T_Norm</span><span class="p">&#39;</span><span class="na">Image</span> <span class="p">(</span><span class="n">A</span><span class="p">));</span>
+<span class="kr">end</span> <span class="nf">Floating_Point_Range_Exception</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Диапазоны также могут быть заданы для пользовательских типов с
+плавающей запятой. Например:</p>
+<div class="ada-expect-compile-error highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kn">with</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>  <span class="kn">use</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>
+<span class="kn">with</span> <span class="nn">Ada.Numerics</span><span class="p">;</span> <span class="kn">use</span> <span class="nn">Ada.Numerics</span><span class="p">;</span>
+
+<span class="kd">procedure</span> <span class="nf">Custom_Range_Types</span> <span class="kr">is</span>
+   <span class="kd">type</span> <span class="kt">T6_Inv_Trig</span>  <span class="kr">is</span>
+     <span class="kr">digits</span> <span class="mi">6</span> <span class="kr">range</span> <span class="o">-</span><span class="n">Pi</span> <span class="o">/</span> <span class="mf">2.0</span> <span class="p">..</span> <span class="n">Pi</span> <span class="o">/</span> <span class="mf">2.0</span><span class="p">;</span>
+<span class="kr">begin</span>
+   <span class="kc">null</span><span class="p">;</span>
+<span class="kr">end</span> <span class="nf">Custom_Range_Types</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>В этом примере мы определяем тип под названием <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">T6_Inv_Trig</span></span></code>, который имеет
+диапазон от −𝜋/2 до 𝜋/2 с минимальной точностью 6 цифр. (<code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Pi</span></span></code> определяется
+в предопределенном пакете <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Ada</span></span><span class="punctuation"><span class="pre">.</span></span><span class="name"><span class="pre">Numerics</span></span></code>.)</p>
+</section>
+</section>
+<section id="id11">
+<h2>Строгая типизация<a class="headerlink" href="#id11" title="Permalink to this headline"></a></h2>
+<p>Как отмечалось ранее, язык Ada строго типизирован. В результате разные
+типы одного семейства несовместимы друг с другом; значение одного типа
+не может быть присвоено переменной другого типа. Например:</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kn">with</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span> <span class="kn">use</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>
+
+<span class="kd">procedure</span> <span class="nf">Illegal_Example</span> <span class="kr">is</span>
+   <span class="c1">--  Declare two different floating point types</span>
+   <span class="kd">type</span> <span class="kt">Meters</span> <span class="kr">is</span> <span class="kr">new</span> <span class="kt">Float</span><span class="p">;</span>
+   <span class="kd">type</span> <span class="kt">Miles</span> <span class="kr">is</span> <span class="kr">new</span> <span class="kt">Float</span><span class="p">;</span>
+
+   <span class="n">Dist_Imperial</span> <span class="p">:</span> <span class="n">Miles</span><span class="p">;</span>
+
+   <span class="c1">--  Declare a constant</span>
+   <span class="no">Dist_Metric</span> <span class="p">:</span> <span class="kr">constant</span> <span class="n">Meters</span> <span class="p">:=</span> <span class="mf">1000.0</span><span class="p">;</span>
+<span class="kr">begin</span>
+   <span class="c1">--  Not correct: types mismatch</span>
+   <span class="n">Dist_Imperial</span> <span class="p">:=</span> <span class="n">Dist_Metric</span> <span class="o">*</span> <span class="mf">621.371</span><span class="n">e</span><span class="o">-</span><span class="mi">6</span><span class="p">;</span>
+   <span class="n">Put_Line</span> <span class="p">(</span><span class="n">Miles</span><span class="p">&#39;</span><span class="na">Image</span> <span class="p">(</span><span class="n">Dist_Imperial</span><span class="p">));</span>
+<span class="kr">end</span> <span class="nf">Illegal_Example</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Следствием этих правил является то, что в общем случае выражение
+«смешанного режима» типа <code class="code highlight ada docutils literal notranslate"><span class="literal number integer"><span class="pre">2</span></span> <span class="operator"><span class="pre">*</span></span> <span class="literal number float"><span class="pre">3.0</span></span></code> инициирует ошибку компиляции. В языке, таком
+как C или Python, такие выражения становятся действительными
+посредством неявных преобразований. В Ada такие преобразования должны
+быть явными:</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kn">with</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span> <span class="kn">use</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>
+<span class="kd">procedure</span> <span class="nf">Conv</span> <span class="kr">is</span>
+   <span class="kd">type</span> <span class="kt">Meters</span> <span class="kr">is</span> <span class="kr">new</span> <span class="kt">Float</span><span class="p">;</span>
+   <span class="kd">type</span> <span class="kt">Miles</span> <span class="kr">is</span> <span class="kr">new</span> <span class="kt">Float</span><span class="p">;</span>
+   <span class="n">Dist_Imperial</span> <span class="p">:</span> <span class="n">Miles</span><span class="p">;</span>
+   <span class="no">Dist_Metric</span> <span class="p">:</span> <span class="kr">constant</span> <span class="n">Meters</span> <span class="p">:=</span> <span class="mf">1000.0</span><span class="p">;</span>
+<span class="kr">begin</span>
+   <span class="n">Dist_Imperial</span> <span class="p">:=</span> <span class="n">Miles</span> <span class="p">(</span><span class="n">Dist_Metric</span><span class="p">)</span> <span class="o">*</span> <span class="mf">621.371</span><span class="n">e</span><span class="o">-</span><span class="mi">6</span><span class="p">;</span>
+   <span class="c1">--               ^ Type conversion,</span>
+   <span class="c1">--                 from Meters to Miles</span>
+   <span class="c1">--  Now the code is correct</span>
+
+   <span class="n">Put_Line</span> <span class="p">(</span><span class="n">Miles</span><span class="p">&#39;</span><span class="na">Image</span> <span class="p">(</span><span class="n">Dist_Imperial</span><span class="p">));</span>
+<span class="kr">end</span> <span class="nf">Conv</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Конечно, мы, вероятно, не хотим писать код преобразования каждый раз,
+когда мы преобразуем метры в мили. Идиоматическим решением в этом
+случае было бы ввести функции преобразования вместе с типами.</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kn">with</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span> <span class="kn">use</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>
+
+<span class="kd">procedure</span> <span class="nf">Conv</span> <span class="kr">is</span>
+   <span class="kd">type</span> <span class="kt">Meters</span> <span class="kr">is</span> <span class="kr">new</span> <span class="kt">Float</span><span class="p">;</span>
+   <span class="kd">type</span> <span class="kt">Miles</span> <span class="kr">is</span> <span class="kr">new</span> <span class="kt">Float</span><span class="p">;</span>
+
+   <span class="c1">--  Function declaration, like procedure</span>
+   <span class="c1">--  but returns a value.</span>
+   <span class="kd">function</span> <span class="nf">To_Miles</span> <span class="p">(</span><span class="nv">M</span> <span class="p">: </span><span class="nv">Meters</span><span class="p">)</span> <span class="kr">return</span> <span class="n">Miles</span> <span class="kr">is</span>
+   <span class="c1">--                             ^ Return type</span>
+   <span class="kr">begin</span>
+      <span class="kr">return</span> <span class="n">Miles</span> <span class="p">(</span><span class="n">M</span><span class="p">)</span> <span class="o">*</span> <span class="mf">621.371</span><span class="n">e</span><span class="o">-</span><span class="mi">6</span><span class="p">;</span>
+   <span class="kr">end</span> <span class="nf">To_Miles</span><span class="p">;</span>
+
+   <span class="n">Dist_Imperial</span> <span class="p">:</span> <span class="n">Miles</span><span class="p">;</span>
+   <span class="no">Dist_Metric</span>   <span class="p">:</span> <span class="kr">constant</span> <span class="n">Meters</span> <span class="p">:=</span> <span class="mf">1000.0</span><span class="p">;</span>
+<span class="kr">begin</span>
+   <span class="n">Dist_Imperial</span> <span class="p">:=</span> <span class="n">To_Miles</span> <span class="p">(</span><span class="n">Dist_Metric</span><span class="p">);</span>
+   <span class="n">Put_Line</span> <span class="p">(</span><span class="n">Miles</span><span class="p">&#39;</span><span class="na">Image</span> <span class="p">(</span><span class="n">Dist_Imperial</span><span class="p">));</span>
+<span class="kr">end</span> <span class="nf">Conv</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Если вы пишете много числового кода, то необходимость явно
+предоставлять такие преобразования может показаться обременительным.
+Однако такой подход дает определенные преимущества. Примечательно, что
+вы можете полагаться на отсутствие неявных преобразований, которые, в
+свою очередь, предотвратят некоторые тонкие ошибки.</p>
+<div class="admonition- admonition">
+<p class="admonition-title">На других языках</p>
+<p>В C, например, правила для неявных преобразований не всегда могут быть
+полностью очевидными. Однако в Ada код всегда будет делать именно то,
+что, явно определено программистом. Например:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w"></span>
+<span class="kt">float</span><span class="w"> </span><span class="n">f</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">b</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Этот код будет компилироваться нормально, но результатом <code class="code highlight c docutils literal notranslate"><span class="name"><span class="pre">f</span></span></code> будет 1.0
+вместо 1.5, потому что компилятор сгенерирует целочисленное деление
+(три, разделенное на два), что приведет к единице. Разработчик
+программного обеспечения должен знать о проблемах преобразования
+данных и использовать соответствующее приведение типов:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w"></span>
+<span class="kt">float</span><span class="w"> </span><span class="n">f</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">float</span><span class="p">)</span><span class="n">a</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">b</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+<p>В исправленном примере компилятор преобразует обе переменные в
+соответствующее представление с плавающей запятой перед выполнением
+деления. Это даст ожидаемый результат.</p>
+<p>Этот пример очень прост, и опытные разработчики C, вероятно, заметят и
+исправят его, прежде чем это создаст большие проблемы. Однако в более
+сложных приложениях, где объявление типа не всегда видно ‑ например,
+при ссылке на элементы структуры <code class="code highlight c docutils literal notranslate"><span class="keyword"><span class="pre">struct</span></span></code>, ‑ эта ситуация может не всегда быть
+очевидной и быстро привести к дефектам программного обеспечения,
+которые может быть сложнее обнаружить.</p>
+<p>Компилятор Ada, напротив, всегда будет отклонять код, который
+смешивает переменные с плавающей запятой и целочисленные переменные
+без явного преобразования. Следующий код Ada, основанный на ошибочном
+примере в C, не будет компилироваться:</p>
+<div class="ada-expect-compile-error highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kd">procedure</span> <span class="nf">Main</span> <span class="kr">is</span>
+   <span class="n">A</span> <span class="p">:</span> <span class="kt">Integer</span> <span class="p">:=</span> <span class="mi">3</span><span class="p">;</span>
+   <span class="n">B</span> <span class="p">:</span> <span class="kt">Integer</span> <span class="p">:=</span> <span class="mi">2</span><span class="p">;</span>
+   <span class="n">F</span> <span class="p">:</span> <span class="kt">Float</span><span class="p">;</span>
+<span class="kr">begin</span>
+   <span class="n">F</span> <span class="p">:=</span> <span class="n">A</span> <span class="o">/</span> <span class="n">B</span><span class="p">;</span>
+<span class="kr">end</span> <span class="nf">Main</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Строка кода нарушитель должна быть изменена на <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">F</span></span> <span class="punctuation"><span class="pre">:=</span></span> <span class="keyword type"><span class="pre">Float</span></span> <span class="punctuation"><span class="pre">(</span></span><span class="name"><span class="pre">A</span></span><span class="punctuation"><span class="pre">)</span></span> <span class="operator"><span class="pre">/</span></span> <span class="keyword type"><span class="pre">Float</span></span> <span class="punctuation"><span class="pre">(</span></span><span class="name"><span class="pre">B</span></span><span class="punctuation"><span class="pre">);</span></span></code> для принятия
+компилятором.</p>
+</div>
+<ul class="simple">
+<li><p>Вы можете использовать строгую типизацию Ada, чтобы обеспечить
+соблюдение инвариантов в вашем коде, как в приведенном выше примере:
+поскольку Мили и метры ‑ это два разных типа, вы не можете ошибочно
+преобразовать экземпляр одного в экземпляр другого.</p></li>
+</ul>
+</section>
+<section id="id12">
+<h2>Производные типы<a class="headerlink" href="#id12" title="Permalink to this headline"></a></h2>
+<p>В Ada можно создавать новые типы на основе существующих. Это очень
+полезно: вы получаете тип, который имеет те же свойства, что и
+некоторый существующий тип, но рассматривается как отдельный тип в
+интересах сильной типизации.</p>
+<div class="ada-expect-compile-error highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kd">procedure</span> <span class="nf">Main</span> <span class="kr">is</span>
+   <span class="c1">--  ID card number type,</span>
+   <span class="c1">--  incompatible with Integer.</span>
+   <span class="kd">type</span> <span class="kt">Social_Security_Number</span> <span class="kr">is</span> <span class="kr">new</span> <span class="kt">Integer</span>
+     <span class="kr">range</span> <span class="mi">0</span> <span class="p">..</span> <span class="mi">999_99_9999</span><span class="p">;</span>
+   <span class="c1">--      ^ Since a SSN has 9 digits</span>
+   <span class="c1">--        max., and cannot be</span>
+   <span class="c1">--        negative, we enforce</span>
+   <span class="c1">--        a validity constraint.</span>
+
+   <span class="n">SSN</span> <span class="p">:</span> <span class="n">Social_Security_Number</span> <span class="p">:=</span>
+     <span class="mi">555_55_5555</span><span class="p">;</span>
+   <span class="c1">--   ^ You can put underscores as</span>
+   <span class="c1">--     formatting in any number.</span>
+
+   <span class="n">I</span>   <span class="p">:</span> <span class="kt">Integer</span><span class="p">;</span>
+
+   <span class="c1">--  The value -1 below will cause a</span>
+   <span class="c1">--  runtime error and a compile time</span>
+   <span class="c1">--  warning with GNAT.</span>
+   <span class="n">Invalid</span> <span class="p">:</span> <span class="n">Social_Security_Number</span> <span class="p">:=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+<span class="kr">begin</span>
+   <span class="c1">--  Illegal, they have different types:</span>
+   <span class="n">I</span> <span class="p">:=</span> <span class="n">SSN</span><span class="p">;</span>
+
+   <span class="c1">--  Likewise illegal:</span>
+   <span class="n">SSN</span> <span class="p">:=</span> <span class="n">I</span><span class="p">;</span>
+
+   <span class="c1">--  OK with explicit conversion:</span>
+   <span class="n">I</span> <span class="p">:=</span> <span class="kt">Integer</span> <span class="p">(</span><span class="n">SSN</span><span class="p">);</span>
+
+   <span class="c1">--  Likewise OK:</span>
+   <span class="n">SSN</span> <span class="p">:=</span> <span class="n">Social_Security_Number</span> <span class="p">(</span><span class="n">I</span><span class="p">);</span>
+<span class="kr">end</span> <span class="nf">Main</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Тип <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Social_Security</span></span></code>, как говорят, является <em>производным типом</em>;
+его <em>родительский тип</em> ‑ Integer.</p>
+<p>Как показано в этом примере, вы можете уточнить допустимый диапазон
+при определении производного скалярного типа (такого как целое число,
+число с плавающей запятой и перечисление).</p>
+<p>Синтаксис перечислений использует синтаксис <code class="code highlight ada docutils literal notranslate"><span class="keyword reserved"><span class="pre">range</span></span> <span class="operator"><span class="pre">&lt;</span></span><span class="name"><span class="pre">диапазон</span></span><span class="operator"><span class="pre">&gt;</span></span></code>:</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kn">with</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span> <span class="kn">use</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>
+
+<span class="kd">procedure</span> <span class="nf">Greet</span> <span class="kr">is</span>
+   <span class="kd">type</span> <span class="kt">Days</span> <span class="kr">is</span> <span class="p">(</span><span class="nv">Monday</span><span class="p">,</span> <span class="nv">Tuesday</span><span class="p">,</span> <span class="nv">Wednesday</span><span class="p">,</span>
+                 <span class="nv">Thursday</span><span class="p">,</span> <span class="nv">Friday</span><span class="p">,</span>
+                 <span class="nv">Saturday</span><span class="p">,</span> <span class="nv">Sunday</span><span class="p">);</span>
+
+   <span class="kd">type</span> <span class="kt">Weekend_Days</span> <span class="kr">is</span> <span class="kr">new</span>
+     <span class="n">Days</span> <span class="kr">range</span> <span class="n">Saturday</span> <span class="p">..</span> <span class="n">Sunday</span><span class="p">;</span>
+   <span class="c1">--  New type, where only Saturday and Sunday</span>
+   <span class="c1">--  are valid literals.</span>
+<span class="kr">begin</span>
+   <span class="kc">null</span><span class="p">;</span>
+<span class="kr">end</span> <span class="nf">Greet</span><span class="p">;</span>
+</pre></div>
+</div>
+</section>
+<section id="id13">
+<h2>Подтипы<a class="headerlink" href="#id13" title="Permalink to this headline"></a></h2>
+<p>Как мы начинаем видеть, типы могут использоваться в Ada для наложения
+ограничений на допустимый диапазон значений. Однако иногда требуется
+наложить ограничения на некоторые значения, оставаясь в пределах
+одного типа. Здесь вступают в действие подтипы. Подтип не вводит новый
+тип.</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kn">with</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span> <span class="kn">use</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>
+
+<span class="kd">procedure</span> <span class="nf">Greet</span> <span class="kr">is</span>
+   <span class="kd">type</span> <span class="kt">Days</span> <span class="kr">is</span> <span class="p">(</span><span class="nv">Monday</span><span class="p">,</span> <span class="nv">Tuesday</span><span class="p">,</span> <span class="nv">Wednesday</span><span class="p">,</span>
+                 <span class="nv">Thursday</span><span class="p">,</span> <span class="nv">Friday</span><span class="p">,</span>
+                 <span class="nv">Saturday</span><span class="p">,</span> <span class="nv">Sunday</span><span class="p">);</span>
+
+   <span class="c1">--  Declaration of a subtype</span>
+   <span class="kd">subtype</span> <span class="kt">Weekend_Days</span> <span class="kr">is</span>
+     <span class="n">Days</span> <span class="kr">range</span> <span class="n">Saturday</span> <span class="p">..</span> <span class="n">Sunday</span><span class="p">;</span>
+   <span class="c1">--     ^ Constraint of the subtype</span>
+
+   <span class="n">M</span> <span class="p">:</span> <span class="n">Days</span> <span class="p">:=</span> <span class="n">Sunday</span><span class="p">;</span>
+
+   <span class="n">S</span> <span class="p">:</span> <span class="n">Weekend_Days</span> <span class="p">:=</span> <span class="n">M</span><span class="p">;</span>
+   <span class="c1">--  No error here, Days and Weekend_Days</span>
+   <span class="c1">--  are of the same type.</span>
+<span class="kr">begin</span>
+   <span class="kr">for</span> <span class="n">I</span> <span class="ow">in</span> <span class="n">Days</span> <span class="kr">loop</span>
+      <span class="kr">case</span> <span class="n">I</span> <span class="kr">is</span>
+         <span class="c1">--  Just like a type, a subtype can</span>
+         <span class="c1">--  be used as a range</span>
+         <span class="kr">when</span> <span class="n">Weekend_Days</span> <span class="p">=&gt;</span>
+            <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;Week end!&quot;</span><span class="p">);</span>
+         <span class="kr">when</span> <span class="kr">others</span> <span class="p">=&gt;</span>
+            <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;Hello on &quot;</span>
+                      <span class="o">&amp;</span> <span class="n">Days</span><span class="p">&#39;</span><span class="na">Image</span> <span class="p">(</span><span class="n">I</span><span class="p">));</span>
+      <span class="kr">end</span> <span class="kr">case</span><span class="p">;</span>
+   <span class="kr">end</span> <span class="kr">loop</span><span class="p">;</span>
+<span class="kr">end</span> <span class="nf">Greet</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Несколько подтипов предопределены в стандартном пакете Ada и
+автоматически доступны вам:</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kd">subtype</span> <span class="kt">Natural</span>  <span class="kr">is</span> <span class="kt">Integer</span> <span class="kr">range</span> <span class="mi">0</span> <span class="p">..</span> <span class="kt">Integer</span><span class="p">&#39;</span><span class="na">Last</span><span class="p">;</span>
+<span class="kd">subtype</span> <span class="kt">Positive</span> <span class="kr">is</span> <span class="kt">Integer</span> <span class="kr">range</span> <span class="mi">1</span> <span class="p">..</span> <span class="kt">Integer</span><span class="p">&#39;</span><span class="na">Last</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Хотя подтипы типа статически совместимы друг с другом, ограничения
+применяются во время выполнения: если вы нарушите ограничение подтипа,
+возникнет исключение.</p>
+<div class="ada-run-expect-failure highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kn">with</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span> <span class="kn">use</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>
+
+<span class="kd">procedure</span> <span class="nf">Greet</span> <span class="kr">is</span>
+   <span class="kd">type</span> <span class="kt">Days</span> <span class="kr">is</span> <span class="p">(</span><span class="nv">Monday</span><span class="p">,</span> <span class="nv">Tuesday</span><span class="p">,</span> <span class="nv">Wednesday</span><span class="p">,</span>
+                 <span class="nv">Thursday</span><span class="p">,</span> <span class="nv">Friday</span><span class="p">,</span>
+                 <span class="nv">Saturday</span><span class="p">,</span> <span class="nv">Sunday</span><span class="p">);</span>
+
+   <span class="kd">subtype</span> <span class="kt">Weekend_Days</span> <span class="kr">is</span>
+     <span class="n">Days</span> <span class="kr">range</span> <span class="n">Saturday</span> <span class="p">..</span> <span class="n">Sunday</span><span class="p">;</span>
+
+   <span class="n">Day</span>     <span class="p">:</span> <span class="n">Days</span> <span class="p">:=</span> <span class="n">Saturday</span><span class="p">;</span>
+   <span class="n">Weekend</span> <span class="p">:</span> <span class="n">Weekend_Days</span><span class="p">;</span>
+<span class="kr">begin</span>
+   <span class="n">Weekend</span> <span class="p">:=</span> <span class="n">Day</span><span class="p">;</span>
+   <span class="c1">--         ^ Correct: Same type, subtype</span>
+   <span class="c1">--           constraints are respected</span>
+   <span class="n">Weekend</span> <span class="p">:=</span> <span class="n">Monday</span><span class="p">;</span>
+   <span class="c1">--         ^ Wrong value for the subtype</span>
+   <span class="c1">--           Compiles, but exception at runtime</span>
+<span class="kr">end</span> <span class="nf">Greet</span><span class="p">;</span>
+</pre></div>
+</div>
+<section id="subtypealiases">
+<span id="id14"></span><h3>Подтипы в качестве псевдонимов типов<a class="headerlink" href="#subtypealiases" title="Permalink to this headline"></a></h3>
+<p>Ранее мы видели, что мы можем создавать новые типы, объявляя
+<code class="code highlight ada docutils literal notranslate"><span class="keyword declaration"><span class="pre">type</span></span> <span class="keyword type"><span class="pre">Miles</span></span> <span class="keyword reserved"><span class="pre">is</span></span> <span class="keyword reserved"><span class="pre">new</span></span> <span class="keyword type"><span class="pre">Float</span></span></code>. Мы также могли бы создать псевдонимы типов,
+которые генерируют альтернативные имена ‑ псевдонимы ‑ для известных типов.
+Следует отметить, что <em>псевдонимы</em> типов иногда называются
+<em>синонимами типов</em>.</p>
+<p>Мы достигаем этого в Ada, используя подтипы без новых ограничений.
+Однако в этом случае мы не получаем всех преимуществ, а именно строгой
+проверки типов в Ada. Перепишем пример, используя псевдонимы типов:</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kn">with</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span> <span class="kn">use</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>
+
+<span class="kd">procedure</span> <span class="nf">Undetected_Imperial_Metric_Error</span> <span class="kr">is</span>
+   <span class="c1">--  Declare two type aliases</span>
+   <span class="kd">subtype</span> <span class="kt">Meters</span> <span class="kr">is</span> <span class="kt">Float</span><span class="p">;</span>
+   <span class="kd">subtype</span> <span class="kt">Miles</span> <span class="kr">is</span> <span class="kt">Float</span><span class="p">;</span>
+
+   <span class="n">Dist_Imperial</span> <span class="p">:</span> <span class="n">Miles</span><span class="p">;</span>
+
+   <span class="c1">--  Declare a constant</span>
+   <span class="no">Dist_Metric</span> <span class="p">:</span> <span class="kr">constant</span> <span class="n">Meters</span> <span class="p">:=</span> <span class="mf">100.0</span><span class="p">;</span>
+<span class="kr">begin</span>
+   <span class="c1">--  No conversion to Miles type required:</span>
+   <span class="n">Dist_Imperial</span> <span class="p">:=</span> <span class="p">(</span><span class="n">Dist_Metric</span> <span class="o">*</span> <span class="mf">1609.0</span><span class="p">)</span> <span class="o">/</span> <span class="mf">1000.0</span><span class="p">;</span>
+
+   <span class="c1">--  Not correct, but undetected:</span>
+   <span class="n">Dist_Imperial</span> <span class="p">:=</span> <span class="n">Dist_Metric</span><span class="p">;</span>
+
+   <span class="n">Put_Line</span> <span class="p">(</span><span class="n">Miles</span><span class="p">&#39;</span><span class="na">Image</span> <span class="p">(</span><span class="n">Dist_Imperial</span><span class="p">));</span>
+<span class="kr">end</span> <span class="nf">Undetected_Imperial_Metric_Error</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>В приведенном выше примере тот факт, что и Метры (<code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Meters</span></span></code>), и Мили (<code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Miles</span></span></code>)
+являются подтипами <code class="code highlight ada docutils literal notranslate"><span class="keyword type"><span class="pre">Float</span></span></code>, позволяет нам смешивать переменные обоих типов
+без преобразования типов. Это, однако, может привести к всевозможным
+ошибкам в программировании, которых мы хотели бы избежать, как мы
+можем видеть в необнаруженной ошибке, выделенной в приведенном выше
+коде. В этом примере ошибка в присвоении значения в метрах переменной,
+предназначенной для хранения значений в милях, остается
+необнаруженной, поскольку и Метры (<code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Meters</span></span></code>), и Мили (<code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Miles</span></span></code>) являются подтипами <code class="code highlight ada docutils literal notranslate"><span class="keyword type"><span class="pre">Float</span></span></code>.
+Поэтому рекомендуется использовать строгую типизацию ‑ через тип X ‑
+это новый Y (<code class="code highlight ada docutils literal notranslate"><span class="keyword declaration"><span class="pre">type</span></span> <span class="keyword type"><span class="pre">X</span></span> <span class="keyword reserved"><span class="pre">is</span></span> <span class="keyword reserved"><span class="pre">new</span></span> <span class="name"><span class="pre">Y</span></span></code>) ‑ для случаев, подобных приведенному выше.</p>
+<p>Однако существует много ситуаций, когда псевдонимы типов полезны.
+Например, в приложении, которое использует типы с плавающей запятой в
+нескольких контекстах, мы могли бы использовать псевдонимы типов,
+чтобы указать дополнительное значение типов или избежать длинных имен
+переменных. Например, вместо того, чтобы писать:</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="n">Paid_Amount</span><span class="p">,</span> <span class="n">Due_Amount</span> <span class="p">:</span> <span class="kt">Float</span><span class="p">;</span>
+</pre></div>
+</div>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kd">subtype</span> <span class="kt">Amount</span> <span class="kr">is</span> <span class="kt">Float</span><span class="p">;</span>
+
+<span class="n">Paid</span><span class="p">,</span> <span class="n">Due</span> <span class="p">:</span> <span class="n">Amount</span><span class="p">;</span>
+</pre></div>
+</div>
+<div class="admonition- admonition">
+<p class="admonition-title">На других языках</p>
+<p>Например, в C для создания псевдонима типа можно использовать
+объявление <code class="code highlight c docutils literal notranslate"><span class="keyword"><span class="pre">typedef</span></span></code>. Например:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">typedef</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">meters</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Это соответствует описанию, которое мы видели выше, используя подтипы.
+Другие языки программирования включают эту концепцию аналогичными
+способами. Например:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>C++: <code class="docutils literal notranslate"><span class="pre">using</span> <span class="pre">meters</span> <span class="pre">=</span> <span class="pre">float;</span></code></p></li>
+<li><p>Swift: <code class="docutils literal notranslate"><span class="pre">typealias</span> <span class="pre">Meters</span> <span class="pre">=</span> <span class="pre">Double</span></code></p></li>
+<li><p>Kotlin: <code class="docutils literal notranslate"><span class="pre">typealias</span> <span class="pre">Meters</span> <span class="pre">=</span> <span class="pre">Double</span></code></p></li>
+<li><p>Haskell: <code class="docutils literal notranslate"><span class="pre">type</span> <span class="pre">Meters</span> <span class="pre">=</span> <span class="pre">Float</span></code></p></li>
+</ul>
+</div></blockquote>
+</div>
+<p>Однако следует отметить, что подтипы в Ada соответствуют псевдонимам
+типов, если и только если они не имеют новых ограничений. Таким
+образом, если добавить новое ограничение к описанию подтипа, у нас
+больше не будет псевдонима типа. Например, следующее объявление
+<em>не может</em> считаться псевдонимом типа <code class="code highlight ada docutils literal notranslate"><span class="keyword type"><span class="pre">Float</span></span></code>:</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kd">subtype</span> <span class="kt">Meters</span> <span class="kr">is</span> <span class="kt">Float</span> <span class="kr">range</span> <span class="mf">0.0</span> <span class="p">..</span> <span class="mf">1_000_000.0</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Рассмотрим другой пример:</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kd">subtype</span> <span class="kt">Degree_Celsius</span> <span class="kr">is</span> <span class="kt">Float</span><span class="p">;</span>
+
+<span class="kd">subtype</span> <span class="kt">Liquid_Water_Temperature</span> <span class="kr">is</span>
+  <span class="n">Degree_Celsius</span> <span class="kr">range</span> <span class="mf">0.0</span> <span class="p">..</span> <span class="mf">100.0</span><span class="p">;</span>
+
+<span class="kd">subtype</span> <span class="kt">Running_Water_Temperature</span> <span class="kr">is</span>
+  <span class="n">Liquid_Water_Temperature</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>В этом примере <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Liquid_Water_Temperature</span></span></code> не является псевдонимом <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Degree_Celsius</span></span></code>, поскольку добавляет новое
+ограничение, которое не было частью объявления <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Degree_Celsius</span></span></code>. Однако здесь есть два
+псевдонима типа:</p>
+<ul class="simple">
+<li><p><code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Degree_Celsius</span></span></code> является псевдонимом <code class="code highlight ada docutils literal notranslate"><span class="keyword type"><span class="pre">Float</span></span></code>;</p></li>
+<li><p><code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Running_Water_Temperature</span></span></code> является псевдонимом <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Liquid_Water_Temperature</span></span></code>, даже если сам <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Liquid_Water_Temperature</span></span></code> имеет ограниченный диапазон.</p></li>
+</ul>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          
+
+
+<footer>
+      
+      
+
+      
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+          
+            <a href="records.html" class="btn btn-neutral float-right" title="Записи" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+          
+          
+            <a href="modular_programming.html" class="btn btn-neutral" title="Модульное программирование" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+          
+        </div>
+  
+
+
+  <hr/>
+
+  <div class="legal">
+              Copyright &copy; 2022 AdaCore. All rights reserved.
+              &nbsp;&nbsp;
+              <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/80x15.png" /></a>
+              <br>
+              <a href="https://www.adacore.com/company/legal">Legal</a>
+              &nbsp; |  &nbsp;
+              <a href="https://www.adacore.com/company/privacy">Privacy Policy</a>
+              &nbsp; |  &nbsp;
+              <a href="https://github.com/AdaCore/learn/issues">Report an Issue</a>
+            </div> 
+
+</footer>
+
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+  <button id="scrollToTopBtn" title="Go to top"><i class="fas fa-caret-square-up"></i></button>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+</script>
+
+
+</body>
+</html>

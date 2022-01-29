@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Стандартная библиотека: Дата и время &mdash; learn.adacore.com</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Стандартная библиотека: Строки" href="standard_library_strings.html" />
+    <link rel="prev" title="Стандартная библиотека: Контейнеры" href="standard_library_containers.html" />
+  <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-117428-14"></script>
+<script type="text/javascript">
+  if(!Cookies.get('AdaCore_staff')) {
+    // Global site tag (gtag.js) - Google Analytics
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-117428-14');
+    // End Global site tag (gtag.js) - Google Analytics
+
+    // Google Tag Manager
+    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-KD5HNRR');
+    // End Google Tag Manager
+
+    // Twitter universal website tag code
+    !function(e,t,n,s,u,a){e.twq||(s=e.twq=function(){s.exe?s.exe.apply(s,arguments):s.queue.push(arguments);},s.version='1.1',s.queue=[],u=t.createElement(n),u.async=!0,u.src='//static.ads-twitter.com/uwt.js',a=t.getElementsByTagName(n)[0],a.parentNode.insertBefore(u,a))}(window,document,'script');
+    // Insert Twitter Pixel ID and Standard Event data below
+    twq('init','o3mlc');
+    twq('track','PageView');
+    // End Twitter universal website tag code
+
+    // LinkedIn Tracking Tags
+    _linkedin_partner_id = "482585"; window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || []; window._linkedin_data_partner_ids.push(_linkedin_partner_id);
+    (function(){var s = document.getElementsByTagName("script")[0]; var b = document.createElement("script"); b.type = "text/javascript";b.async = true; b.src = "https://snap.licdn.com/li.lms-analytics/insight.min.js"; s.parentNode.insertBefore(b, s);})();
+    // End LinkedIn Tracking Tags
+  }
+</script>
+  <!--  Essential META Tags -->
+<meta property="og:title" content=“learn.adacore.com">
+<meta property="og:description" content="An interactive learning platform to teach the Ada and SPARK programming languages.">
+<meta property="og:image" content="https://learn.adacore.com/_static/learn_meta_img.jpeg">
+<meta property="og:url" content="https://learn.adacore.com">
+<meta name="twitter:card" content="summary_large_image">
+
+<!--  Non-Essential, But Recommended -->
+<meta property="og:site_name" content="learn.adacore.com">
+<meta name="twitter:image:alt" content="An interactive learning platform to teach the Ada and SPARK programming languages.">
+
+<!--  Non-Essential, But Required for Analytics -->
+<meta name="twitter:site" content="@AdaCoreCompany">
+
+</head>
+
+<body class="wy-body-for-nav">
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KD5HNRR"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  <!-- LinkedIn Tracking Tags (noscript) -->
+  <noscript> <img height="1" width="1" style="display:none;" alt="" src="https://dc.ads.linkedin.com/collect/?pid=482585&fmt=gif" /> </noscript>
+  <!-- End LinkedIn Tracking Tags (noscript) -->
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html">
+            <img src="../_static/logo.svg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Введение</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#id2">История</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#ada">Ada сегодня</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#id6">Философия</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#spark">SPARK</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="imperative_language.html">Императивы языка</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="imperative_language.html#hello-world">Hello world</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imperative_language.html#if-then-else">Императивы языка ‑ If / Then / Else</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imperative_language.html#loops">Императивы языка ‑ Loops</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="imperative_language.html#for">Циклы For</a></li>
+<li class="toctree-l3"><a class="reference internal" href="imperative_language.html#id2">Простой цикл</a></li>
+<li class="toctree-l3"><a class="reference internal" href="imperative_language.html#while">Циклы While</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="imperative_language.html#case">Императивы языка – оператор Case</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imperative_language.html#id3">Императивы языка – декларативные регионы</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imperative_language.html#id4">Императивы языка – условные выражения</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="imperative_language.html#if">Выражение If</a></li>
+<li class="toctree-l3"><a class="reference internal" href="imperative_language.html#id5">Выражение Case</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="subprograms.html">Подпрограммы</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="subprograms.html#id2">Подпрограммы</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="subprograms.html#id3">Вызовы подпрограмм</a></li>
+<li class="toctree-l3"><a class="reference internal" href="subprograms.html#id4">Вложенные подпрограммы</a></li>
+<li class="toctree-l3"><a class="reference internal" href="subprograms.html#id5">Вызов функций</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="subprograms.html#id6">Режимы параметров</a></li>
+<li class="toctree-l2"><a class="reference internal" href="subprograms.html#id7">Вызов процедуры</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="subprograms.html#in">Параметры in</a></li>
+<li class="toctree-l3"><a class="reference internal" href="subprograms.html#in-out">Параметры in out</a></li>
+<li class="toctree-l3"><a class="reference internal" href="subprograms.html#out">Параметры out</a></li>
+<li class="toctree-l3"><a class="reference internal" href="subprograms.html#id8">Предварительное объявление подпрограмм</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="subprograms.html#subprogram-renaming">Переименование</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="modular_programming.html">Модульное программирование</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="modular_programming.html#id2">Пакеты</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modular_programming.html#id3">Использование пакета</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modular_programming.html#id4">Тело пакета</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modular_programming.html#childpackages">Дочерние пакеты</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="modular_programming.html#id6">Дочерний пакет от дочернего пакета</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modular_programming.html#id7">Множественные потомки</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modular_programming.html#id8">Видимость</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="modular_programming.html#package-renaming">Переименование</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="strongly_typed_language.html">Сильно типизированный язык</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="strongly_typed_language.html#whatisatype">Что такое тип?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="strongly_typed_language.html#integers">Целочисленные типы ‑ Integers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="strongly_typed_language.html#id3">Семантика операций</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="strongly_typed_language.html#id4">Беззнаковые типы</a></li>
+<li class="toctree-l2"><a class="reference internal" href="strongly_typed_language.html#enumtypes">Перечисления</a></li>
+<li class="toctree-l2"><a class="reference internal" href="strongly_typed_language.html#id7">Типы с плавающей запятой</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="strongly_typed_language.html#id8">Основные свойства</a></li>
+<li class="toctree-l3"><a class="reference internal" href="strongly_typed_language.html#id9">Точность типов с плавающей запятой</a></li>
+<li class="toctree-l3"><a class="reference internal" href="strongly_typed_language.html#id10">Диапазон типов с плавающей запятой</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="strongly_typed_language.html#id11">Строгая типизация</a></li>
+<li class="toctree-l2"><a class="reference internal" href="strongly_typed_language.html#id12">Производные типы</a></li>
+<li class="toctree-l2"><a class="reference internal" href="strongly_typed_language.html#id13">Подтипы</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="strongly_typed_language.html#subtypealiases">Подтипы в качестве псевдонимов типов</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="records.html">Записи</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="records.html#id2">Объявление типа записи</a></li>
+<li class="toctree-l2"><a class="reference internal" href="records.html#id3">Агрегаты</a></li>
+<li class="toctree-l2"><a class="reference internal" href="records.html#id4">Выбор компонентов</a></li>
+<li class="toctree-l2"><a class="reference internal" href="records.html#record-comp-renaming">Переименование</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="arrays.html">Массивы</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="arrays.html#id2">Объявление типа массива</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays.html#id3">Индексирование</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays.html#id4">Более простые объявления массива</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays.html#id5">Атрибут диапазона</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays.html#unconstrainedarraytypes">Неограниченные массивы</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays.html#string">Предопределенный тип массива: String</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays.html#id7">Ограничения</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays.html#id8">Возврат неограниченных массивов</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays.html#id9">Объявление массивов (2)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays.html#id10">Срезы массива</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays.html#object-renaming">Переименование</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="more_about_types.html">Подробнее о типах</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="more_about_types.html#id2">Агрегаты: краткая информация</a></li>
+<li class="toctree-l2"><a class="reference internal" href="more_about_types.html#id3">Перегрузка и квалифицированные выражения</a></li>
+<li class="toctree-l2"><a class="reference internal" href="more_about_types.html#access">Типы Access (указатели)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="more_about_types.html#allocation">Распределение (по типу) ‑ Allocation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="more_about_types.html#id5">Разыменование</a></li>
+<li class="toctree-l3"><a class="reference internal" href="more_about_types.html#id6">Другие особенности</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="more_about_types.html#id7">Взаимно рекурсивные типы</a></li>
+<li class="toctree-l2"><a class="reference internal" href="more_about_types.html#id8">Подробнее о записях</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="more_about_types.html#id9">Типы записей с динамически изменяемым размером</a></li>
+<li class="toctree-l3"><a class="reference internal" href="more_about_types.html#id10">Записи с дискриминантом</a></li>
+<li class="toctree-l3"><a class="reference internal" href="more_about_types.html#c">Записи c вариантами</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="more_about_types.html#id11">Типы с фиксированной точкой</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="more_about_types.html#id12">Десятичные типы с фиксированной точкой</a></li>
+<li class="toctree-l3"><a class="reference internal" href="more_about_types.html#id13">Типы фиксированных точек</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="more_about_types.html#id14">Типы символов</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="privacy.html">Конфиденциальность</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="privacy.html#id3">Базовая инкапсуляция</a></li>
+<li class="toctree-l2"><a class="reference internal" href="privacy.html#id4">Абстрактные типы данных</a></li>
+<li class="toctree-l2"><a class="reference internal" href="privacy.html#id5">Ограниченные типы</a></li>
+<li class="toctree-l2"><a class="reference internal" href="privacy.html#id7">Дочерние пакеты и конфиденциальность</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="generics.html">Настраиваемые модули</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="generics.html#id2">Введение</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generics.html#id3">Формальное объявление типа</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generics.html#id4">Формальное объявление объекта</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generics.html#generic">Определение тела generic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generics.html#id5">Создание экземпляра generic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generics.html#id6">Generic пакеты</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generics.html#id7">Формальные подпрограммы</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generics.html#id8">Пример: экземпляры ввода / вывода</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generics.html#id9">Пример: АТД</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generics.html#swap">Пример: Обмен (Swap)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generics.html#reversing">Пример: Реверсирование (Reversing)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generics.html#id10">Пример: Тестовое приложение</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="exceptions.html">Исключения</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="exceptions.html#id2">Объявление исключения</a></li>
+<li class="toctree-l2"><a class="reference internal" href="exceptions.html#id3">Возбуждение исключения</a></li>
+<li class="toctree-l2"><a class="reference internal" href="exceptions.html#id4">Обработка исключения</a></li>
+<li class="toctree-l2"><a class="reference internal" href="exceptions.html#id5">Предопределенные исключения</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="contracts.html">Контрактное проектирование</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="contracts.html#id2">Пред- и постусловия</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contracts.html#id3">Предикаты</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contracts.html#id4">Инварианты типа</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="interfacing_with_c.html">Взаимодействие с языком C</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="interfacing_with_c.html#id1">Многоязычный проект</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interfacing_with_c.html#id2">Соглашение о типах</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interfacing_with_c.html#id3">Подпрограммы на других языках</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="interfacing_with_c.html#c-ada">Вызов подпрограмм C в Ada</a></li>
+<li class="toctree-l3"><a class="reference internal" href="interfacing_with_c.html#ada-c">Вызов подпрограмм Ada в C</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="interfacing_with_c.html#id4">Внешние переменные</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="interfacing_with_c.html#id5">Использование глобальных переменных C в Ada</a></li>
+<li class="toctree-l3"><a class="reference internal" href="interfacing_with_c.html#id6">Использование переменных Ada в C</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="interfacing_with_c.html#id7">Создание привязок</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="interfacing_with_c.html#id8">Адаптация привязок</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="object_oriented_programming.html">Объектно-ориентированное программирование</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="object_oriented_programming.html#id2">Производные типы</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_oriented_programming.html#id3">Типы с тегами</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_oriented_programming.html#id5">Типы расширяемые классами</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_oriented_programming.html#id6">Операции диспетчеризации</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_oriented_programming.html#id7">Точечная нотация</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_oriented_programming.html#id8">Частные и ограниченные типы с тегами</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_oriented_programming.html#id9">Типы доступа в классах</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="standard_library_containers.html">Стандартная библиотека: Контейнеры</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_containers.html#id2">Векторы</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_containers.html#id3">Создание экземпляра</a></li>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_containers.html#id4">Инициализация</a></li>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_containers.html#prepend-append">Добавление элементов - Prepend и Append</a></li>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_containers.html#id5">Доступ к первому и последнему элементам</a></li>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_containers.html#id6">Итерация</a></li>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_containers.html#id7">Поиск и изменение элементов</a></li>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_containers.html#id8">Вставка элементов</a></li>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_containers.html#id9">Удаление элементов</a></li>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_containers.html#id10">Другие операции</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_containers.html#id11">Множества</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_containers.html#id12">Инициализация и итерация</a></li>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_containers.html#id13">Операции с элементами</a></li>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_containers.html#id14">Другие операции</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_containers.html#id15">Неопределенные карты</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_containers.html#id16">Хэшированные карты</a></li>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_containers.html#id17">Упорядоченные карты</a></li>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_containers.html#id18">Сложность</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Стандартная библиотека: Дата и время</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#datestimes">Обработка даты и времени</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id3">Задержка с использованием даты</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">В режиме реального времени</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id5">Сравнительный анализ</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="standard_library_strings.html">Стандартная библиотека: Строки</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_strings.html#id2">Операции со строками</a></li>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_strings.html#id3">Ограничение строк фиксированной длины</a></li>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_strings.html#id4">Ограниченные строки</a></li>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_strings.html#unboundedstrings">Неограниченные строки</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="standard_library_files_streams.html">Стандартная библиотека: Файлы и потоки</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_files_streams.html#id2">Ввод/вывод текста</a></li>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_files_streams.html#id3">Последовательный ввод-вывод</a></li>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_files_streams.html#id4">Прямой ввод / вывод</a></li>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_files_streams.html#id5">Потоковый ввод-вывод</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="standard_library_numerics.html">Стандартная библиотека: Numerics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_numerics.html#id1">Элементарные функции</a></li>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_numerics.html#id2">Генерация случайных чисел</a></li>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_numerics.html#id3">Тип комплексного числа</a></li>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_numerics.html#id4">Манипулирование векторами и матрицами</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="appendices.html">Приложения</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="appendices.html#a">Приложение A: Формальные типы настройки</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="appendices.html#id2">Неограниченная версия типа</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="appendices.html#b">Приложение B: Контейнеры</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+  <i data-toggle="wy-nav-top" class="fas fa-bars"></i>
+    <a href="../index.html">
+    <img src="../_static/logo.svg" class="logo" alt="Logo"/>
+  </a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="id1">
+<h1>Стандартная библиотека: Дата и время<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h1>
+<p>Стандартная библиотека поддерживает обработку дат и времени с
+использованием двух подходов:</p>
+<ul class="simple">
+<li><p><em>Календарный</em> подход, подходящий для обработки дат и времени в целом;</p></li>
+<li><p>Подход <em>реального времени</em>, который лучше подходит для приложений в
+реальном времени, требующих повышенной точности, например, благодаря
+доступу к абсолютным часам и интервалам времени обработки. Следует
+отметить, что этот подход поддерживает только время, а не даты.</p></li>
+</ul>
+<p>Эти два подхода представлены в следующих разделах.</p>
+<section id="datestimes">
+<span id="id2"></span><h2>Обработка даты и времени<a class="headerlink" href="#datestimes" title="Permalink to this headline"></a></h2>
+<p>Пакет <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Ada</span></span><span class="punctuation"><span class="pre">.</span></span><span class="name"><span class="pre">Calendar</span></span></code> поддерживает обработку дат и времени. Рассмотрим
+простой пример:</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kn">with</span> <span class="nn">Ada.Calendar</span><span class="p">;</span>            <span class="kn">use</span> <span class="nn">Ada.Calendar</span><span class="p">;</span>
+<span class="kn">with</span> <span class="nn">Ada.Calendar.Formatting</span><span class="p">;</span> <span class="kn">use</span> <span class="nn">Ada.Calendar.Formatting</span><span class="p">;</span>
+<span class="kn">with</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>             <span class="kn">use</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>
+
+<span class="kd">procedure</span> <span class="nf">Display_Current_Time</span> <span class="kr">is</span>
+   <span class="n">Now</span> <span class="p">:</span> <span class="n">Time</span> <span class="p">:=</span> <span class="n">Clock</span><span class="p">;</span>
+<span class="kr">begin</span>
+   <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;Current time: &quot;</span> <span class="o">&amp;</span> <span class="n">Image</span> <span class="p">(</span><span class="n">Now</span><span class="p">));</span>
+<span class="kr">end</span> <span class="nf">Display_Current_Time</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>В этом примере отображаются текущая дата и время, которые извлекаются
+при вызове функции <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Clock</span></span></code>. Мы вызываем функцию <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Image</span></span></code> из пакета
+<code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Ada</span></span><span class="punctuation"><span class="pre">.</span></span><span class="name"><span class="pre">Calendar</span></span><span class="punctuation"><span class="pre">.</span></span><span class="name"><span class="pre">Formatting</span></span></code>, чтобы получить
+строку (<code class="code highlight ada docutils literal notranslate"><span class="keyword type"><span class="pre">String</span></span></code>) для текущей даты и времени. Вместо этого мы могли бы
+получить каждый компонент с помощью функции <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Split</span></span></code>. Например:</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kn">with</span> <span class="nn">Ada.Calendar</span><span class="p">;</span>            <span class="kn">use</span> <span class="nn">Ada.Calendar</span><span class="p">;</span>
+<span class="kn">with</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>             <span class="kn">use</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>
+
+<span class="kd">procedure</span> <span class="nf">Display_Current_Year</span> <span class="kr">is</span>
+   <span class="n">Now</span>         <span class="p">:</span> <span class="n">Time</span> <span class="p">:=</span> <span class="n">Clock</span><span class="p">;</span>
+
+   <span class="n">Now_Year</span>    <span class="p">:</span> <span class="n">Year_Number</span><span class="p">;</span>
+   <span class="n">Now_Month</span>   <span class="p">:</span> <span class="n">Month_Number</span><span class="p">;</span>
+   <span class="n">Now_Day</span>     <span class="p">:</span> <span class="n">Day_Number</span><span class="p">;</span>
+   <span class="n">Now_Seconds</span> <span class="p">:</span> <span class="n">Day_Duration</span><span class="p">;</span>
+<span class="kr">begin</span>
+   <span class="n">Split</span> <span class="p">(</span><span class="n">Now</span><span class="p">,</span>
+          <span class="n">Now_Year</span><span class="p">,</span>
+          <span class="n">Now_Month</span><span class="p">,</span>
+          <span class="n">Now_Day</span><span class="p">,</span>
+          <span class="n">Now_Seconds</span><span class="p">);</span>
+
+   <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;Current year  is: &quot;</span>
+             <span class="o">&amp;</span> <span class="n">Year_Number</span><span class="p">&#39;</span><span class="na">Image</span> <span class="p">(</span><span class="n">Now_Year</span><span class="p">));</span>
+   <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;Current month is: &quot;</span>
+             <span class="o">&amp;</span> <span class="n">Month_Number</span><span class="p">&#39;</span><span class="na">Image</span> <span class="p">(</span><span class="n">Now_Month</span><span class="p">));</span>
+   <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;Current day   is: &quot;</span>
+             <span class="o">&amp;</span> <span class="n">Day_Number</span><span class="p">&#39;</span><span class="na">Image</span> <span class="p">(</span><span class="n">Now_Day</span><span class="p">));</span>
+<span class="kr">end</span> <span class="nf">Display_Current_Year</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Здесь мы получаем каждый элемент и отображаем его отдельно.</p>
+<section id="id3">
+<h3>Задержка с использованием даты<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h3>
+<p>Вы можете отложить запуск приложения, чтобы оно перезапустилось в
+определенную дату и время. Мы видели нечто подобное в главе о задачах.
+Вы делаете это с помощью инструкции <code class="code highlight ada docutils literal notranslate"><span class="keyword reserved"><span class="pre">delay</span></span> <span class="keyword reserved"><span class="pre">until</span></span></code>. Например:</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kn">with</span> <span class="nn">Ada.Calendar</span><span class="p">;</span>            <span class="kn">use</span> <span class="nn">Ada.Calendar</span><span class="p">;</span>
+<span class="kn">with</span> <span class="nn">Ada.Calendar.Formatting</span><span class="p">;</span> <span class="kn">use</span> <span class="nn">Ada.Calendar.Formatting</span><span class="p">;</span>
+<span class="kn">with</span> <span class="nn">Ada.Calendar.Time_Zones</span><span class="p">;</span> <span class="kn">use</span> <span class="nn">Ada.Calendar.Time_Zones</span><span class="p">;</span>
+<span class="kn">with</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>             <span class="kn">use</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>
+
+<span class="kd">procedure</span> <span class="nf">Display_Delay_Next_Specific_Time</span> <span class="kr">is</span>
+   <span class="n">TZ</span>   <span class="p">:</span> <span class="n">Time_Offset</span> <span class="p">:=</span> <span class="n">UTC_Time_Offset</span><span class="p">;</span>
+   <span class="n">Next</span> <span class="p">:</span> <span class="n">Time</span>        <span class="p">:=</span>
+     <span class="n">Ada</span><span class="p">.</span><span class="n">Calendar</span><span class="p">.</span><span class="n">Formatting</span><span class="p">.</span><span class="n">Time_Of</span>
+       <span class="p">(</span><span class="n">Year</span>        <span class="p">=&gt;</span> <span class="mi">2018</span><span class="p">,</span>
+        <span class="n">Month</span>       <span class="p">=&gt;</span> <span class="mi">5</span><span class="p">,</span>
+        <span class="n">Day</span>         <span class="p">=&gt;</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="n">Hour</span>        <span class="p">=&gt;</span> <span class="mi">15</span><span class="p">,</span>
+        <span class="n">Minute</span>      <span class="p">=&gt;</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="n">Second</span>      <span class="p">=&gt;</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="n">Sub_Second</span>  <span class="p">=&gt;</span> <span class="mf">0.0</span><span class="p">,</span>
+        <span class="n">Leap_Second</span> <span class="p">=&gt;</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="n">Time_Zone</span>   <span class="p">=&gt;</span> <span class="n">TZ</span><span class="p">);</span>
+
+   <span class="c1">--  Next = 2018-05-01 15:00:00.00</span>
+   <span class="c1">--         (local time-zone)</span>
+<span class="kr">begin</span>
+   <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;Let&#39;s wait until...&quot;</span><span class="p">);</span>
+   <span class="n">Put_Line</span> <span class="p">(</span><span class="n">Image</span> <span class="p">(</span><span class="n">Next</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="n">TZ</span><span class="p">));</span>
+
+   <span class="kr">delay</span> <span class="kr">until</span> <span class="n">Next</span><span class="p">;</span>
+
+   <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;Enough waiting!&quot;</span><span class="p">);</span>
+<span class="kr">end</span> <span class="nf">Display_Delay_Next_Specific_Time</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>В этом примере мы указываем дату и время, инициализируя <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Next</span></span></code> с помощью
+вызова <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Time_Of</span></span></code>, функции, принимающей различные компоненты даты (год,
+месяц и т. д.) и возвращающей элемент типа <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Time</span></span></code>. Поскольку указанная
+дата находится в прошлом, задержка <code class="code highlight ada docutils literal notranslate"><span class="keyword reserved"><span class="pre">delay</span></span> <span class="keyword reserved"><span class="pre">until</span></span></code> до выражения не даст
+заметного эффекта. Если мы пропустим дату в будущем, программа будет ждать
+наступления этой конкретной даты и времени.</p>
+<p>Здесь мы переводим время в местный часовой пояс. Если мы не указываем
+часовой пояс, по умолчанию используется всемирное координированное
+время (<em>Coordinated Universal Time</em> сокращенно UTC). Получив смещение времени
+к UTC с помощью вызова <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">UTC_Time_Offset</span></span></code> из пакета
+<code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Ada</span></span><span class="punctuation"><span class="pre">.</span></span><span class="name"><span class="pre">Calendar</span></span><span class="punctuation"><span class="pre">.</span></span><span class="name"><span class="pre">Time_Zones</span></span></code>, мы можем инициализировать <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">TZ</span></span></code> и
+использовать его при вызове <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Time_Of</span></span></code>. Это все, что нам нужно сделать,
+чтобы информация, предоставляемая <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Time_Of</span></span></code>, относилась к местному
+часовому поясу.</p>
+<p>Мы могли бы добиться аналогичного результата, инициализировав <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Next</span></span></code> с
+помощью <code class="code highlight ada docutils literal notranslate"><span class="keyword type"><span class="pre">String</span></span></code>. Мы можем сделать это с помощью вызова <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Value</span></span></code> из
+пакета <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Ada</span></span><span class="punctuation"><span class="pre">.</span></span><span class="name"><span class="pre">Calendar</span></span><span class="punctuation"><span class="pre">.</span></span><span class="name"><span class="pre">Formatting</span></span></code>. Это модифицированный код:</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kn">with</span> <span class="nn">Ada.Calendar</span><span class="p">;</span>            <span class="kn">use</span> <span class="nn">Ada.Calendar</span><span class="p">;</span>
+<span class="kn">with</span> <span class="nn">Ada.Calendar.Formatting</span><span class="p">;</span> <span class="kn">use</span> <span class="nn">Ada.Calendar.Formatting</span><span class="p">;</span>
+<span class="kn">with</span> <span class="nn">Ada.Calendar.Time_Zones</span><span class="p">;</span> <span class="kn">use</span> <span class="nn">Ada.Calendar.Time_Zones</span><span class="p">;</span>
+<span class="kn">with</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>             <span class="kn">use</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>
+
+<span class="kd">procedure</span> <span class="nf">Display_Delay_Next_Specific_Time</span> <span class="kr">is</span>
+   <span class="n">TZ</span>   <span class="p">:</span> <span class="n">Time_Offset</span> <span class="p">:=</span> <span class="n">UTC_Time_Offset</span><span class="p">;</span>
+   <span class="n">Next</span> <span class="p">:</span> <span class="n">Time</span>        <span class="p">:=</span>
+     <span class="n">Ada</span><span class="p">.</span><span class="n">Calendar</span><span class="p">.</span><span class="n">Formatting</span><span class="p">.</span><span class="n">Value</span>
+       <span class="p">(</span><span class="s">&quot;2018-05-01 15:00:00.00&quot;</span><span class="p">,</span> <span class="n">TZ</span><span class="p">);</span>
+
+   <span class="c1">--  Next = 2018-05-01 15:00:00.00</span>
+   <span class="c1">--         (local time-zone)</span>
+<span class="kr">begin</span>
+   <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;Let&#39;s wait until...&quot;</span><span class="p">);</span>
+   <span class="n">Put_Line</span> <span class="p">(</span><span class="n">Image</span> <span class="p">(</span><span class="n">Next</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="n">TZ</span><span class="p">));</span>
+
+   <span class="kr">delay</span> <span class="kr">until</span> <span class="n">Next</span><span class="p">;</span>
+
+   <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;Enough waiting!&quot;</span><span class="p">);</span>
+<span class="kr">end</span> <span class="nf">Display_Delay_Next_Specific_Time</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>В этом примере мы снова используем <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">TZ</span></span></code> в вызове <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Value</span></span></code>, чтобы
+настроить время ввода в соответствии с текущим часовым поясом.</p>
+<p>В приведенных выше примерах мы задерживались до определенной даты и
+времени. Как мы видели в главе о задачах, мы могли бы вместо этого
+указать задержку относительно текущего времени. Например, мы можем
+задержать на 5 секунд, используя текущее время:</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kn">with</span> <span class="nn">Ada.Calendar</span><span class="p">;</span>            <span class="kn">use</span> <span class="nn">Ada.Calendar</span><span class="p">;</span>
+<span class="kn">with</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>             <span class="kn">use</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>
+
+<span class="kd">procedure</span> <span class="nf">Display_Delay_Next</span> <span class="kr">is</span>
+   <span class="n">D</span>    <span class="p">:</span> <span class="kt">Duration</span> <span class="p">:=</span> <span class="mf">5.0</span><span class="p">;</span>
+   <span class="c1">--                 ^ seconds</span>
+   <span class="n">Now</span>  <span class="p">:</span> <span class="n">Time</span>     <span class="p">:=</span> <span class="n">Clock</span><span class="p">;</span>
+   <span class="n">Next</span> <span class="p">:</span> <span class="n">Time</span>     <span class="p">:=</span> <span class="n">Now</span> <span class="o">+</span> <span class="n">D</span><span class="p">;</span>
+   <span class="c1">--                       ^ use duration to</span>
+   <span class="c1">--                         specify next point</span>
+   <span class="c1">--                         in time</span>
+<span class="kr">begin</span>
+   <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;Let&#39;s wait &quot;</span>
+             <span class="o">&amp;</span> <span class="kt">Duration</span><span class="p">&#39;</span><span class="na">Image</span> <span class="p">(</span><span class="n">D</span><span class="p">)</span> <span class="o">&amp;</span> <span class="s">&quot; seconds...&quot;</span><span class="p">);</span>
+   <span class="kr">delay</span> <span class="kr">until</span> <span class="n">Next</span><span class="p">;</span>
+   <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;Enough waiting!&quot;</span><span class="p">);</span>
+<span class="kr">end</span> <span class="nf">Display_Delay_Next</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Здесь мы указываем продолжительность 5 секунд в <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">D</span></span></code>, добавляем ее к
+текущему времени из <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Now</span></span></code> и сохраняем сумму в <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Next</span></span></code>. Затем мы
+используем его в операторе <code class="code highlight ada docutils literal notranslate"><span class="keyword reserved"><span class="pre">delay</span></span> <span class="keyword reserved"><span class="pre">until</span></span></code> ‑ &quot;Задержка до&quot;.</p>
+</section>
+</section>
+<section id="id4">
+<h2>В режиме реального времени<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h2>
+<p>В дополнение к <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Ada</span></span><span class="punctuation"><span class="pre">.</span></span><span class="name"><span class="pre">Calendar</span></span></code> стандартная библиотека также поддерживает
+операции со временем для приложений реального времени. Они включены в пакет
+<code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Ada</span></span><span class="punctuation"><span class="pre">.</span></span><span class="name"><span class="pre">Real_Time</span></span></code>. Этот пакет также включает тип <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Time</span></span></code>. Однако в
+пакете <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Ada</span></span><span class="punctuation"><span class="pre">.</span></span><span class="name"><span class="pre">Real_Time</span></span></code> тип <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Time</span></span></code> используется для
+представления абсолютных часов и обработки промежутка времени. Это
+контрастирует с <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Ada</span></span><span class="punctuation"><span class="pre">.</span></span><span class="name"><span class="pre">Calendar</span></span></code>, который использует тип <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Time</span></span></code> для
+представления даты и времени.</p>
+<p>В предыдущем разделе мы использовали тип <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Time</span></span></code> из <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Ada</span></span><span class="punctuation"><span class="pre">.</span></span><span class="name"><span class="pre">Calendar</span></span></code> и
+оператор <code class="code highlight ada docutils literal notranslate"><span class="keyword reserved"><span class="pre">delay</span></span> <span class="keyword reserved"><span class="pre">until</span></span></code>, чтобы отложить приложение на 5 секунд. Вместо
+этого мы могли бы использовать пакет <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Ada</span></span><span class="punctuation"><span class="pre">.</span></span><span class="name"><span class="pre">Real_Time</span></span></code>. Давайте изменим этот
+пример:</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kn">with</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>   <span class="kn">use</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>
+<span class="kn">with</span> <span class="nn">Ada.Real_Time</span><span class="p">;</span> <span class="kn">use</span> <span class="nn">Ada.Real_Time</span><span class="p">;</span>
+
+<span class="kd">procedure</span> <span class="nf">Display_Delay_Next_Real_Time</span> <span class="kr">is</span>
+   <span class="n">D</span>     <span class="p">:</span> <span class="n">Time_Span</span> <span class="p">:=</span> <span class="n">Seconds</span> <span class="p">(</span><span class="mi">5</span><span class="p">);</span>
+   <span class="n">Next</span>  <span class="p">:</span> <span class="n">Time</span>      <span class="p">:=</span> <span class="n">Clock</span> <span class="o">+</span> <span class="n">D</span><span class="p">;</span>
+<span class="kr">begin</span>
+   <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;Let&#39;s wait &quot;</span>
+             <span class="o">&amp;</span> <span class="kt">Duration</span><span class="p">&#39;</span><span class="na">Image</span> <span class="p">(</span><span class="n">To_Duration</span> <span class="p">(</span><span class="n">D</span><span class="p">))</span>
+             <span class="o">&amp;</span> <span class="s">&quot; seconds...&quot;</span><span class="p">);</span>
+   <span class="kr">delay</span> <span class="kr">until</span> <span class="n">Next</span><span class="p">;</span>
+   <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;Enough waiting!&quot;</span><span class="p">);</span>
+<span class="kr">end</span> <span class="nf">Display_Delay_Next_Real_Time</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Основное отличие состоит в том, что <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">D</span></span></code> теперь является переменной типа
+<code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Time_Span</span></span></code>, определенной в пакете <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Ada</span></span><span class="punctuation"><span class="pre">.</span></span><span class="name"><span class="pre">Real_Time</span></span></code>. Мы вызываем
+функцию <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Seconds</span></span></code> для инициализации <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">D</span></span></code>, но мы могли бы получить
+более тонкую детализацию, вызвав вместо этого <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Nanoseconds</span></span></code>. Кроме того,
+нам нужно сначала преобразовать <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">D</span></span></code> в тип <code class="code highlight ada docutils literal notranslate"><span class="keyword type"><span class="pre">Duration</span></span></code> с помощью
+функции <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">To_Duration</span></span></code>, прежде чем мы сможем его отобразить.</p>
+<section id="id5">
+<h3>Сравнительный анализ<a class="headerlink" href="#id5" title="Permalink to this headline"></a></h3>
+<p>Одним из интересных приложений, использующих пакет <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Ada</span></span><span class="punctuation"><span class="pre">.</span></span><span class="name"><span class="pre">Real_Time</span></span></code>,
+является сравнительный анализ. Мы уже использовали этот пакет в предыдущем
+разделе при обсуждении задач. Давайте рассмотрим пример сравнительного
+анализа:</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kn">with</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>   <span class="kn">use</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>
+<span class="kn">with</span> <span class="nn">Ada.Real_Time</span><span class="p">;</span> <span class="kn">use</span> <span class="nn">Ada.Real_Time</span><span class="p">;</span>
+
+<span class="kd">procedure</span> <span class="nf">Display_Benchmarking</span> <span class="kr">is</span>
+
+   <span class="kd">procedure</span> <span class="nf">Computational_Intensive_App</span> <span class="kr">is</span>
+   <span class="kr">begin</span>
+      <span class="kr">delay</span> <span class="mf">5.0</span><span class="p">;</span>
+   <span class="kr">end</span> <span class="nf">Computational_Intensive_App</span><span class="p">;</span>
+
+   <span class="n">Start_Time</span><span class="p">,</span> <span class="n">Stop_Time</span> <span class="p">:</span> <span class="n">Time</span><span class="p">;</span>
+   <span class="n">Elapsed_Time</span>          <span class="p">:</span> <span class="n">Time_Span</span><span class="p">;</span>
+
+<span class="kr">begin</span>
+   <span class="n">Start_Time</span> <span class="p">:=</span> <span class="n">Clock</span><span class="p">;</span>
+
+   <span class="n">Computational_Intensive_App</span><span class="p">;</span>
+
+   <span class="n">Stop_Time</span>    <span class="p">:=</span> <span class="n">Clock</span><span class="p">;</span>
+   <span class="n">Elapsed_Time</span> <span class="p">:=</span> <span class="n">Stop_Time</span> <span class="o">-</span> <span class="n">Start_Time</span><span class="p">;</span>
+
+   <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;Elapsed time: &quot;</span>
+             <span class="o">&amp;</span> <span class="kt">Duration</span><span class="p">&#39;</span><span class="na">Image</span> <span class="p">(</span><span class="n">To_Duration</span> <span class="p">(</span><span class="n">Elapsed_Time</span><span class="p">))</span>
+             <span class="o">&amp;</span> <span class="s">&quot; seconds&quot;</span><span class="p">);</span>
+<span class="kr">end</span> <span class="nf">Display_Benchmarking</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>В этом примере определяется фиктивное приложение
+<code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Computational_Intensive_App</span></span></code>, реализованное с использованием простого
+оператора задержки <code class="code highlight ada docutils literal notranslate"><span class="keyword reserved"><span class="pre">delay</span></span></code>. Мы инициализируем <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Start_Time</span></span></code> и
+<code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Stop_Time</span></span></code> по текущим на тот момент часам и вычисляем прошедшее время.
+Запустив эту программу, мы видим, что время составляет примерно 5 секунд, что
+ожидается из-за оператора задержки <code class="code highlight ada docutils literal notranslate"><span class="keyword reserved"><span class="pre">delay</span></span></code>.</p>
+<p>Аналогичное приложение ‑ это сравнительный анализ процессорного
+времени. Мы можем реализовать это с помощью пакета <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Execution_Time</span></span></code>.
+Давайте изменим предыдущий пример, чтобы измерить процессорное время:</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kn">with</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>        <span class="kn">use</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>
+<span class="kn">with</span> <span class="nn">Ada.Real_Time</span><span class="p">;</span>      <span class="kn">use</span> <span class="nn">Ada.Real_Time</span><span class="p">;</span>
+<span class="kn">with</span> <span class="nn">Ada.Execution_Time</span><span class="p">;</span> <span class="kn">use</span> <span class="nn">Ada.Execution_Time</span><span class="p">;</span>
+
+<span class="kd">procedure</span> <span class="nf">Display_Benchmarking_CPU_Time</span> <span class="kr">is</span>
+
+   <span class="kd">procedure</span> <span class="nf">Computational_Intensive_App</span> <span class="kr">is</span>
+   <span class="kr">begin</span>
+      <span class="kr">delay</span> <span class="mf">5.0</span><span class="p">;</span>
+   <span class="kr">end</span> <span class="nf">Computational_Intensive_App</span><span class="p">;</span>
+
+   <span class="n">Start_Time</span><span class="p">,</span> <span class="n">Stop_Time</span> <span class="p">:</span> <span class="n">CPU_Time</span><span class="p">;</span>
+   <span class="n">Elapsed_Time</span>          <span class="p">:</span> <span class="n">Time_Span</span><span class="p">;</span>
+
+<span class="kr">begin</span>
+   <span class="n">Start_Time</span> <span class="p">:=</span> <span class="n">Clock</span><span class="p">;</span>
+
+   <span class="n">Computational_Intensive_App</span><span class="p">;</span>
+
+   <span class="n">Stop_Time</span>    <span class="p">:=</span> <span class="n">Clock</span><span class="p">;</span>
+   <span class="n">Elapsed_Time</span> <span class="p">:=</span> <span class="n">Stop_Time</span> <span class="o">-</span> <span class="n">Start_Time</span><span class="p">;</span>
+
+   <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;CPU time: &quot;</span>
+             <span class="o">&amp;</span> <span class="kt">Duration</span><span class="p">&#39;</span><span class="na">Image</span> <span class="p">(</span><span class="n">To_Duration</span> <span class="p">(</span><span class="n">Elapsed_Time</span><span class="p">))</span>
+             <span class="o">&amp;</span> <span class="s">&quot; seconds&quot;</span><span class="p">);</span>
+<span class="kr">end</span> <span class="nf">Display_Benchmarking_CPU_Time</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>В этом примере <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Start_Time</span></span></code> и <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Stop_Time</span></span></code> имеют тип <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">CPU_Time</span></span></code>
+вместо <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Time</span></span></code>. Однако мы по-прежнему вызываем функцию <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Clock</span></span></code> для
+инициализации обеих переменных и вычисления прошедшего времени так же, как и
+раньше. Запустив эту программу, мы видим, что время процессора значительно
+ниже, чем те 5 секунд, которые мы видели раньше. Это связано с тем, что
+оператор задержки <code class="code highlight ada docutils literal notranslate"><span class="keyword reserved"><span class="pre">delay</span></span></code> не требует много времени процессора.
+Результаты будут другими, если мы изменим реализацию
+<code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Computational_Intensive_App</span></span></code> для использования математических функций
+в длинном цикле. Например:</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kn">with</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>        <span class="kn">use</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>
+<span class="kn">with</span> <span class="nn">Ada.Real_Time</span><span class="p">;</span>      <span class="kn">use</span> <span class="nn">Ada.Real_Time</span><span class="p">;</span>
+<span class="kn">with</span> <span class="nn">Ada.Execution_Time</span><span class="p">;</span> <span class="kn">use</span> <span class="nn">Ada.Execution_Time</span><span class="p">;</span>
+
+<span class="kn">with</span> <span class="nn">Ada.Numerics.Generic_Elementary_Functions</span><span class="p">;</span>
+
+<span class="kd">procedure</span> <span class="nf">Display_Benchmarking_Math</span> <span class="kr">is</span>
+
+   <span class="kd">procedure</span> <span class="nf">Computational_Intensive_App</span> <span class="kr">is</span>
+      <span class="kd">package</span> <span class="nc">Funcs</span> <span class="kr">is new</span> <span class="nc">Ada.Numerics.Generic_Elementary_Functions</span>
+        <span class="p">(</span><span class="nv">Float_Type</span> <span class="p">=&gt;</span> Long_Long_Float<span class="p">);</span>
+      <span class="kn">use</span> <span class="nn">Funcs</span><span class="p">;</span>
+
+      <span class="n">X</span> <span class="p">:</span> <span class="kt">Long_Long_Float</span><span class="p">;</span>
+   <span class="kr">begin</span>
+      <span class="kr">for</span> <span class="n">I</span> <span class="ow">in</span> <span class="mi">0</span> <span class="p">..</span> <span class="mi">1_000_000</span> <span class="kr">loop</span>
+         <span class="n">X</span> <span class="p">:=</span> <span class="n">Tan</span> <span class="p">(</span><span class="n">Arctan</span>
+                   <span class="p">(</span><span class="n">Tan</span> <span class="p">(</span><span class="n">Arctan</span>
+                      <span class="p">(</span><span class="n">Tan</span> <span class="p">(</span><span class="n">Arctan</span>
+                         <span class="p">(</span><span class="n">Tan</span> <span class="p">(</span><span class="n">Arctan</span>
+                            <span class="p">(</span><span class="n">Tan</span> <span class="p">(</span><span class="n">Arctan</span>
+                               <span class="p">(</span><span class="n">Tan</span> <span class="p">(</span><span class="n">Arctan</span>
+                                  <span class="p">(</span><span class="mf">0.577</span><span class="p">))))))))))));</span>
+      <span class="kr">end</span> <span class="kr">loop</span><span class="p">;</span>
+   <span class="kr">end</span> <span class="nf">Computational_Intensive_App</span><span class="p">;</span>
+
+   <span class="kd">procedure</span> <span class="nf">Benchm_Elapsed_Time</span> <span class="kr">is</span>
+      <span class="n">Start_Time</span><span class="p">,</span> <span class="n">Stop_Time</span> <span class="p">:</span> <span class="n">Time</span><span class="p">;</span>
+      <span class="n">Elapsed_Time</span>          <span class="p">:</span> <span class="n">Time_Span</span><span class="p">;</span>
+
+   <span class="kr">begin</span>
+      <span class="n">Start_Time</span> <span class="p">:=</span> <span class="n">Clock</span><span class="p">;</span>
+
+      <span class="n">Computational_Intensive_App</span><span class="p">;</span>
+
+      <span class="n">Stop_Time</span>    <span class="p">:=</span> <span class="n">Clock</span><span class="p">;</span>
+      <span class="n">Elapsed_Time</span> <span class="p">:=</span> <span class="n">Stop_Time</span> <span class="o">-</span> <span class="n">Start_Time</span><span class="p">;</span>
+
+      <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;Elapsed time: &quot;</span>
+                <span class="o">&amp;</span> <span class="kt">Duration</span><span class="p">&#39;</span><span class="na">Image</span> <span class="p">(</span><span class="n">To_Duration</span> <span class="p">(</span><span class="n">Elapsed_Time</span><span class="p">))</span>
+                <span class="o">&amp;</span> <span class="s">&quot; seconds&quot;</span><span class="p">);</span>
+   <span class="kr">end</span> <span class="nf">Benchm_Elapsed_Time</span><span class="p">;</span>
+
+   <span class="kd">procedure</span> <span class="nf">Benchm_CPU_Time</span> <span class="kr">is</span>
+      <span class="n">Start_Time</span><span class="p">,</span> <span class="n">Stop_Time</span> <span class="p">:</span> <span class="n">CPU_Time</span><span class="p">;</span>
+      <span class="n">Elapsed_Time</span>          <span class="p">:</span> <span class="n">Time_Span</span><span class="p">;</span>
+
+   <span class="kr">begin</span>
+      <span class="n">Start_Time</span> <span class="p">:=</span> <span class="n">Clock</span><span class="p">;</span>
+
+      <span class="n">Computational_Intensive_App</span><span class="p">;</span>
+
+      <span class="n">Stop_Time</span>    <span class="p">:=</span> <span class="n">Clock</span><span class="p">;</span>
+      <span class="n">Elapsed_Time</span> <span class="p">:=</span> <span class="n">Stop_Time</span> <span class="o">-</span> <span class="n">Start_Time</span><span class="p">;</span>
+
+      <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;CPU time: &quot;</span>
+                <span class="o">&amp;</span> <span class="kt">Duration</span><span class="p">&#39;</span><span class="na">Image</span> <span class="p">(</span><span class="n">To_Duration</span> <span class="p">(</span><span class="n">Elapsed_Time</span><span class="p">))</span>
+                <span class="o">&amp;</span> <span class="s">&quot; seconds&quot;</span><span class="p">);</span>
+   <span class="kr">end</span> <span class="nf">Benchm_CPU_Time</span><span class="p">;</span>
+<span class="kr">begin</span>
+   <span class="n">Benchm_Elapsed_Time</span><span class="p">;</span>
+   <span class="n">Benchm_CPU_Time</span><span class="p">;</span>
+<span class="kr">end</span> <span class="nf">Display_Benchmarking_Math</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Теперь, когда наша фиктивная <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Computational_Intensive_App</span></span></code> включает
+математические операции, требующие значительного времени ЦП, измеренное
+затраченное время и время ЦП намного ближе друг к другу, чем раньше.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          
+
+
+<footer>
+      
+      
+
+      
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+          
+            <a href="standard_library_strings.html" class="btn btn-neutral float-right" title="Стандартная библиотека: Строки" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+          
+          
+            <a href="standard_library_containers.html" class="btn btn-neutral" title="Стандартная библиотека: Контейнеры" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+          
+        </div>
+  
+
+
+  <hr/>
+
+  <div class="legal">
+              Copyright &copy; 2022 AdaCore. All rights reserved.
+              &nbsp;&nbsp;
+              <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/80x15.png" /></a>
+              <br>
+              <a href="https://www.adacore.com/company/legal">Legal</a>
+              &nbsp; |  &nbsp;
+              <a href="https://www.adacore.com/company/privacy">Privacy Policy</a>
+              &nbsp; |  &nbsp;
+              <a href="https://github.com/AdaCore/learn/issues">Report an Issue</a>
+            </div> 
+
+</footer>
+
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+  <button id="scrollToTopBtn" title="Go to top"><i class="fas fa-caret-square-up"></i></button>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+</script>
+
+
+</body>
+</html>

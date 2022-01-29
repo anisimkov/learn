@@ -1,0 +1,1205 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Массивы &mdash; learn.adacore.com</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Подробнее о типах" href="more_about_types.html" />
+    <link rel="prev" title="Записи" href="records.html" />
+  <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-117428-14"></script>
+<script type="text/javascript">
+  if(!Cookies.get('AdaCore_staff')) {
+    // Global site tag (gtag.js) - Google Analytics
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-117428-14');
+    // End Global site tag (gtag.js) - Google Analytics
+
+    // Google Tag Manager
+    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-KD5HNRR');
+    // End Google Tag Manager
+
+    // Twitter universal website tag code
+    !function(e,t,n,s,u,a){e.twq||(s=e.twq=function(){s.exe?s.exe.apply(s,arguments):s.queue.push(arguments);},s.version='1.1',s.queue=[],u=t.createElement(n),u.async=!0,u.src='//static.ads-twitter.com/uwt.js',a=t.getElementsByTagName(n)[0],a.parentNode.insertBefore(u,a))}(window,document,'script');
+    // Insert Twitter Pixel ID and Standard Event data below
+    twq('init','o3mlc');
+    twq('track','PageView');
+    // End Twitter universal website tag code
+
+    // LinkedIn Tracking Tags
+    _linkedin_partner_id = "482585"; window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || []; window._linkedin_data_partner_ids.push(_linkedin_partner_id);
+    (function(){var s = document.getElementsByTagName("script")[0]; var b = document.createElement("script"); b.type = "text/javascript";b.async = true; b.src = "https://snap.licdn.com/li.lms-analytics/insight.min.js"; s.parentNode.insertBefore(b, s);})();
+    // End LinkedIn Tracking Tags
+  }
+</script>
+  <!--  Essential META Tags -->
+<meta property="og:title" content=“learn.adacore.com">
+<meta property="og:description" content="An interactive learning platform to teach the Ada and SPARK programming languages.">
+<meta property="og:image" content="https://learn.adacore.com/_static/learn_meta_img.jpeg">
+<meta property="og:url" content="https://learn.adacore.com">
+<meta name="twitter:card" content="summary_large_image">
+
+<!--  Non-Essential, But Recommended -->
+<meta property="og:site_name" content="learn.adacore.com">
+<meta name="twitter:image:alt" content="An interactive learning platform to teach the Ada and SPARK programming languages.">
+
+<!--  Non-Essential, But Required for Analytics -->
+<meta name="twitter:site" content="@AdaCoreCompany">
+
+</head>
+
+<body class="wy-body-for-nav">
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KD5HNRR"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  <!-- LinkedIn Tracking Tags (noscript) -->
+  <noscript> <img height="1" width="1" style="display:none;" alt="" src="https://dc.ads.linkedin.com/collect/?pid=482585&fmt=gif" /> </noscript>
+  <!-- End LinkedIn Tracking Tags (noscript) -->
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html">
+            <img src="../_static/logo.svg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Введение</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#id2">История</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#ada">Ada сегодня</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#id6">Философия</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#spark">SPARK</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="imperative_language.html">Императивы языка</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="imperative_language.html#hello-world">Hello world</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imperative_language.html#if-then-else">Императивы языка ‑ If / Then / Else</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imperative_language.html#loops">Императивы языка ‑ Loops</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="imperative_language.html#for">Циклы For</a></li>
+<li class="toctree-l3"><a class="reference internal" href="imperative_language.html#id2">Простой цикл</a></li>
+<li class="toctree-l3"><a class="reference internal" href="imperative_language.html#while">Циклы While</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="imperative_language.html#case">Императивы языка – оператор Case</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imperative_language.html#id3">Императивы языка – декларативные регионы</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imperative_language.html#id4">Императивы языка – условные выражения</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="imperative_language.html#if">Выражение If</a></li>
+<li class="toctree-l3"><a class="reference internal" href="imperative_language.html#id5">Выражение Case</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="subprograms.html">Подпрограммы</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="subprograms.html#id2">Подпрограммы</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="subprograms.html#id3">Вызовы подпрограмм</a></li>
+<li class="toctree-l3"><a class="reference internal" href="subprograms.html#id4">Вложенные подпрограммы</a></li>
+<li class="toctree-l3"><a class="reference internal" href="subprograms.html#id5">Вызов функций</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="subprograms.html#id6">Режимы параметров</a></li>
+<li class="toctree-l2"><a class="reference internal" href="subprograms.html#id7">Вызов процедуры</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="subprograms.html#in">Параметры in</a></li>
+<li class="toctree-l3"><a class="reference internal" href="subprograms.html#in-out">Параметры in out</a></li>
+<li class="toctree-l3"><a class="reference internal" href="subprograms.html#out">Параметры out</a></li>
+<li class="toctree-l3"><a class="reference internal" href="subprograms.html#id8">Предварительное объявление подпрограмм</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="subprograms.html#subprogram-renaming">Переименование</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="modular_programming.html">Модульное программирование</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="modular_programming.html#id2">Пакеты</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modular_programming.html#id3">Использование пакета</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modular_programming.html#id4">Тело пакета</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modular_programming.html#childpackages">Дочерние пакеты</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="modular_programming.html#id6">Дочерний пакет от дочернего пакета</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modular_programming.html#id7">Множественные потомки</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modular_programming.html#id8">Видимость</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="modular_programming.html#package-renaming">Переименование</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="strongly_typed_language.html">Сильно типизированный язык</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="strongly_typed_language.html#whatisatype">Что такое тип?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="strongly_typed_language.html#integers">Целочисленные типы ‑ Integers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="strongly_typed_language.html#id3">Семантика операций</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="strongly_typed_language.html#id4">Беззнаковые типы</a></li>
+<li class="toctree-l2"><a class="reference internal" href="strongly_typed_language.html#enumtypes">Перечисления</a></li>
+<li class="toctree-l2"><a class="reference internal" href="strongly_typed_language.html#id7">Типы с плавающей запятой</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="strongly_typed_language.html#id8">Основные свойства</a></li>
+<li class="toctree-l3"><a class="reference internal" href="strongly_typed_language.html#id9">Точность типов с плавающей запятой</a></li>
+<li class="toctree-l3"><a class="reference internal" href="strongly_typed_language.html#id10">Диапазон типов с плавающей запятой</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="strongly_typed_language.html#id11">Строгая типизация</a></li>
+<li class="toctree-l2"><a class="reference internal" href="strongly_typed_language.html#id12">Производные типы</a></li>
+<li class="toctree-l2"><a class="reference internal" href="strongly_typed_language.html#id13">Подтипы</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="strongly_typed_language.html#subtypealiases">Подтипы в качестве псевдонимов типов</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="records.html">Записи</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="records.html#id2">Объявление типа записи</a></li>
+<li class="toctree-l2"><a class="reference internal" href="records.html#id3">Агрегаты</a></li>
+<li class="toctree-l2"><a class="reference internal" href="records.html#id4">Выбор компонентов</a></li>
+<li class="toctree-l2"><a class="reference internal" href="records.html#record-comp-renaming">Переименование</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Массивы</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">Объявление типа массива</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">Индексирование</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">Более простые объявления массива</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id5">Атрибут диапазона</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#unconstrainedarraytypes">Неограниченные массивы</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#string">Предопределенный тип массива: String</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id7">Ограничения</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id8">Возврат неограниченных массивов</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id9">Объявление массивов (2)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id10">Срезы массива</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#object-renaming">Переименование</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="more_about_types.html">Подробнее о типах</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="more_about_types.html#id2">Агрегаты: краткая информация</a></li>
+<li class="toctree-l2"><a class="reference internal" href="more_about_types.html#id3">Перегрузка и квалифицированные выражения</a></li>
+<li class="toctree-l2"><a class="reference internal" href="more_about_types.html#access">Типы Access (указатели)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="more_about_types.html#allocation">Распределение (по типу) ‑ Allocation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="more_about_types.html#id5">Разыменование</a></li>
+<li class="toctree-l3"><a class="reference internal" href="more_about_types.html#id6">Другие особенности</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="more_about_types.html#id7">Взаимно рекурсивные типы</a></li>
+<li class="toctree-l2"><a class="reference internal" href="more_about_types.html#id8">Подробнее о записях</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="more_about_types.html#id9">Типы записей с динамически изменяемым размером</a></li>
+<li class="toctree-l3"><a class="reference internal" href="more_about_types.html#id10">Записи с дискриминантом</a></li>
+<li class="toctree-l3"><a class="reference internal" href="more_about_types.html#c">Записи c вариантами</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="more_about_types.html#id11">Типы с фиксированной точкой</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="more_about_types.html#id12">Десятичные типы с фиксированной точкой</a></li>
+<li class="toctree-l3"><a class="reference internal" href="more_about_types.html#id13">Типы фиксированных точек</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="more_about_types.html#id14">Типы символов</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="privacy.html">Конфиденциальность</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="privacy.html#id3">Базовая инкапсуляция</a></li>
+<li class="toctree-l2"><a class="reference internal" href="privacy.html#id4">Абстрактные типы данных</a></li>
+<li class="toctree-l2"><a class="reference internal" href="privacy.html#id5">Ограниченные типы</a></li>
+<li class="toctree-l2"><a class="reference internal" href="privacy.html#id7">Дочерние пакеты и конфиденциальность</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="generics.html">Настраиваемые модули</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="generics.html#id2">Введение</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generics.html#id3">Формальное объявление типа</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generics.html#id4">Формальное объявление объекта</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generics.html#generic">Определение тела generic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generics.html#id5">Создание экземпляра generic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generics.html#id6">Generic пакеты</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generics.html#id7">Формальные подпрограммы</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generics.html#id8">Пример: экземпляры ввода / вывода</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generics.html#id9">Пример: АТД</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generics.html#swap">Пример: Обмен (Swap)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generics.html#reversing">Пример: Реверсирование (Reversing)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generics.html#id10">Пример: Тестовое приложение</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="exceptions.html">Исключения</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="exceptions.html#id2">Объявление исключения</a></li>
+<li class="toctree-l2"><a class="reference internal" href="exceptions.html#id3">Возбуждение исключения</a></li>
+<li class="toctree-l2"><a class="reference internal" href="exceptions.html#id4">Обработка исключения</a></li>
+<li class="toctree-l2"><a class="reference internal" href="exceptions.html#id5">Предопределенные исключения</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="contracts.html">Контрактное проектирование</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="contracts.html#id2">Пред- и постусловия</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contracts.html#id3">Предикаты</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contracts.html#id4">Инварианты типа</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="interfacing_with_c.html">Взаимодействие с языком C</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="interfacing_with_c.html#id1">Многоязычный проект</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interfacing_with_c.html#id2">Соглашение о типах</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interfacing_with_c.html#id3">Подпрограммы на других языках</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="interfacing_with_c.html#c-ada">Вызов подпрограмм C в Ada</a></li>
+<li class="toctree-l3"><a class="reference internal" href="interfacing_with_c.html#ada-c">Вызов подпрограмм Ada в C</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="interfacing_with_c.html#id4">Внешние переменные</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="interfacing_with_c.html#id5">Использование глобальных переменных C в Ada</a></li>
+<li class="toctree-l3"><a class="reference internal" href="interfacing_with_c.html#id6">Использование переменных Ada в C</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="interfacing_with_c.html#id7">Создание привязок</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="interfacing_with_c.html#id8">Адаптация привязок</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="object_oriented_programming.html">Объектно-ориентированное программирование</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="object_oriented_programming.html#id2">Производные типы</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_oriented_programming.html#id3">Типы с тегами</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_oriented_programming.html#id5">Типы расширяемые классами</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_oriented_programming.html#id6">Операции диспетчеризации</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_oriented_programming.html#id7">Точечная нотация</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_oriented_programming.html#id8">Частные и ограниченные типы с тегами</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_oriented_programming.html#id9">Типы доступа в классах</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="standard_library_containers.html">Стандартная библиотека: Контейнеры</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_containers.html#id2">Векторы</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_containers.html#id3">Создание экземпляра</a></li>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_containers.html#id4">Инициализация</a></li>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_containers.html#prepend-append">Добавление элементов - Prepend и Append</a></li>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_containers.html#id5">Доступ к первому и последнему элементам</a></li>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_containers.html#id6">Итерация</a></li>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_containers.html#id7">Поиск и изменение элементов</a></li>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_containers.html#id8">Вставка элементов</a></li>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_containers.html#id9">Удаление элементов</a></li>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_containers.html#id10">Другие операции</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_containers.html#id11">Множества</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_containers.html#id12">Инициализация и итерация</a></li>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_containers.html#id13">Операции с элементами</a></li>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_containers.html#id14">Другие операции</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_containers.html#id15">Неопределенные карты</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_containers.html#id16">Хэшированные карты</a></li>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_containers.html#id17">Упорядоченные карты</a></li>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_containers.html#id18">Сложность</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="standard_library_dates_times.html">Стандартная библиотека: Дата и время</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_dates_times.html#datestimes">Обработка даты и времени</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_dates_times.html#id3">Задержка с использованием даты</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_dates_times.html#id4">В режиме реального времени</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_dates_times.html#id5">Сравнительный анализ</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="standard_library_strings.html">Стандартная библиотека: Строки</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_strings.html#id2">Операции со строками</a></li>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_strings.html#id3">Ограничение строк фиксированной длины</a></li>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_strings.html#id4">Ограниченные строки</a></li>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_strings.html#unboundedstrings">Неограниченные строки</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="standard_library_files_streams.html">Стандартная библиотека: Файлы и потоки</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_files_streams.html#id2">Ввод/вывод текста</a></li>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_files_streams.html#id3">Последовательный ввод-вывод</a></li>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_files_streams.html#id4">Прямой ввод / вывод</a></li>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_files_streams.html#id5">Потоковый ввод-вывод</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="standard_library_numerics.html">Стандартная библиотека: Numerics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_numerics.html#id1">Элементарные функции</a></li>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_numerics.html#id2">Генерация случайных чисел</a></li>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_numerics.html#id3">Тип комплексного числа</a></li>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_numerics.html#id4">Манипулирование векторами и матрицами</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="appendices.html">Приложения</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="appendices.html#a">Приложение A: Формальные типы настройки</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="appendices.html#id2">Неограниченная версия типа</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="appendices.html#b">Приложение B: Контейнеры</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+  <i data-toggle="wy-nav-top" class="fas fa-bars"></i>
+    <a href="../index.html">
+    <img src="../_static/logo.svg" class="logo" alt="Logo"/>
+  </a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="id1">
+<h1>Массивы<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h1>
+<p>Массивы предоставляют еще одно фундаментальное семейство составных
+типов в Ada.</p>
+<section id="id2">
+<h2>Объявление типа массива<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h2>
+<p>Массивы в Ada используются для определения непрерывных коллекций
+элементов, которые можно выбрать путем индексации.</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kn">with</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span> <span class="kn">use</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>
+
+<span class="kd">procedure</span> <span class="nf">Greet</span> <span class="kr">is</span>
+   <span class="kd">type</span> <span class="kt">My_Int</span> <span class="kr">is</span> <span class="kr">range</span> <span class="mi">0</span> <span class="p">..</span> <span class="mi">1000</span><span class="p">;</span>
+   <span class="kd">type</span> <span class="kt">Index</span> <span class="kr">is</span> <span class="kr">range</span> <span class="mi">1</span> <span class="p">..</span> <span class="mi">5</span><span class="p">;</span>
+
+   <span class="kd">type</span> <span class="kt">My_Int_Array</span> <span class="kr">is</span>
+     <span class="kr">array</span> <span class="p">(</span><span class="n">Index</span><span class="p">)</span> <span class="kr">of</span> <span class="n">My_Int</span><span class="p">;</span>
+   <span class="c1">--                 ^ Type of elements</span>
+   <span class="c1">--       ^ Bounds of the array</span>
+   <span class="n">Arr</span> <span class="p">:</span> <span class="n">My_Int_Array</span> <span class="p">:=</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">11</span><span class="p">);</span>
+   <span class="c1">--                    ^ Array literal</span>
+   <span class="c1">--                      (aggregate)</span>
+
+   <span class="n">V</span> <span class="p">:</span> <span class="n">My_Int</span><span class="p">;</span>
+<span class="kr">begin</span>
+   <span class="kr">for</span> <span class="n">I</span> <span class="ow">in</span> <span class="n">Index</span> <span class="kr">loop</span>
+      <span class="n">V</span> <span class="p">:=</span> <span class="n">Arr</span> <span class="p">(</span><span class="n">I</span><span class="p">);</span>
+      <span class="c1">--        ^ Take the Ith element</span>
+      <span class="n">Put</span> <span class="p">(</span><span class="n">My_Int</span><span class="p">&#39;</span><span class="na">Image</span> <span class="p">(</span><span class="n">V</span><span class="p">));</span>
+   <span class="kr">end</span> <span class="kr">loop</span><span class="p">;</span>
+   <span class="n">New_Line</span><span class="p">;</span>
+<span class="kr">end</span> <span class="nf">Greet</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Первое, что следует отметить, - это то, что мы указываем тип индекса
+для массива, а не его размер. Здесь мы объявили целочисленный тип с
+именем <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Index</span></span></code> в диапазоне от <code class="code highlight ada docutils literal notranslate"><span class="literal number integer"><span class="pre">1</span></span></code> до <code class="code highlight ada docutils literal notranslate"><span class="literal number integer"><span class="pre">5</span></span></code>, поэтому каждый
+экземпляр массива будет иметь 5 элементов, с начальным элементом с индексом
+1 и последним элементом с индексом 5.</p>
+<p>Хотя в этом примере для индекса использовался целочисленный тип,
+подход Ada является более общим: любой дискретный тип может
+индексировать массив, включая типы перечислений
+(<a class="reference internal" href="strongly_typed_language.html#enumtypes"><span class="std std-ref">Enum types</span></a>). Скоро мы увидим, что это значит.</p>
+<p>Еще один момент, который следует отметить, заключается в том, что
+запрос элемента массива по заданному индексу использует тот же
+синтаксис, что и для вызовов функций: то есть объект массива, за
+которым следует индекс, который заключен в круглые скобки.</p>
+<p>Таким образом, когда вы видите выражение, такое как <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">A</span></span> <span class="punctuation"><span class="pre">(</span></span><span class="name"><span class="pre">B</span></span><span class="punctuation"><span class="pre">)</span></span></code>, является
+ли оно вызовом функции или индексом массива, зависит от того, на что
+ссылается <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">A</span></span></code>.</p>
+<p>Наконец, обратите внимание, как мы инициализируем массив выражением
+<code class="code highlight ada docutils literal notranslate"><span class="punctuation"><span class="pre">(</span></span><span class="literal number integer"><span class="pre">2</span></span><span class="punctuation"><span class="pre">,</span></span> <span class="literal number integer"><span class="pre">3</span></span><span class="punctuation"><span class="pre">,</span></span> <span class="literal number integer"><span class="pre">5</span></span><span class="punctuation"><span class="pre">,</span></span> <span class="literal number integer"><span class="pre">7</span></span><span class="punctuation"><span class="pre">,</span></span> <span class="literal number integer"><span class="pre">11</span></span><span class="punctuation"><span class="pre">)</span></span></code>. Это еще один вид агрегата в Ada, который в
+некотором смысле является буквальным выражением для массива, точно так
+же, как <code class="code highlight ada docutils literal notranslate"><span class="literal number integer"><span class="pre">3</span></span></code> является буквальным выражением для целого числа.
+Обозначения очень мощные, с рядом свойств, которые мы представим позже.
+Подробный обзор появляется в нотации агрегированных типов
+(<a class="reference internal" href="more_about_types.html#aggregates"><span class="std std-ref">aggregate types</span></a>)</p>
+<p>Не связанный с массивами, пример также иллюстрирует две процедуры
+из:ada:<cite>Ada.Text_IO</cite>:</p>
+<ul class="simple">
+<li><p><code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Put</span></span></code> ‑ выводит строку без завершающего конца строки.</p></li>
+<li><p><code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">New_Line</span></span></code> ‑ вывод конца строки</p></li>
+</ul>
+<p>Давайте теперь углубимся в то, что значит иметь возможность
+использовать любой дискретный тип для индексации в массиве.</p>
+<div class="admonition- admonition">
+<p class="admonition-title">На других языках</p>
+<p>Семантически объект массива в Ada - это вся структура данных, а не
+просто дескриптор или указатель. В отличие от C и C ++, не существует
+неявной эквивалентности между массивом и указателем на его начальный
+элемент.</p>
+</div>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kn">with</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span> <span class="kn">use</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>
+
+<span class="kd">procedure</span> <span class="nf">Array_Bounds_Example</span> <span class="kr">is</span>
+   <span class="kd">type</span> <span class="kt">My_Int</span> <span class="kr">is</span> <span class="kr">range</span> <span class="mi">0</span> <span class="p">..</span> <span class="mi">1000</span><span class="p">;</span>
+   <span class="kd">type</span> <span class="kt">Index</span> <span class="kr">is</span> <span class="kr">range</span> <span class="mi">11</span> <span class="p">..</span> <span class="mi">15</span><span class="p">;</span>
+   <span class="c1">--                  ^ Low bound can be any value</span>
+   <span class="kd">type</span> <span class="kt">My_Int_Array</span> <span class="kr">is</span> <span class="kr">array</span> <span class="p">(</span><span class="n">Index</span><span class="p">)</span> <span class="kr">of</span> <span class="n">My_Int</span><span class="p">;</span>
+   <span class="no">Tab</span> <span class="p">:</span> <span class="kr">constant</span> <span class="n">My_Int_Array</span> <span class="p">:=</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">11</span><span class="p">);</span>
+<span class="kr">begin</span>
+   <span class="kr">for</span> <span class="n">I</span> <span class="ow">in</span> <span class="n">Index</span> <span class="kr">loop</span>
+      <span class="n">Put</span> <span class="p">(</span><span class="n">My_Int</span><span class="p">&#39;</span><span class="na">Image</span> <span class="p">(</span><span class="n">Tab</span> <span class="p">(</span><span class="n">I</span><span class="p">)));</span>
+   <span class="kr">end</span> <span class="kr">loop</span><span class="p">;</span>
+   <span class="n">New_Line</span><span class="p">;</span>
+<span class="kr">end</span> <span class="nf">Array_Bounds_Example</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Одним из эффектов является то, что границы массива могут быть любыми
+значениями. В первом примере мы создали тип массива, первый индекс
+которого равен <code class="code highlight ada docutils literal notranslate"><span class="literal number integer"><span class="pre">1</span></span></code>, но в приведенном выше примере мы объявляем тип
+массива, первый индекс которого равен <code class="code highlight ada docutils literal notranslate"><span class="literal number integer"><span class="pre">11</span></span></code>.</p>
+<p>Это прекрасно работает в Ada, и, кроме того, поскольку мы используем
+тип индекса в качестве диапазона для перебора индексов массива, код,
+использующий массив, изменять не нужно.</p>
+<p>Это приводит нас к важному следствию, касающемуся кода, работающего с
+массивами. Поскольку границы могут варьироваться, вы не должны
+предполагать или жестко указывать определенные границы при повторении
+или использовании массивов. Это означает, что приведенный выше код
+хорош, потому что он использует тип индекса, но цикл for, показанный
+ниже, является плохой практикой, даже если он работает правильно:</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kr">for</span> <span class="n">I</span> <span class="ow">in</span> <span class="mi">11</span> <span class="p">..</span> <span class="mi">15</span> <span class="kr">loop</span>
+   <span class="n">Tab</span> <span class="p">(</span><span class="n">I</span><span class="p">)</span> <span class="p">:=</span> <span class="n">Tab</span> <span class="p">(</span><span class="n">I</span><span class="p">)</span> <span class="o">*</span> <span class="mi">2</span><span class="p">;</span>
+<span class="kr">end</span> <span class="kr">loop</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Поскольку для индексации массива можно использовать любой дискретный
+тип, разрешены типы перечисления.</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kn">with</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span> <span class="kn">use</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>
+
+<span class="kd">procedure</span> <span class="nf">Month_Example</span> <span class="kr">is</span>
+   <span class="kd">type</span> <span class="kt">Month_Duration</span> <span class="kr">is</span> <span class="kr">range</span> <span class="mi">1</span> <span class="p">..</span> <span class="mi">31</span><span class="p">;</span>
+   <span class="kd">type</span> <span class="kt">Month</span> <span class="kr">is</span> <span class="p">(</span><span class="nv">Jan</span><span class="p">,</span> <span class="nv">Feb</span><span class="p">,</span> <span class="nv">Mar</span><span class="p">,</span> <span class="nv">Apr</span><span class="p">,</span>
+                  <span class="nv">May</span><span class="p">,</span> <span class="nv">Jun</span><span class="p">,</span> <span class="nv">Jul</span><span class="p">,</span> <span class="nv">Aug</span><span class="p">,</span>
+                  <span class="nv">Sep</span><span class="p">,</span> <span class="nv">Oct</span><span class="p">,</span> <span class="nv">Nov</span><span class="p">,</span> <span class="nv">Dec</span><span class="p">);</span>
+
+   <span class="kd">type</span> <span class="kt">My_Int_Array</span> <span class="kr">is</span>
+     <span class="kr">array</span> <span class="p">(</span><span class="n">Month</span><span class="p">)</span> <span class="kr">of</span> <span class="n">Month_Duration</span><span class="p">;</span>
+   <span class="c1">--       ^ Can use an enumeration type</span>
+   <span class="c1">--         as the index</span>
+
+   <span class="no">Tab</span> <span class="p">:</span> <span class="kr">constant</span> <span class="n">My_Int_Array</span> <span class="p">:=</span>
+   <span class="c1">--    ^ constant is like a variable but</span>
+   <span class="c1">--      cannot be modified</span>
+     <span class="p">(</span><span class="mi">31</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span>
+      <span class="mi">31</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">31</span><span class="p">);</span>
+   <span class="c1">--  Maps months to number of days</span>
+   <span class="c1">--  (ignoring leap years)</span>
+
+   <span class="n">Feb_Days</span> <span class="p">:</span> <span class="n">Month_Duration</span> <span class="p">:=</span> <span class="n">Tab</span> <span class="p">(</span><span class="n">Feb</span><span class="p">);</span>
+   <span class="c1">--  Number of days in February</span>
+<span class="kr">begin</span>
+   <span class="kr">for</span> <span class="n">M</span> <span class="ow">in</span> <span class="n">Month</span> <span class="kr">loop</span>
+      <span class="n">Put_Line</span>
+        <span class="p">(</span><span class="n">Month</span><span class="p">&#39;</span><span class="na">Image</span> <span class="p">(</span><span class="n">M</span><span class="p">)</span> <span class="o">&amp;</span> <span class="s">&quot; has &quot;</span>
+         <span class="o">&amp;</span> <span class="n">Month_Duration</span><span class="p">&#39;</span><span class="na">Image</span> <span class="p">(</span><span class="n">Tab</span> <span class="p">(</span><span class="n">M</span><span class="p">))</span>
+         <span class="o">&amp;</span> <span class="s">&quot; days.&quot;</span><span class="p">);</span>
+   <span class="c1">--    ^ Concatenation operator</span>
+   <span class="kr">end</span> <span class="kr">loop</span><span class="p">;</span>
+<span class="kr">end</span> <span class="nf">Month_Example</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>В приведенном выше примере мы:</p>
+<ul class="simple">
+<li><p>Создание типа массива, отображающего продолжительность месяцев в днях.</p></li>
+<li><p>Создание массива и создание его экземпляра с агрегированным
+сопоставлением месяцев с их фактической продолжительностью в днях.</p></li>
+<li><p>Итерация по массиву, печать месяцев и количество дней для каждого.</p></li>
+</ul>
+<p>Возможность использования значений перечисления в качестве индексов
+очень полезна при создании сопоставлений, как показано выше, и часто
+используется в Ada.</p>
+</section>
+<section id="id3">
+<h2>Индексирование<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h2>
+<p>Мы уже видели синтаксис для выбора элементов массива. Однако следует
+отметить еще несколько моментов.</p>
+<p>Во-первых, как и в целом в Ada, операция индексирования строго
+типизирована. Если для индексации массива используется значение
+неправильного типа, будет получена ошибка времени компиляции.</p>
+<div class="ada-expect-compile-error highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kn">with</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span> <span class="kn">use</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>
+
+<span class="kd">procedure</span> <span class="nf">Greet</span> <span class="kr">is</span>
+   <span class="kd">type</span> <span class="kt">My_Int</span> <span class="kr">is</span> <span class="kr">range</span> <span class="mi">0</span> <span class="p">..</span> <span class="mi">1000</span><span class="p">;</span>
+
+   <span class="kd">type</span> <span class="kt">My_Index</span>   <span class="kr">is</span> <span class="kr">range</span> <span class="mi">1</span> <span class="p">..</span> <span class="mi">5</span><span class="p">;</span>
+   <span class="kd">type</span> <span class="kt">Your_Index</span> <span class="kr">is</span> <span class="kr">range</span> <span class="mi">1</span> <span class="p">..</span> <span class="mi">5</span><span class="p">;</span>
+
+   <span class="kd">type</span> <span class="kt">My_Int_Array</span> <span class="kr">is</span> <span class="kr">array</span> <span class="p">(</span><span class="n">My_Index</span><span class="p">)</span> <span class="kr">of</span> <span class="n">My_Int</span><span class="p">;</span>
+   <span class="n">Tab</span> <span class="p">:</span> <span class="n">My_Int_Array</span> <span class="p">:=</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">11</span><span class="p">);</span>
+<span class="kr">begin</span>
+   <span class="kr">for</span> <span class="n">I</span> <span class="ow">in</span> <span class="n">Your_Index</span> <span class="kr">loop</span>
+      <span class="n">Put</span> <span class="p">(</span><span class="n">My_Int</span><span class="p">&#39;</span><span class="na">Image</span> <span class="p">(</span><span class="n">Tab</span> <span class="p">(</span><span class="n">I</span><span class="p">)));</span>
+   <span class="c1">--                         ^ Compile time error</span>
+   <span class="kr">end</span> <span class="kr">loop</span><span class="p">;</span>
+   <span class="n">New_Line</span><span class="p">;</span>
+<span class="kr">end</span> <span class="nf">Greet</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Во-вторых, массивы в Ada проверяются на границы. Это означает, что
+если вы попытаетесь получить доступ к элементу за пределами массива,
+вы получите ошибку во время выполнения вместо доступа к случайной
+памяти, как в небезопасных языках.</p>
+<div class="ada-run-expect-failure highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kn">with</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span> <span class="kn">use</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>
+
+<span class="kd">procedure</span> <span class="nf">Greet</span> <span class="kr">is</span>
+   <span class="kd">type</span> <span class="kt">My_Int</span> <span class="kr">is</span> <span class="kr">range</span> <span class="mi">0</span> <span class="p">..</span> <span class="mi">1000</span><span class="p">;</span>
+   <span class="kd">type</span> <span class="kt">Index</span> <span class="kr">is</span> <span class="kr">range</span> <span class="mi">1</span> <span class="p">..</span> <span class="mi">5</span><span class="p">;</span>
+   <span class="kd">type</span> <span class="kt">My_Int_Array</span> <span class="kr">is</span> <span class="kr">array</span> <span class="p">(</span><span class="n">Index</span><span class="p">)</span> <span class="kr">of</span> <span class="n">My_Int</span><span class="p">;</span>
+   <span class="n">Tab</span> <span class="p">:</span> <span class="n">My_Int_Array</span> <span class="p">:=</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">11</span><span class="p">);</span>
+<span class="kr">begin</span>
+   <span class="kr">for</span> <span class="n">I</span> <span class="ow">in</span> <span class="n">Index</span> <span class="kr">range</span> <span class="mi">2</span> <span class="p">..</span> <span class="mi">6</span> <span class="kr">loop</span>
+      <span class="n">Put</span> <span class="p">(</span><span class="n">My_Int</span><span class="p">&#39;</span><span class="na">Image</span> <span class="p">(</span><span class="n">Tab</span> <span class="p">(</span><span class="n">I</span><span class="p">)));</span>
+      <span class="c1">--                      ^ Will raise an</span>
+      <span class="c1">--                        exception when</span>
+      <span class="c1">--                        I = 6</span>
+   <span class="kr">end</span> <span class="kr">loop</span><span class="p">;</span>
+   <span class="n">New_Line</span><span class="p">;</span>
+<span class="kr">end</span> <span class="nf">Greet</span><span class="p">;</span>
+</pre></div>
+</div>
+</section>
+<section id="id4">
+<h2>Более простые объявления массива<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h2>
+<p>В предыдущих примерах мы всегда явно создавали тип индекса для
+массива. Хотя это может быть полезно для типизации и удобства чтения,
+иногда вам просто нужно выразить диапазон значений. Ada тоже позволяет
+вам это делать.</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kn">with</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span> <span class="kn">use</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>
+
+<span class="kd">procedure</span> <span class="nf">Simple_Array_Bounds</span> <span class="kr">is</span>
+   <span class="kd">type</span> <span class="kt">My_Int</span> <span class="kr">is</span> <span class="kr">range</span> <span class="mi">0</span> <span class="p">..</span> <span class="mi">1000</span><span class="p">;</span>
+   <span class="kd">type</span> <span class="kt">My_Int_Array</span> <span class="kr">is</span> <span class="kr">array</span> <span class="p">(</span><span class="mi">1</span> <span class="p">..</span> <span class="mi">5</span><span class="p">)</span> <span class="kr">of</span> <span class="n">My_Int</span><span class="p">;</span>
+   <span class="c1">--                          ^ Subtype of Integer</span>
+   <span class="no">Tab</span> <span class="p">:</span> <span class="kr">constant</span> <span class="n">My_Int_Array</span> <span class="p">:=</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">11</span><span class="p">);</span>
+<span class="kr">begin</span>
+   <span class="kr">for</span> <span class="n">I</span> <span class="ow">in</span> <span class="mi">1</span> <span class="p">..</span> <span class="mi">5</span> <span class="kr">loop</span>
+   <span class="c1">--       ^ Subtype of Integer</span>
+      <span class="n">Put</span> <span class="p">(</span><span class="n">My_Int</span><span class="p">&#39;</span><span class="na">Image</span> <span class="p">(</span><span class="n">Tab</span> <span class="p">(</span><span class="n">I</span><span class="p">)));</span>
+   <span class="kr">end</span> <span class="kr">loop</span><span class="p">;</span>
+   <span class="n">New_Line</span><span class="p">;</span>
+<span class="kr">end</span> <span class="nf">Simple_Array_Bounds</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>В этом примере диапазон массива определяется с помощью синтаксиса
+диапазона, который указывает анонимный подтип Integer и использует его
+для индексации массива.</p>
+<p>Это означает, что индекс имеет целочисленный тип <code class="code highlight ada docutils literal notranslate"><span class="keyword type"><span class="pre">Integer</span></span></code>. Точно так
+же, когда вы используете анонимный диапазон в цикле for, как в приведенном
+выше примере, тип переменной итерации также является <code class="code highlight ada docutils literal notranslate"><span class="keyword type"><span class="pre">Integer</span></span></code>, поэтому
+вы можете использовать <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">I</span></span></code> для индексации <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Tab</span></span></code>.</p>
+<p>Вы также можете использовать именованный подтип для границ массива.</p>
+</section>
+<section id="id5">
+<h2>Атрибут диапазона<a class="headerlink" href="#id5" title="Permalink to this headline"></a></h2>
+<p>Ранее мы отметили, что жесткие границы кодирования при итерации по
+массиву ‑ плохая идея, и показали, как использовать тип / подтип
+индекса массива для итерации по его диапазону в цикле for. Это
+поднимает вопрос о том, как написать итерацию, когда массив имеет
+анонимный диапазон для своих границ, поскольку нет имени для ссылки на
+диапазон. Ada решает эту проблему с помощью нескольких атрибутов
+объектов массива:</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kn">with</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span> <span class="kn">use</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>
+
+<span class="kd">procedure</span> <span class="nf">Range_Example</span> <span class="kr">is</span>
+   <span class="kd">type</span> <span class="kt">My_Int</span> <span class="kr">is</span> <span class="kr">range</span> <span class="mi">0</span> <span class="p">..</span> <span class="mi">1000</span><span class="p">;</span>
+   <span class="kd">type</span> <span class="kt">My_Int_Array</span> <span class="kr">is</span> <span class="kr">array</span> <span class="p">(</span><span class="mi">1</span> <span class="p">..</span> <span class="mi">5</span><span class="p">)</span> <span class="kr">of</span> <span class="n">My_Int</span><span class="p">;</span>
+   <span class="no">Tab</span> <span class="p">:</span> <span class="kr">constant</span> <span class="n">My_Int_Array</span> <span class="p">:=</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">11</span><span class="p">);</span>
+<span class="kr">begin</span>
+   <span class="kr">for</span> <span class="n">I</span> <span class="ow">in</span> <span class="n">Tab</span><span class="p">&#39;</span><span class="na">Range</span> <span class="kr">loop</span>
+   <span class="c1">--          ^ Gets the range of Tab</span>
+      <span class="n">Put</span> <span class="p">(</span><span class="n">My_Int</span><span class="p">&#39;</span><span class="na">Image</span> <span class="p">(</span><span class="n">Tab</span> <span class="p">(</span><span class="n">I</span><span class="p">)));</span>
+   <span class="kr">end</span> <span class="kr">loop</span><span class="p">;</span>
+   <span class="n">New_Line</span><span class="p">;</span>
+<span class="kr">end</span> <span class="nf">Range_Example</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Если требуется более детализированное управление, можно использовать
+отдельные атрибуты «Первый» (<code class="code highlight ada docutils literal notranslate"><span class="punctuation"><span class="pre">'</span></span><span class="name attribute"><span class="pre">First</span></span></code>) и «Последний» (<code class="code highlight ada docutils literal notranslate"><span class="punctuation"><span class="pre">'</span></span><span class="name attribute"><span class="pre">Last</span></span></code>).</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kn">with</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span> <span class="kn">use</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>
+
+<span class="kd">procedure</span> <span class="nf">Array_Attributes_Example</span> <span class="kr">is</span>
+   <span class="kd">type</span> <span class="kt">My_Int</span> <span class="kr">is</span> <span class="kr">range</span> <span class="mi">0</span> <span class="p">..</span> <span class="mi">1000</span><span class="p">;</span>
+   <span class="kd">type</span> <span class="kt">My_Int_Array</span> <span class="kr">is</span> <span class="kr">array</span> <span class="p">(</span><span class="mi">1</span> <span class="p">..</span> <span class="mi">5</span><span class="p">)</span> <span class="kr">of</span> <span class="n">My_Int</span><span class="p">;</span>
+   <span class="n">Tab</span> <span class="p">:</span> <span class="n">My_Int_Array</span> <span class="p">:=</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">11</span><span class="p">);</span>
+<span class="kr">begin</span>
+   <span class="kr">for</span> <span class="n">I</span> <span class="ow">in</span> <span class="n">Tab</span><span class="p">&#39;</span><span class="na">First</span> <span class="p">..</span> <span class="n">Tab</span><span class="p">&#39;</span><span class="na">Last</span> <span class="o">-</span> <span class="mi">1</span> <span class="kr">loop</span>
+   <span class="c1">--          ^ Iterate on every index</span>
+   <span class="c1">--            except the last</span>
+      <span class="n">Put</span> <span class="p">(</span><span class="n">My_Int</span><span class="p">&#39;</span><span class="na">Image</span> <span class="p">(</span><span class="n">Tab</span> <span class="p">(</span><span class="n">I</span><span class="p">)));</span>
+   <span class="kr">end</span> <span class="kr">loop</span><span class="p">;</span>
+   <span class="n">New_Line</span><span class="p">;</span>
+<span class="kr">end</span> <span class="nf">Array_Attributes_Example</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Атрибуты <code class="code highlight ada docutils literal notranslate"><span class="punctuation"><span class="pre">'</span></span><span class="name attribute"><span class="pre">Range</span></span></code>, <code class="code highlight ada docutils literal notranslate"><span class="punctuation"><span class="pre">'</span></span><span class="name attribute"><span class="pre">First</span></span></code> и <code class="code highlight ada docutils literal notranslate"><span class="punctuation"><span class="pre">'</span></span><span class="name attribute"><span class="pre">Last</span></span></code> в этих примерах также
+могли применяться к имени типа массива, а не только к экземплярам массива.</p>
+<p>Хотя это не показано в вышеприведенных примерах, другим полезным
+атрибутом для экземпляра массива <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">A</span></span></code> является <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">A</span></span><span class="punctuation"><span class="pre">'</span></span><span class="name attribute"><span class="pre">Length</span></span></code>, который
+является количеством элементов, содержащихся в <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">A</span></span></code>.</p>
+<p>Законно и иногда полезно иметь «пустой массив» (null array), который
+не содержит элементов. Чтобы получить этот эффект, определите диапазон
+индексов, верхняя граница которого меньше нижней границы.</p>
+</section>
+<section id="unconstrainedarraytypes">
+<span id="id6"></span><h2>Неограниченные массивы<a class="headerlink" href="#unconstrainedarraytypes" title="Permalink to this headline"></a></h2>
+<p>Давайте теперь рассмотрим один из самых мощных аспектов средства
+массивов Ada.</p>
+<p>Каждый тип массива, который мы определили до сих пор, имеет
+фиксированный размер: каждый экземпляр этого типа будет иметь
+одинаковые границы и, следовательно, одинаковое количество элементов и
+одинаковый размер.</p>
+<p>Однако Ada также позволяет объявлять типы массивов, границы которых не
+являются фиксированными: в этом случае границы необходимо будет
+указать при создании экземпляров типа.</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kn">with</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span> <span class="kn">use</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>
+
+<span class="kd">procedure</span> <span class="nf">Unconstrained_Array_Example</span> <span class="kr">is</span>
+   <span class="kd">type</span> <span class="kt">Days</span> <span class="kr">is</span> <span class="p">(</span><span class="nv">Monday</span><span class="p">,</span> <span class="nv">Tuesday</span><span class="p">,</span> <span class="nv">Wednesday</span><span class="p">,</span>
+                 <span class="nv">Thursday</span><span class="p">,</span> <span class="nv">Friday</span><span class="p">,</span>
+                 <span class="nv">Saturday</span><span class="p">,</span> <span class="nv">Sunday</span><span class="p">);</span>
+
+   <span class="kd">type</span> <span class="kt">Workload_Type</span> <span class="kr">is</span>
+     <span class="kr">array</span> <span class="p">(</span><span class="kt">Days</span> <span class="kr">range</span> <span class="p">&lt;&gt;)</span> <span class="kr">of</span> <span class="kt">Natural</span><span class="p">;</span>
+   <span class="c1">--  Indefinite array type</span>
+   <span class="c1">--       ^ Bounds are of type Days,</span>
+   <span class="c1">--         but not known</span>
+
+   <span class="no">Workload</span> <span class="p">:</span> <span class="kr">constant</span>
+     <span class="n">Workload_Type</span> <span class="p">(</span><span class="n">Monday</span> <span class="p">..</span> <span class="n">Friday</span><span class="p">)</span> <span class="p">:=</span>
+   <span class="c1">--               ^ Specify the bounds</span>
+   <span class="c1">--                 when declaring</span>
+      <span class="p">(</span><span class="n">Friday</span> <span class="p">=&gt;</span> <span class="mi">7</span><span class="p">,</span> <span class="kr">others</span> <span class="p">=&gt;</span> <span class="mi">8</span><span class="p">);</span>
+   <span class="c1">--               ^ Default value</span>
+   <span class="c1">--  ^ Specify element by name of index</span>
+<span class="kr">begin</span>
+   <span class="kr">for</span> <span class="n">I</span> <span class="ow">in</span> <span class="n">Workload</span><span class="p">&#39;</span><span class="na">Range</span> <span class="kr">loop</span>
+      <span class="n">Put_Line</span> <span class="p">(</span><span class="kt">Integer</span><span class="p">&#39;</span><span class="na">Image</span> <span class="p">(</span><span class="n">Workload</span> <span class="p">(</span><span class="n">I</span><span class="p">)));</span>
+   <span class="kr">end</span> <span class="kr">loop</span><span class="p">;</span>
+<span class="kr">end</span> <span class="nf">Unconstrained_Array_Example</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Тот факт, что границы массива неизвестны, указывается синтаксисом
+<code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Days</span></span> <span class="keyword reserved"><span class="pre">range</span></span> <span class="punctuation"><span class="pre">&lt;&gt;</span></span></code>. Учитывая дискретный тип <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Discrete_Type</span></span></code>,
+если мы используем <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Discrete_Type</span></span></code> для индекса в типе массива,
+тогда <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Discrete_Type</span></span></code> служит типом индекса и включает диапазон
+значений индекса для каждого экземпляра массива.</p>
+<p>Если мы определяем индекс как <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Discrete_Type</span></span> <span class="keyword reserved"><span class="pre">range</span></span> <span class="punctuation"><span class="pre">&lt;&gt;</span></span></code>,
+тогда <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Discrete_Type</span></span></code> служит типом индекса, но разные
+экземпляры массива могут иметь границы, отличные от этого типа.</p>
+<p>Тип массива, который определяется с помощью синтаксиса
+<code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Discrete_Type</span></span> <span class="keyword reserved"><span class="pre">range</span></span> <span class="punctuation"><span class="pre">&lt;&gt;</span></span></code> для его
+индекса, называется неограниченным типом массива, и, как показано
+выше, при создании экземпляра необходимо указать границы.</p>
+<p>В приведенном выше примере также показаны другие формы синтаксиса
+агрегата. Вы можете указать ассоциации по имени, задав значение
+индекса слева от ассоциации со стрелкой. <code class="code highlight ada docutils literal notranslate"><span class="literal number integer"><span class="pre">1</span></span> <span class="punctuation"><span class="pre">=&gt;</span></span> <span class="literal number integer"><span class="pre">2</span></span></code>, таким образом,
+означает «присвоить значение 2 элементу с индексом 1 в моем массиве».
+<code class="code highlight ada docutils literal notranslate"><span class="keyword reserved"><span class="pre">others</span></span> <span class="punctuation"><span class="pre">=&gt;</span></span> <span class="literal number integer"><span class="pre">8</span></span></code> означает «присвоить значение 8 каждому элементу,
+который ранее не был назначен в этом агрегате».</p>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>Так называемая «коробочная» нотация (<code class="code highlight ada docutils literal notranslate"><span class="punctuation"><span class="pre">&lt;&gt;</span></span></code>) обычно
+используется в качестве подстановочного знака или местозаполнителя в
+Ada. Вы часто увидите это, когда смысл «то, что здесь ожидается, может
+быть чем угодно».</p>
+</div>
+<div class="admonition- admonition">
+<p class="admonition-title">На других языках</p>
+<p>В то время как неограниченные массивы в Ada могут казаться похожими на
+массивы переменной длины в C, в действительности они гораздо более
+мощные, потому что они действительно первоклассные значения в языке.
+Их можно передавать в качестве параметров подпрограммам или возвращать
+из функций, и они неявно содержат их границы как часть их значения.
+Это означает, что бесполезно явно передавать границы или длину массива
+вместе с массивом, поскольку они доступны через атрибуты <code class="code highlight ada docutils literal notranslate"><span class="punctuation"><span class="pre">'</span></span><span class="name attribute"><span class="pre">First</span></span></code>,
+<code class="code highlight ada docutils literal notranslate"><span class="punctuation"><span class="pre">'</span></span><span class="name attribute"><span class="pre">Last</span></span></code>, <code class="code highlight ada docutils literal notranslate"><span class="punctuation"><span class="pre">'</span></span><span class="name attribute"><span class="pre">Range</span></span></code> и <code class="code highlight ada docutils literal notranslate"><span class="punctuation"><span class="pre">'</span></span><span class="name attribute"><span class="pre">Length</span></span></code>, описанные ранее.</p>
+</div>
+<p>Хотя различные экземпляры одного и того же неограниченного типа
+массива могут иметь разные границы, конкретный экземпляр имеет
+одинаковые границы в течение всего срока его существования. Это
+позволяет Ada эффективно реализовывать неограниченные массивы;
+экземпляры могут храниться в стеке и не требуют выделения кучи, как в
+таких языках, как Java.</p>
+</section>
+<section id="string">
+<h2>Предопределенный тип массива: String<a class="headerlink" href="#string" title="Permalink to this headline"></a></h2>
+<p>Повторяющейся темой в нашем введении к типам Ada было то, как важные
+встроенные типы, такие как <code class="code highlight ada docutils literal notranslate"><span class="keyword type"><span class="pre">Boolean</span></span></code> или <code class="code highlight ada docutils literal notranslate"><span class="keyword type"><span class="pre">Integer</span></span></code>, определяются
+через те же средства, которые доступны пользователю. Это также верно для
+строк: тип <code class="code highlight ada docutils literal notranslate"><span class="keyword type"><span class="pre">String</span></span></code> в Ada является простым массивом.</p>
+<p>Вот как тип строки определяется в Ada:</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kd">type</span> <span class="kt">String</span> <span class="kr">is</span> <span class="kr">array</span> <span class="p">(</span><span class="kt">Positive</span> <span class="kr">range</span> <span class="p">&lt;&gt;)</span> <span class="kr">of</span> <span class="kt">Character</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Единственной встроенной функцией, которую Ada добавляет, чтобы сделать
+строки более эргономичными, являются пользовательские литералы, как мы
+можем видеть в примере ниже.</p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>Строковые литералы являются синтаксическим сахаром для агрегатов, так
+что в следующем примере <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">A</span></span></code> и <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">B</span></span></code> имеют одинаковое значение.</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kd">package</span> <span class="nc">String_Literals</span> <span class="kr">is</span>
+    <span class="c1">--  Those two declarations are equivalent</span>
+    <span class="n">A</span> <span class="p">:</span> <span class="kt">String</span> <span class="p">(</span><span class="mi">1</span> <span class="p">..</span> <span class="mi">11</span><span class="p">)</span> <span class="p">:=</span> <span class="s">&quot;Hello World&quot;</span><span class="p">;</span>
+    <span class="n">B</span> <span class="p">:</span> <span class="kt">String</span> <span class="p">(</span><span class="mi">1</span> <span class="p">..</span> <span class="mi">11</span><span class="p">)</span> <span class="p">:=</span>
+        <span class="p">(&#39;</span><span class="na">H</span><span class="p">&#39;,</span> <span class="p">&#39;</span><span class="na">e</span><span class="p">&#39;,</span> <span class="p">&#39;</span><span class="na">l</span><span class="p">&#39;,</span> <span class="p">&#39;</span><span class="na">l</span><span class="p">&#39;,</span> <span class="p">&#39;</span><span class="na">o</span><span class="p">&#39;,</span> <span class="s s-Character">&#39; &#39;</span><span class="p">,</span>
+         <span class="p">&#39;</span><span class="na">W</span><span class="p">&#39;,</span> <span class="p">&#39;</span><span class="na">o</span><span class="p">&#39;,</span> <span class="p">&#39;</span><span class="na">r</span><span class="p">&#39;,</span> <span class="p">&#39;</span><span class="na">l</span><span class="p">&#39;,</span> <span class="p">&#39;</span><span class="na">d</span><span class="p">&#39;);</span>
+<span class="kr">end</span> <span class="nf">String_Literals</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kn">with</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span> <span class="kn">use</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>
+
+<span class="kd">procedure</span> <span class="nf">Greet</span> <span class="kr">is</span>
+   <span class="n">Message</span> <span class="p">:</span> <span class="kt">String</span> <span class="p">(</span><span class="mi">1</span> <span class="p">..</span> <span class="mi">11</span><span class="p">)</span> <span class="p">:=</span> <span class="s">&quot;dlroW olleH&quot;</span><span class="p">;</span>
+   <span class="c1">--        ^ Pre-defined array type.</span>
+   <span class="c1">--          Component type is Character</span>
+<span class="kr">begin</span>
+   <span class="kr">for</span> <span class="n">I</span> <span class="ow">in</span> <span class="kr">reverse</span> <span class="n">Message</span><span class="p">&#39;</span><span class="na">Range</span> <span class="kr">loop</span>
+      <span class="c1">--    ^ Iterate in reverse order</span>
+      <span class="n">Put</span> <span class="p">(</span><span class="n">Message</span> <span class="p">(</span><span class="n">I</span><span class="p">));</span>
+   <span class="kr">end</span> <span class="kr">loop</span><span class="p">;</span>
+   <span class="n">New_Line</span><span class="p">;</span>
+<span class="kr">end</span> <span class="nf">Greet</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Однако явное указание границ объекта ‑ это немного хлопотно; вам нужно
+вручную подсчитать количество символов в литерале. К счастью, Ada
+предлагает более простой способ.</p>
+<p>Вы можете опустить границы при создании экземпляра неограниченного
+типа массива, если вы предоставляете инициализацию, поскольку границы
+могут быть выведены из выражения инициализации.</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kn">with</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span> <span class="kn">use</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>
+
+<span class="kd">procedure</span> <span class="nf">Greet</span> <span class="kr">is</span>
+   <span class="no">Message</span> <span class="p">:</span> <span class="kr">constant</span> <span class="kt">String</span> <span class="p">:=</span> <span class="s">&quot;dlroW olleH&quot;</span><span class="p">;</span>
+   <span class="c1">--                 ^ Bounds are automatically</span>
+   <span class="c1">--                   computed from</span>
+   <span class="c1">--                   initialization value</span>
+<span class="kr">begin</span>
+   <span class="kr">for</span> <span class="n">I</span> <span class="ow">in</span> <span class="kr">reverse</span> <span class="n">Message</span><span class="p">&#39;</span><span class="na">Range</span> <span class="kr">loop</span>
+      <span class="n">Put</span> <span class="p">(</span><span class="n">Message</span> <span class="p">(</span><span class="n">I</span><span class="p">));</span>
+   <span class="kr">end</span> <span class="kr">loop</span><span class="p">;</span>
+   <span class="n">New_Line</span><span class="p">;</span>
+<span class="kr">end</span> <span class="nf">Greet</span><span class="p">;</span>
+</pre></div>
+</div>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kn">with</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span> <span class="kn">use</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>
+
+<span class="kd">procedure</span> <span class="nf">Main</span> <span class="kr">is</span>
+   <span class="kd">type</span> <span class="kt">Integer_Array</span> <span class="kr">is</span> <span class="kr">array</span> <span class="p">(</span><span class="kt">Natural</span> <span class="kr">range</span> <span class="p">&lt;&gt;)</span> <span class="kr">of</span> <span class="kt">Integer</span><span class="p">;</span>
+
+   <span class="no">My_Array</span> <span class="p">:</span> <span class="kr">constant</span> <span class="n">Integer_Array</span> <span class="p">:=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">);</span>
+   <span class="c1">--                  ^ Bounds are automatically</span>
+   <span class="c1">--                    computed from</span>
+   <span class="c1">--                    initialization value</span>
+<span class="kr">begin</span>
+    <span class="kc">null</span><span class="p">;</span>
+<span class="kr">end</span> <span class="nf">Main</span><span class="p">;</span>
+</pre></div>
+</div>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>Как вы можете видеть выше, стандартный тип <cite>String</cite> в Ada ‑ это массив.
+Таким образом, он разделяет преимущества и недостатки массивов: значение
+<code class="code highlight ada docutils literal notranslate"><span class="keyword type"><span class="pre">String</span></span></code> выделяется в стеке, доступ к нему осуществляется эффективно,
+а его границы неизменны.</p>
+<p>Если вам нужно что-то вроде :c++:<cite>std::string</cite> в C ++, вы можете
+использовать <a class="reference internal" href="standard_library_strings.html#unboundedstrings"><span class="std std-ref">Unbounded Strings</span></a> из
+стандартной библиотеки Ada. Этот тип больше похож на изменяемый,
+автоматически управляемый строковый буфер, в который вы можете
+добавлять содержимое.</p>
+</div>
+</section>
+<section id="id7">
+<h2>Ограничения<a class="headerlink" href="#id7" title="Permalink to this headline"></a></h2>
+<p>Очень важный момент, касающийся массивов: границы <em>должны</em> быть
+известны при создании экземпляров. Например, незаконно делать
+следующее.</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kr">declare</span>
+   <span class="n">A</span> <span class="p">:</span> <span class="kt">String</span><span class="p">;</span>
+<span class="kr">begin</span>
+   <span class="n">A</span> <span class="p">:=</span> <span class="s">&quot;World&quot;</span><span class="p">;</span>
+<span class="kr">end</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Кроме того, хотя вы, конечно, можете изменять значения элементов в
+массиве, вы не можете изменять границы массива (и, следовательно, его
+размер) после его инициализации. Так что это тоже незаконно:</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kr">declare</span>
+   <span class="n">A</span> <span class="p">:</span> <span class="kt">String</span> <span class="p">:=</span> <span class="s">&quot;Hello&quot;</span><span class="p">;</span>
+<span class="kr">begin</span>
+   <span class="n">A</span> <span class="p">:=</span> <span class="s">&quot;World&quot;</span><span class="p">;</span>       <span class="c1">--  OK: Same size</span>
+   <span class="n">A</span> <span class="p">:=</span> <span class="s">&quot;Hello World&quot;</span><span class="p">;</span> <span class="c1">--  Not OK: Different size</span>
+<span class="kr">end</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Кроме того, хотя вы можете ожидать предупреждения об ошибке такого
+рода в очень простых случаях, подобных этому, компилятор в общем
+случае не может знать, присваиваете ли вы значение правильной длины,
+поэтому это нарушение обычно приведет к ошибке во время выполнения.</p>
+<div class="admonition- admonition">
+<p class="admonition-title">Обратите внимание</p>
+<p>Хотя мы узнаем об этом позже, важно знать, что массивы - не
+единственные типы, экземпляры которых могут быть неизвестного размера
+во время компиляции.</p>
+<p>Говорят, что такие объекты относятся к <em>неопределенному подтипу</em>, что
+означает, что размер подтипа неизвестен во время компиляции, но
+динамически вычисляется (во время выполнения).</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kn">with</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span> <span class="kn">use</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>
+
+<span class="kd">procedure</span> <span class="nf">Indefinite_Subtypes</span> <span class="kr">is</span>
+    <span class="kd">function</span> <span class="nf">Get_Number</span> <span class="nf">return</span> <span class="nf">Integer</span> <span class="kr">is</span>
+    <span class="kr">begin</span>
+        <span class="kr">return</span> <span class="kt">Integer</span><span class="p">&#39;</span><span class="na">Value</span> <span class="p">(</span><span class="n">Get_Line</span><span class="p">);</span>
+    <span class="kr">end</span> <span class="nf">Get_Number</span><span class="p">;</span>
+
+   <span class="n">A</span> <span class="p">:</span> <span class="kt">String</span> <span class="p">:=</span> <span class="s">&quot;Hello&quot;</span><span class="p">;</span>
+   <span class="c1">--  Indefinite subtype</span>
+
+   <span class="n">B</span> <span class="p">:</span> <span class="kt">String</span> <span class="p">(</span><span class="mi">1</span> <span class="p">..</span> <span class="mi">5</span><span class="p">)</span> <span class="p">:=</span> <span class="s">&quot;Hello&quot;</span><span class="p">;</span>
+   <span class="c1">--  Definite subtype</span>
+
+   <span class="n">C</span> <span class="p">:</span> <span class="kt">String</span> <span class="p">(</span><span class="mi">1</span> <span class="p">..</span> <span class="n">Get_Number</span><span class="p">);</span>
+   <span class="c1">--  Indefinite subtype</span>
+   <span class="c1">--  (Get_Number&#39;s value is computed at</span>
+   <span class="c1">--  run-time)</span>
+<span class="kr">begin</span>
+   <span class="kc">null</span><span class="p">;</span>
+<span class="kr">end</span> <span class="nf">Indefinite_Subtypes</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="id8">
+<h2>Возврат неограниченных массивов<a class="headerlink" href="#id8" title="Permalink to this headline"></a></h2>
+<p>Тип возвращаемого значения функции может быть любым; функция может
+возвращать значение, размер которого неизвестен во время компиляции.
+Точно так же параметры могут быть любого типа.</p>
+<p>Например, это функция, которая возвращает неограниченную строку:</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kn">with</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span> <span class="kn">use</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>
+
+<span class="kd">procedure</span> <span class="nf">Main</span> <span class="kr">is</span>
+
+   <span class="kd">type</span> <span class="kt">Days</span> <span class="kr">is</span> <span class="p">(</span><span class="nv">Monday</span><span class="p">,</span> <span class="nv">Tuesday</span><span class="p">,</span> <span class="nv">Wednesday</span><span class="p">,</span>
+                 <span class="nv">Thursday</span><span class="p">,</span> <span class="nv">Friday</span><span class="p">,</span>
+                 <span class="nv">Saturday</span><span class="p">,</span> <span class="nv">Sunday</span><span class="p">);</span>
+
+   <span class="kd">function</span> <span class="nf">Get_Day_Name</span> <span class="p">(</span><span class="nv">Day</span> <span class="p">: </span><span class="nv">Days</span> <span class="p">:=</span> <span class="nv">Monday</span><span class="p">)</span>
+                          <span class="kr">return</span> <span class="kt">String</span> <span class="kr">is</span>
+   <span class="kr">begin</span>
+      <span class="kr">return</span>
+        <span class="p">(</span><span class="kr">case</span> <span class="n">Day</span> <span class="kr">is</span>
+         <span class="kr">when</span> <span class="n">Monday</span>    <span class="p">=&gt;</span> <span class="s">&quot;Monday&quot;</span><span class="p">,</span>
+         <span class="kr">when</span> <span class="n">Tuesday</span>   <span class="p">=&gt;</span> <span class="s">&quot;Tuesday&quot;</span><span class="p">,</span>
+         <span class="kr">when</span> <span class="n">Wednesday</span> <span class="p">=&gt;</span> <span class="s">&quot;Wednesday&quot;</span><span class="p">,</span>
+         <span class="kr">when</span> <span class="n">Thursday</span>  <span class="p">=&gt;</span> <span class="s">&quot;Thursday&quot;</span><span class="p">,</span>
+         <span class="kr">when</span> <span class="n">Friday</span>    <span class="p">=&gt;</span> <span class="s">&quot;Friday&quot;</span><span class="p">,</span>
+         <span class="kr">when</span> <span class="n">Saturday</span>  <span class="p">=&gt;</span> <span class="s">&quot;Saturday&quot;</span><span class="p">,</span>
+         <span class="kr">when</span> <span class="n">Sunday</span>    <span class="p">=&gt;</span> <span class="s">&quot;Sunday&quot;</span><span class="p">);</span>
+   <span class="kr">end</span> <span class="nf">Get_Day_Name</span><span class="p">;</span>
+
+<span class="kr">begin</span>
+   <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;First day is &quot;</span>
+             <span class="o">&amp;</span> <span class="n">Get_Day_Name</span> <span class="p">(</span><span class="n">Days</span><span class="p">&#39;</span><span class="na">First</span><span class="p">));</span>
+<span class="kr">end</span> <span class="nf">Main</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Примечание. Этот пример приведен только в иллюстративных целях.
+Существует встроенный механизм, атрибут <code class="code highlight ada docutils literal notranslate"><span class="punctuation"><span class="pre">'</span></span><span class="name attribute"><span class="pre">Image</span></span></code> для скалярных типов,
+который возвращает имя (в виде строки – типа <code class="code highlight ada docutils literal notranslate"><span class="keyword type"><span class="pre">String</span></span></code>) любого элемента
+типа перечисления. Например, <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Days</span></span><span class="punctuation"><span class="pre">'</span></span><span class="name attribute"><span class="pre">Image</span></span><span class="punctuation"><span class="pre">(</span></span><span class="name"><span class="pre">Monday</span></span><span class="punctuation"><span class="pre">)</span></span></code> есть <code class="code highlight ada docutils literal notranslate"><span class="literal string"><span class="pre">&quot;MONDAY&quot;</span></span></code>.)</p>
+<div class="admonition- admonition">
+<p class="admonition-title">На других языках</p>
+<p>Возврат объектов переменного размера в языках, в которых отсутствует
+сборщик мусора, немного сложен с точки зрения реализации, поэтому C и
+C++ не допускают этого, предпочитая зависеть от явного динамического
+выделения/свободного от пользователя.</p>
+<p>Проблема в том, что явное управление хранилищем становится
+небезопасным, как только вы захотите собрать неиспользуемую память.
+Способность Ada возвращать объекты переменного размера удалит один
+вариант использования для динамического распределения и,
+следовательно, удалит один потенциальный источник ошибок из ваших
+программ.</p>
+<p>Rust следует модели C/C++, но с безопасной семантикой указателя.
+Однако динамическое распределение все еще используется. Ada может
+извлечь выгоду из возможного повышения производительности, поскольку
+она может использовать любую модель.</p>
+</div>
+</section>
+<section id="id9">
+<h2>Объявление массивов (2)<a class="headerlink" href="#id9" title="Permalink to this headline"></a></h2>
+<p>Хотя мы можем иметь типы массивов, размер и границы которых
+определяются во время выполнения, тип компонента массива должен быть
+определенного и ограниченного типа.</p>
+<p>Таким образом, если необходимо объявить, например, массив строк,
+подтип <code class="code highlight ada docutils literal notranslate"><span class="keyword type"><span class="pre">String</span></span></code>, используемый в качестве компонента, должен иметь
+фиксированный размер.</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kn">with</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span> <span class="kn">use</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>
+
+<span class="kd">procedure</span> <span class="nf">Show_Days</span> <span class="kr">is</span>
+   <span class="kd">type</span> <span class="kt">Days</span> <span class="kr">is</span> <span class="p">(</span><span class="nv">Monday</span><span class="p">,</span> <span class="nv">Tuesday</span><span class="p">,</span> <span class="nv">Wednesday</span><span class="p">,</span>
+                 <span class="nv">Thursday</span><span class="p">,</span> <span class="nv">Friday</span><span class="p">,</span>
+                 <span class="nv">Saturday</span><span class="p">,</span> <span class="nv">Sunday</span><span class="p">);</span>
+
+   <span class="kd">subtype</span> <span class="kt">Day_Name</span> <span class="kr">is</span> <span class="kt">String</span> <span class="p">(</span><span class="nv">1</span> <span class="p">..</span> <span class="nv">2</span><span class="p">);</span>
+   <span class="c1">--  Subtype of string with known size</span>
+
+   <span class="kd">type</span> <span class="kt">Days_Name_Type</span> <span class="kr">is</span>
+     <span class="kr">array</span> <span class="p">(</span><span class="n">Days</span><span class="p">)</span> <span class="kr">of</span> <span class="n">Day_Name</span><span class="p">;</span>
+   <span class="c1">--       ^ Type of the index</span>
+   <span class="c1">--                ^ Type of the element.</span>
+   <span class="c1">--                  Must be definite</span>
+
+   <span class="no">Names</span> <span class="p">:</span> <span class="kr">constant</span> <span class="n">Days_Name_Type</span> <span class="p">:=</span>
+     <span class="p">(</span><span class="s">&quot;Mo&quot;</span><span class="p">,</span> <span class="s">&quot;Tu&quot;</span><span class="p">,</span> <span class="s">&quot;We&quot;</span><span class="p">,</span> <span class="s">&quot;Th&quot;</span><span class="p">,</span> <span class="s">&quot;Fr&quot;</span><span class="p">,</span> <span class="s">&quot;Sa&quot;</span><span class="p">,</span> <span class="s">&quot;Su&quot;</span><span class="p">);</span>
+   <span class="c1">--  Initial value given by aggregate</span>
+<span class="kr">begin</span>
+   <span class="kr">for</span> <span class="n">I</span> <span class="ow">in</span> <span class="n">Names</span><span class="p">&#39;</span><span class="na">Range</span> <span class="kr">loop</span>
+      <span class="n">Put_Line</span> <span class="p">(</span><span class="n">Names</span> <span class="p">(</span><span class="n">I</span><span class="p">));</span>
+   <span class="kr">end</span> <span class="kr">loop</span><span class="p">;</span>
+<span class="kr">end</span> <span class="nf">Show_Days</span><span class="p">;</span>
+</pre></div>
+</div>
+</section>
+<section id="id10">
+<h2>Срезы массива<a class="headerlink" href="#id10" title="Permalink to this headline"></a></h2>
+<p>Последняя особенность массивов Ada, которую мы собираемся рассмотреть,
+‑ это фрагменты массива. Можно взять и использовать фрагмент массива
+(непрерывную последовательность элементов) в качестве имени или
+значения.</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kn">with</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span> <span class="kn">use</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>
+
+<span class="kd">procedure</span> <span class="nf">Main</span> <span class="kr">is</span>
+    <span class="n">Buf</span> <span class="p">:</span> <span class="kt">String</span> <span class="p">:=</span> <span class="s">&quot;Hello ...&quot;</span><span class="p">;</span>
+
+    <span class="n">Full_Name</span> <span class="p">:</span> <span class="kt">String</span> <span class="p">:=</span> <span class="s">&quot;John Smith&quot;</span><span class="p">;</span>
+<span class="kr">begin</span>
+    <span class="n">Buf</span> <span class="p">(</span><span class="mi">7</span> <span class="p">..</span> <span class="mi">9</span><span class="p">)</span> <span class="p">:=</span> <span class="s">&quot;Bob&quot;</span><span class="p">;</span>
+    <span class="c1">--  Careful! This works because the string</span>
+    <span class="c1">--  on the right side is the same length as</span>
+    <span class="c1">--  the replaced slice!</span>
+
+    <span class="c1">--  Prints &quot;Hello Bob&quot;</span>
+    <span class="n">Put_Line</span> <span class="p">(</span><span class="n">Buf</span><span class="p">);</span>
+
+     <span class="c1">--  Prints &quot;Hi John&quot;</span>
+    <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;Hi &quot;</span> <span class="o">&amp;</span> <span class="n">Full_Name</span> <span class="p">(</span><span class="mi">1</span> <span class="p">..</span> <span class="mi">4</span><span class="p">));</span>
+<span class="kr">end</span> <span class="nf">Main</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Как мы видим выше, вы можете использовать срез слева от присваивания,
+чтобы заменить только часть массива.</p>
+<p>Срез массива имеет тот же тип, что и массив, но имеет другой подтип,
+ограниченный границами среза.</p>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>В Ada есть <a class="reference external" href="http://www.adaic.org/resources/add_content/standards/12rm/html/RM-3-6.html">многомерные массивы</a>,
+которые не рассматриваются в этом курсе. Срезы будут работать только
+с одномерными массивами.</p>
+</div>
+</section>
+<section id="object-renaming">
+<span id="id12"></span><h2>Переименование<a class="headerlink" href="#object-renaming" title="Permalink to this headline"></a></h2>
+<p>До сих пор мы видели, что следующие элементы могут быть переименованы:
+<a class="reference internal" href="subprograms.html#subprogram-renaming"><span class="std std-ref">подпрограммы</span></a>, <a class="reference internal" href="modular_programming.html#package-renaming"><span class="std std-ref">пакеты</span></a>
+и <a class="reference internal" href="records.html#record-comp-renaming"><span class="std std-ref">компоненты записи</span></a>. Мы также можем
+переименовывать объекты с помощью ключевого слова <code class="code highlight ada docutils literal notranslate"><span class="keyword reserved"><span class="pre">renames</span></span></code>. Это
+позволяет создавать альтернативные имена для этих объектов. Давайте
+посмотрим на пример:</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kd">package</span> <span class="nc">Measurements</span> <span class="kr">is</span>
+
+   <span class="kd">subtype</span> <span class="kt">Degree_Celsius</span> <span class="kr">is</span> <span class="kt">Float</span><span class="p">;</span>
+
+   <span class="n">Current_Temperature</span> <span class="p">:</span> <span class="n">Degree_Celsius</span><span class="p">;</span>
+
+<span class="kr">end</span> <span class="nf">Measurements</span><span class="p">;</span>
+
+<span class="kn">with</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>  <span class="kn">use</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>
+<span class="kn">with</span> <span class="nn">Measurements</span><span class="p">;</span>
+
+<span class="kd">procedure</span> <span class="nf">Main</span> <span class="kr">is</span>
+   <span class="kd">subtype</span> <span class="kt">Degrees</span> <span class="kr">is</span> <span class="n">Measurements</span><span class="p">.</span><span class="n">Degree_Celsius</span><span class="p">;</span>
+
+   <span class="n">T</span> <span class="p">:</span> <span class="n">Degrees</span>
+     <span class="kr">renames</span> <span class="n">Measurements</span><span class="p">.</span><span class="n">Current_Temperature</span><span class="p">;</span>
+<span class="kr">begin</span>
+    <span class="n">T</span> <span class="p">:=</span> <span class="mf">5.0</span><span class="p">;</span>
+
+    <span class="n">Put_Line</span> <span class="p">(</span><span class="n">Degrees</span><span class="p">&#39;</span><span class="na">Image</span> <span class="p">(</span><span class="n">T</span><span class="p">));</span>
+    <span class="n">Put_Line</span> <span class="p">(</span><span class="n">Degrees</span><span class="p">&#39;</span><span class="na">Image</span>
+      <span class="p">(</span><span class="n">Measurements</span><span class="p">.</span><span class="n">Current_Temperature</span><span class="p">));</span>
+
+    <span class="n">T</span> <span class="p">:=</span> <span class="n">T</span> <span class="o">+</span> <span class="mf">2.5</span><span class="p">;</span>
+
+    <span class="n">Put_Line</span> <span class="p">(</span><span class="n">Degrees</span><span class="p">&#39;</span><span class="na">Image</span> <span class="p">(</span><span class="n">T</span><span class="p">));</span>
+    <span class="n">Put_Line</span> <span class="p">(</span><span class="n">Degrees</span><span class="p">&#39;</span><span class="na">Image</span>
+      <span class="p">(</span><span class="n">Measurements</span><span class="p">.</span><span class="n">Current_Temperature</span><span class="p">));</span>
+<span class="kr">end</span> <span class="nf">Main</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>В приведенном выше примере мы объявляем переменную <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">T</span></span></code>, переименовывая
+объект <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Current_Temperature</span></span></code> из пакета <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Measurements</span></span></code>. Как вы
+можете видеть, запустив этот пример, и <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Current_Temperature</span></span></code>, и
+его альтернативное имя <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">T</span></span></code> имеют одинаковые значения:</p>
+<ul class="simple">
+<li><p>сначала они показывают значение 5.0</p></li>
+<li><p>после сложения они показывают значение 7,5.</p></li>
+</ul>
+<p>Это потому, что они по существу относятся к одному и тому же объекту,
+но с двумя разными именами.</p>
+<p>Обратите внимание, что в приведенном выше примере мы используем <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Degrees</span></span></code>
+как псевдоним <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Degree_Celsius</span></span></code>. Мы обсуждали этот метод
+<a class="reference internal" href="strongly_typed_language.html#subtypealiases"><span class="std std-ref">ранее в курсе</span></a>.</p>
+<p>Переименование может быть полезно для улучшения читаемости более
+сложной индексации массивов. Вместо того, чтобы явно использовать
+индексы каждый раз, когда мы обращаемся к определенным позициям
+массива, мы можем создавать более короткие имена для этих позиций,
+переименовывая их. Давайте посмотрим на следующий пример:</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kd">package</span> <span class="nc">Colors</span> <span class="kr">is</span>
+
+   <span class="kd">type</span> <span class="kt">Color</span> <span class="kr">is</span> <span class="p">(</span><span class="nv">Black</span><span class="p">,</span> <span class="nv">Red</span><span class="p">,</span> <span class="nv">Green</span><span class="p">,</span> <span class="nv">Blue</span><span class="p">,</span> <span class="nv">White</span><span class="p">);</span>
+
+   <span class="kd">type</span> <span class="kt">Color_Array</span> <span class="kr">is</span>
+     <span class="kr">array</span> <span class="p">(</span><span class="kt">Positive</span> <span class="kr">range</span> <span class="p">&lt;&gt;)</span> <span class="kr">of</span> <span class="n">Color</span><span class="p">;</span>
+
+   <span class="kd">procedure</span> <span class="nf">Reverse_It</span> <span class="p">(</span><span class="nv">X</span> <span class="p">: </span><span class="nv">in</span> <span class="nv">out</span> <span class="nv">Color_Array</span><span class="p">);</span>
+
+<span class="kr">end</span> <span class="nf">Colors</span><span class="p">;</span>
+
+<span class="kd">package</span> <span class="kd">body</span> <span class="nc">Colors</span> <span class="kr">is</span>
+
+   <span class="kd">procedure</span> <span class="nf">Reverse_It</span> <span class="p">(</span><span class="nv">X</span> <span class="p">: </span><span class="nv">in</span> <span class="nv">out</span> <span class="nv">Color_Array</span><span class="p">)</span> <span class="kr">is</span>
+   <span class="kr">begin</span>
+      <span class="kr">for</span> <span class="n">I</span> <span class="ow">in</span> <span class="n">X</span><span class="p">&#39;</span><span class="na">First</span> <span class="p">..</span> <span class="p">(</span><span class="n">X</span><span class="p">&#39;</span><span class="na">Last</span> <span class="o">+</span> <span class="n">X</span><span class="p">&#39;</span><span class="na">First</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span> <span class="kr">loop</span>
+         <span class="kr">declare</span>
+            <span class="n">Tmp</span>     <span class="p">:</span> <span class="n">Color</span><span class="p">;</span>
+            <span class="n">X_Left</span>  <span class="p">:</span> <span class="n">Color</span>
+              <span class="kr">renames</span> <span class="n">X</span> <span class="p">(</span><span class="n">I</span><span class="p">);</span>
+            <span class="n">X_Right</span> <span class="p">:</span> <span class="n">Color</span>
+              <span class="kr">renames</span> <span class="n">X</span> <span class="p">(</span><span class="n">X</span><span class="p">&#39;</span><span class="na">Last</span> <span class="o">+</span> <span class="n">X</span><span class="p">&#39;</span><span class="na">First</span> <span class="o">-</span> <span class="n">I</span><span class="p">);</span>
+         <span class="kr">begin</span>
+            <span class="n">Tmp</span>     <span class="p">:=</span> <span class="n">X_Left</span><span class="p">;</span>
+            <span class="n">X_Left</span>  <span class="p">:=</span> <span class="n">X_Right</span><span class="p">;</span>
+            <span class="n">X_Right</span> <span class="p">:=</span> <span class="n">Tmp</span><span class="p">;</span>
+         <span class="kr">end</span><span class="p">;</span>
+      <span class="kr">end</span> <span class="kr">loop</span><span class="p">;</span>
+   <span class="kr">end</span> <span class="nf">Reverse_It</span><span class="p">;</span>
+
+<span class="kr">end</span> <span class="nf">Colors</span><span class="p">;</span>
+
+<span class="kn">with</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span> <span class="kn">use</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>
+
+<span class="kn">with</span> <span class="nn">Colors</span><span class="p">;</span> <span class="kn">use</span> <span class="nn">Colors</span><span class="p">;</span>
+
+<span class="kd">procedure</span> <span class="nf">Test_Reverse_Colors</span> <span class="kr">is</span>
+
+   <span class="n">My_Colors</span> <span class="p">:</span> <span class="n">Color_Array</span> <span class="p">(</span><span class="mi">1</span> <span class="p">..</span> <span class="mi">5</span><span class="p">)</span> <span class="p">:=</span>
+     <span class="p">(</span><span class="n">Black</span><span class="p">,</span> <span class="n">Red</span><span class="p">,</span> <span class="n">Green</span><span class="p">,</span> <span class="n">Blue</span><span class="p">,</span> <span class="n">White</span><span class="p">);</span>
+
+<span class="kr">begin</span>
+   <span class="kr">for</span> <span class="n">C</span> <span class="kr">of</span> <span class="n">My_Colors</span> <span class="kr">loop</span>
+      <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;My_Color: &quot;</span> <span class="o">&amp;</span> <span class="n">Color</span><span class="p">&#39;</span><span class="na">Image</span> <span class="p">(</span><span class="n">C</span><span class="p">));</span>
+   <span class="kr">end</span> <span class="kr">loop</span><span class="p">;</span>
+
+   <span class="n">New_Line</span><span class="p">;</span>
+   <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;Reversing My_Color...&quot;</span><span class="p">);</span>
+   <span class="n">New_Line</span><span class="p">;</span>
+   <span class="n">Reverse_It</span> <span class="p">(</span><span class="n">My_Colors</span><span class="p">);</span>
+
+   <span class="kr">for</span> <span class="n">C</span> <span class="kr">of</span> <span class="n">My_Colors</span> <span class="kr">loop</span>
+      <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;My_Color: &quot;</span> <span class="o">&amp;</span> <span class="n">Color</span><span class="p">&#39;</span><span class="na">Image</span> <span class="p">(</span><span class="n">C</span><span class="p">));</span>
+   <span class="kr">end</span> <span class="kr">loop</span><span class="p">;</span>
+
+<span class="kr">end</span> <span class="nf">Test_Reverse_Colors</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>В приведенном выше примере пакет <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Colors</span></span></code> реализует процедуру
+<code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Reverse_It</span></span></code>, объявляя новые имена для двух позиций массива.
+Фактическая реализация становится легко читаемой:</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kr">begin</span>
+   <span class="n">Tmp</span>     <span class="p">:=</span> <span class="n">X_Left</span><span class="p">;</span>
+   <span class="n">X_Left</span>  <span class="p">:=</span> <span class="n">X_Right</span><span class="p">;</span>
+   <span class="n">X_Right</span> <span class="p">:=</span> <span class="n">Tmp</span><span class="p">;</span>
+<span class="kr">end</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Сравните это с альтернативной версией без переименования:</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kr">begin</span>
+   <span class="n">Tmp</span>                      <span class="p">:=</span> <span class="n">X</span> <span class="p">(</span><span class="n">I</span><span class="p">);</span>
+   <span class="n">X</span> <span class="p">(</span><span class="n">I</span><span class="p">)</span>                    <span class="p">:=</span> <span class="n">X</span> <span class="p">(</span><span class="n">X</span><span class="p">&#39;</span><span class="na">Last</span> <span class="o">+</span> <span class="n">X</span><span class="p">&#39;</span><span class="na">First</span> <span class="o">-</span> <span class="n">I</span><span class="p">);</span>
+   <span class="n">X</span> <span class="p">(</span><span class="n">X</span><span class="p">&#39;</span><span class="na">Last</span> <span class="o">+</span> <span class="n">X</span><span class="p">&#39;</span><span class="na">First</span> <span class="o">-</span> <span class="n">I</span><span class="p">)</span> <span class="p">:=</span> <span class="n">Tmp</span><span class="p">;</span>
+<span class="kr">end</span><span class="p">;</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          
+
+
+<footer>
+      
+      
+
+      
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+          
+            <a href="more_about_types.html" class="btn btn-neutral float-right" title="Подробнее о типах" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+          
+          
+            <a href="records.html" class="btn btn-neutral" title="Записи" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+          
+        </div>
+  
+
+
+  <hr/>
+
+  <div class="legal">
+              Copyright &copy; 2022 AdaCore. All rights reserved.
+              &nbsp;&nbsp;
+              <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/80x15.png" /></a>
+              <br>
+              <a href="https://www.adacore.com/company/legal">Legal</a>
+              &nbsp; |  &nbsp;
+              <a href="https://www.adacore.com/company/privacy">Privacy Policy</a>
+              &nbsp; |  &nbsp;
+              <a href="https://github.com/AdaCore/learn/issues">Report an Issue</a>
+            </div> 
+
+</footer>
+
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+  <button id="scrollToTopBtn" title="Go to top"><i class="fas fa-caret-square-up"></i></button>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+</script>
+
+
+</body>
+</html>

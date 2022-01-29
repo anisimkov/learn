@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Подпрограммы &mdash; learn.adacore.com</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Модульное программирование" href="modular_programming.html" />
+    <link rel="prev" title="Императивы языка" href="imperative_language.html" />
+  <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-117428-14"></script>
+<script type="text/javascript">
+  if(!Cookies.get('AdaCore_staff')) {
+    // Global site tag (gtag.js) - Google Analytics
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-117428-14');
+    // End Global site tag (gtag.js) - Google Analytics
+
+    // Google Tag Manager
+    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-KD5HNRR');
+    // End Google Tag Manager
+
+    // Twitter universal website tag code
+    !function(e,t,n,s,u,a){e.twq||(s=e.twq=function(){s.exe?s.exe.apply(s,arguments):s.queue.push(arguments);},s.version='1.1',s.queue=[],u=t.createElement(n),u.async=!0,u.src='//static.ads-twitter.com/uwt.js',a=t.getElementsByTagName(n)[0],a.parentNode.insertBefore(u,a))}(window,document,'script');
+    // Insert Twitter Pixel ID and Standard Event data below
+    twq('init','o3mlc');
+    twq('track','PageView');
+    // End Twitter universal website tag code
+
+    // LinkedIn Tracking Tags
+    _linkedin_partner_id = "482585"; window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || []; window._linkedin_data_partner_ids.push(_linkedin_partner_id);
+    (function(){var s = document.getElementsByTagName("script")[0]; var b = document.createElement("script"); b.type = "text/javascript";b.async = true; b.src = "https://snap.licdn.com/li.lms-analytics/insight.min.js"; s.parentNode.insertBefore(b, s);})();
+    // End LinkedIn Tracking Tags
+  }
+</script>
+  <!--  Essential META Tags -->
+<meta property="og:title" content=“learn.adacore.com">
+<meta property="og:description" content="An interactive learning platform to teach the Ada and SPARK programming languages.">
+<meta property="og:image" content="https://learn.adacore.com/_static/learn_meta_img.jpeg">
+<meta property="og:url" content="https://learn.adacore.com">
+<meta name="twitter:card" content="summary_large_image">
+
+<!--  Non-Essential, But Recommended -->
+<meta property="og:site_name" content="learn.adacore.com">
+<meta name="twitter:image:alt" content="An interactive learning platform to teach the Ada and SPARK programming languages.">
+
+<!--  Non-Essential, But Required for Analytics -->
+<meta name="twitter:site" content="@AdaCoreCompany">
+
+</head>
+
+<body class="wy-body-for-nav">
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KD5HNRR"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  <!-- LinkedIn Tracking Tags (noscript) -->
+  <noscript> <img height="1" width="1" style="display:none;" alt="" src="https://dc.ads.linkedin.com/collect/?pid=482585&fmt=gif" /> </noscript>
+  <!-- End LinkedIn Tracking Tags (noscript) -->
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html">
+            <img src="../_static/logo.svg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Введение</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#id2">История</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#ada">Ada сегодня</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#id6">Философия</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#spark">SPARK</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="imperative_language.html">Императивы языка</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="imperative_language.html#hello-world">Hello world</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imperative_language.html#if-then-else">Императивы языка ‑ If / Then / Else</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imperative_language.html#loops">Императивы языка ‑ Loops</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="imperative_language.html#for">Циклы For</a></li>
+<li class="toctree-l3"><a class="reference internal" href="imperative_language.html#id2">Простой цикл</a></li>
+<li class="toctree-l3"><a class="reference internal" href="imperative_language.html#while">Циклы While</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="imperative_language.html#case">Императивы языка – оператор Case</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imperative_language.html#id3">Императивы языка – декларативные регионы</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imperative_language.html#id4">Императивы языка – условные выражения</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="imperative_language.html#if">Выражение If</a></li>
+<li class="toctree-l3"><a class="reference internal" href="imperative_language.html#id5">Выражение Case</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Подпрограммы</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">Подпрограммы</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id3">Вызовы подпрограмм</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">Вложенные подпрограммы</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">Вызов функций</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id6">Режимы параметров</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id7">Вызов процедуры</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#in">Параметры in</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#in-out">Параметры in out</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#out">Параметры out</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id8">Предварительное объявление подпрограмм</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#subprogram-renaming">Переименование</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="modular_programming.html">Модульное программирование</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="modular_programming.html#id2">Пакеты</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modular_programming.html#id3">Использование пакета</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modular_programming.html#id4">Тело пакета</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modular_programming.html#childpackages">Дочерние пакеты</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="modular_programming.html#id6">Дочерний пакет от дочернего пакета</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modular_programming.html#id7">Множественные потомки</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modular_programming.html#id8">Видимость</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="modular_programming.html#package-renaming">Переименование</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="strongly_typed_language.html">Сильно типизированный язык</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="strongly_typed_language.html#whatisatype">Что такое тип?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="strongly_typed_language.html#integers">Целочисленные типы ‑ Integers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="strongly_typed_language.html#id3">Семантика операций</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="strongly_typed_language.html#id4">Беззнаковые типы</a></li>
+<li class="toctree-l2"><a class="reference internal" href="strongly_typed_language.html#enumtypes">Перечисления</a></li>
+<li class="toctree-l2"><a class="reference internal" href="strongly_typed_language.html#id7">Типы с плавающей запятой</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="strongly_typed_language.html#id8">Основные свойства</a></li>
+<li class="toctree-l3"><a class="reference internal" href="strongly_typed_language.html#id9">Точность типов с плавающей запятой</a></li>
+<li class="toctree-l3"><a class="reference internal" href="strongly_typed_language.html#id10">Диапазон типов с плавающей запятой</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="strongly_typed_language.html#id11">Строгая типизация</a></li>
+<li class="toctree-l2"><a class="reference internal" href="strongly_typed_language.html#id12">Производные типы</a></li>
+<li class="toctree-l2"><a class="reference internal" href="strongly_typed_language.html#id13">Подтипы</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="strongly_typed_language.html#subtypealiases">Подтипы в качестве псевдонимов типов</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="records.html">Записи</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="records.html#id2">Объявление типа записи</a></li>
+<li class="toctree-l2"><a class="reference internal" href="records.html#id3">Агрегаты</a></li>
+<li class="toctree-l2"><a class="reference internal" href="records.html#id4">Выбор компонентов</a></li>
+<li class="toctree-l2"><a class="reference internal" href="records.html#record-comp-renaming">Переименование</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="arrays.html">Массивы</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="arrays.html#id2">Объявление типа массива</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays.html#id3">Индексирование</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays.html#id4">Более простые объявления массива</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays.html#id5">Атрибут диапазона</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays.html#unconstrainedarraytypes">Неограниченные массивы</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays.html#string">Предопределенный тип массива: String</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays.html#id7">Ограничения</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays.html#id8">Возврат неограниченных массивов</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays.html#id9">Объявление массивов (2)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays.html#id10">Срезы массива</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays.html#object-renaming">Переименование</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="more_about_types.html">Подробнее о типах</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="more_about_types.html#id2">Агрегаты: краткая информация</a></li>
+<li class="toctree-l2"><a class="reference internal" href="more_about_types.html#id3">Перегрузка и квалифицированные выражения</a></li>
+<li class="toctree-l2"><a class="reference internal" href="more_about_types.html#access">Типы Access (указатели)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="more_about_types.html#allocation">Распределение (по типу) ‑ Allocation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="more_about_types.html#id5">Разыменование</a></li>
+<li class="toctree-l3"><a class="reference internal" href="more_about_types.html#id6">Другие особенности</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="more_about_types.html#id7">Взаимно рекурсивные типы</a></li>
+<li class="toctree-l2"><a class="reference internal" href="more_about_types.html#id8">Подробнее о записях</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="more_about_types.html#id9">Типы записей с динамически изменяемым размером</a></li>
+<li class="toctree-l3"><a class="reference internal" href="more_about_types.html#id10">Записи с дискриминантом</a></li>
+<li class="toctree-l3"><a class="reference internal" href="more_about_types.html#c">Записи c вариантами</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="more_about_types.html#id11">Типы с фиксированной точкой</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="more_about_types.html#id12">Десятичные типы с фиксированной точкой</a></li>
+<li class="toctree-l3"><a class="reference internal" href="more_about_types.html#id13">Типы фиксированных точек</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="more_about_types.html#id14">Типы символов</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="privacy.html">Конфиденциальность</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="privacy.html#id3">Базовая инкапсуляция</a></li>
+<li class="toctree-l2"><a class="reference internal" href="privacy.html#id4">Абстрактные типы данных</a></li>
+<li class="toctree-l2"><a class="reference internal" href="privacy.html#id5">Ограниченные типы</a></li>
+<li class="toctree-l2"><a class="reference internal" href="privacy.html#id7">Дочерние пакеты и конфиденциальность</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="generics.html">Настраиваемые модули</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="generics.html#id2">Введение</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generics.html#id3">Формальное объявление типа</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generics.html#id4">Формальное объявление объекта</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generics.html#generic">Определение тела generic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generics.html#id5">Создание экземпляра generic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generics.html#id6">Generic пакеты</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generics.html#id7">Формальные подпрограммы</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generics.html#id8">Пример: экземпляры ввода / вывода</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generics.html#id9">Пример: АТД</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generics.html#swap">Пример: Обмен (Swap)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generics.html#reversing">Пример: Реверсирование (Reversing)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generics.html#id10">Пример: Тестовое приложение</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="exceptions.html">Исключения</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="exceptions.html#id2">Объявление исключения</a></li>
+<li class="toctree-l2"><a class="reference internal" href="exceptions.html#id3">Возбуждение исключения</a></li>
+<li class="toctree-l2"><a class="reference internal" href="exceptions.html#id4">Обработка исключения</a></li>
+<li class="toctree-l2"><a class="reference internal" href="exceptions.html#id5">Предопределенные исключения</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="contracts.html">Контрактное проектирование</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="contracts.html#id2">Пред- и постусловия</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contracts.html#id3">Предикаты</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contracts.html#id4">Инварианты типа</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="interfacing_with_c.html">Взаимодействие с языком C</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="interfacing_with_c.html#id1">Многоязычный проект</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interfacing_with_c.html#id2">Соглашение о типах</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interfacing_with_c.html#id3">Подпрограммы на других языках</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="interfacing_with_c.html#c-ada">Вызов подпрограмм C в Ada</a></li>
+<li class="toctree-l3"><a class="reference internal" href="interfacing_with_c.html#ada-c">Вызов подпрограмм Ada в C</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="interfacing_with_c.html#id4">Внешние переменные</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="interfacing_with_c.html#id5">Использование глобальных переменных C в Ada</a></li>
+<li class="toctree-l3"><a class="reference internal" href="interfacing_with_c.html#id6">Использование переменных Ada в C</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="interfacing_with_c.html#id7">Создание привязок</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="interfacing_with_c.html#id8">Адаптация привязок</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="object_oriented_programming.html">Объектно-ориентированное программирование</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="object_oriented_programming.html#id2">Производные типы</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_oriented_programming.html#id3">Типы с тегами</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_oriented_programming.html#id5">Типы расширяемые классами</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_oriented_programming.html#id6">Операции диспетчеризации</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_oriented_programming.html#id7">Точечная нотация</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_oriented_programming.html#id8">Частные и ограниченные типы с тегами</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_oriented_programming.html#id9">Типы доступа в классах</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="standard_library_containers.html">Стандартная библиотека: Контейнеры</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_containers.html#id2">Векторы</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_containers.html#id3">Создание экземпляра</a></li>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_containers.html#id4">Инициализация</a></li>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_containers.html#prepend-append">Добавление элементов - Prepend и Append</a></li>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_containers.html#id5">Доступ к первому и последнему элементам</a></li>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_containers.html#id6">Итерация</a></li>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_containers.html#id7">Поиск и изменение элементов</a></li>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_containers.html#id8">Вставка элементов</a></li>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_containers.html#id9">Удаление элементов</a></li>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_containers.html#id10">Другие операции</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_containers.html#id11">Множества</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_containers.html#id12">Инициализация и итерация</a></li>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_containers.html#id13">Операции с элементами</a></li>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_containers.html#id14">Другие операции</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_containers.html#id15">Неопределенные карты</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_containers.html#id16">Хэшированные карты</a></li>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_containers.html#id17">Упорядоченные карты</a></li>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_containers.html#id18">Сложность</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="standard_library_dates_times.html">Стандартная библиотека: Дата и время</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_dates_times.html#datestimes">Обработка даты и времени</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_dates_times.html#id3">Задержка с использованием даты</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_dates_times.html#id4">В режиме реального времени</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_dates_times.html#id5">Сравнительный анализ</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="standard_library_strings.html">Стандартная библиотека: Строки</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_strings.html#id2">Операции со строками</a></li>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_strings.html#id3">Ограничение строк фиксированной длины</a></li>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_strings.html#id4">Ограниченные строки</a></li>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_strings.html#unboundedstrings">Неограниченные строки</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="standard_library_files_streams.html">Стандартная библиотека: Файлы и потоки</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_files_streams.html#id2">Ввод/вывод текста</a></li>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_files_streams.html#id3">Последовательный ввод-вывод</a></li>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_files_streams.html#id4">Прямой ввод / вывод</a></li>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_files_streams.html#id5">Потоковый ввод-вывод</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="standard_library_numerics.html">Стандартная библиотека: Numerics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_numerics.html#id1">Элементарные функции</a></li>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_numerics.html#id2">Генерация случайных чисел</a></li>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_numerics.html#id3">Тип комплексного числа</a></li>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_numerics.html#id4">Манипулирование векторами и матрицами</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="appendices.html">Приложения</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="appendices.html#a">Приложение A: Формальные типы настройки</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="appendices.html#id2">Неограниченная версия типа</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="appendices.html#b">Приложение B: Контейнеры</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+  <i data-toggle="wy-nav-top" class="fas fa-bars"></i>
+    <a href="../index.html">
+    <img src="../_static/logo.svg" class="logo" alt="Logo"/>
+  </a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="id1">
+<h1>Подпрограммы<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h1>
+<span class="target" id="subprograms"></span><section id="id2">
+<h2>Подпрограммы<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h2>
+<p>До сих пор мы использовали процедуры, в основном, чтобы иметь основную
+часть кода для выполнения. Процедуры являются одним из видов
+<em>подпрограмм</em>.</p>
+<p>В Ada есть два вида подпрограмм: <em>функции</em> и <em>процедуры</em>. Различие между
+ними заключается в том, что функция возвращает значение, а процедура -
+нет.</p>
+<p>В этом примере показано объявление и определение функции:</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kd">function</span> <span class="nf">Increment</span> <span class="p">(</span><span class="nv">I</span> <span class="p">: </span><span class="nv">Integer</span><span class="p">)</span> <span class="kr">return</span> <span class="kt">Integer</span><span class="p">;</span>
+<span class="c1">--  We declare (but don&#39;t define) a function with</span>
+<span class="c1">--  one parameter, returning an integer value</span>
+
+<span class="kd">function</span> <span class="nf">Increment</span> <span class="p">(</span><span class="nv">I</span> <span class="p">: </span><span class="nv">Integer</span><span class="p">)</span> <span class="kr">return</span> <span class="kt">Integer</span> <span class="kr">is</span>
+   <span class="c1">--  We define the Increment function</span>
+<span class="kr">begin</span>
+    <span class="kr">return</span> <span class="n">I</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+<span class="kr">end</span> <span class="nf">Increment</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Подпрограммы в Ada, конечно, могут иметь параметры. Одно синтаксически
+важное замечание заключается в том, что подпрограмма, у которой нет
+параметров, вообще не имеет раздела параметров, например:</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kd">procedure</span> <span class="nf">Proc</span><span class="p">;</span>
+
+<span class="kd">function</span> <span class="nf">Func</span> <span class="nf">return</span> <span class="nf">Integer</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Вот еще один вариант предыдущего примера:</p>
+<div class="ada-syntax-only highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kd">function</span> <span class="nf">Increment_By</span>
+  <span class="p">(</span><span class="nv">I</span>    <span class="p">: </span><span class="nv">Integer</span> <span class="p">:=</span> <span class="nv">0</span><span class="p">;</span>
+   <span class="nv">Incr</span> <span class="p">: </span><span class="nv">Integer</span> <span class="p">:=</span> <span class="nv">1</span><span class="p">)</span> <span class="kr">return</span> <span class="kt">Integer</span><span class="p">;</span>
+<span class="c1">--                ^ Default value for parameters</span>
+</pre></div>
+</div>
+<p>В этом примере мы видим, что параметры могут иметь значения по
+умолчанию. При вызове подпрограммы вы можете опустить параметры, если
+они имеют значение по умолчанию. В отличие от C/C++, вызов
+подпрограммы без параметров не включает скобки.</p>
+<p>Это реализация функции, описанной выше:</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kd">function</span> <span class="nf">Increment_By</span>
+  <span class="p">(</span><span class="nv">I</span>    <span class="p">: </span><span class="nv">Integer</span> <span class="p">:=</span> <span class="nv">0</span><span class="p">;</span>
+   <span class="nv">Incr</span> <span class="p">: </span><span class="nv">Integer</span> <span class="p">:=</span> <span class="nv">1</span><span class="p">)</span> <span class="kr">return</span> <span class="kt">Integer</span> <span class="kr">is</span>
+<span class="kr">begin</span>
+   <span class="kr">return</span> <span class="n">I</span> <span class="o">+</span> <span class="n">Incr</span><span class="p">;</span>
+<span class="kr">end</span> <span class="nf">Increment_By</span><span class="p">;</span>
+</pre></div>
+</div>
+<section id="id3">
+<h3>Вызовы подпрограмм<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h3>
+<p>Затем мы можем вызвать нашу подпрограмму таким образом:</p>
+<div class="ada-run highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kn">with</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span> <span class="kn">use</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>
+<span class="kn">with</span> <span class="nn">Increment_By</span><span class="p">;</span>
+
+<span class="kd">procedure</span> <span class="nf">Show_Increment</span> <span class="kr">is</span>
+   <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span> <span class="p">:</span> <span class="kt">Integer</span><span class="p">;</span>
+<span class="kr">begin</span>
+   <span class="n">C</span> <span class="p">:=</span> <span class="n">Increment_By</span><span class="p">;</span>
+   <span class="c1">--              ^ Parameterless call,</span>
+   <span class="c1">--                value of I is 0</span>
+   <span class="c1">--                and Incr is 1</span>
+
+   <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;Using defaults for Increment_By is &quot;</span>
+             <span class="o">&amp;</span> <span class="kt">Integer</span><span class="p">&#39;</span><span class="na">Image</span> <span class="p">(</span><span class="n">C</span><span class="p">));</span>
+
+   <span class="n">A</span> <span class="p">:=</span> <span class="mi">10</span><span class="p">;</span>
+   <span class="n">B</span> <span class="p">:=</span> <span class="mi">3</span><span class="p">;</span>
+   <span class="n">C</span> <span class="p">:=</span> <span class="n">Increment_By</span> <span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">);</span>
+   <span class="c1">--                 ^ Regular parameter passing</span>
+
+   <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;Increment of &quot;</span>
+             <span class="o">&amp;</span> <span class="kt">Integer</span><span class="p">&#39;</span><span class="na">Image</span> <span class="p">(</span><span class="n">A</span><span class="p">)</span>
+             <span class="o">&amp;</span> <span class="s">&quot; with &quot;</span>
+             <span class="o">&amp;</span> <span class="kt">Integer</span><span class="p">&#39;</span><span class="na">Image</span> <span class="p">(</span><span class="n">B</span><span class="p">)</span>
+             <span class="o">&amp;</span> <span class="s">&quot; is &quot;</span>
+             <span class="o">&amp;</span> <span class="kt">Integer</span><span class="p">&#39;</span><span class="na">Image</span> <span class="p">(</span><span class="n">C</span><span class="p">));</span>
+
+   <span class="n">A</span> <span class="p">:=</span> <span class="mi">20</span><span class="p">;</span>
+   <span class="n">B</span> <span class="p">:=</span> <span class="mi">5</span><span class="p">;</span>
+   <span class="n">C</span> <span class="p">:=</span> <span class="n">Increment_By</span> <span class="p">(</span><span class="n">I</span>    <span class="p">=&gt;</span> <span class="n">A</span><span class="p">,</span>
+                      <span class="n">Incr</span> <span class="p">=&gt;</span> <span class="n">B</span><span class="p">);</span>
+    <span class="c1">--                ^ Named parameter passing</span>
+
+   <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;Increment of &quot;</span>
+             <span class="o">&amp;</span> <span class="kt">Integer</span><span class="p">&#39;</span><span class="na">Image</span> <span class="p">(</span><span class="n">A</span><span class="p">)</span>
+             <span class="o">&amp;</span> <span class="s">&quot; with &quot;</span>
+             <span class="o">&amp;</span> <span class="kt">Integer</span><span class="p">&#39;</span><span class="na">Image</span> <span class="p">(</span><span class="n">B</span><span class="p">)</span>
+             <span class="o">&amp;</span> <span class="s">&quot; is &quot;</span>
+             <span class="o">&amp;</span> <span class="kt">Integer</span><span class="p">&#39;</span><span class="na">Image</span> <span class="p">(</span><span class="n">C</span><span class="p">));</span>
+<span class="kr">end</span> <span class="nf">Show_Increment</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Ada позволяет вам выполнять передачу с использованием именованного
+параметра во время вызова, независимо от того, имеют ли они заданные
+по умолчанию значения или нет. Есть несколько правил:</p>
+<ul class="simple">
+<li><p>Позиционные параметры на первом месте.</p></li>
+<li><p>Позиционный параметр не может следовать за именованным параметром.</p></li>
+</ul>
+<p>Как правило, пользователи используют вызов с именованным параметром во
+время вызова, если соответствующий параметр функции имеет значение по
+умолчанию. Однако также вполне допустимо использовать вызов с
+именованием каждого параметра, если он делает код более понятным.</p>
+</section>
+<section id="id4">
+<h3>Вложенные подпрограммы<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h3>
+<p>Как кратко упоминалось ранее, Ada позволяет вам объявлять одну
+подпрограмму внутри другой.</p>
+<p>Это полезно по двум причинам:</p>
+<ul class="simple">
+<li><p>Это позволяет вам организовывать ваши программы более чистым образом.
+Если вам нужна подпрограмма только как «помощник» для другой
+подпрограммы, то принцип локализации указывает, что
+подпрограмма-помощник должна быть объявлена вложенной.</p></li>
+<li><p>Это позволяет вам легко обмениваться состоянием контролируемым
+образом, потому что вложенные подпрограммы имеют доступ к параметрам,
+а также к любым локальным переменным, объявленным во внешней области.</p></li>
+</ul>
+<p>Используя код предыдущего примера, можно переместить код, сдублировав
+(вызов <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Put_Line</span></span></code>) в отдельную процедуру. Это укороченная версия с вложенной
+процедурой <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Display_Result</span></span></code>.</p>
+<div class="ada-run highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kn">with</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span> <span class="kn">use</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>
+<span class="kn">with</span> <span class="nn">Increment_By</span><span class="p">;</span>
+
+<span class="kd">procedure</span> <span class="nf">Show_Increment</span> <span class="kr">is</span>
+   <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span> <span class="p">:</span> <span class="kt">Integer</span><span class="p">;</span>
+
+   <span class="kd">procedure</span> <span class="nf">Display_Result</span> <span class="kr">is</span>
+   <span class="kr">begin</span>
+      <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;Increment of &quot;</span>
+                <span class="o">&amp;</span> <span class="kt">Integer</span><span class="p">&#39;</span><span class="na">Image</span> <span class="p">(</span><span class="n">A</span><span class="p">)</span>
+                <span class="o">&amp;</span> <span class="s">&quot; with &quot;</span>
+                <span class="o">&amp;</span> <span class="kt">Integer</span><span class="p">&#39;</span><span class="na">Image</span> <span class="p">(</span><span class="n">B</span><span class="p">)</span>
+                <span class="o">&amp;</span> <span class="s">&quot; is &quot;</span>
+                <span class="o">&amp;</span> <span class="kt">Integer</span><span class="p">&#39;</span><span class="na">Image</span> <span class="p">(</span><span class="n">C</span><span class="p">));</span>
+   <span class="kr">end</span> <span class="nf">Display_Result</span><span class="p">;</span>
+
+<span class="kr">begin</span>
+   <span class="n">A</span> <span class="p">:=</span> <span class="mi">10</span><span class="p">;</span>
+   <span class="n">B</span> <span class="p">:=</span> <span class="mi">3</span><span class="p">;</span>
+   <span class="n">C</span> <span class="p">:=</span> <span class="n">Increment_By</span> <span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">);</span>
+   <span class="n">Display_Result</span><span class="p">;</span>
+<span class="kr">end</span> <span class="nf">Show_Increment</span><span class="p">;</span>
+</pre></div>
+</div>
+</section>
+<section id="id5">
+<h3>Вызов функций<a class="headerlink" href="#id5" title="Permalink to this headline"></a></h3>
+<p>Важной особенностью вызовов функций в Ada является то, что
+возвращаемое значение при вызове нельзя игнорировать; то есть вызов
+функции не может использоваться как оператор.</p>
+<p>Если вы хотите вызвать функцию и вам не нужен ее результат, вам все
+равно нужно будет явно сохранить его в локальной переменной.</p>
+<div class="ada-expect-compile-error highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kd">function</span> <span class="nf">Quadruple</span> <span class="p">(</span><span class="nv">I</span> <span class="p">: </span><span class="nv">Integer</span><span class="p">)</span> <span class="kr">return</span> <span class="kt">Integer</span> <span class="kr">is</span>
+    <span class="kd">function</span> <span class="nf">Double</span> <span class="p">(</span><span class="nv">I</span> <span class="p">: </span><span class="nv">Integer</span><span class="p">)</span> <span class="kr">return</span> <span class="kt">Integer</span> <span class="kr">is</span>
+    <span class="kr">begin</span>
+       <span class="kr">return</span> <span class="n">I</span> <span class="o">*</span> <span class="mi">2</span><span class="p">;</span>
+    <span class="kr">end</span> <span class="nf">Double</span><span class="p">;</span>
+
+   <span class="n">Res</span> <span class="p">:</span> <span class="kt">Integer</span> <span class="p">:=</span> <span class="n">Double</span> <span class="p">(</span><span class="n">Double</span> <span class="p">(</span><span class="n">I</span><span class="p">));</span>
+   <span class="c1">--               ^ Calling the Double</span>
+   <span class="c1">--                 function</span>
+<span class="kr">begin</span>
+   <span class="n">Double</span> <span class="p">(</span><span class="n">I</span><span class="p">);</span>
+   <span class="c1">--  ERROR: cannot use call to function</span>
+   <span class="c1">--         &quot;Double&quot; as a statement</span>
+
+   <span class="kr">return</span> <span class="n">Res</span><span class="p">;</span>
+<span class="kr">end</span> <span class="nf">Quadruple</span><span class="p">;</span>
+</pre></div>
+</div>
+<div class="admonition-gnat admonition">
+<p class="admonition-title">В наборе инструментов GNAT</p>
+<p>В GNAT, когда все предупреждения активированы, становится еще сложнее
+игнорировать результат функции, потому что неиспользуемые переменные
+будут помечены. Например, этот код будет недействительным:</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kd">function</span> <span class="nf">Read_Int</span>
+   <span class="p">(</span><span class="nv">Stream</span> <span class="p">: </span>    <span class="nv">Network_Stream</span><span class="p">;</span>
+    <span class="nv">Result</span> <span class="p">: </span><span class="nv">out</span> <span class="nv">Integer</span><span class="p">)</span> <span class="kr">return</span> <span class="kt">Boolean</span><span class="p">;</span>
+
+<span class="kd">procedure</span> <span class="nf">Main</span> <span class="kr">is</span>
+    <span class="n">Stream</span> <span class="p">:</span> <span class="n">Network_Stream</span> <span class="p">:=</span> <span class="n">Get_Stream</span><span class="p">;</span>
+    <span class="n">My_Int</span> <span class="p">:</span> <span class="kt">Integer</span><span class="p">;</span>
+
+    <span class="c1">-- Warning: in the line below, B is</span>
+    <span class="c1">--          never read.</span>
+    <span class="n">B</span> <span class="p">:</span> <span class="kt">Boolean</span> <span class="p">:=</span> <span class="n">Read_Int</span> <span class="p">(</span><span class="n">Stream</span><span class="p">,</span> <span class="n">My_Int</span><span class="p">);</span>
+<span class="kr">begin</span>
+   <span class="kc">null</span><span class="p">;</span>
+<span class="kr">end</span> <span class="nf">Main</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Затем у вас есть два решения, чтобы отключить это предупреждение:</p>
+<ul class="simple">
+<li><p>Либо аннотировать переменную с помощью pragma Unreferenced, таким
+образом:</p></li>
+</ul>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="n">B</span> <span class="p">:</span> <span class="kt">Boolean</span> <span class="p">:=</span> <span class="n">Read_Int</span> <span class="p">(</span><span class="n">Stream</span><span class="p">,</span> <span class="n">My_Int</span><span class="p">);</span>
+<span class="kr">pragma</span> <span class="cp">Unreferenced</span> <span class="p">(</span><span class="n">B</span><span class="p">);</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Или дайте переменной имя, которое содержит любую из строк: <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">discard</span></span></code>
+<code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">dummy</span></span></code> <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">ignore</span></span></code> <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">junk</span></span></code> <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">unused</span></span></code> (без учета регистра)</p></li>
+</ul>
+</div>
+</section>
+</section>
+<section id="id6">
+<h2>Режимы параметров<a class="headerlink" href="#id6" title="Permalink to this headline"></a></h2>
+<p>До сих пор мы видели, что Ada - это язык, ориентированный на
+безопасность. Существует много способов реализации этого, но два
+важных момента заключаются в следующем:</p>
+<ul class="simple">
+<li><p>Ada позволяет пользователю максимально указать ожидаемое поведение
+программы, чтобы компилятор мог предупреждать или отклонять при
+наличии несоответствия.</p></li>
+<li><p>Ada предоставляет множество методов для достижения общности и гибкости
+указателей и динамического управления памятью, но без недостатков
+последнего (таких как утечка памяти и висячие ссылки).</p></li>
+</ul>
+<p>Режимы параметров - это функция, которая помогает достичь двух
+вышеуказанных целей проектирования. Параметр подпрограммы можно
+указать с помощью одного из следующих режимов:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 23%" />
+<col style="width: 77%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><code class="code highlight ada docutils literal notranslate"><span class="operator word"><span class="pre">in</span></span></code></p></td>
+<td><p>Параметр может быть только считан, но не записан</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="code highlight ada docutils literal notranslate"><span class="keyword reserved"><span class="pre">out</span></span></code></p></td>
+<td><p>Параметр можно записать, а затем прочитать</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="code highlight ada docutils literal notranslate"><span class="operator word"><span class="pre">in</span></span> <span class="keyword reserved"><span class="pre">out</span></span></code></p></td>
+<td><p>Параметр может быть, как считан, так и записан</p></td>
+</tr>
+</tbody>
+</table>
+<p>Режимом по умолчанию для параметров является <code class="code highlight ada docutils literal notranslate"><span class="operator word"><span class="pre">in</span></span></code>; до сих пор большинство
+примеров использовали параметры <code class="code highlight ada docutils literal notranslate"><span class="operator word"><span class="pre">in</span></span></code>.</p>
+<div class="admonition- admonition">
+<p class="admonition-title">Исторически</p>
+<p>Функции и процедуры изначально были более разными по философии. До Ada
+2012 функции могли принимать только «входящие» (<code class="code highlight ada docutils literal notranslate"><span class="operator word"><span class="pre">in</span></span></code>) параметры.</p>
+</div>
+</section>
+<section id="id7">
+<h2>Вызов процедуры<a class="headerlink" href="#id7" title="Permalink to this headline"></a></h2>
+<section id="in">
+<h3>Параметры in<a class="headerlink" href="#in" title="Permalink to this headline"></a></h3>
+<p>Первый режим для параметров - это тот, который мы неявно использовали
+до сих пор. Параметры, переданные с использованием этого режима, не
+могут быть изменены, поэтому следующая программа вызовет ошибку:</p>
+<div class="ada-expect-compile-error highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kd">procedure</span> <span class="nf">Swap</span> <span class="p">(</span><span class="nv">A</span><span class="p">,</span> <span class="nv">B</span> <span class="p">: </span><span class="nv">Integer</span><span class="p">)</span> <span class="kr">is</span>
+   <span class="n">Tmp</span> <span class="p">:</span> <span class="kt">Integer</span><span class="p">;</span>
+<span class="kr">begin</span>
+   <span class="n">Tmp</span> <span class="p">:=</span> <span class="n">A</span><span class="p">;</span>
+
+   <span class="c1">--  Error: assignment to &quot;in&quot; mode</span>
+   <span class="c1">--         parameter not allowed</span>
+   <span class="n">A</span> <span class="p">:=</span> <span class="n">B</span><span class="p">;</span>
+
+   <span class="c1">--  Error: assignment to &quot;in&quot; mode</span>
+   <span class="c1">--         parameter not allowed</span>
+   <span class="n">B</span> <span class="p">:=</span> <span class="n">Tmp</span><span class="p">;</span>
+<span class="kr">end</span> <span class="nf">Swap</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Тот факт, что это режим по умолчанию, сам по себе очень важен. Это
+означает, что параметр не будет изменен, если вы явно не укажете
+режим, в котором разрешено изменение.</p>
+</section>
+<section id="in-out">
+<h3>Параметры in out<a class="headerlink" href="#in-out" title="Permalink to this headline"></a></h3>
+<p>Для исправления кода, приведенного выше, можно использовать параметр «<code class="code highlight ada docutils literal notranslate"><span class="operator word"><span class="pre">in</span></span> <span class="keyword reserved"><span class="pre">out</span></span></code>
+».</p>
+<div class="ada-run highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kn">with</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span> <span class="kn">use</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>
+
+<span class="kd">procedure</span> <span class="nf">In_Out_Params</span> <span class="kr">is</span>
+   <span class="kd">procedure</span> <span class="nf">Swap</span> <span class="p">(</span><span class="nv">A</span><span class="p">,</span> <span class="nv">B</span> <span class="p">: </span><span class="nv">in</span> <span class="nv">out</span> <span class="nv">Integer</span><span class="p">)</span> <span class="kr">is</span>
+      <span class="n">Tmp</span> <span class="p">:</span> <span class="kt">Integer</span><span class="p">;</span>
+   <span class="kr">begin</span>
+      <span class="n">Tmp</span> <span class="p">:=</span> <span class="n">A</span><span class="p">;</span>
+      <span class="n">A</span>   <span class="p">:=</span> <span class="n">B</span><span class="p">;</span>
+      <span class="n">B</span>   <span class="p">:=</span> <span class="n">Tmp</span><span class="p">;</span>
+   <span class="kr">end</span> <span class="nf">Swap</span><span class="p">;</span>
+
+   <span class="n">A</span> <span class="p">:</span> <span class="kt">Integer</span> <span class="p">:=</span> <span class="mi">12</span><span class="p">;</span>
+   <span class="n">B</span> <span class="p">:</span> <span class="kt">Integer</span> <span class="p">:=</span> <span class="mi">44</span><span class="p">;</span>
+<span class="kr">begin</span>
+    <span class="n">Swap</span> <span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">);</span>
+
+    <span class="c1">--  Prints 44</span>
+    <span class="n">Put_Line</span> <span class="p">(</span><span class="kt">Integer</span><span class="p">&#39;</span><span class="na">Image</span> <span class="p">(</span><span class="n">A</span><span class="p">));</span>
+<span class="kr">end</span> <span class="nf">In_Out_Params</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Параметр <code class="code highlight ada docutils literal notranslate"><span class="operator word"><span class="pre">in</span></span> <span class="keyword reserved"><span class="pre">out</span></span></code> обеспечивает доступ для чтения и записи к объекту,
+переданному в качестве параметра, поэтому в приведенном выше примере
+видно, что значение <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">A</span></span></code> изменяется после вызова функции <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Swap</span></span></code>.</p>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>В то время как параметры in out немного похожи на ссылки в C++ или
+обычные параметры в Java, которые передаются по ссылке, стандарт языка
+Ada не требует передачи параметров in out &quot;по ссылке&quot;, за исключением
+определенных категорий типов, как будет объяснено позже.</p>
+<p>В общем, лучше думать о режимах как о более высоком уровне, чем о
+семантике по значению или по ссылке. Для компилятора это означает, что
+массив, передаваемый в качестве параметра <code class="code highlight ada docutils literal notranslate"><span class="operator word"><span class="pre">in</span></span></code>, может передаваться по
+ссылке, поскольку он более эффективен (что ничего не меняет для
+пользователя, поскольку параметр не может быть назначен). Однако
+параметр дискретного типа всегда будет передаваться копией, независимо
+от его режима (который более эффективен на большинстве архитектур).</p>
+</div>
+</section>
+<section id="out">
+<h3>Параметры out<a class="headerlink" href="#out" title="Permalink to this headline"></a></h3>
+<p>Режим «<code class="code highlight ada docutils literal notranslate"><span class="keyword reserved"><span class="pre">out</span></span></code>» применяется, когда подпрограмме необходимо выполнить запись в
+параметр, который может быть не инициализирован в момент вызова.
+Чтение значения выходного параметра разрешено, но это должно
+выполняться только после того, как подпрограмма присвоила значение
+параметру. Параметры <code class="code highlight ada docutils literal notranslate"><span class="keyword reserved"><span class="pre">out</span></span></code> немного похожи на возвращаемые значения для
+функций. Когда подпрограмма возвращается, фактический параметр
+(переменная) будет иметь значение параметра out в точке возврата.</p>
+<div class="admonition- admonition">
+<p class="admonition-title">На других языках</p>
+<p>Ada не имеет конструкции кортежа и не позволяет возвращать несколько
+значений из подпрограммы (за исключением объявления полноценного типа
+записи). Следовательно, способ вернуть несколько значений из
+подпрограммы состоит в использовании параметров out.</p>
+</div>
+<p>Например, процедура считывания целых чисел из сети может иметь одну из
+следующих спецификаций:</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kd">procedure</span> <span class="nf">Read_Int</span>
+   <span class="p">(</span><span class="nv">Stream</span>  <span class="p">: </span>    <span class="nv">Network_Stream</span><span class="p">;</span>
+    <span class="nv">Success</span> <span class="p">: </span><span class="nv">out</span> <span class="nv">Boolean</span><span class="p">;</span>
+    <span class="nv">Result</span>  <span class="p">: </span><span class="nv">out</span> <span class="nv">Integer</span><span class="p">);</span>
+
+<span class="kd">function</span> <span class="nf">Read_Int</span>
+   <span class="p">(</span><span class="nv">Stream</span> <span class="p">: </span>    <span class="nv">Network_Stream</span><span class="p">;</span>
+    <span class="nv">Result</span> <span class="p">: </span><span class="nv">out</span> <span class="nv">Integer</span><span class="p">)</span> <span class="kr">return</span> <span class="kt">Boolean</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>При чтении переменной out перед записью в нее в идеале должна
+возникать ошибка, которая, как правило, приведет либо к неэффективным
+проверкам во время выполнения, либо к сложным правилам во время
+компиляции. Таким образом, с точки зрения пользователя параметр out
+действует как неинициализированная переменная при вызове подпрограммы.</p>
+<div class="admonition-gnat admonition">
+<p class="admonition-title">В наборе инструментов GNAT</p>
+<p>GNAT обнаружит простые случаи неправильного использования параметров
+out. Например, компилятор выдаст предупреждение для следующей
+программы:</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kd">procedure</span> <span class="nf">Outp</span> <span class="kr">is</span>
+   <span class="kd">procedure</span> <span class="nf">Foo</span> <span class="p">(</span><span class="nv">A</span> <span class="p">: </span><span class="nv">out</span> <span class="nv">Integer</span><span class="p">)</span> <span class="kr">is</span>
+      <span class="n">B</span> <span class="p">:</span> <span class="kt">Integer</span> <span class="p">:=</span> <span class="n">A</span><span class="p">;</span>
+      <span class="c1">--             ^ Warning on reference</span>
+      <span class="c1">--               to uninitialized A</span>
+   <span class="kr">begin</span>
+      <span class="n">A</span> <span class="p">:=</span> <span class="n">B</span><span class="p">;</span>
+   <span class="kr">end</span> <span class="nf">Foo</span><span class="p">;</span>
+<span class="kr">begin</span>
+   <span class="kc">null</span><span class="p">;</span>
+<span class="kr">end</span> <span class="nf">Outp</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="id8">
+<h3>Предварительное объявление подпрограмм<a class="headerlink" href="#id8" title="Permalink to this headline"></a></h3>
+<p>Как мы видели ранее, подпрограмма может быть объявлена без полного
+определения. Это возможно в целом и может быть полезно, если вам
+нужно, чтобы подпрограммы были взаимно рекурсивными, как в примере
+ниже:</p>
+<div class="ada-run highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kd">procedure</span> <span class="nf">Mutually_Recursive_Subprograms</span> <span class="kr">is</span>
+    <span class="kd">procedure</span> <span class="nf">Compute_A</span> <span class="p">(</span><span class="nv">V</span> <span class="p">: </span><span class="nv">Natural</span><span class="p">);</span>
+    <span class="c1">--  Forward declaration of Compute_A</span>
+
+    <span class="kd">procedure</span> <span class="nf">Compute_B</span> <span class="p">(</span><span class="nv">V</span> <span class="p">: </span><span class="nv">Natural</span><span class="p">)</span> <span class="kr">is</span>
+    <span class="kr">begin</span>
+       <span class="kr">if</span> <span class="n">V</span> <span class="o">&gt;</span> <span class="mi">5</span> <span class="kr">then</span>
+          <span class="n">Compute_A</span> <span class="p">(</span><span class="n">V</span> <span class="o">-</span> <span class="mi">1</span><span class="p">);</span>
+          <span class="c1">--  Call to Compute_A</span>
+       <span class="kr">end</span> <span class="kr">if</span><span class="p">;</span>
+    <span class="kr">end</span> <span class="nf">Compute_B</span><span class="p">;</span>
+
+    <span class="kd">procedure</span> <span class="nf">Compute_A</span> <span class="p">(</span><span class="nv">V</span> <span class="p">: </span><span class="nv">Natural</span><span class="p">)</span> <span class="kr">is</span>
+    <span class="kr">begin</span>
+       <span class="kr">if</span> <span class="n">V</span> <span class="o">&gt;</span> <span class="mi">2</span> <span class="kr">then</span>
+          <span class="n">Compute_B</span> <span class="p">(</span><span class="n">V</span> <span class="o">-</span> <span class="mi">1</span><span class="p">);</span>
+          <span class="c1">--  Call to Compute_B</span>
+       <span class="kr">end</span> <span class="kr">if</span><span class="p">;</span>
+    <span class="kr">end</span> <span class="nf">Compute_A</span><span class="p">;</span>
+<span class="kr">begin</span>
+   <span class="n">Compute_A</span> <span class="p">(</span><span class="mi">15</span><span class="p">);</span>
+<span class="kr">end</span> <span class="nf">Mutually_Recursive_Subprograms</span><span class="p">;</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="subprogram-renaming">
+<span id="id9"></span><h2>Переименование<a class="headerlink" href="#subprogram-renaming" title="Permalink to this headline"></a></h2>
+<p>Подпрограммы можно переименовать, используя ключевое слово <code class="code highlight ada docutils literal notranslate"><span class="keyword reserved"><span class="pre">renames</span></span></code> и объявив
+новое имя для подпрограммы:</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kd">procedure</span> <span class="nf">New_Proc</span> <span class="nf">renames</span> <span class="nf">Original_Proc</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Это может быть полезно, например, для улучшения читабельности вашего
+приложения, когда вы используете код из внешних источников, который
+нельзя изменить в вашей системе. Давайте посмотрим на пример:</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kd">procedure</span> <span class="nf">A_Procedure_With_Very_Long_Name_That_Cannot_Be_Changed</span>
+  <span class="p">(</span><span class="nv">A_Message</span> <span class="p">: </span><span class="nv">String</span><span class="p">);</span>
+
+<span class="kn">with</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span> <span class="kn">use</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>
+
+<span class="kd">procedure</span> <span class="nf">A_Procedure_With_Very_Long_Name_That_Cannot_Be_Changed</span>
+  <span class="p">(</span><span class="nv">A_Message</span> <span class="p">: </span><span class="nv">String</span><span class="p">)</span> <span class="kr">is</span>
+<span class="kr">begin</span>
+   <span class="n">Put_Line</span> <span class="p">(</span><span class="n">A_Message</span><span class="p">);</span>
+<span class="kr">end</span> <span class="nf">A_Procedure_With_Very_Long_Name_That_Cannot_Be_Changed</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Как следует из приведенной выше формулировки в названии процедуры, мы
+не можем изменить ее название. Однако мы можем переименовать его во
+что-то вроде <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Show</span></span></code> в нашем тестовом приложении и использовать это более
+короткое имя. Обратите внимание, что мы также должны объявить все
+параметры исходной подпрограммы - мы также можем переименовать их в
+объявлении. Например:</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kn">with</span> <span class="nn">A_Procedure_With_Very_Long_Name_That_Cannot_Be_Changed</span><span class="p">;</span>
+
+<span class="kd">procedure</span> <span class="nf">Show_Renaming</span> <span class="kr">is</span>
+
+   <span class="kd">procedure</span> <span class="nf">Show</span> <span class="p">(</span><span class="nv">S</span> <span class="p">: </span><span class="nv">String</span><span class="p">)</span> <span class="kr">renames</span>
+     <span class="n">A_Procedure_With_Very_Long_Name_That_Cannot_Be_Changed</span><span class="p">;</span>
+
+<span class="kr">begin</span>
+   <span class="n">Show</span> <span class="p">(</span><span class="s">&quot;Hello World!&quot;</span><span class="p">);</span>
+<span class="kr">end</span> <span class="nf">Show_Renaming</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Обратите внимание, что исходное имя
+(<code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">A_Procedure_With_Very_Long_Name_That_Cannot_Be_Changed</span></span></code>)
+по-прежнему отображается после объявления процедуры <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Show</span></span></code>.</p>
+<p>Можно также переименовать подпрограммы из стандартной библиотеки.
+Например, можно переименовать <code class="code highlight ada docutils literal notranslate"><span class="keyword type"><span class="pre">Integer</span></span><span class="punctuation"><span class="pre">'</span></span><span class="name attribute"><span class="pre">Image</span></span></code> в <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Img</span></span></code>:</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kn">with</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span> <span class="kn">use</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>
+
+<span class="kd">procedure</span> <span class="nf">Show_Image_Renaming</span> <span class="kr">is</span>
+
+   <span class="kd">function</span> <span class="nf">Img</span> <span class="p">(</span><span class="nv">I</span> <span class="p">: </span><span class="nv">Integer</span><span class="p">)</span> <span class="kr">return</span> <span class="kt">String</span>
+     <span class="kr">renames</span> <span class="kt">Integer</span><span class="p">&#39;</span><span class="na">Image</span><span class="p">;</span>
+
+<span class="kr">begin</span>
+   <span class="n">Put_Line</span> <span class="p">(</span><span class="n">Img</span> <span class="p">(</span><span class="mi">2</span><span class="p">));</span>
+   <span class="n">Put_Line</span> <span class="p">(</span><span class="n">Img</span> <span class="p">(</span><span class="mi">3</span><span class="p">));</span>
+<span class="kr">end</span> <span class="nf">Show_Image_Renaming</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Переименование также позволяет вводить выражения по умолчанию, которые
+не были доступны в исходном объявлении. Например, можно указать
+<code class="code highlight ada docutils literal notranslate"><span class="literal string"><span class="pre">&quot;Hello</span> <span class="pre">World!&quot;</span></span></code> в качестве значения по умолчанию для параметра
+<code class="code highlight ada docutils literal notranslate"><span class="keyword type"><span class="pre">String</span></span></code> процедуры <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Show</span></span></code>:</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kn">with</span> <span class="nn">A_Procedure_With_Very_Long_Name_That_Cannot_Be_Changed</span><span class="p">;</span>
+
+<span class="kd">procedure</span> <span class="nf">Show_Renaming_Defaults</span> <span class="kr">is</span>
+
+   <span class="kd">procedure</span> <span class="nf">Show</span> <span class="p">(</span><span class="nv">S</span> <span class="p">: </span><span class="nv">String</span> <span class="p">:=</span> <span class="s">&quot;Hello World!&quot;</span><span class="p">)</span>
+     <span class="kr">renames</span>
+       <span class="n">A_Procedure_With_Very_Long_Name_That_Cannot_Be_Changed</span><span class="p">;</span>
+
+<span class="kr">begin</span>
+   <span class="n">Show</span><span class="p">;</span>
+<span class="kr">end</span> <span class="nf">Show_Renaming_Defaults</span><span class="p">;</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          
+
+
+<footer>
+      
+      
+
+      
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+          
+            <a href="modular_programming.html" class="btn btn-neutral float-right" title="Модульное программирование" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+          
+          
+            <a href="imperative_language.html" class="btn btn-neutral" title="Императивы языка" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+          
+        </div>
+  
+
+
+  <hr/>
+
+  <div class="legal">
+              Copyright &copy; 2022 AdaCore. All rights reserved.
+              &nbsp;&nbsp;
+              <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/80x15.png" /></a>
+              <br>
+              <a href="https://www.adacore.com/company/legal">Legal</a>
+              &nbsp; |  &nbsp;
+              <a href="https://www.adacore.com/company/privacy">Privacy Policy</a>
+              &nbsp; |  &nbsp;
+              <a href="https://github.com/AdaCore/learn/issues">Report an Issue</a>
+            </div> 
+
+</footer>
+
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+  <button id="scrollToTopBtn" title="Go to top"><i class="fas fa-caret-square-up"></i></button>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+</script>
+
+
+</body>
+</html>

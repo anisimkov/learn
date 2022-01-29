@@ -1,0 +1,1332 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Настраиваемые модули &mdash; learn.adacore.com</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Исключения" href="exceptions.html" />
+    <link rel="prev" title="Конфиденциальность" href="privacy.html" />
+  <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-117428-14"></script>
+<script type="text/javascript">
+  if(!Cookies.get('AdaCore_staff')) {
+    // Global site tag (gtag.js) - Google Analytics
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-117428-14');
+    // End Global site tag (gtag.js) - Google Analytics
+
+    // Google Tag Manager
+    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-KD5HNRR');
+    // End Google Tag Manager
+
+    // Twitter universal website tag code
+    !function(e,t,n,s,u,a){e.twq||(s=e.twq=function(){s.exe?s.exe.apply(s,arguments):s.queue.push(arguments);},s.version='1.1',s.queue=[],u=t.createElement(n),u.async=!0,u.src='//static.ads-twitter.com/uwt.js',a=t.getElementsByTagName(n)[0],a.parentNode.insertBefore(u,a))}(window,document,'script');
+    // Insert Twitter Pixel ID and Standard Event data below
+    twq('init','o3mlc');
+    twq('track','PageView');
+    // End Twitter universal website tag code
+
+    // LinkedIn Tracking Tags
+    _linkedin_partner_id = "482585"; window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || []; window._linkedin_data_partner_ids.push(_linkedin_partner_id);
+    (function(){var s = document.getElementsByTagName("script")[0]; var b = document.createElement("script"); b.type = "text/javascript";b.async = true; b.src = "https://snap.licdn.com/li.lms-analytics/insight.min.js"; s.parentNode.insertBefore(b, s);})();
+    // End LinkedIn Tracking Tags
+  }
+</script>
+  <!--  Essential META Tags -->
+<meta property="og:title" content=“learn.adacore.com">
+<meta property="og:description" content="An interactive learning platform to teach the Ada and SPARK programming languages.">
+<meta property="og:image" content="https://learn.adacore.com/_static/learn_meta_img.jpeg">
+<meta property="og:url" content="https://learn.adacore.com">
+<meta name="twitter:card" content="summary_large_image">
+
+<!--  Non-Essential, But Recommended -->
+<meta property="og:site_name" content="learn.adacore.com">
+<meta name="twitter:image:alt" content="An interactive learning platform to teach the Ada and SPARK programming languages.">
+
+<!--  Non-Essential, But Required for Analytics -->
+<meta name="twitter:site" content="@AdaCoreCompany">
+
+</head>
+
+<body class="wy-body-for-nav">
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KD5HNRR"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  <!-- LinkedIn Tracking Tags (noscript) -->
+  <noscript> <img height="1" width="1" style="display:none;" alt="" src="https://dc.ads.linkedin.com/collect/?pid=482585&fmt=gif" /> </noscript>
+  <!-- End LinkedIn Tracking Tags (noscript) -->
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html">
+            <img src="../_static/logo.svg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Введение</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#id2">История</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#ada">Ada сегодня</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#id6">Философия</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#spark">SPARK</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="imperative_language.html">Императивы языка</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="imperative_language.html#hello-world">Hello world</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imperative_language.html#if-then-else">Императивы языка ‑ If / Then / Else</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imperative_language.html#loops">Императивы языка ‑ Loops</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="imperative_language.html#for">Циклы For</a></li>
+<li class="toctree-l3"><a class="reference internal" href="imperative_language.html#id2">Простой цикл</a></li>
+<li class="toctree-l3"><a class="reference internal" href="imperative_language.html#while">Циклы While</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="imperative_language.html#case">Императивы языка – оператор Case</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imperative_language.html#id3">Императивы языка – декларативные регионы</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imperative_language.html#id4">Императивы языка – условные выражения</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="imperative_language.html#if">Выражение If</a></li>
+<li class="toctree-l3"><a class="reference internal" href="imperative_language.html#id5">Выражение Case</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="subprograms.html">Подпрограммы</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="subprograms.html#id2">Подпрограммы</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="subprograms.html#id3">Вызовы подпрограмм</a></li>
+<li class="toctree-l3"><a class="reference internal" href="subprograms.html#id4">Вложенные подпрограммы</a></li>
+<li class="toctree-l3"><a class="reference internal" href="subprograms.html#id5">Вызов функций</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="subprograms.html#id6">Режимы параметров</a></li>
+<li class="toctree-l2"><a class="reference internal" href="subprograms.html#id7">Вызов процедуры</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="subprograms.html#in">Параметры in</a></li>
+<li class="toctree-l3"><a class="reference internal" href="subprograms.html#in-out">Параметры in out</a></li>
+<li class="toctree-l3"><a class="reference internal" href="subprograms.html#out">Параметры out</a></li>
+<li class="toctree-l3"><a class="reference internal" href="subprograms.html#id8">Предварительное объявление подпрограмм</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="subprograms.html#subprogram-renaming">Переименование</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="modular_programming.html">Модульное программирование</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="modular_programming.html#id2">Пакеты</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modular_programming.html#id3">Использование пакета</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modular_programming.html#id4">Тело пакета</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modular_programming.html#childpackages">Дочерние пакеты</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="modular_programming.html#id6">Дочерний пакет от дочернего пакета</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modular_programming.html#id7">Множественные потомки</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modular_programming.html#id8">Видимость</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="modular_programming.html#package-renaming">Переименование</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="strongly_typed_language.html">Сильно типизированный язык</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="strongly_typed_language.html#whatisatype">Что такое тип?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="strongly_typed_language.html#integers">Целочисленные типы ‑ Integers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="strongly_typed_language.html#id3">Семантика операций</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="strongly_typed_language.html#id4">Беззнаковые типы</a></li>
+<li class="toctree-l2"><a class="reference internal" href="strongly_typed_language.html#enumtypes">Перечисления</a></li>
+<li class="toctree-l2"><a class="reference internal" href="strongly_typed_language.html#id7">Типы с плавающей запятой</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="strongly_typed_language.html#id8">Основные свойства</a></li>
+<li class="toctree-l3"><a class="reference internal" href="strongly_typed_language.html#id9">Точность типов с плавающей запятой</a></li>
+<li class="toctree-l3"><a class="reference internal" href="strongly_typed_language.html#id10">Диапазон типов с плавающей запятой</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="strongly_typed_language.html#id11">Строгая типизация</a></li>
+<li class="toctree-l2"><a class="reference internal" href="strongly_typed_language.html#id12">Производные типы</a></li>
+<li class="toctree-l2"><a class="reference internal" href="strongly_typed_language.html#id13">Подтипы</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="strongly_typed_language.html#subtypealiases">Подтипы в качестве псевдонимов типов</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="records.html">Записи</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="records.html#id2">Объявление типа записи</a></li>
+<li class="toctree-l2"><a class="reference internal" href="records.html#id3">Агрегаты</a></li>
+<li class="toctree-l2"><a class="reference internal" href="records.html#id4">Выбор компонентов</a></li>
+<li class="toctree-l2"><a class="reference internal" href="records.html#record-comp-renaming">Переименование</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="arrays.html">Массивы</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="arrays.html#id2">Объявление типа массива</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays.html#id3">Индексирование</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays.html#id4">Более простые объявления массива</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays.html#id5">Атрибут диапазона</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays.html#unconstrainedarraytypes">Неограниченные массивы</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays.html#string">Предопределенный тип массива: String</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays.html#id7">Ограничения</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays.html#id8">Возврат неограниченных массивов</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays.html#id9">Объявление массивов (2)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays.html#id10">Срезы массива</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays.html#object-renaming">Переименование</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="more_about_types.html">Подробнее о типах</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="more_about_types.html#id2">Агрегаты: краткая информация</a></li>
+<li class="toctree-l2"><a class="reference internal" href="more_about_types.html#id3">Перегрузка и квалифицированные выражения</a></li>
+<li class="toctree-l2"><a class="reference internal" href="more_about_types.html#access">Типы Access (указатели)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="more_about_types.html#allocation">Распределение (по типу) ‑ Allocation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="more_about_types.html#id5">Разыменование</a></li>
+<li class="toctree-l3"><a class="reference internal" href="more_about_types.html#id6">Другие особенности</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="more_about_types.html#id7">Взаимно рекурсивные типы</a></li>
+<li class="toctree-l2"><a class="reference internal" href="more_about_types.html#id8">Подробнее о записях</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="more_about_types.html#id9">Типы записей с динамически изменяемым размером</a></li>
+<li class="toctree-l3"><a class="reference internal" href="more_about_types.html#id10">Записи с дискриминантом</a></li>
+<li class="toctree-l3"><a class="reference internal" href="more_about_types.html#c">Записи c вариантами</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="more_about_types.html#id11">Типы с фиксированной точкой</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="more_about_types.html#id12">Десятичные типы с фиксированной точкой</a></li>
+<li class="toctree-l3"><a class="reference internal" href="more_about_types.html#id13">Типы фиксированных точек</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="more_about_types.html#id14">Типы символов</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="privacy.html">Конфиденциальность</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="privacy.html#id3">Базовая инкапсуляция</a></li>
+<li class="toctree-l2"><a class="reference internal" href="privacy.html#id4">Абстрактные типы данных</a></li>
+<li class="toctree-l2"><a class="reference internal" href="privacy.html#id5">Ограниченные типы</a></li>
+<li class="toctree-l2"><a class="reference internal" href="privacy.html#id7">Дочерние пакеты и конфиденциальность</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Настраиваемые модули</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">Введение</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">Формальное объявление типа</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">Формальное объявление объекта</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#generic">Определение тела generic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id5">Создание экземпляра generic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id6">Generic пакеты</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id7">Формальные подпрограммы</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id8">Пример: экземпляры ввода / вывода</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id9">Пример: АТД</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#swap">Пример: Обмен (Swap)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#reversing">Пример: Реверсирование (Reversing)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id10">Пример: Тестовое приложение</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="exceptions.html">Исключения</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="exceptions.html#id2">Объявление исключения</a></li>
+<li class="toctree-l2"><a class="reference internal" href="exceptions.html#id3">Возбуждение исключения</a></li>
+<li class="toctree-l2"><a class="reference internal" href="exceptions.html#id4">Обработка исключения</a></li>
+<li class="toctree-l2"><a class="reference internal" href="exceptions.html#id5">Предопределенные исключения</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="contracts.html">Контрактное проектирование</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="contracts.html#id2">Пред- и постусловия</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contracts.html#id3">Предикаты</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contracts.html#id4">Инварианты типа</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="interfacing_with_c.html">Взаимодействие с языком C</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="interfacing_with_c.html#id1">Многоязычный проект</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interfacing_with_c.html#id2">Соглашение о типах</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interfacing_with_c.html#id3">Подпрограммы на других языках</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="interfacing_with_c.html#c-ada">Вызов подпрограмм C в Ada</a></li>
+<li class="toctree-l3"><a class="reference internal" href="interfacing_with_c.html#ada-c">Вызов подпрограмм Ada в C</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="interfacing_with_c.html#id4">Внешние переменные</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="interfacing_with_c.html#id5">Использование глобальных переменных C в Ada</a></li>
+<li class="toctree-l3"><a class="reference internal" href="interfacing_with_c.html#id6">Использование переменных Ada в C</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="interfacing_with_c.html#id7">Создание привязок</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="interfacing_with_c.html#id8">Адаптация привязок</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="object_oriented_programming.html">Объектно-ориентированное программирование</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="object_oriented_programming.html#id2">Производные типы</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_oriented_programming.html#id3">Типы с тегами</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_oriented_programming.html#id5">Типы расширяемые классами</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_oriented_programming.html#id6">Операции диспетчеризации</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_oriented_programming.html#id7">Точечная нотация</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_oriented_programming.html#id8">Частные и ограниченные типы с тегами</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_oriented_programming.html#id9">Типы доступа в классах</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="standard_library_containers.html">Стандартная библиотека: Контейнеры</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_containers.html#id2">Векторы</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_containers.html#id3">Создание экземпляра</a></li>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_containers.html#id4">Инициализация</a></li>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_containers.html#prepend-append">Добавление элементов - Prepend и Append</a></li>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_containers.html#id5">Доступ к первому и последнему элементам</a></li>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_containers.html#id6">Итерация</a></li>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_containers.html#id7">Поиск и изменение элементов</a></li>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_containers.html#id8">Вставка элементов</a></li>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_containers.html#id9">Удаление элементов</a></li>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_containers.html#id10">Другие операции</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_containers.html#id11">Множества</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_containers.html#id12">Инициализация и итерация</a></li>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_containers.html#id13">Операции с элементами</a></li>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_containers.html#id14">Другие операции</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_containers.html#id15">Неопределенные карты</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_containers.html#id16">Хэшированные карты</a></li>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_containers.html#id17">Упорядоченные карты</a></li>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_containers.html#id18">Сложность</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="standard_library_dates_times.html">Стандартная библиотека: Дата и время</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_dates_times.html#datestimes">Обработка даты и времени</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_dates_times.html#id3">Задержка с использованием даты</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_dates_times.html#id4">В режиме реального времени</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_dates_times.html#id5">Сравнительный анализ</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="standard_library_strings.html">Стандартная библиотека: Строки</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_strings.html#id2">Операции со строками</a></li>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_strings.html#id3">Ограничение строк фиксированной длины</a></li>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_strings.html#id4">Ограниченные строки</a></li>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_strings.html#unboundedstrings">Неограниченные строки</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="standard_library_files_streams.html">Стандартная библиотека: Файлы и потоки</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_files_streams.html#id2">Ввод/вывод текста</a></li>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_files_streams.html#id3">Последовательный ввод-вывод</a></li>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_files_streams.html#id4">Прямой ввод / вывод</a></li>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_files_streams.html#id5">Потоковый ввод-вывод</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="standard_library_numerics.html">Стандартная библиотека: Numerics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_numerics.html#id1">Элементарные функции</a></li>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_numerics.html#id2">Генерация случайных чисел</a></li>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_numerics.html#id3">Тип комплексного числа</a></li>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_numerics.html#id4">Манипулирование векторами и матрицами</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="appendices.html">Приложения</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="appendices.html#a">Приложение A: Формальные типы настройки</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="appendices.html#id2">Неограниченная версия типа</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="appendices.html#b">Приложение B: Контейнеры</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+  <i data-toggle="wy-nav-top" class="fas fa-bars"></i>
+    <a href="../index.html">
+    <img src="../_static/logo.svg" class="logo" alt="Logo"/>
+  </a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="id1">
+<h1>Настраиваемые модули<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h1>
+<section id="id2">
+<h2>Введение<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h2>
+<p>Дженерики используются для метапрограммирования в Ada. Они полезны для
+абстрактных алгоритмов, которые имеют общие свойства друг с другом.</p>
+<p>Подпрограмма или пакет могут быть универсальными. Универсальная версия
+объявляется с помощью ключевого слова <code class="code highlight ada docutils literal notranslate"><span class="keyword declaration"><span class="pre">generic</span></span></code>. Например:</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kd">generic</span>
+   <span class="kd">type</span> <span class="kt">T</span> <span class="kr">is</span> <span class="kd">private</span><span class="p">;</span>
+   <span class="c1">--  Declaration of formal types and objects</span>
+<span class="c1">--  Below, we could use one of the following:</span>
+<span class="c1">--  &lt;procedure | function | package&gt;</span>
+<span class="kd">procedure</span> <span class="nf">Operator</span> <span class="p">(</span><span class="nv">Dummy</span> <span class="p">: </span><span class="nv">in</span> <span class="nv">out</span> <span class="nv">T</span><span class="p">);</span>
+
+<span class="kd">procedure</span> <span class="nf">Operator</span> <span class="p">(</span><span class="nv">Dummy</span> <span class="p">: </span><span class="nv">in</span> <span class="nv">out</span> <span class="nv">T</span><span class="p">)</span> <span class="kr">is</span>
+<span class="kr">begin</span>
+   <span class="kc">null</span><span class="p">;</span>
+<span class="kr">end</span> <span class="nf">Operator</span><span class="p">;</span>
+</pre></div>
+</div>
+</section>
+<section id="id3">
+<h2>Формальное объявление типа<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h2>
+<p>Формальные типы ‑ это абстракции определенного типа. Например, мы
+можем захотеть создать алгоритм, который работает с любым
+целочисленным типом или даже с любым типом вообще, будь то числовой
+тип или нет. В следующем примере объявляется формальный тип <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">T</span></span></code> для
+процедуры <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Set</span></span></code>.</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kd">generic</span>
+   <span class="kd">type</span> <span class="kt">T</span> <span class="kr">is</span> <span class="kd">private</span><span class="p">;</span>
+   <span class="c1">--  T is a formal type that indicates that</span>
+   <span class="c1">--  any type can be used, possibly a numeric</span>
+   <span class="c1">--  type or possibly even a record type.</span>
+<span class="kd">procedure</span> <span class="nf">Set</span> <span class="p">(</span><span class="nv">Dummy</span> <span class="p">: </span><span class="nv">T</span><span class="p">);</span>
+
+<span class="kd">procedure</span> <span class="nf">Set</span> <span class="p">(</span><span class="nv">Dummy</span> <span class="p">: </span><span class="nv">T</span><span class="p">)</span> <span class="kr">is</span>
+<span class="kr">begin</span>
+   <span class="kc">null</span><span class="p">;</span>
+<span class="kr">end</span> <span class="nf">Set</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Объявление <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">T</span></span></code> как <code class="code highlight ada docutils literal notranslate"><span class="keyword declaration"><span class="pre">private</span></span></code> указывает на то, что с ним можно
+сопоставить любой
+определенный тип. Но можно также ограничить объявление, разрешив
+сопоставление только некоторых типов с этим формальным типом. Вот
+несколько примеров:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 44%" />
+<col style="width: 56%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Формальный тип</p></th>
+<th class="head"><p>Формат</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Любой тип</p></td>
+<td><p><code class="code highlight ada docutils literal notranslate"><span class="keyword declaration"><span class="pre">type</span></span> <span class="keyword type"><span class="pre">T</span></span> <span class="keyword reserved"><span class="pre">is</span></span> <span class="keyword declaration"><span class="pre">private</span></span><span class="punctuation"><span class="pre">;</span></span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Любой дискретный тип</p></td>
+<td><p><code class="code highlight ada docutils literal notranslate"><span class="keyword declaration"><span class="pre">type</span></span> <span class="keyword type"><span class="pre">T</span></span> <span class="keyword reserved"><span class="pre">is</span></span> <span class="punctuation"><span class="pre">(&lt;&gt;);</span></span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Любой тип с плавающей запятой</p></td>
+<td><p><code class="code highlight ada docutils literal notranslate"><span class="keyword declaration"><span class="pre">type</span></span> <span class="keyword type"><span class="pre">T</span></span> <span class="keyword reserved"><span class="pre">is</span></span> <span class="keyword reserved"><span class="pre">digits</span></span> <span class="punctuation"><span class="pre">&lt;&gt;;</span></span></code></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id4">
+<h2>Формальное объявление объекта<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h2>
+<p>Формальные объекты аналогичны параметрам подпрограммы. Они могут
+ссылаться на формальные типы, объявленные в формальной спецификации.
+Например:</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kd">generic</span>
+   <span class="kd">type</span> <span class="kt">T</span> <span class="kr">is</span> <span class="kd">private</span><span class="p">;</span>
+   <span class="n">X</span> <span class="p">:</span> <span class="ow">in</span> <span class="kr">out</span> <span class="n">T</span><span class="p">;</span>
+   <span class="c1">--  X can be used in the Set procedure</span>
+<span class="kd">procedure</span> <span class="nf">Set</span> <span class="p">(</span><span class="nv">E</span> <span class="p">: </span><span class="nv">T</span><span class="p">);</span>
+
+<span class="kd">procedure</span> <span class="nf">Set</span> <span class="p">(</span><span class="nv">E</span> <span class="p">: </span><span class="nv">T</span><span class="p">)</span> <span class="kr">is</span>
+   <span class="kr">pragma</span> <span class="cp">Unreferenced</span> <span class="p">(</span><span class="n">E</span><span class="p">,</span> <span class="n">X</span><span class="p">);</span>
+<span class="kr">begin</span>
+   <span class="kc">null</span><span class="p">;</span>
+<span class="kr">end</span> <span class="nf">Set</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Формальные объекты могут быть либо входными параметрами, либо
+заданными с помощью режима <code class="code highlight ada docutils literal notranslate"><span class="operator word"><span class="pre">in</span></span> <span class="keyword reserved"><span class="pre">out</span></span></code>.</p>
+</section>
+<section id="generic">
+<h2>Определение тела generic<a class="headerlink" href="#generic" title="Permalink to this headline"></a></h2>
+<p>Мы не повторяем ключевое слово <code class="code highlight ada docutils literal notranslate"><span class="keyword declaration"><span class="pre">generic</span></span></code> для объявления тела общей
+подпрограммы или пакета. Вместо этого мы начинаем с фактического
+объявления и используем объявленные нами generic типы и объекты.
+Например:</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kd">generic</span>
+   <span class="kd">type</span> <span class="kt">T</span> <span class="kr">is</span> <span class="kd">private</span><span class="p">;</span>
+   <span class="n">X</span> <span class="p">:</span> <span class="ow">in</span> <span class="kr">out</span> <span class="n">T</span><span class="p">;</span>
+<span class="kd">procedure</span> <span class="nf">Set</span> <span class="p">(</span><span class="nv">E</span> <span class="p">: </span><span class="nv">T</span><span class="p">);</span>
+
+<span class="kd">procedure</span> <span class="nf">Set</span> <span class="p">(</span><span class="nv">E</span> <span class="p">: </span><span class="nv">T</span><span class="p">)</span> <span class="kr">is</span>
+<span class="c1">--  Body definition: &quot;generic&quot; keyword</span>
+<span class="c1">--  is not used</span>
+<span class="kr">begin</span>
+   <span class="n">X</span> <span class="p">:=</span> <span class="n">E</span><span class="p">;</span>
+<span class="kr">end</span> <span class="nf">Set</span><span class="p">;</span>
+</pre></div>
+</div>
+</section>
+<section id="id5">
+<h2>Создание экземпляра generic<a class="headerlink" href="#id5" title="Permalink to this headline"></a></h2>
+<p>Подпрограммы или пакеты generic нельзя использовать напрямую. Вместо
+этого они должны быть созданы, что мы делаем с помощью ключевого слова
+<code class="code highlight ada docutils literal notranslate"><span class="keyword reserved"><span class="pre">new</span></span></code>, как показано в следующем примере:</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kd">generic</span>
+   <span class="kd">type</span> <span class="kt">T</span> <span class="kr">is</span> <span class="kd">private</span><span class="p">;</span>
+   <span class="n">X</span> <span class="p">:</span> <span class="ow">in</span> <span class="kr">out</span> <span class="n">T</span><span class="p">;</span>
+   <span class="c1">--  X can be used in the Set procedure</span>
+<span class="kd">procedure</span> <span class="nf">Set</span> <span class="p">(</span><span class="nv">E</span> <span class="p">: </span><span class="nv">T</span><span class="p">);</span>
+
+<span class="kd">procedure</span> <span class="nf">Set</span> <span class="p">(</span><span class="nv">E</span> <span class="p">: </span><span class="nv">T</span><span class="p">)</span> <span class="kr">is</span>
+<span class="kr">begin</span>
+   <span class="n">X</span> <span class="p">:=</span> <span class="n">E</span><span class="p">;</span>
+<span class="kr">end</span> <span class="nf">Set</span><span class="p">;</span>
+
+<span class="kn">with</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span> <span class="kn">use</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>
+<span class="kn">with</span> <span class="nn">Set</span><span class="p">;</span>
+
+<span class="kd">procedure</span> <span class="nf">Show_Generic_Instantiation</span> <span class="kr">is</span>
+
+   <span class="n">Main</span>    <span class="p">:</span> <span class="kt">Integer</span> <span class="p">:=</span> <span class="mi">0</span><span class="p">;</span>
+   <span class="n">Current</span> <span class="p">:</span> <span class="kt">Integer</span><span class="p">;</span>
+
+   <span class="kd">procedure</span> <span class="nf">Set_Main</span> <span class="kr">is</span> <span class="kr">new</span> <span class="n">Set</span> <span class="p">(</span><span class="n">T</span> <span class="p">=&gt;</span> <span class="kt">Integer</span><span class="p">,</span>
+                                  <span class="n">X</span> <span class="p">=&gt;</span> <span class="n">Main</span><span class="p">);</span>
+   <span class="c1">--  Here, we map the formal parameters to</span>
+   <span class="c1">--  actual types and objects.</span>
+   <span class="c1">--</span>
+   <span class="c1">--  The same approach can be used to</span>
+   <span class="c1">--  instantiate functions or packages, e.g.:</span>
+   <span class="c1">--</span>
+   <span class="c1">--  function Get_Main is new ...</span>
+   <span class="c1">--  package Integer_Queue is new ...</span>
+
+<span class="kr">begin</span>
+   <span class="n">Current</span> <span class="p">:=</span> <span class="mi">10</span><span class="p">;</span>
+
+   <span class="n">Set_Main</span> <span class="p">(</span><span class="n">Current</span><span class="p">);</span>
+   <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;Value of Main is &quot;</span>
+             <span class="o">&amp;</span> <span class="kt">Integer</span><span class="p">&#39;</span><span class="na">Image</span> <span class="p">(</span><span class="n">Main</span><span class="p">));</span>
+<span class="kr">end</span> <span class="nf">Show_Generic_Instantiation</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>В приведенном выше примере мы создаем экземпляр процедуры <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Set</span></span></code>,
+сопоставляя формальные параметры <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">T</span></span></code> и <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">X</span></span></code> с фактическими
+существующими элементами, в данном случае типом <code class="code highlight ada docutils literal notranslate"><span class="keyword type"><span class="pre">Integer</span></span></code> и
+переменной <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Main</span></span></code>.</p>
+</section>
+<section id="id6">
+<h2>Generic пакеты<a class="headerlink" href="#id6" title="Permalink to this headline"></a></h2>
+<p>Предыдущие примеры были сосредоточены на <code class="code highlight ada docutils literal notranslate"><span class="keyword declaration"><span class="pre">generic</span></span></code> подпрограммах. В этом
+разделе мы рассмотрим generic пакеты. Синтаксис аналогичен синтаксису,
+используемому для generic подпрограмм: мы начинаем с ключевого слова
+generic и продолжаем формальными объявлениями. Единственное отличие
+состоит в том, что вместо ключевого слова подпрограммы указывается
+<code class="code highlight ada docutils literal notranslate"><span class="keyword declaration"><span class="pre">package</span></span></code>.</p>
+<p>Вот пример:</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kd">generic</span>
+   <span class="kd">type</span> <span class="kt">T</span> <span class="kr">is</span> <span class="kd">private</span><span class="p">;</span>
+<span class="kd">package</span> <span class="nc">Element</span> <span class="kr">is</span>
+
+   <span class="kd">procedure</span> <span class="nf">Set</span> <span class="p">(</span><span class="nv">E</span> <span class="p">: </span><span class="nv">T</span><span class="p">);</span>
+   <span class="kd">procedure</span> <span class="nf">Reset</span><span class="p">;</span>
+   <span class="kd">function</span> <span class="nf">Get</span> <span class="nf">return</span> <span class="nf">T</span><span class="p">;</span>
+   <span class="kd">function</span> <span class="nf">Is_Valid</span> <span class="nf">return</span> <span class="nf">Boolean</span><span class="p">;</span>
+
+   <span class="n">Invalid_Element</span> <span class="p">:</span> <span class="kr">exception</span><span class="p">;</span>
+
+<span class="kd">private</span>
+   <span class="n">Value</span> <span class="p">:</span> <span class="n">T</span><span class="p">;</span>
+   <span class="n">Valid</span> <span class="p">:</span> <span class="kt">Boolean</span> <span class="p">:=</span> <span class="kc">False</span><span class="p">;</span>
+<span class="kr">end</span> <span class="nf">Element</span><span class="p">;</span>
+
+<span class="kd">package</span> <span class="kd">body</span> <span class="nc">Element</span> <span class="kr">is</span>
+
+   <span class="kd">procedure</span> <span class="nf">Set</span> <span class="p">(</span><span class="nv">E</span> <span class="p">: </span><span class="nv">T</span><span class="p">)</span> <span class="kr">is</span>
+   <span class="kr">begin</span>
+      <span class="n">Value</span> <span class="p">:=</span> <span class="n">E</span><span class="p">;</span>
+      <span class="n">Valid</span> <span class="p">:=</span> <span class="kc">True</span><span class="p">;</span>
+   <span class="kr">end</span> <span class="nf">Set</span><span class="p">;</span>
+
+   <span class="kd">procedure</span> <span class="nf">Reset</span> <span class="kr">is</span>
+   <span class="kr">begin</span>
+      <span class="n">Valid</span> <span class="p">:=</span> <span class="kc">False</span><span class="p">;</span>
+   <span class="kr">end</span> <span class="nf">Reset</span><span class="p">;</span>
+
+   <span class="kd">function</span> <span class="nf">Get</span> <span class="nf">return</span> <span class="nf">T</span> <span class="kr">is</span>
+   <span class="kr">begin</span>
+      <span class="kr">if</span> <span class="ow">not</span> <span class="n">Valid</span> <span class="kr">then</span>
+         <span class="kr">raise</span> <span class="n">Invalid_Element</span><span class="p">;</span>
+      <span class="kr">end</span> <span class="kr">if</span><span class="p">;</span>
+      <span class="kr">return</span> <span class="n">Value</span><span class="p">;</span>
+   <span class="kr">end</span> <span class="nf">Get</span><span class="p">;</span>
+
+   <span class="kd">function</span> <span class="nf">Is_Valid</span> <span class="nf">return</span> <span class="nf">Boolean</span> <span class="kr">is</span> <span class="p">(</span><span class="n">Valid</span><span class="p">);</span>
+<span class="kr">end</span> <span class="nf">Element</span><span class="p">;</span>
+
+<span class="kn">with</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span> <span class="kn">use</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>
+<span class="kn">with</span> <span class="nn">Element</span><span class="p">;</span>
+
+<span class="kd">procedure</span> <span class="nf">Show_Generic_Package</span> <span class="kr">is</span>
+
+   <span class="kd">package</span> <span class="nc">I</span> <span class="kr">is new</span> <span class="nc">Element</span> <span class="p">(</span><span class="nv">T</span> <span class="p">=&gt;</span> Integer<span class="p">);</span>
+
+   <span class="kd">procedure</span> <span class="nf">Display_Initialized</span> <span class="kr">is</span>
+   <span class="kr">begin</span>
+      <span class="kr">if</span> <span class="n">I</span><span class="p">.</span><span class="n">Is_Valid</span> <span class="kr">then</span>
+         <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;Value is initialized&quot;</span><span class="p">);</span>
+      <span class="kr">else</span>
+         <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;Value is not initialized&quot;</span><span class="p">);</span>
+      <span class="kr">end</span> <span class="kr">if</span><span class="p">;</span>
+   <span class="kr">end</span> <span class="nf">Display_Initialized</span><span class="p">;</span>
+
+<span class="kr">begin</span>
+   <span class="n">Display_Initialized</span><span class="p">;</span>
+
+   <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;Initializing...&quot;</span><span class="p">);</span>
+   <span class="n">I</span><span class="p">.</span><span class="n">Set</span> <span class="p">(</span><span class="mi">5</span><span class="p">);</span>
+   <span class="n">Display_Initialized</span><span class="p">;</span>
+   <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;Value is now set to &quot;</span>
+             <span class="o">&amp;</span> <span class="kt">Integer</span><span class="p">&#39;</span><span class="na">Image</span> <span class="p">(</span><span class="n">I</span><span class="p">.</span><span class="n">Get</span><span class="p">));</span>
+
+   <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;Reseting...&quot;</span><span class="p">);</span>
+   <span class="n">I</span><span class="p">.</span><span class="n">Reset</span><span class="p">;</span>
+   <span class="n">Display_Initialized</span><span class="p">;</span>
+
+<span class="kr">end</span> <span class="nf">Show_Generic_Package</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>В приведенном выше примере мы создали простой контейнер с именем
+<code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Element</span></span></code>, содержащий всего один элемент. Этот контейнер
+отслеживает, был ли элемент инициализирован или нет.</p>
+<p>После написания определения пакета мы создаем экземпляр <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">I</span></span></code>
+пакета <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Element</span></span></code>. Мы используем экземпляр, вызывая подпрограммы
+пакета (<code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Set</span></span></code>, <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Reset</span></span></code> и <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Get</span></span></code>).</p>
+</section>
+<section id="id7">
+<h2>Формальные подпрограммы<a class="headerlink" href="#id7" title="Permalink to this headline"></a></h2>
+<p>В дополнение к формальным типам и объектам мы также можем объявлять
+формальные подпрограммы или пакеты. Этот курс описывает только
+формальные подпрограммы; формальные пакеты обсуждаются в продвинутом
+курсе.</p>
+<p>Мы используем ключевое слово <code class="code highlight ada docutils literal notranslate"><span class="keyword namespace"><span class="pre">with</span></span></code> для объявления формальной
+подпрограммы. В приведенном ниже примере мы объявляем формальную
+функцию (<code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Comparison</span></span></code>), которая будет использоваться общей
+процедурой <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Check</span></span></code>.</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kd">generic</span>
+   <span class="n">Description</span> <span class="p">:</span> <span class="kt">String</span><span class="p">;</span>
+   <span class="kd">type</span> <span class="kt">T</span> <span class="kr">is</span> <span class="kd">private</span><span class="p">;</span>
+   <span class="kn">with</span> <span class="nn">function</span> <span class="n">Comparison</span> <span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="p">:</span> <span class="n">T</span><span class="p">)</span> <span class="kr">return</span> <span class="kt">Boolean</span><span class="p">;</span>
+<span class="kd">procedure</span> <span class="nf">Check</span> <span class="p">(</span><span class="nv">X</span><span class="p">,</span> <span class="nv">Y</span> <span class="p">: </span><span class="nv">T</span><span class="p">);</span>
+
+<span class="kn">with</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span> <span class="kn">use</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>
+
+<span class="kd">procedure</span> <span class="nf">Check</span> <span class="p">(</span><span class="nv">X</span><span class="p">,</span> <span class="nv">Y</span> <span class="p">: </span><span class="nv">T</span><span class="p">)</span> <span class="kr">is</span>
+   <span class="n">Result</span> <span class="p">:</span> <span class="kt">Boolean</span><span class="p">;</span>
+<span class="kr">begin</span>
+   <span class="n">Result</span> <span class="p">:=</span> <span class="n">Comparison</span> <span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">);</span>
+   <span class="kr">if</span> <span class="n">Result</span> <span class="kr">then</span>
+      <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;Comparison (&quot;</span>
+                <span class="o">&amp;</span> <span class="n">Description</span>
+                <span class="o">&amp;</span> <span class="s">&quot;) between arguments is OK!&quot;</span><span class="p">);</span>
+   <span class="kr">else</span>
+      <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;Comparison (&quot;</span>
+                <span class="o">&amp;</span> <span class="n">Description</span>
+                <span class="o">&amp;</span> <span class="s">&quot;) between arguments is not OK!&quot;</span><span class="p">);</span>
+   <span class="kr">end</span> <span class="kr">if</span><span class="p">;</span>
+<span class="kr">end</span> <span class="nf">Check</span><span class="p">;</span>
+
+<span class="kn">with</span> <span class="nn">Check</span><span class="p">;</span>
+
+<span class="kd">procedure</span> <span class="nf">Show_Formal_Subprogram</span> <span class="kr">is</span>
+
+   <span class="n">A</span><span class="p">,</span> <span class="n">B</span> <span class="p">:</span> <span class="kt">Integer</span><span class="p">;</span>
+
+   <span class="kd">procedure</span> <span class="nf">Check_Is_Equal</span> <span class="kr">is</span> <span class="kr">new</span>
+     <span class="n">Check</span> <span class="p">(</span><span class="n">Description</span> <span class="p">=&gt;</span> <span class="s">&quot;equality&quot;</span><span class="p">,</span>
+            <span class="n">T</span>           <span class="p">=&gt;</span> <span class="kt">Integer</span><span class="p">,</span>
+            <span class="n">Comparison</span>  <span class="p">=&gt;</span> <span class="n">Standard</span><span class="p">.</span><span class="s">&quot;=&quot;</span><span class="p">);</span>
+   <span class="c1">--  Here, we are mapping the standard</span>
+   <span class="c1">--  equality operator for Integer types to</span>
+   <span class="c1">--  the Comparison formal function</span>
+<span class="kr">begin</span>
+   <span class="n">A</span> <span class="p">:=</span> <span class="mi">0</span><span class="p">;</span>
+   <span class="n">B</span> <span class="p">:=</span> <span class="mi">1</span><span class="p">;</span>
+   <span class="n">Check_Is_Equal</span> <span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">);</span>
+<span class="kr">end</span> <span class="nf">Show_Formal_Subprogram</span><span class="p">;</span>
+</pre></div>
+</div>
+</section>
+<section id="id8">
+<h2>Пример: экземпляры ввода / вывода<a class="headerlink" href="#id8" title="Permalink to this headline"></a></h2>
+<p>Ada предлагает универсальные пакеты ввода-вывода, которые могут быть
+установлены для стандартных и производных типов. Одним из примеров
+является общий пакет <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Float_IO</span></span></code>, который предоставляет такие
+процедуры, как <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Put</span></span></code> и <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Get</span></span></code>. Фактически, <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Float_Text_IO</span></span></code>
+‑ доступный из стандартной библиотеки ‑ является
+экземпляром пакета <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Float_IO</span></span></code> и определяется как:</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kn">with</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>
+
+<span class="kd">package</span> <span class="nc">Ada.Float_Text_IO</span> <span class="kr">is new</span> <span class="nc">Ada.Text_IO.Float_IO</span> <span class="p">(</span>Float<span class="p">);</span>
+</pre></div>
+</div>
+<p>Его можно использовать непосредственно с любым объектом типа с
+плавающей запятой. Например:</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kn">with</span> <span class="nn">Ada.Float_Text_IO</span><span class="p">;</span>
+
+<span class="kd">procedure</span> <span class="nf">Show_Float_Text_IO</span> <span class="kr">is</span>
+   <span class="no">X</span> <span class="p">:</span> <span class="kr">constant</span> <span class="kt">Float</span> <span class="p">:=</span> <span class="mf">2.5</span><span class="p">;</span>
+
+   <span class="kn">use</span> <span class="nn">Ada.Float_Text_IO</span><span class="p">;</span>
+<span class="kr">begin</span>
+   <span class="n">Put</span> <span class="p">(</span><span class="n">X</span><span class="p">);</span>
+<span class="kr">end</span> <span class="nf">Show_Float_Text_IO</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Создание экземпляров универсальных пакетов ввода-вывода может быть
+полезно для производных типов. Например, давайте создадим новый тип <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Price</span></span></code>,
+который должен отображаться с двумя десятичными цифрами после точки и
+без экспоненты.</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kn">with</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span> <span class="kn">use</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>
+
+<span class="kd">procedure</span> <span class="nf">Show_Float_IO_Inst</span> <span class="kr">is</span>
+
+   <span class="kd">type</span> <span class="kt">Price</span> <span class="kr">is</span> <span class="kr">digits</span> <span class="mi">3</span><span class="p">;</span>
+
+   <span class="kd">package</span> <span class="nc">Price_IO</span> <span class="kr">is new</span>
+     <span class="nc">Ada.Text_IO.Float_IO</span> <span class="p">(</span>Price<span class="p">);</span>
+
+   <span class="n">P</span> <span class="p">:</span> <span class="n">Price</span><span class="p">;</span>
+<span class="kr">begin</span>
+   <span class="c1">--  Set to zero =&gt; don&#39;t display exponent</span>
+   <span class="n">Price_IO</span><span class="p">.</span><span class="n">Default_Exp</span>  <span class="p">:=</span> <span class="mi">0</span><span class="p">;</span>
+
+   <span class="n">P</span> <span class="p">:=</span> <span class="mf">2.5</span><span class="p">;</span>
+   <span class="n">Price_IO</span><span class="p">.</span><span class="n">Put</span> <span class="p">(</span><span class="n">P</span><span class="p">);</span>
+   <span class="n">New_Line</span><span class="p">;</span>
+
+   <span class="n">P</span> <span class="p">:=</span> <span class="mf">5.75</span><span class="p">;</span>
+   <span class="n">Price_IO</span><span class="p">.</span><span class="n">Put</span> <span class="p">(</span><span class="n">P</span><span class="p">);</span>
+   <span class="n">New_Line</span><span class="p">;</span>
+<span class="kr">end</span> <span class="nf">Show_Float_IO_Inst</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Регулируя <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Default_Exp</span></span></code> из экземпляра <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Price_IO</span></span></code> для <em>удаления</em>
+экспоненты, мы можем контролировать, как отображаются переменные типа
+<code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Price</span></span></code>. В качестве примечания мы также могли бы написать:</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="c1">-- [...]</span>
+
+   <span class="kd">type</span> <span class="kt">Price</span> <span class="kr">is</span> <span class="kr">new</span> <span class="kt">Float</span><span class="p">;</span>
+
+   <span class="kd">package</span> <span class="nc">Price_IO</span> <span class="kr">is new</span>
+     <span class="nc">Ada.Text_IO.Float_IO</span> <span class="p">(</span>Price<span class="p">);</span>
+
+<span class="kr">begin</span>
+   <span class="n">Price_IO</span><span class="p">.</span><span class="n">Default_Aft</span>  <span class="p">:=</span> <span class="mi">2</span><span class="p">;</span>
+   <span class="n">Price_IO</span><span class="p">.</span><span class="n">Default_Exp</span>  <span class="p">:=</span> <span class="mi">0</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>В этом случае мы также стараемся <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Default_Aft</span></span></code> получить две десятичные
+цифры после точки при вызове <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Put</span></span></code>.</p>
+<p>В дополнение к универсальному пакету <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Float_IO</span></span></code> в <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Ada</span></span><span class="punctuation"><span class="pre">.</span></span><span class="name"><span class="pre">Text_IO</span></span></code>
+доступны следующие универсальные пакеты:</p>
+<ul class="simple">
+<li><p><code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Enumeration_IO</span></span></code> для видов перечисления;</p></li>
+<li><p><code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Integer_IO</span></span></code> для целочисленных типов;</p></li>
+<li><p><code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Modular_IO</span></span></code> для модульных типов;</p></li>
+<li><p><code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Fixed_IO</span></span></code> для типов с фиксированной точкой;</p></li>
+<li><p><code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Decimal_IO</span></span></code> для десятичных типов.</p></li>
+</ul>
+<p>Фактически, мы могли бы переписать пример выше, используя десятичные
+типы:</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kn">with</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span> <span class="kn">use</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>
+
+<span class="kd">procedure</span> <span class="nf">Show_Decimal_IO_Inst</span> <span class="kr">is</span>
+
+   <span class="kd">type</span> <span class="kt">Price</span> <span class="kr">is</span> <span class="kr">delta</span> <span class="mf">10.0</span> <span class="o">**</span> <span class="p">(</span><span class="o">-</span><span class="nv">2</span><span class="p">)</span> <span class="kr">digits</span> <span class="mi">12</span><span class="p">;</span>
+
+   <span class="kd">package</span> <span class="nc">Price_IO</span> <span class="kr">is new</span>
+     <span class="nc">Ada.Text_IO.Decimal_IO</span> <span class="p">(</span>Price<span class="p">);</span>
+
+   <span class="n">P</span> <span class="p">:</span> <span class="n">Price</span><span class="p">;</span>
+<span class="kr">begin</span>
+   <span class="n">Price_IO</span><span class="p">.</span><span class="n">Default_Exp</span>  <span class="p">:=</span> <span class="mi">0</span><span class="p">;</span>
+
+   <span class="n">P</span> <span class="p">:=</span> <span class="mf">2.5</span><span class="p">;</span>
+   <span class="n">Price_IO</span><span class="p">.</span><span class="n">Put</span> <span class="p">(</span><span class="n">P</span><span class="p">);</span>
+   <span class="n">New_Line</span><span class="p">;</span>
+
+   <span class="n">P</span> <span class="p">:=</span> <span class="mf">5.75</span><span class="p">;</span>
+   <span class="n">Price_IO</span><span class="p">.</span><span class="n">Put</span> <span class="p">(</span><span class="n">P</span><span class="p">);</span>
+   <span class="n">New_Line</span><span class="p">;</span>
+<span class="kr">end</span> <span class="nf">Show_Decimal_IO_Inst</span><span class="p">;</span>
+</pre></div>
+</div>
+</section>
+<section id="id9">
+<h2>Пример: АТД<a class="headerlink" href="#id9" title="Permalink to this headline"></a></h2>
+<p>Важным применением дженериков (generics) является моделирование
+абстрактных типов данных (АТД). Фактически Ada включает библиотеку с
+многочисленными АТД, использующими дженерики: <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Ada</span></span><span class="punctuation"><span class="pre">.</span></span><span class="name"><span class="pre">Containers</span></span></code>
+(описаны в <a class="reference internal" href="standard_library_containers.html#containers"><span class="std std-ref">разделе контейнеров</span></a>).</p>
+<p>Типичным примером АТД является стек:</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kd">generic</span>
+   <span class="n">Max</span> <span class="p">:</span> <span class="kt">Positive</span><span class="p">;</span>
+   <span class="kd">type</span> <span class="kt">T</span> <span class="kr">is</span> <span class="kd">private</span><span class="p">;</span>
+<span class="kd">package</span> <span class="nc">Stacks</span> <span class="kr">is</span>
+
+   <span class="kd">type</span> <span class="kt">Stack</span> <span class="kr">is</span> <span class="kr">limited</span> <span class="kd">private</span><span class="p">;</span>
+
+   <span class="n">Stack_Underflow</span><span class="p">,</span> <span class="n">Stack_Overflow</span> <span class="p">:</span> <span class="kr">exception</span><span class="p">;</span>
+
+   <span class="kd">function</span> <span class="nf">Is_Empty</span> <span class="p">(</span><span class="nv">S</span> <span class="p">: </span><span class="nv">Stack</span><span class="p">)</span> <span class="kr">return</span> <span class="kt">Boolean</span><span class="p">;</span>
+
+   <span class="kd">function</span> <span class="nf">Pop</span> <span class="p">(</span><span class="nv">S</span> <span class="p">: </span><span class="nv">in</span> <span class="nv">out</span> <span class="nv">Stack</span><span class="p">)</span> <span class="kr">return</span> <span class="n">T</span><span class="p">;</span>
+
+   <span class="kd">procedure</span> <span class="nf">Push</span> <span class="p">(</span><span class="nv">S</span> <span class="p">: </span><span class="nv">in</span> <span class="nv">out</span> <span class="nv">Stack</span><span class="p">;</span>
+                   <span class="nv">V</span> <span class="p">: </span>       <span class="nv">T</span><span class="p">);</span>
+
+<span class="kd">private</span>
+
+   <span class="kd">type</span> <span class="kt">Stack_Array</span> <span class="kr">is</span>
+     <span class="kr">array</span> <span class="p">(</span><span class="kt">Natural</span> <span class="kr">range</span> <span class="p">&lt;&gt;)</span> <span class="kr">of</span> <span class="n">T</span><span class="p">;</span>
+
+   <span class="no">Min</span> <span class="p">:</span> <span class="kr">constant</span> <span class="p">:=</span> <span class="mi">1</span><span class="p">;</span>
+
+   <span class="kd">type</span> <span class="kt">Stack</span> <span class="kr">is</span> <span class="kr">record</span>
+      <span class="n">Container</span> <span class="p">:</span> <span class="n">Stack_Array</span> <span class="p">(</span><span class="n">Min</span> <span class="p">..</span> <span class="n">Max</span><span class="p">);</span>
+      <span class="n">Top</span>       <span class="p">:</span> <span class="kt">Natural</span> <span class="p">:=</span> <span class="n">Min</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
+   <span class="kr">end record</span><span class="p">;</span>
+
+<span class="kr">end</span> <span class="nf">Stacks</span><span class="p">;</span>
+
+<span class="kd">package</span> <span class="kd">body</span> <span class="nc">Stacks</span> <span class="kr">is</span>
+
+   <span class="kd">function</span> <span class="nf">Is_Empty</span> <span class="p">(</span><span class="nv">S</span> <span class="p">: </span><span class="nv">Stack</span><span class="p">)</span> <span class="kr">return</span> <span class="kt">Boolean</span> <span class="kr">is</span>
+     <span class="p">(</span><span class="n">S</span><span class="p">.</span><span class="n">Top</span> <span class="o">&lt;</span> <span class="n">S</span><span class="p">.</span><span class="n">Container</span><span class="p">&#39;</span><span class="na">First</span><span class="p">);</span>
+
+   <span class="kd">function</span> <span class="nf">Is_Full</span> <span class="p">(</span><span class="nv">S</span> <span class="p">: </span><span class="nv">Stack</span><span class="p">)</span> <span class="kr">return</span> <span class="kt">Boolean</span> <span class="kr">is</span>
+     <span class="p">(</span><span class="n">S</span><span class="p">.</span><span class="n">Top</span> <span class="o">&gt;=</span> <span class="n">S</span><span class="p">.</span><span class="n">Container</span><span class="p">&#39;</span><span class="na">Last</span><span class="p">);</span>
+
+   <span class="kd">function</span> <span class="nf">Pop</span> <span class="p">(</span><span class="nv">S</span> <span class="p">: </span><span class="nv">in</span> <span class="nv">out</span> <span class="nv">Stack</span><span class="p">)</span> <span class="kr">return</span> <span class="n">T</span> <span class="kr">is</span>
+   <span class="kr">begin</span>
+      <span class="kr">if</span> <span class="n">Is_Empty</span> <span class="p">(</span><span class="n">S</span><span class="p">)</span> <span class="kr">then</span>
+         <span class="kr">raise</span> <span class="n">Stack_Underflow</span><span class="p">;</span>
+      <span class="kr">else</span>
+         <span class="kr">return</span> <span class="n">X</span> <span class="p">:</span> <span class="n">T</span> <span class="kr">do</span>
+            <span class="n">X</span>     <span class="p">:=</span> <span class="n">S</span><span class="p">.</span><span class="n">Container</span> <span class="p">(</span><span class="n">S</span><span class="p">.</span><span class="n">Top</span><span class="p">);</span>
+            <span class="n">S</span><span class="p">.</span><span class="n">Top</span> <span class="p">:=</span> <span class="n">S</span><span class="p">.</span><span class="n">Top</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
+         <span class="kr">end</span> <span class="nf">return</span><span class="p">;</span>
+      <span class="kr">end</span> <span class="kr">if</span><span class="p">;</span>
+   <span class="kr">end</span> <span class="nf">Pop</span><span class="p">;</span>
+
+   <span class="kd">procedure</span> <span class="nf">Push</span> <span class="p">(</span><span class="nv">S</span> <span class="p">: </span><span class="nv">in</span> <span class="nv">out</span> <span class="nv">Stack</span><span class="p">;</span>
+                   <span class="nv">V</span> <span class="p">: </span>       <span class="nv">T</span><span class="p">)</span> <span class="kr">is</span>
+   <span class="kr">begin</span>
+      <span class="kr">if</span> <span class="n">Is_Full</span> <span class="p">(</span><span class="n">S</span><span class="p">)</span> <span class="kr">then</span>
+         <span class="kr">raise</span> <span class="n">Stack_Overflow</span><span class="p">;</span>
+      <span class="kr">else</span>
+         <span class="n">S</span><span class="p">.</span><span class="n">Top</span>               <span class="p">:=</span> <span class="n">S</span><span class="p">.</span><span class="n">Top</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+         <span class="n">S</span><span class="p">.</span><span class="n">Container</span> <span class="p">(</span><span class="n">S</span><span class="p">.</span><span class="n">Top</span><span class="p">)</span> <span class="p">:=</span> <span class="n">V</span><span class="p">;</span>
+      <span class="kr">end</span> <span class="kr">if</span><span class="p">;</span>
+   <span class="kr">end</span> <span class="nf">Push</span><span class="p">;</span>
+
+<span class="kr">end</span> <span class="nf">Stacks</span><span class="p">;</span>
+
+<span class="kn">with</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span> <span class="kn">use</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>
+<span class="kn">with</span> <span class="nn">Stacks</span><span class="p">;</span>
+
+<span class="kd">procedure</span> <span class="nf">Show_Stack</span> <span class="kr">is</span>
+
+   <span class="kd">package</span> <span class="nc">Integer_Stacks</span> <span class="kr">is new</span>
+     <span class="nc">Stacks</span> <span class="p">(</span><span class="nv">Max</span> <span class="p">=&gt;</span> 10<span class="p">,</span>
+             <span class="nv">T</span>   <span class="p">=&gt;</span> Integer<span class="p">);</span>
+   <span class="kn">use</span> <span class="nn">Integer_Stacks</span><span class="p">;</span>
+
+   <span class="n">Values</span> <span class="p">:</span> <span class="n">Integer_Stacks</span><span class="p">.</span><span class="n">Stack</span><span class="p">;</span>
+
+<span class="kr">begin</span>
+   <span class="n">Push</span> <span class="p">(</span><span class="n">Values</span><span class="p">,</span> <span class="mi">10</span><span class="p">);</span>
+   <span class="n">Push</span> <span class="p">(</span><span class="n">Values</span><span class="p">,</span> <span class="mi">20</span><span class="p">);</span>
+
+   <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;Last value was &quot;</span>
+             <span class="o">&amp;</span> <span class="kt">Integer</span><span class="p">&#39;</span><span class="na">Image</span> <span class="p">(</span><span class="n">Pop</span> <span class="p">(</span><span class="n">Values</span><span class="p">)));</span>
+<span class="kr">end</span> <span class="nf">Show_Stack</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>В этом примере сначала создается базовый (generic) пакет стека (<code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Stacks</span></span></code>), а
+затем создается его экземпляр для создания стека, содержащего до 10
+целых значений.</p>
+</section>
+<section id="swap">
+<h2>Пример: Обмен (Swap)<a class="headerlink" href="#swap" title="Permalink to this headline"></a></h2>
+<p>Давайте рассмотрим простую процедуру, которая меняет местами
+переменные типа <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Color</span></span></code>:</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kd">package</span> <span class="nc">Colors</span> <span class="kr">is</span>
+   <span class="kd">type</span> <span class="kt">Color</span> <span class="kr">is</span> <span class="p">(</span><span class="nv">Black</span><span class="p">,</span> <span class="nv">Red</span><span class="p">,</span> <span class="nv">Green</span><span class="p">,</span>
+                  <span class="nv">Blue</span><span class="p">,</span> <span class="nv">White</span><span class="p">);</span>
+
+   <span class="kd">procedure</span> <span class="nf">Swap_Colors</span> <span class="p">(</span><span class="nv">X</span><span class="p">,</span> <span class="nv">Y</span> <span class="p">: </span><span class="nv">in</span> <span class="nv">out</span> <span class="nv">Color</span><span class="p">);</span>
+<span class="kr">end</span> <span class="nf">Colors</span><span class="p">;</span>
+
+<span class="kd">package</span> <span class="kd">body</span> <span class="nc">Colors</span> <span class="kr">is</span>
+
+   <span class="kd">procedure</span> <span class="nf">Swap_Colors</span> <span class="p">(</span><span class="nv">X</span><span class="p">,</span> <span class="nv">Y</span> <span class="p">: </span><span class="nv">in</span> <span class="nv">out</span> <span class="nv">Color</span><span class="p">)</span> <span class="kr">is</span>
+      <span class="no">Tmp</span> <span class="p">:</span> <span class="kr">constant</span> <span class="n">Color</span> <span class="p">:=</span> <span class="n">X</span><span class="p">;</span>
+   <span class="kr">begin</span>
+      <span class="n">X</span> <span class="p">:=</span> <span class="n">Y</span><span class="p">;</span>
+      <span class="n">Y</span> <span class="p">:=</span> <span class="n">Tmp</span><span class="p">;</span>
+   <span class="kr">end</span> <span class="nf">Swap_Colors</span><span class="p">;</span>
+
+<span class="kr">end</span> <span class="nf">Colors</span><span class="p">;</span>
+
+<span class="kn">with</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span> <span class="kn">use</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>
+<span class="kn">with</span> <span class="nn">Colors</span><span class="p">;</span>      <span class="kn">use</span> <span class="nn">Colors</span><span class="p">;</span>
+
+<span class="kd">procedure</span> <span class="nf">Test_Non_Generic_Swap_Colors</span> <span class="kr">is</span>
+   <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span> <span class="p">:</span> <span class="n">Color</span><span class="p">;</span>
+<span class="kr">begin</span>
+   <span class="n">A</span> <span class="p">:=</span> <span class="n">Blue</span><span class="p">;</span>
+   <span class="n">B</span> <span class="p">:=</span> <span class="n">White</span><span class="p">;</span>
+   <span class="n">C</span> <span class="p">:=</span> <span class="n">Red</span><span class="p">;</span>
+
+   <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;Value of A is &quot;</span>
+             <span class="o">&amp;</span> <span class="n">Color</span><span class="p">&#39;</span><span class="na">Image</span> <span class="p">(</span><span class="n">A</span><span class="p">));</span>
+   <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;Value of B is &quot;</span>
+             <span class="o">&amp;</span> <span class="n">Color</span><span class="p">&#39;</span><span class="na">Image</span> <span class="p">(</span><span class="n">B</span><span class="p">));</span>
+   <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;Value of C is &quot;</span>
+             <span class="o">&amp;</span> <span class="n">Color</span><span class="p">&#39;</span><span class="na">Image</span> <span class="p">(</span><span class="n">C</span><span class="p">));</span>
+
+   <span class="n">New_Line</span><span class="p">;</span>
+   <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;Swapping A and C...&quot;</span><span class="p">);</span>
+   <span class="n">New_Line</span><span class="p">;</span>
+   <span class="n">Swap_Colors</span> <span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">C</span><span class="p">);</span>
+
+   <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;Value of A is &quot;</span>
+             <span class="o">&amp;</span> <span class="n">Color</span><span class="p">&#39;</span><span class="na">Image</span> <span class="p">(</span><span class="n">A</span><span class="p">));</span>
+   <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;Value of B is &quot;</span>
+             <span class="o">&amp;</span> <span class="n">Color</span><span class="p">&#39;</span><span class="na">Image</span> <span class="p">(</span><span class="n">B</span><span class="p">));</span>
+   <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;Value of C is &quot;</span>
+             <span class="o">&amp;</span> <span class="n">Color</span><span class="p">&#39;</span><span class="na">Image</span> <span class="p">(</span><span class="n">C</span><span class="p">));</span>
+<span class="kr">end</span> <span class="nf">Test_Non_Generic_Swap_Colors</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>В этом примере <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Swap_Colors</span></span></code> можно использовать только для типа
+<code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Color</span></span></code>. Однако этот алгоритм теоретически можно использовать
+для любого типа, будь то тип перечисления или сложный тип записи с
+множеством элементов. Сам алгоритм такой же: отличается только тип.
+Если, например, мы хотим поменять местами переменные типа <code class="code highlight ada docutils literal notranslate"><span class="keyword type"><span class="pre">Integer</span></span></code>,
+мы не хотим дублировать реализацию.
+Следовательно, такой алгоритм - идеальный кандидат для абстракции с
+использованием дженериков.</p>
+<p>В приведенном ниже примере мы создаем общую версию <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Swap_Colors</span></span></code>
+и называем ее <code class="code highlight ada docutils literal notranslate"><span class="keyword declaration"><span class="pre">Generic</span></span><span class="literal number integer"><span class="pre">_</span></span><span class="name"><span class="pre">Swap</span></span></code>.
+Эта универсальная версия может работать с любым типом благодаря
+объявлению формального типа <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">T</span></span></code>.</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kd">generic</span>
+   <span class="kd">type</span> <span class="kt">T</span> <span class="kr">is</span> <span class="kd">private</span><span class="p">;</span>
+<span class="kd">procedure</span> <span class="nf">Generic_Swap</span> <span class="p">(</span><span class="nv">X</span><span class="p">,</span> <span class="nv">Y</span> <span class="p">: </span><span class="nv">in</span> <span class="nv">out</span> <span class="nv">T</span><span class="p">);</span>
+
+<span class="kd">procedure</span> <span class="nf">Generic_Swap</span> <span class="p">(</span><span class="nv">X</span><span class="p">,</span> <span class="nv">Y</span> <span class="p">: </span><span class="nv">in</span> <span class="nv">out</span> <span class="nv">T</span><span class="p">)</span> <span class="kr">is</span>
+   <span class="no">Tmp</span> <span class="p">:</span> <span class="kr">constant</span> <span class="n">T</span> <span class="p">:=</span> <span class="n">X</span><span class="p">;</span>
+<span class="kr">begin</span>
+   <span class="n">X</span> <span class="p">:=</span> <span class="n">Y</span><span class="p">;</span>
+   <span class="n">Y</span> <span class="p">:=</span> <span class="n">Tmp</span><span class="p">;</span>
+<span class="kr">end</span> <span class="nf">Generic_Swap</span><span class="p">;</span>
+
+<span class="kn">with</span> <span class="nn">Generic_Swap</span><span class="p">;</span>
+
+<span class="kd">package</span> <span class="nc">Colors</span> <span class="kr">is</span>
+
+   <span class="kd">type</span> <span class="kt">Color</span> <span class="kr">is</span> <span class="p">(</span><span class="nv">Black</span><span class="p">,</span> <span class="nv">Red</span><span class="p">,</span> <span class="nv">Green</span><span class="p">,</span>
+                  <span class="nv">Blue</span><span class="p">,</span> <span class="nv">White</span><span class="p">);</span>
+
+   <span class="kd">procedure</span> <span class="nf">Swap_Colors</span> <span class="kr">is</span> <span class="kr">new</span>
+     <span class="kd">Generic</span><span class="mi">_</span><span class="n">Swap</span> <span class="p">(</span><span class="n">T</span> <span class="p">=&gt;</span> <span class="n">Color</span><span class="p">);</span>
+
+<span class="kr">end</span> <span class="nf">Colors</span><span class="p">;</span>
+
+<span class="kn">with</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>  <span class="kn">use</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>
+<span class="kn">with</span> <span class="nn">Colors</span><span class="p">;</span>       <span class="kn">use</span> <span class="nn">Colors</span><span class="p">;</span>
+
+<span class="kd">procedure</span> <span class="nf">Test_Swap_Colors</span> <span class="kr">is</span>
+   <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span> <span class="p">:</span> <span class="n">Color</span><span class="p">;</span>
+<span class="kr">begin</span>
+   <span class="n">A</span> <span class="p">:=</span> <span class="n">Blue</span><span class="p">;</span>
+   <span class="n">B</span> <span class="p">:=</span> <span class="n">White</span><span class="p">;</span>
+   <span class="n">C</span> <span class="p">:=</span> <span class="n">Red</span><span class="p">;</span>
+
+   <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;Value of A is &quot;</span>
+             <span class="o">&amp;</span> <span class="n">Color</span><span class="p">&#39;</span><span class="na">Image</span> <span class="p">(</span><span class="n">A</span><span class="p">));</span>
+   <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;Value of B is &quot;</span>
+             <span class="o">&amp;</span> <span class="n">Color</span><span class="p">&#39;</span><span class="na">Image</span> <span class="p">(</span><span class="n">B</span><span class="p">));</span>
+   <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;Value of C is &quot;</span>
+             <span class="o">&amp;</span> <span class="n">Color</span><span class="p">&#39;</span><span class="na">Image</span> <span class="p">(</span><span class="n">C</span><span class="p">));</span>
+
+   <span class="n">New_Line</span><span class="p">;</span>
+   <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;Swapping A and C...&quot;</span><span class="p">);</span>
+   <span class="n">New_Line</span><span class="p">;</span>
+   <span class="n">Swap_Colors</span> <span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">C</span><span class="p">);</span>
+
+   <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;Value of A is &quot;</span>
+             <span class="o">&amp;</span> <span class="n">Color</span><span class="p">&#39;</span><span class="na">Image</span> <span class="p">(</span><span class="n">A</span><span class="p">));</span>
+   <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;Value of B is &quot;</span>
+             <span class="o">&amp;</span> <span class="n">Color</span><span class="p">&#39;</span><span class="na">Image</span> <span class="p">(</span><span class="n">B</span><span class="p">));</span>
+   <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;Value of C is &quot;</span>
+             <span class="o">&amp;</span> <span class="n">Color</span><span class="p">&#39;</span><span class="na">Image</span> <span class="p">(</span><span class="n">C</span><span class="p">));</span>
+<span class="kr">end</span> <span class="nf">Test_Swap_Colors</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Как мы видим в примере, мы можем создать ту же процедуру <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Swap_Colors</span></span></code>,
+что и в не Generic версии алгоритма (Listing 25), объявив ее как экземпляр
+универсальной процедуры <code class="code highlight ada docutils literal notranslate"><span class="keyword declaration"><span class="pre">Generic</span></span><span class="literal number integer"><span class="pre">_</span></span><span class="name"><span class="pre">Swap</span></span></code>. Мы указываем, что общий тип
+<code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">T</span></span></code> будет сопоставлен с типом <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Color</span></span></code>, передав его в качестве
+аргумента экземпляру <code class="code highlight ada docutils literal notranslate"><span class="keyword declaration"><span class="pre">Generic</span></span><span class="literal number integer"><span class="pre">_</span></span><span class="name"><span class="pre">Swap</span></span></code>,</p>
+</section>
+<section id="reversing">
+<h2>Пример: Реверсирование (Reversing)<a class="headerlink" href="#reversing" title="Permalink to this headline"></a></h2>
+<p>Предыдущий пример с алгоритмом обмена двумя значениями является одним
+из простейших примеров использования универсальных шаблонов. Далее мы
+изучаем алгоритм обращения элементов массива. Во-первых, давайте
+начнем с не универсальной версии алгоритма, которая работает
+специально для типа <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Color</span></span></code>:</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kd">package</span> <span class="nc">Colors</span> <span class="kr">is</span>
+
+   <span class="kd">type</span> <span class="kt">Color</span> <span class="kr">is</span> <span class="p">(</span><span class="nv">Black</span><span class="p">,</span> <span class="nv">Red</span><span class="p">,</span> <span class="nv">Green</span><span class="p">,</span>
+                  <span class="nv">Blue</span><span class="p">,</span> <span class="nv">White</span><span class="p">);</span>
+
+   <span class="kd">type</span> <span class="kt">Color_Array</span> <span class="kr">is</span>
+     <span class="kr">array</span> <span class="p">(</span><span class="kt">Integer</span> <span class="kr">range</span> <span class="p">&lt;&gt;)</span> <span class="kr">of</span> <span class="n">Color</span><span class="p">;</span>
+
+   <span class="kd">procedure</span> <span class="nf">Reverse_It</span> <span class="p">(</span><span class="nv">X</span> <span class="p">: </span><span class="nv">in</span> <span class="nv">out</span> <span class="nv">Color_Array</span><span class="p">);</span>
+
+<span class="kr">end</span> <span class="nf">Colors</span><span class="p">;</span>
+
+<span class="kd">package</span> <span class="kd">body</span> <span class="nc">Colors</span> <span class="kr">is</span>
+
+   <span class="kd">procedure</span> <span class="nf">Reverse_It</span> <span class="p">(</span><span class="nv">X</span> <span class="p">: </span><span class="nv">in</span> <span class="nv">out</span> <span class="nv">Color_Array</span><span class="p">)</span> <span class="kr">is</span>
+   <span class="kr">begin</span>
+      <span class="kr">for</span> <span class="n">I</span> <span class="ow">in</span> <span class="n">X</span><span class="p">&#39;</span><span class="na">First</span> <span class="p">..</span>
+               <span class="p">(</span><span class="n">X</span><span class="p">&#39;</span><span class="na">Last</span> <span class="o">+</span> <span class="n">X</span><span class="p">&#39;</span><span class="na">First</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span> <span class="kr">loop</span>
+         <span class="kr">declare</span>
+            <span class="n">Tmp</span>     <span class="p">:</span> <span class="n">Color</span><span class="p">;</span>
+            <span class="n">X_Left</span>  <span class="p">:</span> <span class="n">Color</span>
+              <span class="kr">renames</span> <span class="n">X</span> <span class="p">(</span><span class="n">I</span><span class="p">);</span>
+            <span class="n">X_Right</span> <span class="p">:</span> <span class="n">Color</span>
+              <span class="kr">renames</span> <span class="n">X</span> <span class="p">(</span><span class="n">X</span><span class="p">&#39;</span><span class="na">Last</span> <span class="o">+</span> <span class="n">X</span><span class="p">&#39;</span><span class="na">First</span> <span class="o">-</span> <span class="n">I</span><span class="p">);</span>
+         <span class="kr">begin</span>
+            <span class="n">Tmp</span>     <span class="p">:=</span> <span class="n">X_Left</span><span class="p">;</span>
+            <span class="n">X_Left</span>  <span class="p">:=</span> <span class="n">X_Right</span><span class="p">;</span>
+            <span class="n">X_Right</span> <span class="p">:=</span> <span class="n">Tmp</span><span class="p">;</span>
+         <span class="kr">end</span><span class="p">;</span>
+      <span class="kr">end</span> <span class="kr">loop</span><span class="p">;</span>
+   <span class="kr">end</span> <span class="nf">Reverse_It</span><span class="p">;</span>
+
+<span class="kr">end</span> <span class="nf">Colors</span><span class="p">;</span>
+
+<span class="kn">with</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span> <span class="kn">use</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>
+<span class="kn">with</span> <span class="nn">Colors</span><span class="p">;</span>      <span class="kn">use</span> <span class="nn">Colors</span><span class="p">;</span>
+
+<span class="kd">procedure</span> <span class="nf">Test_Non_Generic_Reverse_Colors</span> <span class="kr">is</span>
+
+   <span class="n">My_Colors</span> <span class="p">:</span> <span class="n">Color_Array</span> <span class="p">(</span><span class="mi">1</span> <span class="p">..</span> <span class="mi">5</span><span class="p">)</span> <span class="p">:=</span>
+     <span class="p">(</span><span class="n">Black</span><span class="p">,</span> <span class="n">Red</span><span class="p">,</span> <span class="n">Green</span><span class="p">,</span> <span class="n">Blue</span><span class="p">,</span> <span class="n">White</span><span class="p">);</span>
+
+<span class="kr">begin</span>
+   <span class="kr">for</span> <span class="n">C</span> <span class="kr">of</span> <span class="n">My_Colors</span> <span class="kr">loop</span>
+      <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;My_Color: &quot;</span> <span class="o">&amp;</span> <span class="n">Color</span><span class="p">&#39;</span><span class="na">Image</span> <span class="p">(</span><span class="n">C</span><span class="p">));</span>
+   <span class="kr">end</span> <span class="kr">loop</span><span class="p">;</span>
+
+   <span class="n">New_Line</span><span class="p">;</span>
+   <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;Reversing My_Color...&quot;</span><span class="p">);</span>
+   <span class="n">New_Line</span><span class="p">;</span>
+   <span class="n">Reverse_It</span> <span class="p">(</span><span class="n">My_Colors</span><span class="p">);</span>
+
+   <span class="kr">for</span> <span class="n">C</span> <span class="kr">of</span> <span class="n">My_Colors</span> <span class="kr">loop</span>
+      <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;My_Color: &quot;</span> <span class="o">&amp;</span> <span class="n">Color</span><span class="p">&#39;</span><span class="na">Image</span> <span class="p">(</span><span class="n">C</span><span class="p">));</span>
+   <span class="kr">end</span> <span class="kr">loop</span><span class="p">;</span>
+
+<span class="kr">end</span> <span class="nf">Test_Non_Generic_Reverse_Colors</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Процедура <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Reverse_It</span></span></code> принимает массив цветов, начинает с обмена
+первого и последнего элементов массива и продолжает делать это с
+последовательными элементами, пока не достигнет середины массива. В
+этот момент весь массив был перевернут, как мы видим из выходных
+данных тестовой программы.</p>
+<p>Чтобы абстрагироваться от этой процедуры, мы объявляем формальные типы
+для трех компонентов алгоритма:</p>
+<ul class="simple">
+<li><p>элементы массива (в примере ‑ тип <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Color</span></span></code>)</p></li>
+<li><p>диапазон, используемый для массива (целочисленный диапазон в примере)</p></li>
+<li><p>фактический тип массива (тип <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Color_Array</span></span></code> в примере)</p></li>
+</ul>
+<p>Это общая версия алгоритма:</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kd">generic</span>
+   <span class="kd">type</span> <span class="kt">T</span> <span class="kr">is</span> <span class="kd">private</span><span class="p">;</span>
+   <span class="kd">type</span> <span class="kt">Index</span> <span class="kr">is</span> <span class="kr">range</span> <span class="p">&lt;&gt;;</span>
+   <span class="kd">type</span> <span class="kt">Array_T</span> <span class="kr">is</span>
+     <span class="kr">array</span> <span class="p">(</span><span class="kt">Index</span> <span class="kr">range</span> <span class="p">&lt;&gt;)</span> <span class="kr">of</span> <span class="n">T</span><span class="p">;</span>
+<span class="kd">procedure</span> <span class="nf">Generic_Reverse</span> <span class="p">(</span><span class="nv">X</span> <span class="p">: </span><span class="nv">in</span> <span class="nv">out</span> <span class="nv">Array_T</span><span class="p">);</span>
+
+<span class="kd">procedure</span> <span class="nf">Generic_Reverse</span> <span class="p">(</span><span class="nv">X</span> <span class="p">: </span><span class="nv">in</span> <span class="nv">out</span> <span class="nv">Array_T</span><span class="p">)</span> <span class="kr">is</span>
+<span class="kr">begin</span>
+   <span class="kr">for</span> <span class="n">I</span> <span class="ow">in</span> <span class="n">X</span><span class="p">&#39;</span><span class="na">First</span> <span class="p">..</span>
+            <span class="p">(</span><span class="n">X</span><span class="p">&#39;</span><span class="na">Last</span> <span class="o">+</span> <span class="n">X</span><span class="p">&#39;</span><span class="na">First</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span> <span class="kr">loop</span>
+      <span class="kr">declare</span>
+         <span class="n">Tmp</span>     <span class="p">:</span> <span class="n">T</span><span class="p">;</span>
+         <span class="n">X_Left</span>  <span class="p">:</span> <span class="n">T</span>
+           <span class="kr">renames</span> <span class="n">X</span> <span class="p">(</span><span class="n">I</span><span class="p">);</span>
+         <span class="n">X_Right</span> <span class="p">:</span> <span class="n">T</span>
+           <span class="kr">renames</span> <span class="n">X</span> <span class="p">(</span><span class="n">X</span><span class="p">&#39;</span><span class="na">Last</span> <span class="o">+</span> <span class="n">X</span><span class="p">&#39;</span><span class="na">First</span> <span class="o">-</span> <span class="n">I</span><span class="p">);</span>
+      <span class="kr">begin</span>
+         <span class="n">Tmp</span>     <span class="p">:=</span> <span class="n">X_Left</span><span class="p">;</span>
+         <span class="n">X_Left</span>  <span class="p">:=</span> <span class="n">X_Right</span><span class="p">;</span>
+         <span class="n">X_Right</span> <span class="p">:=</span> <span class="n">Tmp</span><span class="p">;</span>
+      <span class="kr">end</span><span class="p">;</span>
+   <span class="kr">end</span> <span class="kr">loop</span><span class="p">;</span>
+<span class="kr">end</span> <span class="nf">Generic_Reverse</span><span class="p">;</span>
+
+<span class="kn">with</span> <span class="nn">Generic_Reverse</span><span class="p">;</span>
+
+<span class="kd">package</span> <span class="nc">Colors</span> <span class="kr">is</span>
+
+   <span class="kd">type</span> <span class="kt">Color</span> <span class="kr">is</span> <span class="p">(</span><span class="nv">Black</span><span class="p">,</span> <span class="nv">Red</span><span class="p">,</span> <span class="nv">Green</span><span class="p">,</span>
+                  <span class="nv">Blue</span><span class="p">,</span> <span class="nv">White</span><span class="p">);</span>
+
+   <span class="kd">type</span> <span class="kt">Color_Array</span> <span class="kr">is</span>
+     <span class="kr">array</span> <span class="p">(</span><span class="kt">Integer</span> <span class="kr">range</span> <span class="p">&lt;&gt;)</span> <span class="kr">of</span> <span class="n">Color</span><span class="p">;</span>
+
+   <span class="kd">procedure</span> <span class="nf">Reverse_It</span> <span class="kr">is</span> <span class="kr">new</span>
+     <span class="kd">Generic</span><span class="mi">_</span><span class="n">Reverse</span> <span class="p">(</span><span class="n">T</span>       <span class="p">=&gt;</span> <span class="n">Color</span><span class="p">,</span>
+                      <span class="n">Index</span>   <span class="p">=&gt;</span> <span class="kt">Integer</span><span class="p">,</span>
+                      <span class="n">Array_T</span> <span class="p">=&gt;</span> <span class="n">Color_Array</span><span class="p">);</span>
+
+<span class="kr">end</span> <span class="nf">Colors</span><span class="p">;</span>
+
+<span class="kn">with</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span> <span class="kn">use</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>
+<span class="kn">with</span> <span class="nn">Colors</span><span class="p">;</span>      <span class="kn">use</span> <span class="nn">Colors</span><span class="p">;</span>
+
+<span class="kd">procedure</span> <span class="nf">Test_Reverse_Colors</span> <span class="kr">is</span>
+
+   <span class="n">My_Colors</span> <span class="p">:</span> <span class="n">Color_Array</span> <span class="p">(</span><span class="mi">1</span> <span class="p">..</span> <span class="mi">5</span><span class="p">)</span> <span class="p">:=</span>
+     <span class="p">(</span><span class="n">Black</span><span class="p">,</span> <span class="n">Red</span><span class="p">,</span> <span class="n">Green</span><span class="p">,</span> <span class="n">Blue</span><span class="p">,</span> <span class="n">White</span><span class="p">);</span>
+
+<span class="kr">begin</span>
+   <span class="kr">for</span> <span class="n">C</span> <span class="kr">of</span> <span class="n">My_Colors</span> <span class="kr">loop</span>
+      <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;My_Color: &quot;</span>
+                <span class="o">&amp;</span> <span class="n">Color</span><span class="p">&#39;</span><span class="na">Image</span> <span class="p">(</span><span class="n">C</span><span class="p">));</span>
+   <span class="kr">end</span> <span class="kr">loop</span><span class="p">;</span>
+
+   <span class="n">New_Line</span><span class="p">;</span>
+   <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;Reversing My_Color...&quot;</span><span class="p">);</span>
+   <span class="n">New_Line</span><span class="p">;</span>
+   <span class="n">Reverse_It</span> <span class="p">(</span><span class="n">My_Colors</span><span class="p">);</span>
+
+   <span class="kr">for</span> <span class="n">C</span> <span class="kr">of</span> <span class="n">My_Colors</span> <span class="kr">loop</span>
+      <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;My_Color: &quot;</span>
+                <span class="o">&amp;</span> <span class="n">Color</span><span class="p">&#39;</span><span class="na">Image</span> <span class="p">(</span><span class="n">C</span><span class="p">));</span>
+   <span class="kr">end</span> <span class="kr">loop</span><span class="p">;</span>
+
+<span class="kr">end</span> <span class="nf">Test_Reverse_Colors</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Как упоминалось выше, мы абстрагируем три компонента алгоритма:</p>
+<ul class="simple">
+<li><p>тип <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">T</span></span></code> абстрагирует элементы массива</p></li>
+<li><p>тип <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Index</span></span></code> абстрагирует диапазон, используемый для массива</p></li>
+<li><p>тип <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Array_T</span></span></code> абстрагирует тип массива и использует формальные
+объявления типов <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">T</span></span></code> и <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Index</span></span></code>.</p></li>
+</ul>
+</section>
+<section id="id10">
+<h2>Пример: Тестовое приложение<a class="headerlink" href="#id10" title="Permalink to this headline"></a></h2>
+<p>В предыдущем примере мы сосредоточились только на абстрагировании
+самого алгоритма реверсирования. Однако мы могли бы также решить
+абстрагироваться от нашего небольшого тестового приложения. Это может
+быть полезно, если мы, например, решим протестировать другие
+процедуры, изменяющие элементы массива.</p>
+<p>Чтобы сделать это, мы снова должны выбрать элементы для
+абстрагирования. Поэтому мы декларируем следующие формальные
+параметры:</p>
+<ul class="simple">
+<li><p><code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">S</span></span></code>: строка, содержащая имя массива</p></li>
+<li><p>функция <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Image</span></span></code>, преобразующая элемент типа <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">T</span></span></code> в строку</p></li>
+<li><p>процедура <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Test</span></span></code>, которая выполняет некоторую операцию с массивом</p></li>
+</ul>
+<p>Обратите внимание, что <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Image</span></span></code> и <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Test</span></span></code> являются примерами
+формальных подпрограмм, а <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">S</span></span></code> ‑ примером формального объекта.</p>
+<p>Вот версия тестового приложения, использующего общую процедуру
+<code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Perform_Test</span></span></code>:</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kd">generic</span>
+   <span class="kd">type</span> <span class="kt">T</span> <span class="kr">is</span> <span class="kd">private</span><span class="p">;</span>
+   <span class="kd">type</span> <span class="kt">Index</span> <span class="kr">is</span> <span class="kr">range</span> <span class="p">&lt;&gt;;</span>
+   <span class="kd">type</span> <span class="kt">Array_T</span> <span class="kr">is</span>
+     <span class="kr">array</span> <span class="p">(</span><span class="kt">Index</span> <span class="kr">range</span> <span class="p">&lt;&gt;)</span> <span class="kr">of</span> <span class="n">T</span><span class="p">;</span>
+<span class="kd">procedure</span> <span class="nf">Generic_Reverse</span> <span class="p">(</span><span class="nv">X</span> <span class="p">: </span><span class="nv">in</span> <span class="nv">out</span> <span class="nv">Array_T</span><span class="p">);</span>
+
+<span class="kd">procedure</span> <span class="nf">Generic_Reverse</span> <span class="p">(</span><span class="nv">X</span> <span class="p">: </span><span class="nv">in</span> <span class="nv">out</span> <span class="nv">Array_T</span><span class="p">)</span> <span class="kr">is</span>
+<span class="kr">begin</span>
+   <span class="kr">for</span> <span class="n">I</span> <span class="ow">in</span> <span class="n">X</span><span class="p">&#39;</span><span class="na">First</span> <span class="p">..</span>
+            <span class="p">(</span><span class="n">X</span><span class="p">&#39;</span><span class="na">Last</span> <span class="o">+</span> <span class="n">X</span><span class="p">&#39;</span><span class="na">First</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span> <span class="kr">loop</span>
+      <span class="kr">declare</span>
+         <span class="n">Tmp</span>     <span class="p">:</span> <span class="n">T</span><span class="p">;</span>
+         <span class="n">X_Left</span>  <span class="p">:</span> <span class="n">T</span>
+           <span class="kr">renames</span> <span class="n">X</span> <span class="p">(</span><span class="n">I</span><span class="p">);</span>
+         <span class="n">X_Right</span> <span class="p">:</span> <span class="n">T</span>
+           <span class="kr">renames</span> <span class="n">X</span> <span class="p">(</span><span class="n">X</span><span class="p">&#39;</span><span class="na">Last</span> <span class="o">+</span> <span class="n">X</span><span class="p">&#39;</span><span class="na">First</span> <span class="o">-</span> <span class="n">I</span><span class="p">);</span>
+      <span class="kr">begin</span>
+         <span class="n">Tmp</span>     <span class="p">:=</span> <span class="n">X_Left</span><span class="p">;</span>
+         <span class="n">X_Left</span>  <span class="p">:=</span> <span class="n">X_Right</span><span class="p">;</span>
+         <span class="n">X_Right</span> <span class="p">:=</span> <span class="n">Tmp</span><span class="p">;</span>
+      <span class="kr">end</span><span class="p">;</span>
+   <span class="kr">end</span> <span class="kr">loop</span><span class="p">;</span>
+<span class="kr">end</span> <span class="nf">Generic_Reverse</span><span class="p">;</span>
+
+<span class="kd">generic</span>
+   <span class="kd">type</span> <span class="kt">T</span> <span class="kr">is</span> <span class="kd">private</span><span class="p">;</span>
+   <span class="kd">type</span> <span class="kt">Index</span> <span class="kr">is</span> <span class="kr">range</span> <span class="p">&lt;&gt;;</span>
+   <span class="kd">type</span> <span class="kt">Array_T</span> <span class="kr">is</span>
+     <span class="kr">array</span> <span class="p">(</span><span class="kt">Index</span> <span class="kr">range</span> <span class="p">&lt;&gt;)</span> <span class="kr">of</span> <span class="n">T</span><span class="p">;</span>
+   <span class="n">S</span> <span class="p">:</span> <span class="kt">String</span><span class="p">;</span>
+   <span class="kn">with</span> <span class="nn">function</span> <span class="n">Image</span> <span class="p">(</span><span class="n">E</span> <span class="p">:</span> <span class="n">T</span><span class="p">)</span> <span class="kr">return</span> <span class="kt">String</span> <span class="kr">is</span> <span class="p">&lt;&gt;;</span>
+   <span class="kn">with</span> <span class="nn">procedure</span> <span class="n">Test</span> <span class="p">(</span><span class="n">X</span> <span class="p">:</span> <span class="ow">in</span> <span class="kr">out</span> <span class="n">Array_T</span><span class="p">);</span>
+<span class="kd">procedure</span> <span class="nf">Perform_Test</span> <span class="p">(</span><span class="nv">X</span> <span class="p">: </span><span class="nv">in</span> <span class="nv">out</span> <span class="nv">Array_T</span><span class="p">);</span>
+
+<span class="kn">with</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>  <span class="kn">use</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>
+
+<span class="kd">procedure</span> <span class="nf">Perform_Test</span> <span class="p">(</span><span class="nv">X</span> <span class="p">: </span><span class="nv">in</span> <span class="nv">out</span> <span class="nv">Array_T</span><span class="p">)</span> <span class="kr">is</span>
+<span class="kr">begin</span>
+   <span class="kr">for</span> <span class="n">C</span> <span class="kr">of</span> <span class="n">X</span> <span class="kr">loop</span>
+      <span class="n">Put_Line</span> <span class="p">(</span><span class="n">S</span> <span class="o">&amp;</span> <span class="s">&quot;: &quot;</span> <span class="o">&amp;</span> <span class="n">Image</span> <span class="p">(</span><span class="n">C</span><span class="p">));</span>
+   <span class="kr">end</span> <span class="kr">loop</span><span class="p">;</span>
+
+   <span class="n">New_Line</span><span class="p">;</span>
+   <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;Testing &quot;</span> <span class="o">&amp;</span> <span class="n">S</span> <span class="o">&amp;</span> <span class="s">&quot;...&quot;</span><span class="p">);</span>
+   <span class="n">New_Line</span><span class="p">;</span>
+   <span class="n">Test</span> <span class="p">(</span><span class="n">X</span><span class="p">);</span>
+
+   <span class="kr">for</span> <span class="n">C</span> <span class="kr">of</span> <span class="n">X</span> <span class="kr">loop</span>
+      <span class="n">Put_Line</span> <span class="p">(</span><span class="n">S</span> <span class="o">&amp;</span> <span class="s">&quot;: &quot;</span> <span class="o">&amp;</span> <span class="n">Image</span> <span class="p">(</span><span class="n">C</span><span class="p">));</span>
+   <span class="kr">end</span> <span class="kr">loop</span><span class="p">;</span>
+<span class="kr">end</span> <span class="nf">Perform_Test</span><span class="p">;</span>
+
+<span class="kn">with</span> <span class="nn">Generic_Reverse</span><span class="p">;</span>
+
+<span class="kd">package</span> <span class="nc">Colors</span> <span class="kr">is</span>
+
+   <span class="kd">type</span> <span class="kt">Color</span> <span class="kr">is</span> <span class="p">(</span><span class="nv">Black</span><span class="p">,</span> <span class="nv">Red</span><span class="p">,</span> <span class="nv">Green</span><span class="p">,</span>
+                  <span class="nv">Blue</span><span class="p">,</span> <span class="nv">White</span><span class="p">);</span>
+
+   <span class="kd">type</span> <span class="kt">Color_Array</span> <span class="kr">is</span>
+     <span class="kr">array</span> <span class="p">(</span><span class="kt">Integer</span> <span class="kr">range</span> <span class="p">&lt;&gt;)</span> <span class="kr">of</span> <span class="n">Color</span><span class="p">;</span>
+
+   <span class="kd">procedure</span> <span class="nf">Reverse_It</span> <span class="kr">is</span> <span class="kr">new</span>
+     <span class="kd">Generic</span><span class="mi">_</span><span class="n">Reverse</span> <span class="p">(</span><span class="n">T</span>       <span class="p">=&gt;</span> <span class="n">Color</span><span class="p">,</span>
+                      <span class="n">Index</span>   <span class="p">=&gt;</span> <span class="kt">Integer</span><span class="p">,</span>
+                      <span class="n">Array_T</span> <span class="p">=&gt;</span> <span class="n">Color_Array</span><span class="p">);</span>
+
+<span class="kr">end</span> <span class="nf">Colors</span><span class="p">;</span>
+
+<span class="kn">with</span> <span class="nn">Colors</span><span class="p">;</span>       <span class="kn">use</span> <span class="nn">Colors</span><span class="p">;</span>
+<span class="kn">with</span> <span class="nn">Perform_Test</span><span class="p">;</span>
+
+<span class="kd">procedure</span> <span class="nf">Test_Reverse_Colors</span> <span class="kr">is</span>
+
+   <span class="kd">procedure</span> <span class="nf">Perform_Test_Reverse_It</span> <span class="kr">is</span> <span class="kr">new</span>
+     <span class="n">Perform_Test</span> <span class="p">(</span><span class="n">T</span>       <span class="p">=&gt;</span> <span class="n">Color</span><span class="p">,</span>
+                   <span class="n">Index</span>   <span class="p">=&gt;</span> <span class="kt">Integer</span><span class="p">,</span>
+                   <span class="n">Array_T</span> <span class="p">=&gt;</span> <span class="n">Color_Array</span><span class="p">,</span>
+                   <span class="n">S</span>       <span class="p">=&gt;</span> <span class="s">&quot;My_Color&quot;</span><span class="p">,</span>
+                   <span class="n">Image</span>   <span class="p">=&gt;</span> <span class="n">Color</span><span class="p">&#39;</span><span class="na">Image</span><span class="p">,</span>
+                   <span class="n">Test</span>    <span class="p">=&gt;</span> <span class="n">Reverse_It</span><span class="p">);</span>
+
+   <span class="n">My_Colors</span> <span class="p">:</span> <span class="n">Color_Array</span> <span class="p">(</span><span class="mi">1</span> <span class="p">..</span> <span class="mi">5</span><span class="p">)</span> <span class="p">:=</span>
+     <span class="p">(</span><span class="n">Black</span><span class="p">,</span> <span class="n">Red</span><span class="p">,</span> <span class="n">Green</span><span class="p">,</span> <span class="n">Blue</span><span class="p">,</span> <span class="n">White</span><span class="p">);</span>
+
+<span class="kr">begin</span>
+   <span class="n">Perform_Test_Reverse_It</span> <span class="p">(</span><span class="n">My_Colors</span><span class="p">);</span>
+<span class="kr">end</span> <span class="nf">Test_Reverse_Colors</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>В этом примере создается процедура, <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Perform_Test_Reverse_It</span></span></code>
+как экземпляр общей процедуры (<code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Perform_Test</span></span></code>). Обратите внимание, что:</p>
+<ul class="simple">
+<li><p>Для формальной функции <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Image</span></span></code> мы используем атрибут <code class="code highlight ada docutils literal notranslate"><span class="punctuation"><span class="pre">'</span></span><span class="name attribute"><span class="pre">Image</span></span></code>
+типа <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Color</span></span></code></p></li>
+<li><p>Для формальной процедуры тестирования <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Test</span></span></code> мы ссылаемся на процедуру
+<code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Reverse_Array</span></span></code> из пакета.</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          
+
+
+<footer>
+      
+      
+
+      
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+          
+            <a href="exceptions.html" class="btn btn-neutral float-right" title="Исключения" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+          
+          
+            <a href="privacy.html" class="btn btn-neutral" title="Конфиденциальность" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+          
+        </div>
+  
+
+
+  <hr/>
+
+  <div class="legal">
+              Copyright &copy; 2022 AdaCore. All rights reserved.
+              &nbsp;&nbsp;
+              <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/80x15.png" /></a>
+              <br>
+              <a href="https://www.adacore.com/company/legal">Legal</a>
+              &nbsp; |  &nbsp;
+              <a href="https://www.adacore.com/company/privacy">Privacy Policy</a>
+              &nbsp; |  &nbsp;
+              <a href="https://github.com/AdaCore/learn/issues">Report an Issue</a>
+            </div> 
+
+</footer>
+
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+  <button id="scrollToTopBtn" title="Go to top"><i class="fas fa-caret-square-up"></i></button>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+</script>
+
+
+</body>
+</html>

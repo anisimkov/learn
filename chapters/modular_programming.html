@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Модульное программирование &mdash; learn.adacore.com</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Сильно типизированный язык" href="strongly_typed_language.html" />
+    <link rel="prev" title="Подпрограммы" href="subprograms.html" />
+  <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-117428-14"></script>
+<script type="text/javascript">
+  if(!Cookies.get('AdaCore_staff')) {
+    // Global site tag (gtag.js) - Google Analytics
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-117428-14');
+    // End Global site tag (gtag.js) - Google Analytics
+
+    // Google Tag Manager
+    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-KD5HNRR');
+    // End Google Tag Manager
+
+    // Twitter universal website tag code
+    !function(e,t,n,s,u,a){e.twq||(s=e.twq=function(){s.exe?s.exe.apply(s,arguments):s.queue.push(arguments);},s.version='1.1',s.queue=[],u=t.createElement(n),u.async=!0,u.src='//static.ads-twitter.com/uwt.js',a=t.getElementsByTagName(n)[0],a.parentNode.insertBefore(u,a))}(window,document,'script');
+    // Insert Twitter Pixel ID and Standard Event data below
+    twq('init','o3mlc');
+    twq('track','PageView');
+    // End Twitter universal website tag code
+
+    // LinkedIn Tracking Tags
+    _linkedin_partner_id = "482585"; window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || []; window._linkedin_data_partner_ids.push(_linkedin_partner_id);
+    (function(){var s = document.getElementsByTagName("script")[0]; var b = document.createElement("script"); b.type = "text/javascript";b.async = true; b.src = "https://snap.licdn.com/li.lms-analytics/insight.min.js"; s.parentNode.insertBefore(b, s);})();
+    // End LinkedIn Tracking Tags
+  }
+</script>
+  <!--  Essential META Tags -->
+<meta property="og:title" content=“learn.adacore.com">
+<meta property="og:description" content="An interactive learning platform to teach the Ada and SPARK programming languages.">
+<meta property="og:image" content="https://learn.adacore.com/_static/learn_meta_img.jpeg">
+<meta property="og:url" content="https://learn.adacore.com">
+<meta name="twitter:card" content="summary_large_image">
+
+<!--  Non-Essential, But Recommended -->
+<meta property="og:site_name" content="learn.adacore.com">
+<meta name="twitter:image:alt" content="An interactive learning platform to teach the Ada and SPARK programming languages.">
+
+<!--  Non-Essential, But Required for Analytics -->
+<meta name="twitter:site" content="@AdaCoreCompany">
+
+</head>
+
+<body class="wy-body-for-nav">
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KD5HNRR"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  <!-- LinkedIn Tracking Tags (noscript) -->
+  <noscript> <img height="1" width="1" style="display:none;" alt="" src="https://dc.ads.linkedin.com/collect/?pid=482585&fmt=gif" /> </noscript>
+  <!-- End LinkedIn Tracking Tags (noscript) -->
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html">
+            <img src="../_static/logo.svg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Введение</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#id2">История</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#ada">Ada сегодня</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#id6">Философия</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#spark">SPARK</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="imperative_language.html">Императивы языка</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="imperative_language.html#hello-world">Hello world</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imperative_language.html#if-then-else">Императивы языка ‑ If / Then / Else</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imperative_language.html#loops">Императивы языка ‑ Loops</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="imperative_language.html#for">Циклы For</a></li>
+<li class="toctree-l3"><a class="reference internal" href="imperative_language.html#id2">Простой цикл</a></li>
+<li class="toctree-l3"><a class="reference internal" href="imperative_language.html#while">Циклы While</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="imperative_language.html#case">Императивы языка – оператор Case</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imperative_language.html#id3">Императивы языка – декларативные регионы</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imperative_language.html#id4">Императивы языка – условные выражения</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="imperative_language.html#if">Выражение If</a></li>
+<li class="toctree-l3"><a class="reference internal" href="imperative_language.html#id5">Выражение Case</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="subprograms.html">Подпрограммы</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="subprograms.html#id2">Подпрограммы</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="subprograms.html#id3">Вызовы подпрограмм</a></li>
+<li class="toctree-l3"><a class="reference internal" href="subprograms.html#id4">Вложенные подпрограммы</a></li>
+<li class="toctree-l3"><a class="reference internal" href="subprograms.html#id5">Вызов функций</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="subprograms.html#id6">Режимы параметров</a></li>
+<li class="toctree-l2"><a class="reference internal" href="subprograms.html#id7">Вызов процедуры</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="subprograms.html#in">Параметры in</a></li>
+<li class="toctree-l3"><a class="reference internal" href="subprograms.html#in-out">Параметры in out</a></li>
+<li class="toctree-l3"><a class="reference internal" href="subprograms.html#out">Параметры out</a></li>
+<li class="toctree-l3"><a class="reference internal" href="subprograms.html#id8">Предварительное объявление подпрограмм</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="subprograms.html#subprogram-renaming">Переименование</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Модульное программирование</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">Пакеты</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">Использование пакета</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">Тело пакета</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#childpackages">Дочерние пакеты</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id6">Дочерний пакет от дочернего пакета</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">Множественные потомки</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id8">Видимость</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#package-renaming">Переименование</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="strongly_typed_language.html">Сильно типизированный язык</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="strongly_typed_language.html#whatisatype">Что такое тип?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="strongly_typed_language.html#integers">Целочисленные типы ‑ Integers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="strongly_typed_language.html#id3">Семантика операций</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="strongly_typed_language.html#id4">Беззнаковые типы</a></li>
+<li class="toctree-l2"><a class="reference internal" href="strongly_typed_language.html#enumtypes">Перечисления</a></li>
+<li class="toctree-l2"><a class="reference internal" href="strongly_typed_language.html#id7">Типы с плавающей запятой</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="strongly_typed_language.html#id8">Основные свойства</a></li>
+<li class="toctree-l3"><a class="reference internal" href="strongly_typed_language.html#id9">Точность типов с плавающей запятой</a></li>
+<li class="toctree-l3"><a class="reference internal" href="strongly_typed_language.html#id10">Диапазон типов с плавающей запятой</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="strongly_typed_language.html#id11">Строгая типизация</a></li>
+<li class="toctree-l2"><a class="reference internal" href="strongly_typed_language.html#id12">Производные типы</a></li>
+<li class="toctree-l2"><a class="reference internal" href="strongly_typed_language.html#id13">Подтипы</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="strongly_typed_language.html#subtypealiases">Подтипы в качестве псевдонимов типов</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="records.html">Записи</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="records.html#id2">Объявление типа записи</a></li>
+<li class="toctree-l2"><a class="reference internal" href="records.html#id3">Агрегаты</a></li>
+<li class="toctree-l2"><a class="reference internal" href="records.html#id4">Выбор компонентов</a></li>
+<li class="toctree-l2"><a class="reference internal" href="records.html#record-comp-renaming">Переименование</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="arrays.html">Массивы</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="arrays.html#id2">Объявление типа массива</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays.html#id3">Индексирование</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays.html#id4">Более простые объявления массива</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays.html#id5">Атрибут диапазона</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays.html#unconstrainedarraytypes">Неограниченные массивы</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays.html#string">Предопределенный тип массива: String</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays.html#id7">Ограничения</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays.html#id8">Возврат неограниченных массивов</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays.html#id9">Объявление массивов (2)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays.html#id10">Срезы массива</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays.html#object-renaming">Переименование</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="more_about_types.html">Подробнее о типах</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="more_about_types.html#id2">Агрегаты: краткая информация</a></li>
+<li class="toctree-l2"><a class="reference internal" href="more_about_types.html#id3">Перегрузка и квалифицированные выражения</a></li>
+<li class="toctree-l2"><a class="reference internal" href="more_about_types.html#access">Типы Access (указатели)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="more_about_types.html#allocation">Распределение (по типу) ‑ Allocation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="more_about_types.html#id5">Разыменование</a></li>
+<li class="toctree-l3"><a class="reference internal" href="more_about_types.html#id6">Другие особенности</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="more_about_types.html#id7">Взаимно рекурсивные типы</a></li>
+<li class="toctree-l2"><a class="reference internal" href="more_about_types.html#id8">Подробнее о записях</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="more_about_types.html#id9">Типы записей с динамически изменяемым размером</a></li>
+<li class="toctree-l3"><a class="reference internal" href="more_about_types.html#id10">Записи с дискриминантом</a></li>
+<li class="toctree-l3"><a class="reference internal" href="more_about_types.html#c">Записи c вариантами</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="more_about_types.html#id11">Типы с фиксированной точкой</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="more_about_types.html#id12">Десятичные типы с фиксированной точкой</a></li>
+<li class="toctree-l3"><a class="reference internal" href="more_about_types.html#id13">Типы фиксированных точек</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="more_about_types.html#id14">Типы символов</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="privacy.html">Конфиденциальность</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="privacy.html#id3">Базовая инкапсуляция</a></li>
+<li class="toctree-l2"><a class="reference internal" href="privacy.html#id4">Абстрактные типы данных</a></li>
+<li class="toctree-l2"><a class="reference internal" href="privacy.html#id5">Ограниченные типы</a></li>
+<li class="toctree-l2"><a class="reference internal" href="privacy.html#id7">Дочерние пакеты и конфиденциальность</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="generics.html">Настраиваемые модули</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="generics.html#id2">Введение</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generics.html#id3">Формальное объявление типа</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generics.html#id4">Формальное объявление объекта</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generics.html#generic">Определение тела generic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generics.html#id5">Создание экземпляра generic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generics.html#id6">Generic пакеты</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generics.html#id7">Формальные подпрограммы</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generics.html#id8">Пример: экземпляры ввода / вывода</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generics.html#id9">Пример: АТД</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generics.html#swap">Пример: Обмен (Swap)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generics.html#reversing">Пример: Реверсирование (Reversing)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generics.html#id10">Пример: Тестовое приложение</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="exceptions.html">Исключения</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="exceptions.html#id2">Объявление исключения</a></li>
+<li class="toctree-l2"><a class="reference internal" href="exceptions.html#id3">Возбуждение исключения</a></li>
+<li class="toctree-l2"><a class="reference internal" href="exceptions.html#id4">Обработка исключения</a></li>
+<li class="toctree-l2"><a class="reference internal" href="exceptions.html#id5">Предопределенные исключения</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="contracts.html">Контрактное проектирование</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="contracts.html#id2">Пред- и постусловия</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contracts.html#id3">Предикаты</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contracts.html#id4">Инварианты типа</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="interfacing_with_c.html">Взаимодействие с языком C</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="interfacing_with_c.html#id1">Многоязычный проект</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interfacing_with_c.html#id2">Соглашение о типах</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interfacing_with_c.html#id3">Подпрограммы на других языках</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="interfacing_with_c.html#c-ada">Вызов подпрограмм C в Ada</a></li>
+<li class="toctree-l3"><a class="reference internal" href="interfacing_with_c.html#ada-c">Вызов подпрограмм Ada в C</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="interfacing_with_c.html#id4">Внешние переменные</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="interfacing_with_c.html#id5">Использование глобальных переменных C в Ada</a></li>
+<li class="toctree-l3"><a class="reference internal" href="interfacing_with_c.html#id6">Использование переменных Ada в C</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="interfacing_with_c.html#id7">Создание привязок</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="interfacing_with_c.html#id8">Адаптация привязок</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="object_oriented_programming.html">Объектно-ориентированное программирование</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="object_oriented_programming.html#id2">Производные типы</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_oriented_programming.html#id3">Типы с тегами</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_oriented_programming.html#id5">Типы расширяемые классами</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_oriented_programming.html#id6">Операции диспетчеризации</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_oriented_programming.html#id7">Точечная нотация</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_oriented_programming.html#id8">Частные и ограниченные типы с тегами</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_oriented_programming.html#id9">Типы доступа в классах</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="standard_library_containers.html">Стандартная библиотека: Контейнеры</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_containers.html#id2">Векторы</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_containers.html#id3">Создание экземпляра</a></li>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_containers.html#id4">Инициализация</a></li>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_containers.html#prepend-append">Добавление элементов - Prepend и Append</a></li>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_containers.html#id5">Доступ к первому и последнему элементам</a></li>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_containers.html#id6">Итерация</a></li>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_containers.html#id7">Поиск и изменение элементов</a></li>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_containers.html#id8">Вставка элементов</a></li>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_containers.html#id9">Удаление элементов</a></li>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_containers.html#id10">Другие операции</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_containers.html#id11">Множества</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_containers.html#id12">Инициализация и итерация</a></li>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_containers.html#id13">Операции с элементами</a></li>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_containers.html#id14">Другие операции</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_containers.html#id15">Неопределенные карты</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_containers.html#id16">Хэшированные карты</a></li>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_containers.html#id17">Упорядоченные карты</a></li>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_containers.html#id18">Сложность</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="standard_library_dates_times.html">Стандартная библиотека: Дата и время</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_dates_times.html#datestimes">Обработка даты и времени</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_dates_times.html#id3">Задержка с использованием даты</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_dates_times.html#id4">В режиме реального времени</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_dates_times.html#id5">Сравнительный анализ</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="standard_library_strings.html">Стандартная библиотека: Строки</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_strings.html#id2">Операции со строками</a></li>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_strings.html#id3">Ограничение строк фиксированной длины</a></li>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_strings.html#id4">Ограниченные строки</a></li>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_strings.html#unboundedstrings">Неограниченные строки</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="standard_library_files_streams.html">Стандартная библиотека: Файлы и потоки</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_files_streams.html#id2">Ввод/вывод текста</a></li>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_files_streams.html#id3">Последовательный ввод-вывод</a></li>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_files_streams.html#id4">Прямой ввод / вывод</a></li>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_files_streams.html#id5">Потоковый ввод-вывод</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="standard_library_numerics.html">Стандартная библиотека: Numerics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_numerics.html#id1">Элементарные функции</a></li>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_numerics.html#id2">Генерация случайных чисел</a></li>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_numerics.html#id3">Тип комплексного числа</a></li>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_numerics.html#id4">Манипулирование векторами и матрицами</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="appendices.html">Приложения</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="appendices.html#a">Приложение A: Формальные типы настройки</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="appendices.html#id2">Неограниченная версия типа</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="appendices.html#b">Приложение B: Контейнеры</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+  <i data-toggle="wy-nav-top" class="fas fa-bars"></i>
+    <a href="../index.html">
+    <img src="../_static/logo.svg" class="logo" alt="Logo"/>
+  </a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="id1">
+<h1>Модульное программирование<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h1>
+<p>До сих пор наши примеры были простыми автономными подпрограммами. Ada
+полезна в этом отношении, поскольку она допускает произвольные
+объявления в декларативной части. Таким образом, мы смогли объявить
+наши типы и переменные в телах основных процедур.</p>
+<p>Однако легко увидеть, что это не будет масштабироваться для реальных
+приложений. Нам нужен лучший способ структурировать наши программы в
+модульные и отдельные блоки.</p>
+<p>Ada поощряет разделение программ на несколько пакетов и подпакетов,
+предоставляя множество инструментов программисту в поисках идеально
+организованной базы кода.</p>
+<section id="id2">
+<h2>Пакеты<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h2>
+<p>Вот пример объявления пакета в Ada:</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kd">package</span> <span class="nc">Week</span> <span class="kr">is</span>
+
+   <span class="no">Mon</span> <span class="p">:</span> <span class="kr">constant</span> <span class="kt">String</span> <span class="p">:=</span> <span class="s">&quot;Monday&quot;</span><span class="p">;</span>
+   <span class="no">Tue</span> <span class="p">:</span> <span class="kr">constant</span> <span class="kt">String</span> <span class="p">:=</span> <span class="s">&quot;Tuesday&quot;</span><span class="p">;</span>
+   <span class="no">Wed</span> <span class="p">:</span> <span class="kr">constant</span> <span class="kt">String</span> <span class="p">:=</span> <span class="s">&quot;Wednesday&quot;</span><span class="p">;</span>
+   <span class="no">Thu</span> <span class="p">:</span> <span class="kr">constant</span> <span class="kt">String</span> <span class="p">:=</span> <span class="s">&quot;Thursday&quot;</span><span class="p">;</span>
+   <span class="no">Fri</span> <span class="p">:</span> <span class="kr">constant</span> <span class="kt">String</span> <span class="p">:=</span> <span class="s">&quot;Friday&quot;</span><span class="p">;</span>
+   <span class="no">Sat</span> <span class="p">:</span> <span class="kr">constant</span> <span class="kt">String</span> <span class="p">:=</span> <span class="s">&quot;Saturday&quot;</span><span class="p">;</span>
+   <span class="no">Sun</span> <span class="p">:</span> <span class="kr">constant</span> <span class="kt">String</span> <span class="p">:=</span> <span class="s">&quot;Sunday&quot;</span><span class="p">;</span>
+
+<span class="kr">end</span> <span class="nf">Week</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>И вот как вы его используете:</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kn">with</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span> <span class="kn">use</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>
+<span class="kn">with</span> <span class="nn">Week</span><span class="p">;</span>
+<span class="c1">--  References the Week package, and</span>
+<span class="c1">--  adds a dependency from Main to Week</span>
+
+<span class="kd">procedure</span> <span class="nf">Main</span> <span class="kr">is</span>
+<span class="kr">begin</span>
+   <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;First day of the week is &quot;</span>
+             <span class="o">&amp;</span> <span class="n">Week</span><span class="p">.</span><span class="n">Mon</span><span class="p">);</span>
+<span class="kr">end</span> <span class="nf">Main</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Пакеты позволяют сделать код модульным, разделяя программы на
+семантически значимые единицы. Кроме того, отделение спецификации
+пакета от его тела (которое мы увидим ниже) может сократить время
+компиляции.</p>
+<p>Хотя предложение <code class="code highlight ada docutils literal notranslate"><span class="keyword namespace"><span class="pre">with</span></span></code> указывает на зависимость, в приведенном выше примере
+можно увидеть, что по-прежнему необходимо префиксировать ссылку на
+сущности из пакета Week по имени пакета. (Если бы мы включили
+предложение <code class="code highlight ada docutils literal notranslate"><span class="keyword namespace"><span class="pre">use</span></span> <span class="name namespace"><span class="pre">Week</span></span></code>, то такой префикс был бы не нужен.)</p>
+<p>При доступе к объектам из пакета используется точечная нотация <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">A</span></span><span class="punctuation"><span class="pre">.</span></span><span class="name"><span class="pre">B</span></span></code>,
+которая является той же нотацией, что и та, которая используется для
+доступа к полям записей.</p>
+<p>Предложение <code class="code highlight ada docutils literal notranslate"><span class="keyword namespace"><span class="pre">with</span></span></code> может появляться <em>только</em> в начале блока компиляции (т. е.
+перед зарезервированным словом, таким как <code class="code highlight ada docutils literal notranslate"><span class="keyword declaration"><span class="pre">procedure</span></span></code>, которое отмечает
+начало блока). Больше нигде это не разрешено. Это правило необходимо
+только по методологическим соображениям: человек, читающий ваш код,
+должен сразу видеть, от каких единиц зависит код.</p>
+<div class="admonition- admonition">
+<p class="admonition-title">На других языках</p>
+<p>Пакеты похожи на файлы заголовков в C / C ++, но семантически сильно
+отличаются от них.</p>
+<blockquote>
+<div><ul>
+<li><p>Первое и самое важное отличие состоит в том, что пакеты представляют
+собой механизм уровня языка. Это контрастирует с заголовочным файлом <code class="code highlight c docutils literal notranslate"><span class="comment preproc"><span class="pre">#include</span></span></code>
+,который является функцией препроцессора C.</p></li>
+<li><p>Непосредственным следствием этого является то, что конструкция <code class="code highlight ada docutils literal notranslate"><span class="keyword namespace"><span class="pre">with</span></span></code>
+является семантическим механизмом включения, а не механизмом включения
+текста. Следовательно, когда вы работаете с пакетом указывая <code class="code highlight ada docutils literal notranslate"><span class="keyword namespace"><span class="pre">with</span></span></code>,
+вы говорите компилятору: «Я зависим от этой семантической единицы», а не
+«включите сюда эту кучу текста».</p></li>
+<li><p>Таким образом, действие пакета не зависит от того, откуда на него ссылается
+<code class="code highlight ada docutils literal notranslate"><span class="keyword namespace"><span class="pre">with</span></span></code>. Сравните это с C/C++, где значение включенного текста зависит от
+контекста, в котором появляется <code class="code highlight c docutils literal notranslate"><span class="comment preproc"><span class="pre">#include</span></span></code>.</p>
+<p>Это позволяет повысить эффективность компиляции / перекомпиляции. Это
+также позволяет таким инструментам, как IDE, иметь правильную
+информацию о семантике программы. В свою очередь, это позволяет
+улучшить инструменты в целом и сделать код более анализируемым даже
+людьми.</p>
+</li>
+</ul>
+</div></blockquote>
+<p>Важным преимуществом Ada с <code class="code highlight ada docutils literal notranslate"><span class="keyword namespace"><span class="pre">with</span></span></code> по сравнению с <code class="code highlight c docutils literal notranslate"><span class="comment preproc"><span class="pre">#include</span></span></code> является то, что он не
+имеет состояния. Порядок предложений <code class="code highlight ada docutils literal notranslate"><span class="keyword namespace"><span class="pre">with</span></span></code> и <code class="code highlight ada docutils literal notranslate"><span class="keyword namespace"><span class="pre">use</span></span></code> не имеет значения и может
+быть изменен без побочных эффектов.</p>
+</div>
+<div class="admonition-gnat admonition">
+<p class="admonition-title">В наборе инструментов GNAT</p>
+<p>Стандарт языка Ada не предусматривает каких-либо особых отношений
+между исходными файлами и пакетами; например, теоретически вы можете
+поместить весь свой код в один файл или использовать свои собственные
+соглашения об именовании файлов. На практике, однако, реализация будет
+иметь конкретные правила. С помощью GNAT каждый модуль компиляции
+верхнего уровня должен быть помещен в отдельный файл. В приведенном
+выше примере пакет <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Week</span></span></code> будет находиться в файле <code class="docutils literal notranslate"><span class="pre">.ads</span></code> (для спецификации Ada),
+а основная процедура <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Main</span></span></code> ‑ в файле <code class="docutils literal notranslate"><span class="pre">.adb</span></code> (для тела Ada).</p>
+</div>
+</section>
+<section id="id3">
+<h2>Использование пакета<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h2>
+<p>Как мы видели выше, предложение <code class="code highlight ada docutils literal notranslate"><span class="keyword namespace"><span class="pre">with</span></span></code> указывает на зависимость от другого
+пакета. Тем не менее, каждая ссылка на объект, поступающий из пакета <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Week</span></span></code>
+,должна иметь префикс полного имени пакета. Можно сделать каждый
+объект пакета видимым непосредственно в текущей области с помощью
+предложения <code class="code highlight ada docutils literal notranslate"><span class="keyword namespace"><span class="pre">use</span></span></code>.</p>
+<p>Фактически, мы использовали предложение <code class="code highlight ada docutils literal notranslate"><span class="keyword namespace"><span class="pre">use</span></span></code> почти с самого начала этого
+руководства.</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kn">with</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span> <span class="kn">use</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>
+<span class="c1">--                ^ Make every entity of the</span>
+<span class="c1">--                  Ada.Text_IO package</span>
+<span class="c1">--                  directly visible.</span>
+<span class="kn">with</span> <span class="nn">Week</span><span class="p">;</span>
+
+<span class="kd">procedure</span> <span class="nf">Main</span> <span class="kr">is</span>
+   <span class="kn">use</span> <span class="nn">Week</span><span class="p">;</span>
+   <span class="c1">--  Make every entity of the Week</span>
+   <span class="c1">--  package directly visible.</span>
+<span class="kr">begin</span>
+   <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;First day of the week is &quot;</span> <span class="o">&amp;</span> <span class="n">Mon</span><span class="p">);</span>
+<span class="kr">end</span> <span class="nf">Main</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Как вы можете видеть в приведенном выше примере:</p>
+<ul class="simple">
+<li><p><code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Put_Line</span></span></code> ‑ это подпрограмма из пакета <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Ada</span></span><span class="punctuation"><span class="pre">.</span></span><span class="name"><span class="pre">Text_IO</span></span></code>. Мы можем ссылаться на него напрямую,
+потому что мы использовали пакет с <code class="code highlight ada docutils literal notranslate"><span class="keyword namespace"><span class="pre">use</span></span></code> в верхней части основного модуля <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Main</span></span></code>
+.</p></li>
+<li><p>В отличие от предложений <code class="code highlight ada docutils literal notranslate"><span class="keyword namespace"><span class="pre">with</span></span></code>, предложение <code class="code highlight ada docutils literal notranslate"><span class="keyword namespace"><span class="pre">use</span></span></code> может быть помещено либо в
+прелюдию, либо в любую декларативную область. В последнем случае
+использования <code class="code highlight ada docutils literal notranslate"><span class="keyword namespace"><span class="pre">use</span></span></code> повлияет на содержащуюся в нем лексическую область
+видимости.</p></li>
+</ul>
+</section>
+<section id="id4">
+<h2>Тело пакета<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h2>
+<p>В приведенном выше простом примере пакет <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Week</span></span></code> содержит только объявления и
+не содержит реализацию пакета. Это не ошибка: в спецификации пакета,
+которая проиллюстрирована выше, нельзя объявлять реализацию.
+Реализация должны быть в теле пакета.</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kd">package</span> <span class="nc">Operations</span> <span class="kr">is</span>
+
+   <span class="c1">--  Declaration</span>
+   <span class="kd">function</span> <span class="nf">Increment_By</span>
+     <span class="p">(</span><span class="nv">I</span>    <span class="p">: </span><span class="nv">Integer</span><span class="p">;</span>
+      <span class="nv">Incr</span> <span class="p">: </span><span class="nv">Integer</span> <span class="p">:=</span> <span class="nv">0</span><span class="p">)</span> <span class="kr">return</span> <span class="kt">Integer</span><span class="p">;</span>
+
+   <span class="kd">function</span> <span class="nf">Get_Increment_Value</span> <span class="nf">return</span> <span class="nf">Integer</span><span class="p">;</span>
+
+<span class="kr">end</span> <span class="nf">Operations</span><span class="p">;</span>
+
+<span class="kd">package</span> <span class="kd">body</span> <span class="nc">Operations</span> <span class="kr">is</span>
+
+   <span class="n">Last_Increment</span> <span class="p">:</span> <span class="kt">Integer</span> <span class="p">:=</span> <span class="mi">1</span><span class="p">;</span>
+
+   <span class="kd">function</span> <span class="nf">Increment_By</span>
+     <span class="p">(</span><span class="nv">I</span>    <span class="p">: </span><span class="nv">Integer</span><span class="p">;</span>
+      <span class="nv">Incr</span> <span class="p">: </span><span class="nv">Integer</span> <span class="p">:=</span> <span class="nv">0</span><span class="p">)</span> <span class="kr">return</span> <span class="kt">Integer</span> <span class="kr">is</span>
+   <span class="kr">begin</span>
+      <span class="kr">if</span> <span class="n">Incr</span> <span class="o">/=</span> <span class="mi">0</span> <span class="kr">then</span>
+         <span class="n">Last_Increment</span> <span class="p">:=</span> <span class="n">Incr</span><span class="p">;</span>
+      <span class="kr">end</span> <span class="kr">if</span><span class="p">;</span>
+
+      <span class="kr">return</span> <span class="n">I</span> <span class="o">+</span> <span class="n">Last_Increment</span><span class="p">;</span>
+   <span class="kr">end</span> <span class="nf">Increment_By</span><span class="p">;</span>
+
+   <span class="kd">function</span> <span class="nf">Get_Increment_Value</span> <span class="nf">return</span> <span class="nf">Integer</span> <span class="kr">is</span>
+   <span class="kr">begin</span>
+      <span class="kr">return</span> <span class="n">Last_Increment</span><span class="p">;</span>
+   <span class="kr">end</span> <span class="nf">Get_Increment_Value</span><span class="p">;</span>
+
+<span class="kr">end</span> <span class="nf">Operations</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Здесь мы видим, что тело функции <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Increment_By</span></span></code> должно быть объявлено в теле. По
+совпадению, введение тела позволяет поместить <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Last_Increment</span></span></code> переменную в тело, и
+сделать их недоступными для пользователя пакета <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Operations</span></span></code>, обеспечивая первую
+форму инкапсуляции.</p>
+<p>Это работает, поскольку объекты, объявленные в теле, видны <em>только</em> в
+теле.</p>
+<p>В этом примере показано, как <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Last_Increment</span></span></code> используется косвенно:</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kn">with</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span> <span class="kn">use</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>
+<span class="kn">with</span> <span class="nn">Operations</span><span class="p">;</span>
+
+<span class="kd">procedure</span> <span class="nf">Main</span> <span class="kr">is</span>
+   <span class="kn">use</span> <span class="nn">Operations</span><span class="p">;</span>
+
+   <span class="n">I</span> <span class="p">:</span> <span class="kt">Integer</span> <span class="p">:=</span> <span class="mi">0</span><span class="p">;</span>
+   <span class="n">R</span> <span class="p">:</span> <span class="kt">Integer</span><span class="p">;</span>
+
+   <span class="kd">procedure</span> <span class="nf">Display_Update_Values</span> <span class="kr">is</span>
+      <span class="no">Incr</span> <span class="p">:</span> <span class="kr">constant</span> <span class="kt">Integer</span> <span class="p">:=</span> <span class="n">Get_Increment_Value</span><span class="p">;</span>
+   <span class="kr">begin</span>
+      <span class="n">Put_Line</span> <span class="p">(</span><span class="kt">Integer</span><span class="p">&#39;</span><span class="na">Image</span> <span class="p">(</span><span class="n">I</span><span class="p">)</span>
+                <span class="o">&amp;</span> <span class="s">&quot; incremented by &quot;</span>
+                <span class="o">&amp;</span> <span class="kt">Integer</span><span class="p">&#39;</span><span class="na">Image</span> <span class="p">(</span><span class="n">Incr</span><span class="p">)</span>
+                <span class="o">&amp;</span> <span class="s">&quot; is &quot;</span>
+                <span class="o">&amp;</span> <span class="kt">Integer</span><span class="p">&#39;</span><span class="na">Image</span> <span class="p">(</span><span class="n">R</span><span class="p">));</span>
+      <span class="n">I</span> <span class="p">:=</span> <span class="n">R</span><span class="p">;</span>
+   <span class="kr">end</span> <span class="nf">Display_Update_Values</span><span class="p">;</span>
+<span class="kr">begin</span>
+   <span class="n">R</span> <span class="p">:=</span> <span class="n">Increment_By</span> <span class="p">(</span><span class="n">I</span><span class="p">);</span>
+   <span class="n">Display_Update_Values</span><span class="p">;</span>
+   <span class="n">R</span> <span class="p">:=</span> <span class="n">Increment_By</span> <span class="p">(</span><span class="n">I</span><span class="p">);</span>
+   <span class="n">Display_Update_Values</span><span class="p">;</span>
+
+   <span class="n">R</span> <span class="p">:=</span> <span class="n">Increment_By</span> <span class="p">(</span><span class="n">I</span><span class="p">,</span> <span class="mi">5</span><span class="p">);</span>
+   <span class="n">Display_Update_Values</span><span class="p">;</span>
+   <span class="n">R</span> <span class="p">:=</span> <span class="n">Increment_By</span> <span class="p">(</span><span class="n">I</span><span class="p">);</span>
+   <span class="n">Display_Update_Values</span><span class="p">;</span>
+
+   <span class="n">R</span> <span class="p">:=</span> <span class="n">Increment_By</span> <span class="p">(</span><span class="n">I</span><span class="p">,</span> <span class="mi">10</span><span class="p">);</span>
+   <span class="n">Display_Update_Values</span><span class="p">;</span>
+   <span class="n">R</span> <span class="p">:=</span> <span class="n">Increment_By</span> <span class="p">(</span><span class="n">I</span><span class="p">);</span>
+   <span class="n">Display_Update_Values</span><span class="p">;</span>
+<span class="kr">end</span> <span class="nf">Main</span><span class="p">;</span>
+</pre></div>
+</div>
+</section>
+<section id="childpackages">
+<span id="id5"></span><h2>Дочерние пакеты<a class="headerlink" href="#childpackages" title="Permalink to this headline"></a></h2>
+<p>Пакеты можно использовать для создания иерархий. Мы достигаем этого с
+помощью дочерних пакетов, которые расширяют функциональность
+родительского пакета. Одним из примеров дочернего пакета, который мы
+использовали до сих пор, является пакет <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Ada</span></span><span class="punctuation"><span class="pre">.</span></span><span class="name"><span class="pre">Text_IO</span></span></code>. Здесь родительский пакет
+называется <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Ada</span></span></code>, а дочерний пакет называется <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Text_IO</span></span></code>. В предыдущих примерах мы
+использовали процедуру <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Put_Line</span></span></code> из дочернего пакета <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Text_IO</span></span></code>.</p>
+<div class="admonition- admonition">
+<p class="admonition-title">Важное замечание</p>
+<p>Ada также поддерживает вложенные пакеты. Однако, поскольку их
+использование может быть более сложным, рекомендуется использовать
+дочерние пакеты. Вложенные пакеты будут рассмотрены в расширенном
+курсе.</p>
+</div>
+<p>Давайте начнем обсуждение дочерних пакетов с нашего предыдущего пакета
+<code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Week</span></span></code>:</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kd">package</span> <span class="nc">Week</span> <span class="kr">is</span>
+
+   <span class="no">Mon</span> <span class="p">:</span> <span class="kr">constant</span> <span class="kt">String</span> <span class="p">:=</span> <span class="s">&quot;Monday&quot;</span><span class="p">;</span>
+   <span class="no">Tue</span> <span class="p">:</span> <span class="kr">constant</span> <span class="kt">String</span> <span class="p">:=</span> <span class="s">&quot;Tuesday&quot;</span><span class="p">;</span>
+   <span class="no">Wed</span> <span class="p">:</span> <span class="kr">constant</span> <span class="kt">String</span> <span class="p">:=</span> <span class="s">&quot;Wednesday&quot;</span><span class="p">;</span>
+   <span class="no">Thu</span> <span class="p">:</span> <span class="kr">constant</span> <span class="kt">String</span> <span class="p">:=</span> <span class="s">&quot;Thursday&quot;</span><span class="p">;</span>
+   <span class="no">Fri</span> <span class="p">:</span> <span class="kr">constant</span> <span class="kt">String</span> <span class="p">:=</span> <span class="s">&quot;Friday&quot;</span><span class="p">;</span>
+   <span class="no">Sat</span> <span class="p">:</span> <span class="kr">constant</span> <span class="kt">String</span> <span class="p">:=</span> <span class="s">&quot;Saturday&quot;</span><span class="p">;</span>
+   <span class="no">Sun</span> <span class="p">:</span> <span class="kr">constant</span> <span class="kt">String</span> <span class="p">:=</span> <span class="s">&quot;Sunday&quot;</span><span class="p">;</span>
+
+<span class="kr">end</span> <span class="nf">Week</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Если мы хотим создать дочерний пакет для <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Week</span></span></code>, мы можем написать:</p>
+<div class="ada-syntax-only highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kd">package</span> <span class="nc">Week.Child</span> <span class="kr">is</span>
+
+   <span class="kd">function</span> <span class="nf">Get_First_Of_Week</span> <span class="nf">return</span> <span class="nf">String</span><span class="p">;</span>
+
+<span class="kr">end</span> <span class="nf">Week.Child</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Здесь <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Week</span></span></code> ‑ это родительский пакет, а <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Child</span></span></code> ‑ дочерний. Это соответствующее
+тело пакета <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Week</span></span><span class="punctuation"><span class="pre">.</span></span><span class="name"><span class="pre">Child</span></span></code>:</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kd">package</span> <span class="kd">body</span> <span class="nc">Week.Child</span> <span class="kr">is</span>
+
+   <span class="kd">function</span> <span class="nf">Get_First_Of_Week</span> <span class="nf">return</span> <span class="nf">String</span> <span class="kr">is</span>
+   <span class="kr">begin</span>
+      <span class="kr">return</span> <span class="n">Mon</span><span class="p">;</span>
+   <span class="kr">end</span> <span class="nf">Get_First_Of_Week</span><span class="p">;</span>
+
+<span class="kr">end</span> <span class="nf">Week.Child</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>В реализации функции <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Get_First_Of_Week</span></span></code> мы можем использовать строку <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Mon</span></span></code> напрямую, даже
+если она была объявлена в родительском пакете <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Week</span></span></code>. Мы не пишем здесь <code class="code highlight ada docutils literal notranslate"><span class="keyword namespace"><span class="pre">with</span></span> <span class="name namespace"><span class="pre">Week</span></span></code>,
+потому что все элементы из спецификации пакета <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Week</span></span></code>, такие как <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Mon</span></span></code>, <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Tue</span></span></code> и т. д.,
+видны в дочернем пакете <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Week</span></span><span class="punctuation"><span class="pre">.</span></span><span class="name"><span class="pre">Child</span></span></code>.</p>
+<p>Теперь, когда мы завершили реализацию пакета <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Week</span></span><span class="punctuation"><span class="pre">.</span></span><span class="name"><span class="pre">Child</span></span></code>, мы можем использовать
+элементы из этого дочернего пакета в подпрограмме, просто написав <code class="code highlight ada docutils literal notranslate"><span class="keyword namespace"><span class="pre">with</span></span> <span class="name namespace"><span class="pre">Week.Child</span></span></code>.
+Точно так же, если мы хотим использовать эти элементы напрямую, мы
+дополнительно пишем <code class="code highlight ada docutils literal notranslate"><span class="keyword namespace"><span class="pre">use</span></span> <span class="name namespace"><span class="pre">Week.Child</span></span></code>. Например:</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kn">with</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span> <span class="kn">use</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>
+<span class="kn">with</span> <span class="nn">Week.Child</span><span class="p">;</span>  <span class="kn">use</span> <span class="nn">Week.Child</span><span class="p">;</span>
+
+<span class="kd">procedure</span> <span class="nf">Main</span> <span class="kr">is</span>
+<span class="kr">begin</span>
+   <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;First day of the week is &quot;</span>
+             <span class="o">&amp;</span> <span class="n">Get_First_Of_Week</span><span class="p">);</span>
+<span class="kr">end</span> <span class="nf">Main</span><span class="p">;</span>
+</pre></div>
+</div>
+<section id="id6">
+<h3>Дочерний пакет от дочернего пакета<a class="headerlink" href="#id6" title="Permalink to this headline"></a></h3>
+<p>До сих пор мы видели двухуровневую иерархию пакетов. Но иерархия,
+которую мы потенциально можем создать, этим не ограничивается.
+Например, мы могли бы расширить иерархию предыдущего примера исходного
+кода, объявив пакет <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Week</span></span><span class="punctuation"><span class="pre">.</span></span><span class="name"><span class="pre">Child</span></span><span class="punctuation"><span class="pre">.</span></span><span class="name"><span class="pre">Grandchild</span></span></code>. В этом случае <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Week</span></span><span class="punctuation"><span class="pre">.</span></span><span class="name"><span class="pre">Child</span></span></code> будет родительским для пакета <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Grandchild</span></span></code>.
+Рассмотрим эту реализацию:</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kd">package</span> <span class="nc">Week.Child.Grandchild</span> <span class="kr">is</span>
+
+   <span class="kd">function</span> <span class="nf">Get_Second_Of_Week</span> <span class="nf">return</span> <span class="nf">String</span><span class="p">;</span>
+
+<span class="kr">end</span> <span class="nf">Week.Child.Grandchild</span><span class="p">;</span>
+
+<span class="kd">package</span> <span class="kd">body</span> <span class="nc">Week.Child.Grandchild</span> <span class="kr">is</span>
+
+   <span class="kd">function</span> <span class="nf">Get_Second_Of_Week</span> <span class="nf">return</span> <span class="nf">String</span> <span class="kr">is</span>
+   <span class="kr">begin</span>
+      <span class="kr">return</span> <span class="n">Tue</span><span class="p">;</span>
+   <span class="kr">end</span> <span class="nf">Get_Second_Of_Week</span><span class="p">;</span>
+
+<span class="kr">end</span> <span class="nf">Week.Child.Grandchild</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Мы можем использовать этот новый пакет <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Grandchild</span></span></code> в нашем тестовом приложении
+так же, как и раньше: мы можем повторно использовать предыдущее
+тестовое приложение и адаптировать <code class="code highlight ada docutils literal notranslate"><span class="keyword namespace"><span class="pre">with</span></span></code>, <code class="code highlight ada docutils literal notranslate"><span class="keyword namespace"><span class="pre">use</span></span></code> и вызов функции. Это обновленный
+код:</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kn">with</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>           <span class="kn">use</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>
+<span class="kn">with</span> <span class="nn">Week.Child.Grandchild</span><span class="p">;</span> <span class="kn">use</span> <span class="nn">Week.Child.Grandchild</span><span class="p">;</span>
+
+<span class="kd">procedure</span> <span class="nf">Main</span> <span class="kr">is</span>
+<span class="kr">begin</span>
+   <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;Second day of the week is &quot;</span>
+             <span class="o">&amp;</span> <span class="n">Get_Second_Of_Week</span><span class="p">);</span>
+<span class="kr">end</span> <span class="nf">Main</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Опять же, это не предел иерархии пакетов. Мы могли бы продолжить
+расширение иерархии предыдущего примера, реализовав пакет <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Week</span></span><span class="punctuation"><span class="pre">.</span></span><span class="name"><span class="pre">Child</span></span><span class="punctuation"><span class="pre">.</span></span><span class="name"><span class="pre">Grandchild</span></span><span class="punctuation"><span class="pre">.</span></span><span class="name"><span class="pre">Grand_grandchild</span></span></code>.</p>
+</section>
+<section id="id7">
+<h3>Множественные потомки<a class="headerlink" href="#id7" title="Permalink to this headline"></a></h3>
+<p>До сих пор мы видели один дочерний пакет родительского пакета. Однако
+родительский пакет также может иметь несколько дочерних элементов. Мы
+могли бы расширить приведенный выше пример и реализовать пакет <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Week</span></span><span class="punctuation"><span class="pre">.</span></span><span class="name"><span class="pre">Child_2</span></span></code>.
+Например:</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kd">package</span> <span class="nc">Week.Child_2</span> <span class="kr">is</span>
+
+   <span class="kd">function</span> <span class="nf">Get_Last_Of_Week</span> <span class="nf">return</span> <span class="nf">String</span><span class="p">;</span>
+
+<span class="kr">end</span> <span class="nf">Week.Child_2</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Здесь <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Week</span></span></code> по-прежнему является родительским пакетом для пакета <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Child</span></span></code>, но это
+также родительский пакет для пакета <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Child_2</span></span></code>. Таким же образом, <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Child_2</span></span></code>, очевидно,
+является одним из дочерних пакетов <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Week</span></span></code>.</p>
+<p>Это соответствующее тело пакета <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Week</span></span><span class="punctuation"><span class="pre">.</span></span><span class="name"><span class="pre">Child_2</span></span></code>:</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kd">package</span> <span class="kd">body</span> <span class="nc">Week.Child_2</span> <span class="kr">is</span>
+
+   <span class="kd">function</span> <span class="nf">Get_Last_Of_Week</span> <span class="nf">return</span> <span class="nf">String</span> <span class="kr">is</span>
+   <span class="kr">begin</span>
+      <span class="kr">return</span> <span class="n">Sun</span><span class="p">;</span>
+   <span class="kr">end</span> <span class="nf">Get_Last_Of_Week</span><span class="p">;</span>
+
+<span class="kr">end</span> <span class="nf">Week.Child_2</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Теперь мы можем ссылаться на обоих потомков в нашем тестовом
+приложении:</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kn">with</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>  <span class="kn">use</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>
+<span class="kn">with</span> <span class="nn">Week.Child</span><span class="p">;</span>   <span class="kn">use</span> <span class="nn">Week.Child</span><span class="p">;</span>
+<span class="kn">with</span> <span class="nn">Week.Child_2</span><span class="p">;</span> <span class="kn">use</span> <span class="nn">Week.Child_2</span><span class="p">;</span>
+
+<span class="kd">procedure</span> <span class="nf">Main</span> <span class="kr">is</span>
+<span class="kr">begin</span>
+   <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;First day of the week is &quot;</span>
+             <span class="o">&amp;</span> <span class="n">Get_First_Of_Week</span><span class="p">);</span>
+   <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;Last day of the week is &quot;</span>
+             <span class="o">&amp;</span> <span class="n">Get_Last_Of_Week</span><span class="p">);</span>
+<span class="kr">end</span> <span class="nf">Main</span><span class="p">;</span>
+</pre></div>
+</div>
+</section>
+<section id="id8">
+<h3>Видимость<a class="headerlink" href="#id8" title="Permalink to this headline"></a></h3>
+<p>В предыдущем разделе мы видели, что элементы, объявленные в
+спецификации родительского пакета, видны в дочернем пакете. Однако это
+не относится к элементам, объявленным в теле родительского пакета.</p>
+<p>Рассмотрим пакет <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Book</span></span></code> и его дочерний элемент <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Additional_Operations</span></span></code>:</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kd">package</span> <span class="nc">Book</span> <span class="kr">is</span>
+
+   <span class="no">Title</span> <span class="p">:</span> <span class="kr">constant</span> <span class="kt">String</span> <span class="p">:=</span>
+     <span class="s">&quot;Visible for my children&quot;</span><span class="p">;</span>
+
+   <span class="kd">function</span> <span class="nf">Get_Title</span> <span class="nf">return</span> <span class="nf">String</span><span class="p">;</span>
+
+   <span class="kd">function</span> <span class="nf">Get_Author</span> <span class="nf">return</span> <span class="nf">String</span><span class="p">;</span>
+
+<span class="kr">end</span> <span class="nf">Book</span><span class="p">;</span>
+
+<span class="kd">package</span> <span class="nc">Book.Additional_Operations</span> <span class="kr">is</span>
+
+   <span class="kd">function</span> <span class="nf">Get_Extended_Title</span> <span class="nf">return</span> <span class="nf">String</span><span class="p">;</span>
+
+   <span class="kd">function</span> <span class="nf">Get_Extended_Author</span> <span class="nf">return</span> <span class="nf">String</span><span class="p">;</span>
+
+<span class="kr">end</span> <span class="nf">Book.Additional_Operations</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Это тело обоих пакетов:</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kd">package</span> <span class="kd">body</span> <span class="nc">Book</span> <span class="kr">is</span>
+
+   <span class="no">Author</span> <span class="p">:</span> <span class="kr">constant</span> <span class="kt">String</span> <span class="p">:=</span>
+     <span class="s">&quot;Author not visible for my children&quot;</span><span class="p">;</span>
+
+   <span class="kd">function</span> <span class="nf">Get_Title</span> <span class="nf">return</span> <span class="nf">String</span> <span class="kr">is</span>
+   <span class="kr">begin</span>
+      <span class="kr">return</span> <span class="n">Title</span><span class="p">;</span>
+   <span class="kr">end</span> <span class="nf">Get_Title</span><span class="p">;</span>
+
+   <span class="kd">function</span> <span class="nf">Get_Author</span> <span class="nf">return</span> <span class="nf">String</span> <span class="kr">is</span>
+   <span class="kr">begin</span>
+      <span class="kr">return</span> <span class="n">Author</span><span class="p">;</span>
+   <span class="kr">end</span> <span class="nf">Get_Author</span><span class="p">;</span>
+
+<span class="kr">end</span> <span class="nf">Book</span><span class="p">;</span>
+
+<span class="kd">package</span> <span class="kd">body</span> <span class="nc">Book.Additional_Operations</span> <span class="kr">is</span>
+
+   <span class="kd">function</span> <span class="nf">Get_Extended_Title</span> <span class="nf">return</span> <span class="nf">String</span> <span class="kr">is</span>
+   <span class="kr">begin</span>
+      <span class="kr">return</span> <span class="s">&quot;Book Title: &quot;</span> <span class="o">&amp;</span> <span class="n">Title</span><span class="p">;</span>
+   <span class="kr">end</span> <span class="nf">Get_Extended_Title</span><span class="p">;</span>
+
+   <span class="kd">function</span> <span class="nf">Get_Extended_Author</span> <span class="nf">return</span> <span class="nf">String</span> <span class="kr">is</span>
+   <span class="kr">begin</span>
+      <span class="c1">--  &quot;Author&quot; string declared in the body</span>
+      <span class="c1">--  of the Book package is not visible</span>
+      <span class="c1">--  here. Therefore, we cannot write:</span>
+      <span class="c1">--</span>
+      <span class="c1">--  return &quot;Book Author: &quot; &amp; Author;</span>
+
+      <span class="kr">return</span> <span class="s">&quot;Book Author: Unknown&quot;</span><span class="p">;</span>
+   <span class="kr">end</span> <span class="nf">Get_Extended_Author</span><span class="p">;</span>
+
+<span class="kr">end</span> <span class="nf">Book.Additional_Operations</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>В реализации <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Get_Extended_Title</span></span></code> мы используем константу <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Title</span></span></code> из родительского пакета <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Book</span></span></code>.
+Однако, как указано в комментариях к функции <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Get_Extended_Author</span></span></code>, строка <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Author</span></span></code>, которую мы
+объявили в теле пакета <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Book</span></span></code>, не отображается в пакете <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Book</span></span><span class="punctuation"><span class="pre">.</span></span><span class="name"><span class="pre">Additional_Operations</span></span></code>. Следовательно, мы
+не можем использовать его для реализации функции <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Get_Extended_Author</span></span></code>.</p>
+<p>Однако мы можем использовать функцию <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Get_Author</span></span></code> из <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Book</span></span></code> в реализации функции <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Get_Extended_Author</span></span></code> для
+получения этой строки. Точно так же мы можем использовать эту
+стратегию для реализации функции <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Get_Extended_Title</span></span></code>. Это адаптированный код:</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kd">package</span> <span class="kd">body</span> <span class="nc">Book.Additional_Operations</span> <span class="kr">is</span>
+
+   <span class="kd">function</span> <span class="nf">Get_Extended_Title</span> <span class="nf">return</span> <span class="nf">String</span> <span class="kr">is</span>
+   <span class="kr">begin</span>
+      <span class="kr">return</span> <span class="s">&quot;Book Title: &quot;</span> <span class="o">&amp;</span> <span class="n">Get_Title</span><span class="p">;</span>
+   <span class="kr">end</span> <span class="nf">Get_Extended_Title</span><span class="p">;</span>
+
+   <span class="kd">function</span> <span class="nf">Get_Extended_Author</span> <span class="nf">return</span> <span class="nf">String</span> <span class="kr">is</span>
+   <span class="kr">begin</span>
+      <span class="kr">return</span> <span class="s">&quot;Book Author: &quot;</span> <span class="o">&amp;</span> <span class="n">Get_Author</span><span class="p">;</span>
+   <span class="kr">end</span> <span class="nf">Get_Extended_Author</span><span class="p">;</span>
+
+<span class="kr">end</span> <span class="nf">Book.Additional_Operations</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Это простое тестовое приложение для указанных выше пакетов:</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kn">with</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>                <span class="kn">use</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>
+<span class="kn">with</span> <span class="nn">Book.Additional_Operations</span><span class="p">;</span> <span class="kn">use</span> <span class="nn">Book.Additional_Operations</span><span class="p">;</span>
+
+<span class="kd">procedure</span> <span class="nf">Main</span> <span class="kr">is</span>
+<span class="kr">begin</span>
+   <span class="n">Put_Line</span> <span class="p">(</span><span class="n">Get_Extended_Title</span><span class="p">);</span>
+   <span class="n">Put_Line</span> <span class="p">(</span><span class="n">Get_Extended_Author</span><span class="p">);</span>
+<span class="kr">end</span> <span class="nf">Main</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Объявляя элементы в теле пакета, мы можем реализовать инкапсуляцию в
+Ada. Эти элементы будут видны только в теле пакета, но нигде больше.
+Однако это не единственный способ добиться инкапсуляции в Ada: мы
+обсудим другие подходы в главе <a class="reference internal" href="privacy.html"><span class="doc">Конфиденциальность</span></a>.</p>
+</section>
+</section>
+<section id="package-renaming">
+<span id="id9"></span><h2>Переименование<a class="headerlink" href="#package-renaming" title="Permalink to this headline"></a></h2>
+<p>Ранее мы упоминали, что
+<a class="reference internal" href="subprograms.html#subprogram-renaming"><span class="std std-ref">подпрограммы можно переименовывать</span></a>. Мы также
+можем переименовывать пакеты. Опять же, для этого мы используем
+ключевое слово <code class="code highlight ada docutils literal notranslate"><span class="keyword reserved"><span class="pre">renames</span></span></code>. В следующем примере пакет <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Ada</span></span><span class="punctuation"><span class="pre">.</span></span><span class="name"><span class="pre">Text_IO</span></span></code>
+переименовывается как <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">T_IO</span></span></code>:</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kn">with</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>
+
+<span class="kd">procedure</span> <span class="nf">Main</span> <span class="kr">is</span>
+   <span class="kd">package</span> <span class="nc">TIO</span> <span class="kr">renames</span> <span class="nc">Ada.Text_IO</span><span class="p">;</span>
+<span class="kr">begin</span>
+   <span class="n">TIO</span><span class="p">.</span><span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;Hello&quot;</span><span class="p">);</span>
+<span class="kr">end</span> <span class="nf">Main</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Мы можем использовать переименование, чтобы улучшить читаемость нашего
+кода, используя более короткие имена пакетов. В приведенном выше
+примере мы пишем <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">TIO</span></span><span class="punctuation"><span class="pre">.</span></span><span class="name"><span class="pre">Put_Line</span></span></code> вместо более длинной версии
+(<code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Ada</span></span><span class="punctuation"><span class="pre">.</span></span><span class="name"><span class="pre">Text_IO</span></span><span class="punctuation"><span class="pre">.</span></span><span class="name"><span class="pre">Put_Line</span></span></code>). Этот подход особенно
+полезен, когда мы не вводим спецификатор использования <code class="code highlight ada docutils literal notranslate"><span class="keyword namespace"><span class="pre">use</span></span></code> пакета,
+но хотим, чтобы код не становился слишком многословным.</p>
+<p>Обратите внимание, что мы также можем переименовывать подпрограммы и
+объекты внутри пакетов. Например, мы могли бы просто переименовать
+процедуру <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Put_Line</span></span></code> в приведенном выше примере исходного кода:</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kn">with</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>
+
+<span class="kd">procedure</span> <span class="nf">Main</span> <span class="kr">is</span>
+   <span class="kd">procedure</span> <span class="nf">Say</span> <span class="p">(</span><span class="nv">Something</span> <span class="p">: </span><span class="nv">String</span><span class="p">)</span>
+     <span class="kr">renames</span> <span class="n">Ada</span><span class="p">.</span><span class="n">Text_IO</span><span class="p">.</span><span class="n">Put_Line</span><span class="p">;</span>
+<span class="kr">begin</span>
+   <span class="n">Say</span> <span class="p">(</span><span class="s">&quot;Hello&quot;</span><span class="p">);</span>
+<span class="kr">end</span> <span class="nf">Main</span><span class="p">;</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          
+
+
+<footer>
+      
+      
+
+      
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+          
+            <a href="strongly_typed_language.html" class="btn btn-neutral float-right" title="Сильно типизированный язык" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+          
+          
+            <a href="subprograms.html" class="btn btn-neutral" title="Подпрограммы" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+          
+        </div>
+  
+
+
+  <hr/>
+
+  <div class="legal">
+              Copyright &copy; 2022 AdaCore. All rights reserved.
+              &nbsp;&nbsp;
+              <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/80x15.png" /></a>
+              <br>
+              <a href="https://www.adacore.com/company/legal">Legal</a>
+              &nbsp; |  &nbsp;
+              <a href="https://www.adacore.com/company/privacy">Privacy Policy</a>
+              &nbsp; |  &nbsp;
+              <a href="https://github.com/AdaCore/learn/issues">Report an Issue</a>
+            </div> 
+
+</footer>
+
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+  <button id="scrollToTopBtn" title="Go to top"><i class="fas fa-caret-square-up"></i></button>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+</script>
+
+
+</body>
+</html>

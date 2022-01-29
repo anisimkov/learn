@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Стандартная библиотека: Файлы и потоки &mdash; learn.adacore.com</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Стандартная библиотека: Numerics" href="standard_library_numerics.html" />
+    <link rel="prev" title="Стандартная библиотека: Строки" href="standard_library_strings.html" />
+  <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-117428-14"></script>
+<script type="text/javascript">
+  if(!Cookies.get('AdaCore_staff')) {
+    // Global site tag (gtag.js) - Google Analytics
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-117428-14');
+    // End Global site tag (gtag.js) - Google Analytics
+
+    // Google Tag Manager
+    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-KD5HNRR');
+    // End Google Tag Manager
+
+    // Twitter universal website tag code
+    !function(e,t,n,s,u,a){e.twq||(s=e.twq=function(){s.exe?s.exe.apply(s,arguments):s.queue.push(arguments);},s.version='1.1',s.queue=[],u=t.createElement(n),u.async=!0,u.src='//static.ads-twitter.com/uwt.js',a=t.getElementsByTagName(n)[0],a.parentNode.insertBefore(u,a))}(window,document,'script');
+    // Insert Twitter Pixel ID and Standard Event data below
+    twq('init','o3mlc');
+    twq('track','PageView');
+    // End Twitter universal website tag code
+
+    // LinkedIn Tracking Tags
+    _linkedin_partner_id = "482585"; window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || []; window._linkedin_data_partner_ids.push(_linkedin_partner_id);
+    (function(){var s = document.getElementsByTagName("script")[0]; var b = document.createElement("script"); b.type = "text/javascript";b.async = true; b.src = "https://snap.licdn.com/li.lms-analytics/insight.min.js"; s.parentNode.insertBefore(b, s);})();
+    // End LinkedIn Tracking Tags
+  }
+</script>
+  <!--  Essential META Tags -->
+<meta property="og:title" content=“learn.adacore.com">
+<meta property="og:description" content="An interactive learning platform to teach the Ada and SPARK programming languages.">
+<meta property="og:image" content="https://learn.adacore.com/_static/learn_meta_img.jpeg">
+<meta property="og:url" content="https://learn.adacore.com">
+<meta name="twitter:card" content="summary_large_image">
+
+<!--  Non-Essential, But Recommended -->
+<meta property="og:site_name" content="learn.adacore.com">
+<meta name="twitter:image:alt" content="An interactive learning platform to teach the Ada and SPARK programming languages.">
+
+<!--  Non-Essential, But Required for Analytics -->
+<meta name="twitter:site" content="@AdaCoreCompany">
+
+</head>
+
+<body class="wy-body-for-nav">
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KD5HNRR"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  <!-- LinkedIn Tracking Tags (noscript) -->
+  <noscript> <img height="1" width="1" style="display:none;" alt="" src="https://dc.ads.linkedin.com/collect/?pid=482585&fmt=gif" /> </noscript>
+  <!-- End LinkedIn Tracking Tags (noscript) -->
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html">
+            <img src="../_static/logo.svg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Введение</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#id2">История</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#ada">Ada сегодня</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#id6">Философия</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#spark">SPARK</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="imperative_language.html">Императивы языка</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="imperative_language.html#hello-world">Hello world</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imperative_language.html#if-then-else">Императивы языка ‑ If / Then / Else</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imperative_language.html#loops">Императивы языка ‑ Loops</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="imperative_language.html#for">Циклы For</a></li>
+<li class="toctree-l3"><a class="reference internal" href="imperative_language.html#id2">Простой цикл</a></li>
+<li class="toctree-l3"><a class="reference internal" href="imperative_language.html#while">Циклы While</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="imperative_language.html#case">Императивы языка – оператор Case</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imperative_language.html#id3">Императивы языка – декларативные регионы</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imperative_language.html#id4">Императивы языка – условные выражения</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="imperative_language.html#if">Выражение If</a></li>
+<li class="toctree-l3"><a class="reference internal" href="imperative_language.html#id5">Выражение Case</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="subprograms.html">Подпрограммы</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="subprograms.html#id2">Подпрограммы</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="subprograms.html#id3">Вызовы подпрограмм</a></li>
+<li class="toctree-l3"><a class="reference internal" href="subprograms.html#id4">Вложенные подпрограммы</a></li>
+<li class="toctree-l3"><a class="reference internal" href="subprograms.html#id5">Вызов функций</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="subprograms.html#id6">Режимы параметров</a></li>
+<li class="toctree-l2"><a class="reference internal" href="subprograms.html#id7">Вызов процедуры</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="subprograms.html#in">Параметры in</a></li>
+<li class="toctree-l3"><a class="reference internal" href="subprograms.html#in-out">Параметры in out</a></li>
+<li class="toctree-l3"><a class="reference internal" href="subprograms.html#out">Параметры out</a></li>
+<li class="toctree-l3"><a class="reference internal" href="subprograms.html#id8">Предварительное объявление подпрограмм</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="subprograms.html#subprogram-renaming">Переименование</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="modular_programming.html">Модульное программирование</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="modular_programming.html#id2">Пакеты</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modular_programming.html#id3">Использование пакета</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modular_programming.html#id4">Тело пакета</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modular_programming.html#childpackages">Дочерние пакеты</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="modular_programming.html#id6">Дочерний пакет от дочернего пакета</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modular_programming.html#id7">Множественные потомки</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modular_programming.html#id8">Видимость</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="modular_programming.html#package-renaming">Переименование</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="strongly_typed_language.html">Сильно типизированный язык</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="strongly_typed_language.html#whatisatype">Что такое тип?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="strongly_typed_language.html#integers">Целочисленные типы ‑ Integers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="strongly_typed_language.html#id3">Семантика операций</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="strongly_typed_language.html#id4">Беззнаковые типы</a></li>
+<li class="toctree-l2"><a class="reference internal" href="strongly_typed_language.html#enumtypes">Перечисления</a></li>
+<li class="toctree-l2"><a class="reference internal" href="strongly_typed_language.html#id7">Типы с плавающей запятой</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="strongly_typed_language.html#id8">Основные свойства</a></li>
+<li class="toctree-l3"><a class="reference internal" href="strongly_typed_language.html#id9">Точность типов с плавающей запятой</a></li>
+<li class="toctree-l3"><a class="reference internal" href="strongly_typed_language.html#id10">Диапазон типов с плавающей запятой</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="strongly_typed_language.html#id11">Строгая типизация</a></li>
+<li class="toctree-l2"><a class="reference internal" href="strongly_typed_language.html#id12">Производные типы</a></li>
+<li class="toctree-l2"><a class="reference internal" href="strongly_typed_language.html#id13">Подтипы</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="strongly_typed_language.html#subtypealiases">Подтипы в качестве псевдонимов типов</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="records.html">Записи</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="records.html#id2">Объявление типа записи</a></li>
+<li class="toctree-l2"><a class="reference internal" href="records.html#id3">Агрегаты</a></li>
+<li class="toctree-l2"><a class="reference internal" href="records.html#id4">Выбор компонентов</a></li>
+<li class="toctree-l2"><a class="reference internal" href="records.html#record-comp-renaming">Переименование</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="arrays.html">Массивы</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="arrays.html#id2">Объявление типа массива</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays.html#id3">Индексирование</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays.html#id4">Более простые объявления массива</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays.html#id5">Атрибут диапазона</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays.html#unconstrainedarraytypes">Неограниченные массивы</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays.html#string">Предопределенный тип массива: String</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays.html#id7">Ограничения</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays.html#id8">Возврат неограниченных массивов</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays.html#id9">Объявление массивов (2)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays.html#id10">Срезы массива</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays.html#object-renaming">Переименование</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="more_about_types.html">Подробнее о типах</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="more_about_types.html#id2">Агрегаты: краткая информация</a></li>
+<li class="toctree-l2"><a class="reference internal" href="more_about_types.html#id3">Перегрузка и квалифицированные выражения</a></li>
+<li class="toctree-l2"><a class="reference internal" href="more_about_types.html#access">Типы Access (указатели)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="more_about_types.html#allocation">Распределение (по типу) ‑ Allocation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="more_about_types.html#id5">Разыменование</a></li>
+<li class="toctree-l3"><a class="reference internal" href="more_about_types.html#id6">Другие особенности</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="more_about_types.html#id7">Взаимно рекурсивные типы</a></li>
+<li class="toctree-l2"><a class="reference internal" href="more_about_types.html#id8">Подробнее о записях</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="more_about_types.html#id9">Типы записей с динамически изменяемым размером</a></li>
+<li class="toctree-l3"><a class="reference internal" href="more_about_types.html#id10">Записи с дискриминантом</a></li>
+<li class="toctree-l3"><a class="reference internal" href="more_about_types.html#c">Записи c вариантами</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="more_about_types.html#id11">Типы с фиксированной точкой</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="more_about_types.html#id12">Десятичные типы с фиксированной точкой</a></li>
+<li class="toctree-l3"><a class="reference internal" href="more_about_types.html#id13">Типы фиксированных точек</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="more_about_types.html#id14">Типы символов</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="privacy.html">Конфиденциальность</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="privacy.html#id3">Базовая инкапсуляция</a></li>
+<li class="toctree-l2"><a class="reference internal" href="privacy.html#id4">Абстрактные типы данных</a></li>
+<li class="toctree-l2"><a class="reference internal" href="privacy.html#id5">Ограниченные типы</a></li>
+<li class="toctree-l2"><a class="reference internal" href="privacy.html#id7">Дочерние пакеты и конфиденциальность</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="generics.html">Настраиваемые модули</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="generics.html#id2">Введение</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generics.html#id3">Формальное объявление типа</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generics.html#id4">Формальное объявление объекта</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generics.html#generic">Определение тела generic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generics.html#id5">Создание экземпляра generic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generics.html#id6">Generic пакеты</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generics.html#id7">Формальные подпрограммы</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generics.html#id8">Пример: экземпляры ввода / вывода</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generics.html#id9">Пример: АТД</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generics.html#swap">Пример: Обмен (Swap)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generics.html#reversing">Пример: Реверсирование (Reversing)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generics.html#id10">Пример: Тестовое приложение</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="exceptions.html">Исключения</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="exceptions.html#id2">Объявление исключения</a></li>
+<li class="toctree-l2"><a class="reference internal" href="exceptions.html#id3">Возбуждение исключения</a></li>
+<li class="toctree-l2"><a class="reference internal" href="exceptions.html#id4">Обработка исключения</a></li>
+<li class="toctree-l2"><a class="reference internal" href="exceptions.html#id5">Предопределенные исключения</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="contracts.html">Контрактное проектирование</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="contracts.html#id2">Пред- и постусловия</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contracts.html#id3">Предикаты</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contracts.html#id4">Инварианты типа</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="interfacing_with_c.html">Взаимодействие с языком C</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="interfacing_with_c.html#id1">Многоязычный проект</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interfacing_with_c.html#id2">Соглашение о типах</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interfacing_with_c.html#id3">Подпрограммы на других языках</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="interfacing_with_c.html#c-ada">Вызов подпрограмм C в Ada</a></li>
+<li class="toctree-l3"><a class="reference internal" href="interfacing_with_c.html#ada-c">Вызов подпрограмм Ada в C</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="interfacing_with_c.html#id4">Внешние переменные</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="interfacing_with_c.html#id5">Использование глобальных переменных C в Ada</a></li>
+<li class="toctree-l3"><a class="reference internal" href="interfacing_with_c.html#id6">Использование переменных Ada в C</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="interfacing_with_c.html#id7">Создание привязок</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="interfacing_with_c.html#id8">Адаптация привязок</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="object_oriented_programming.html">Объектно-ориентированное программирование</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="object_oriented_programming.html#id2">Производные типы</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_oriented_programming.html#id3">Типы с тегами</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_oriented_programming.html#id5">Типы расширяемые классами</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_oriented_programming.html#id6">Операции диспетчеризации</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_oriented_programming.html#id7">Точечная нотация</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_oriented_programming.html#id8">Частные и ограниченные типы с тегами</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_oriented_programming.html#id9">Типы доступа в классах</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="standard_library_containers.html">Стандартная библиотека: Контейнеры</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_containers.html#id2">Векторы</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_containers.html#id3">Создание экземпляра</a></li>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_containers.html#id4">Инициализация</a></li>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_containers.html#prepend-append">Добавление элементов - Prepend и Append</a></li>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_containers.html#id5">Доступ к первому и последнему элементам</a></li>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_containers.html#id6">Итерация</a></li>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_containers.html#id7">Поиск и изменение элементов</a></li>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_containers.html#id8">Вставка элементов</a></li>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_containers.html#id9">Удаление элементов</a></li>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_containers.html#id10">Другие операции</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_containers.html#id11">Множества</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_containers.html#id12">Инициализация и итерация</a></li>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_containers.html#id13">Операции с элементами</a></li>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_containers.html#id14">Другие операции</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_containers.html#id15">Неопределенные карты</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_containers.html#id16">Хэшированные карты</a></li>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_containers.html#id17">Упорядоченные карты</a></li>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_containers.html#id18">Сложность</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="standard_library_dates_times.html">Стандартная библиотека: Дата и время</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_dates_times.html#datestimes">Обработка даты и времени</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_dates_times.html#id3">Задержка с использованием даты</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_dates_times.html#id4">В режиме реального времени</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_dates_times.html#id5">Сравнительный анализ</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="standard_library_strings.html">Стандартная библиотека: Строки</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_strings.html#id2">Операции со строками</a></li>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_strings.html#id3">Ограничение строк фиксированной длины</a></li>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_strings.html#id4">Ограниченные строки</a></li>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_strings.html#unboundedstrings">Неограниченные строки</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Стандартная библиотека: Файлы и потоки</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">Ввод/вывод текста</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">Последовательный ввод-вывод</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">Прямой ввод / вывод</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id5">Потоковый ввод-вывод</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="standard_library_numerics.html">Стандартная библиотека: Numerics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_numerics.html#id1">Элементарные функции</a></li>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_numerics.html#id2">Генерация случайных чисел</a></li>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_numerics.html#id3">Тип комплексного числа</a></li>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_numerics.html#id4">Манипулирование векторами и матрицами</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="appendices.html">Приложения</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="appendices.html#a">Приложение A: Формальные типы настройки</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="appendices.html#id2">Неограниченная версия типа</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="appendices.html#b">Приложение B: Контейнеры</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+  <i data-toggle="wy-nav-top" class="fas fa-bars"></i>
+    <a href="../index.html">
+    <img src="../_static/logo.svg" class="logo" alt="Logo"/>
+  </a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="id1">
+<h1>Стандартная библиотека: Файлы и потоки<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h1>
+<p>Ada предлагает различные подходы для ввода/вывода файлов (I/O):</p>
+<ul class="simple">
+<li><p><em>Text I/O</em> Текстовый ввод-вывод, поддерживающий файловый ввод-вывод в текстовом
+формате, включая отображение информации на консоли.</p></li>
+<li><p><em>Sequential I/O</em> Последовательный ввод-вывод, поддерживающий ввод-вывод файлов в
+двоичном формате, написанный последовательным образом для
+определенного типа данных.</p></li>
+<li><p><em>Direct I/O</em> Прямой ввод-вывод, поддерживающий ввод-вывод файлов в двоичном
+формате для определенного типа данных, но также поддерживающий доступ
+к любой позиции файла.</p></li>
+<li><p><em>Stream I/O</em> Потоковый ввод-вывод, поддерживающий ввод-вывод информации для
+нескольких типов данных, включая объекты неограниченных типов, с
+использованием файлов в двоичном формате.</p></li>
+</ul>
+<p>В этой таблице представлено краткое описание функций, которые мы
+только что видели:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 27%" />
+<col style="width: 20%" />
+<col style="width: 24%" />
+<col style="width: 29%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Опция ввода-
+вывода файлов</p></th>
+<th class="head"><p>Формат</p></th>
+<th class="head"><p>Произвольный
+доступ</p></th>
+<th class="head"><p>Типы данных</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Text I/O</p></td>
+<td><p>текст</p></td>
+<td></td>
+<td><p>строковый тип</p></td>
+</tr>
+<tr class="row-odd"><td><p>Sequential I/O</p></td>
+<td><p>двоичный</p></td>
+<td></td>
+<td><p>одиночный тип</p></td>
+</tr>
+<tr class="row-even"><td><p>Direct I/O</p></td>
+<td><p>двоичный</p></td>
+<td><p>X</p></td>
+<td><p>одиночный тип</p></td>
+</tr>
+<tr class="row-odd"><td><p>Stream I/O</p></td>
+<td><p>двоичный</p></td>
+<td><p>X</p></td>
+<td><p>несколько типов</p></td>
+</tr>
+</tbody>
+</table>
+<p>В следующих разделах мы подробно обсудим эти подходы ввода-вывода.</p>
+<section id="id2">
+<h2>Ввод/вывод текста<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h2>
+<p>В большинстве частей этого курса мы использовали процедуру <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Put_Line</span></span></code> для
+отображения информации на консоли. Однако эта процедура также
+принимает параметр <code class="code highlight ada docutils literal notranslate"><span class="keyword type"><span class="pre">File_Type</span></span></code>. Например, вы можете выбрать между стандартным
+выводом (Standard_Output) и выводом стандартной ошибкой
+(Standard_Error), явно задав этот параметр:</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kn">with</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span> <span class="kn">use</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>
+
+<span class="kd">procedure</span> <span class="nf">Show_Std_Text_Out</span> <span class="kr">is</span>
+<span class="kr">begin</span>
+   <span class="n">Put_Line</span> <span class="p">(</span><span class="n">Standard_Output</span><span class="p">,</span> <span class="s">&quot;Hello World #1&quot;</span><span class="p">);</span>
+   <span class="n">Put_Line</span> <span class="p">(</span><span class="n">Standard_Error</span><span class="p">,</span>  <span class="s">&quot;Hello World #2&quot;</span><span class="p">);</span>
+<span class="kr">end</span> <span class="nf">Show_Std_Text_Out</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Вы также можете использовать этот параметр для записи информации в
+любой текстовый файл. Чтобы создать новый файл для записи, используйте
+процедуру <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Create</span></span></code>, которая инициализирует элемент <code class="code highlight ada docutils literal notranslate"><span class="keyword type"><span class="pre">File_Type</span></span></code>, который впоследствии
+можно передать в <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Put_Line</span></span></code> (вместо, например, <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Standard_Output</span></span></code>). После того, как вы закончите
+ввод информации, вы можете закрыть файл, вызвав процедуру <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Close</span></span></code>.</p>
+<p>Вы используете аналогичный метод для чтения информации из текстового
+файла. Однако при открытии файла вы должны указать, что это входной
+файл (<code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">In_File</span></span></code>), а не выходной файл. Кроме того, вместо вызова процедуры <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Put_Line</span></span></code> вы
+вызываете функцию <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Get_Line</span></span></code> для чтения информации из файла.</p>
+<p>Давайте посмотрим на пример, который записывает информацию в новый
+текстовый файл, а затем считывает ее обратно из того же файла:</p>
+<div class="ada-run highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kn">with</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span> <span class="kn">use</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>
+
+<span class="kd">procedure</span> <span class="nf">Show_Simple_Text_File_IO</span> <span class="kr">is</span>
+   <span class="n">F</span>         <span class="p">:</span> <span class="kt">File_Type</span><span class="p">;</span>
+   <span class="no">File_Name</span> <span class="p">:</span> <span class="kr">constant</span> <span class="kt">String</span> <span class="p">:=</span> <span class="s">&quot;simple.txt&quot;</span><span class="p">;</span>
+<span class="kr">begin</span>
+   <span class="n">Create</span> <span class="p">(</span><span class="n">F</span><span class="p">,</span> <span class="n">Out_File</span><span class="p">,</span> <span class="n">File_Name</span><span class="p">);</span>
+   <span class="n">Put_Line</span> <span class="p">(</span><span class="n">F</span><span class="p">,</span> <span class="s">&quot;Hello World #1&quot;</span><span class="p">);</span>
+   <span class="n">Put_Line</span> <span class="p">(</span><span class="n">F</span><span class="p">,</span> <span class="s">&quot;Hello World #2&quot;</span><span class="p">);</span>
+   <span class="n">Put_Line</span> <span class="p">(</span><span class="n">F</span><span class="p">,</span> <span class="s">&quot;Hello World #3&quot;</span><span class="p">);</span>
+   <span class="n">Close</span> <span class="p">(</span><span class="n">F</span><span class="p">);</span>
+
+   <span class="n">Open</span> <span class="p">(</span><span class="n">F</span><span class="p">,</span> <span class="n">In_File</span><span class="p">,</span> <span class="n">File_Name</span><span class="p">);</span>
+   <span class="kr">while</span> <span class="ow">not</span> <span class="n">End_Of_File</span> <span class="p">(</span><span class="n">F</span><span class="p">)</span> <span class="kr">loop</span>
+      <span class="n">Put_Line</span> <span class="p">(</span><span class="n">Get_Line</span> <span class="p">(</span><span class="n">F</span><span class="p">));</span>
+   <span class="kr">end</span> <span class="kr">loop</span><span class="p">;</span>
+   <span class="n">Close</span> <span class="p">(</span><span class="n">F</span><span class="p">);</span>
+<span class="kr">end</span> <span class="nf">Show_Simple_Text_File_IO</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>В дополнение к процедурам <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Create</span></span></code> и <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Close</span></span></code> стандартная библиотека также включает
+процедуру <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Reset</span></span></code>, которая, как следует из названия, сбрасывает (стирает) всю
+информацию из файла. Например:</p>
+<div class="ada-run highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kn">with</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span> <span class="kn">use</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>
+
+<span class="kd">procedure</span> <span class="nf">Show_Text_File_Reset</span> <span class="kr">is</span>
+   <span class="n">F</span>         <span class="p">:</span> <span class="kt">File_Type</span><span class="p">;</span>
+   <span class="no">File_Name</span> <span class="p">:</span> <span class="kr">constant</span> <span class="kt">String</span> <span class="p">:=</span> <span class="s">&quot;simple.txt&quot;</span><span class="p">;</span>
+<span class="kr">begin</span>
+   <span class="n">Create</span> <span class="p">(</span><span class="n">F</span><span class="p">,</span> <span class="n">Out_File</span><span class="p">,</span> <span class="n">File_Name</span><span class="p">);</span>
+   <span class="n">Put_Line</span> <span class="p">(</span><span class="n">F</span><span class="p">,</span> <span class="s">&quot;Hello World #1&quot;</span><span class="p">);</span>
+   <span class="n">Reset</span> <span class="p">(</span><span class="n">F</span><span class="p">);</span>
+   <span class="n">Put_Line</span> <span class="p">(</span><span class="n">F</span><span class="p">,</span> <span class="s">&quot;Hello World #2&quot;</span><span class="p">);</span>
+   <span class="n">Close</span> <span class="p">(</span><span class="n">F</span><span class="p">);</span>
+
+   <span class="n">Open</span> <span class="p">(</span><span class="n">F</span><span class="p">,</span> <span class="n">In_File</span><span class="p">,</span> <span class="n">File_Name</span><span class="p">);</span>
+   <span class="kr">while</span> <span class="ow">not</span> <span class="n">End_Of_File</span> <span class="p">(</span><span class="n">F</span><span class="p">)</span> <span class="kr">loop</span>
+      <span class="n">Put_Line</span> <span class="p">(</span><span class="n">Get_Line</span> <span class="p">(</span><span class="n">F</span><span class="p">));</span>
+   <span class="kr">end</span> <span class="kr">loop</span><span class="p">;</span>
+   <span class="n">Close</span> <span class="p">(</span><span class="n">F</span><span class="p">);</span>
+<span class="kr">end</span> <span class="nf">Show_Text_File_Reset</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Запустив эту программу, мы замечаем, что, хотя мы записали первую
+строку (<code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Hello</span></span> <span class="name"><span class="pre">World</span></span> <span class="error"><span class="pre">#</span></span><span class="literal number integer"><span class="pre">1</span></span></code>) в файл, она была удалена из-за вызова процедуры сброса <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Reset</span></span></code>.</p>
+<p>В дополнение к открытию файла для чтения или записи, вы также можете
+открыть существующий файл и добавить к нему. Сделайте это, вызвав
+процедуру <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Open</span></span></code> с параметром <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Append_File</span></span></code>.</p>
+<p>При вызове процедуры открытия <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Open</span></span></code> возникает исключение, если указанный
+файл не найден. Поэтому вы должны обрабатывать исключения в этом
+контексте. В следующем примере удаляется файл, а затем предпринимается
+попытка открыть тот же файл для чтения:</p>
+<div class="ada-run highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kn">with</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span> <span class="kn">use</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>
+
+<span class="kd">procedure</span> <span class="nf">Show_Text_File_Input_Except</span> <span class="kr">is</span>
+   <span class="n">F</span>         <span class="p">:</span> <span class="kt">File_Type</span><span class="p">;</span>
+   <span class="no">File_Name</span> <span class="p">:</span> <span class="kr">constant</span> <span class="kt">String</span> <span class="p">:=</span> <span class="s">&quot;simple.txt&quot;</span><span class="p">;</span>
+<span class="kr">begin</span>
+   <span class="c1">--  Open output file and delete it</span>
+   <span class="n">Create</span> <span class="p">(</span><span class="n">F</span><span class="p">,</span> <span class="n">Out_File</span><span class="p">,</span> <span class="n">File_Name</span><span class="p">);</span>
+   <span class="n">Delete</span> <span class="p">(</span><span class="n">F</span><span class="p">);</span>
+
+   <span class="c1">--  Try to open deleted file</span>
+   <span class="n">Open</span> <span class="p">(</span><span class="n">F</span><span class="p">,</span> <span class="n">In_File</span><span class="p">,</span> <span class="n">File_Name</span><span class="p">);</span>
+   <span class="n">Close</span> <span class="p">(</span><span class="n">F</span><span class="p">);</span>
+<span class="kr">exception</span>
+   <span class="kr">when</span> <span class="n">Name_Error</span> <span class="p">=&gt;</span>
+      <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;File does not exist&quot;</span><span class="p">);</span>
+   <span class="kr">when</span> <span class="kr">others</span> <span class="p">=&gt;</span>
+      <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;Error while processing input file&quot;</span><span class="p">);</span>
+<span class="kr">end</span> <span class="nf">Show_Text_File_Input_Except</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>В этом примере файл создается вызовом <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Create</span></span></code>, а затем удаляется вызовом <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Delete</span></span></code>.
+После вызова функции <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Delete</span></span></code> мы больше не можем использовать элемент <code class="code highlight ada docutils literal notranslate"><span class="keyword type"><span class="pre">File_Type</span></span></code>. После
+удаления файла мы пытаемся открыть несуществующий файл, что вызывает <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Name_Error</span></span></code>
+исключение.</p>
+</section>
+<section id="id3">
+<h2>Последовательный ввод-вывод<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h2>
+<p>В предыдущем разделе представлена подробная информация о текстовом
+файле ввода/вывода. Здесь мы обсудим выполнение файловых операций
+ввода-вывода в двоичном формате. Первый пакет, который мы рассмотрим ‑
+это <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Ada</span></span><span class="punctuation"><span class="pre">.</span></span><span class="name"><span class="pre">Sequential_IO</span></span></code> пакет. Поскольку этот пакет является универсальным, необходимо
+создать его экземпляр для типа данных, который требуется использовать
+для ввода-вывода файла. После этого можно использовать те же
+процедуры, что и в предыдущем разделе: Создание, Открытие, Закрытие,
+Сброс и Удаление (<code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Create</span></span></code>, <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Open</span></span></code>, <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Close</span></span></code>, <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Reset</span></span></code> и <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Delete</span></span></code>). Однако вместо вызова процедур <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Get_Line</span></span></code> и <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Put_Line</span></span></code>
+следует вызвать процедуры <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Read</span></span></code> и <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Write</span></span></code> (Чтения и Записи).</p>
+<p>В следующем примере создается экземпляр пакета <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Ada</span></span><span class="punctuation"><span class="pre">.</span></span><span class="name"><span class="pre">Sequential_IO</span></span></code> для типов с плавающей
+запятой:</p>
+<div class="ada-run highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kn">with</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>
+<span class="kn">with</span> <span class="nn">Ada.Sequential_IO</span><span class="p">;</span>
+
+<span class="kd">procedure</span> <span class="nf">Show_Seq_Float_IO</span> <span class="kr">is</span>
+   <span class="kd">package</span> <span class="nc">Float_IO</span> <span class="kr">is</span>
+<span class="kr">     new</span> <span class="nc">Ada.Sequential_IO</span> <span class="p">(</span>Float<span class="p">);</span>
+   <span class="kn">use</span> <span class="nn">Float_IO</span><span class="p">;</span>
+
+   <span class="n">F</span>         <span class="p">:</span> <span class="n">Float_IO</span><span class="p">.</span><span class="kt">File_Type</span><span class="p">;</span>
+   <span class="no">File_Name</span> <span class="p">:</span> <span class="kr">constant</span> <span class="kt">String</span> <span class="p">:=</span> <span class="s">&quot;float_file.bin&quot;</span><span class="p">;</span>
+<span class="kr">begin</span>
+   <span class="n">Create</span> <span class="p">(</span><span class="n">F</span><span class="p">,</span> <span class="n">Out_File</span><span class="p">,</span> <span class="n">File_Name</span><span class="p">);</span>
+   <span class="n">Write</span> <span class="p">(</span><span class="n">F</span><span class="p">,</span>  <span class="mf">1.5</span><span class="p">);</span>
+   <span class="n">Write</span> <span class="p">(</span><span class="n">F</span><span class="p">,</span>  <span class="mf">2.4</span><span class="p">);</span>
+   <span class="n">Write</span> <span class="p">(</span><span class="n">F</span><span class="p">,</span>  <span class="mf">6.7</span><span class="p">);</span>
+   <span class="n">Close</span> <span class="p">(</span><span class="n">F</span><span class="p">);</span>
+
+   <span class="kr">declare</span>
+      <span class="n">Value</span> <span class="p">:</span> <span class="kt">Float</span><span class="p">;</span>
+   <span class="kr">begin</span>
+      <span class="n">Open</span> <span class="p">(</span><span class="n">F</span><span class="p">,</span> <span class="n">In_File</span><span class="p">,</span> <span class="n">File_Name</span><span class="p">);</span>
+      <span class="kr">while</span> <span class="ow">not</span> <span class="n">End_Of_File</span> <span class="p">(</span><span class="n">F</span><span class="p">)</span> <span class="kr">loop</span>
+         <span class="n">Read</span> <span class="p">(</span><span class="n">F</span><span class="p">,</span> <span class="n">Value</span><span class="p">);</span>
+         <span class="n">Ada</span><span class="p">.</span><span class="n">Text_IO</span><span class="p">.</span><span class="n">Put_Line</span> <span class="p">(</span><span class="kt">Float</span><span class="p">&#39;</span><span class="na">Image</span> <span class="p">(</span><span class="n">Value</span><span class="p">));</span>
+      <span class="kr">end</span> <span class="kr">loop</span><span class="p">;</span>
+      <span class="n">Close</span> <span class="p">(</span><span class="n">F</span><span class="p">);</span>
+   <span class="kr">end</span><span class="p">;</span>
+<span class="kr">end</span> <span class="nf">Show_Seq_Float_IO</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Мы используем один и тот же подход для чтения и записи сложной
+структурной информации. В следующем примере используется тип запись
+(record), включающая логическое значение типа Boolean и значение с
+плавающей запятой типа Float:</p>
+<div class="ada-run highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kn">with</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>
+<span class="kn">with</span> <span class="nn">Ada.Sequential_IO</span><span class="p">;</span>
+
+<span class="kd">procedure</span> <span class="nf">Show_Seq_Rec_IO</span> <span class="kr">is</span>
+   <span class="kd">type</span> <span class="kt">Num_Info</span> <span class="kr">is</span> <span class="kr">record</span>
+      <span class="n">Valid</span> <span class="p">:</span> <span class="kt">Boolean</span> <span class="p">:=</span> <span class="kc">False</span><span class="p">;</span>
+      <span class="n">Value</span> <span class="p">:</span> <span class="kt">Float</span><span class="p">;</span>
+   <span class="kr">end record</span><span class="p">;</span>
+
+   <span class="kd">procedure</span> <span class="nf">Put_Line</span> <span class="p">(</span><span class="nv">N</span> <span class="p">: </span><span class="nv">Num_Info</span><span class="p">)</span> <span class="kr">is</span>
+   <span class="kr">begin</span>
+      <span class="kr">if</span> <span class="n">N</span><span class="p">.</span><span class="n">Valid</span> <span class="kr">then</span>
+         <span class="n">Ada</span><span class="p">.</span><span class="n">Text_IO</span><span class="p">.</span><span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;(ok,     &quot;</span>
+                               <span class="o">&amp;</span> <span class="kt">Float</span><span class="p">&#39;</span><span class="na">Image</span> <span class="p">(</span><span class="n">N</span><span class="p">.</span><span class="n">Value</span><span class="p">)</span> <span class="o">&amp;</span> <span class="s">&quot;)&quot;</span><span class="p">);</span>
+      <span class="kr">else</span>
+         <span class="n">Ada</span><span class="p">.</span><span class="n">Text_IO</span><span class="p">.</span><span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;(not ok,  -----------)&quot;</span><span class="p">);</span>
+      <span class="kr">end</span> <span class="kr">if</span><span class="p">;</span>
+   <span class="kr">end</span> <span class="nf">Put_Line</span><span class="p">;</span>
+
+   <span class="kd">package</span> <span class="nc">Num_Info_IO</span> <span class="kr">is new</span> <span class="nc">Ada.Sequential_IO</span> <span class="p">(</span>Num_Info<span class="p">);</span>
+   <span class="kn">use</span> <span class="nn">Num_Info_IO</span><span class="p">;</span>
+
+   <span class="n">F</span>         <span class="p">:</span> <span class="n">Num_Info_IO</span><span class="p">.</span><span class="kt">File_Type</span><span class="p">;</span>
+   <span class="no">File_Name</span> <span class="p">:</span> <span class="kr">constant</span> <span class="kt">String</span> <span class="p">:=</span> <span class="s">&quot;float_file.bin&quot;</span><span class="p">;</span>
+<span class="kr">begin</span>
+   <span class="n">Create</span> <span class="p">(</span><span class="n">F</span><span class="p">,</span> <span class="n">Out_File</span><span class="p">,</span> <span class="n">File_Name</span><span class="p">);</span>
+   <span class="n">Write</span> <span class="p">(</span><span class="n">F</span><span class="p">,</span>  <span class="p">(</span><span class="kc">True</span><span class="p">,</span>  <span class="mf">1.5</span><span class="p">));</span>
+   <span class="n">Write</span> <span class="p">(</span><span class="n">F</span><span class="p">,</span>  <span class="p">(</span><span class="kc">False</span><span class="p">,</span> <span class="mf">2.4</span><span class="p">));</span>
+   <span class="n">Write</span> <span class="p">(</span><span class="n">F</span><span class="p">,</span>  <span class="p">(</span><span class="kc">True</span><span class="p">,</span>  <span class="mf">6.7</span><span class="p">));</span>
+   <span class="n">Close</span> <span class="p">(</span><span class="n">F</span><span class="p">);</span>
+
+   <span class="kr">declare</span>
+      <span class="n">Value</span> <span class="p">:</span> <span class="n">Num_Info</span><span class="p">;</span>
+   <span class="kr">begin</span>
+      <span class="n">Open</span> <span class="p">(</span><span class="n">F</span><span class="p">,</span> <span class="n">In_File</span><span class="p">,</span> <span class="n">File_Name</span><span class="p">);</span>
+      <span class="kr">while</span> <span class="ow">not</span> <span class="n">End_Of_File</span> <span class="p">(</span><span class="n">F</span><span class="p">)</span> <span class="kr">loop</span>
+         <span class="n">Read</span> <span class="p">(</span><span class="n">F</span><span class="p">,</span> <span class="n">Value</span><span class="p">);</span>
+         <span class="n">Put_Line</span> <span class="p">(</span><span class="n">Value</span><span class="p">);</span>
+      <span class="kr">end</span> <span class="kr">loop</span><span class="p">;</span>
+      <span class="n">Close</span> <span class="p">(</span><span class="n">F</span><span class="p">);</span>
+   <span class="kr">end</span><span class="p">;</span>
+<span class="kr">end</span> <span class="nf">Show_Seq_Rec_IO</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Как показывает пример, мы можем использовать тот же подход, который мы
+использовали для типов с плавающей запятой, для выполнения файлового
+ввода-вывода для этой записи. После того, как мы создадим экземпляр
+пакета <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Ada</span></span><span class="punctuation"><span class="pre">.</span></span><span class="name"><span class="pre">Sequential_IO</span></span></code> для типа записи, операции ввода-вывода файлов будут
+выполняться таким же образом.</p>
+</section>
+<section id="id4">
+<h2>Прямой ввод / вывод<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h2>
+<p>Прямой ввод-вывод доступен в пакете <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Ada</span></span><span class="punctuation"><span class="pre">.</span></span><span class="name"><span class="pre">Direct_IO</span></span></code>. Этот механизм похож на только
+что представленный подход последовательного ввода-вывода, но позволяет
+нам получить доступ к любой позиции в файле. Создание пакета и
+большинство операций очень похожи на последовательный ввод-вывод.
+Чтобы переписать приложение <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Show_Seq_Float_IO</span></span></code>, представленное в предыдущем разделе, для
+использования пакета <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Ada</span></span><span class="punctuation"><span class="pre">.</span></span><span class="name"><span class="pre">Direct_IO</span></span></code>, нам просто нужно заменить экземпляры пакета <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Ada</span></span><span class="punctuation"><span class="pre">.</span></span><span class="name"><span class="pre">Sequential_IO</span></span></code> на
+пакет <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Ada</span></span><span class="punctuation"><span class="pre">.</span></span><span class="name"><span class="pre">Direct_IO</span></span></code>. Это новый исходный код:</p>
+<div class="ada-run highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kn">with</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>
+<span class="kn">with</span> <span class="nn">Ada.Direct_IO</span><span class="p">;</span>
+
+<span class="kd">procedure</span> <span class="nf">Show_Dir_Float_IO</span> <span class="kr">is</span>
+   <span class="kd">package</span> <span class="nc">Float_IO</span> <span class="kr">is new</span> <span class="nc">Ada.Direct_IO</span> <span class="p">(</span>Float<span class="p">);</span>
+   <span class="kn">use</span> <span class="nn">Float_IO</span><span class="p">;</span>
+
+   <span class="n">F</span>         <span class="p">:</span> <span class="n">Float_IO</span><span class="p">.</span><span class="kt">File_Type</span><span class="p">;</span>
+   <span class="no">File_Name</span> <span class="p">:</span> <span class="kr">constant</span> <span class="kt">String</span> <span class="p">:=</span> <span class="s">&quot;float_file.bin&quot;</span><span class="p">;</span>
+<span class="kr">begin</span>
+   <span class="n">Create</span> <span class="p">(</span><span class="n">F</span><span class="p">,</span> <span class="n">Out_File</span><span class="p">,</span> <span class="n">File_Name</span><span class="p">);</span>
+   <span class="n">Write</span> <span class="p">(</span><span class="n">F</span><span class="p">,</span>  <span class="mf">1.5</span><span class="p">);</span>
+   <span class="n">Write</span> <span class="p">(</span><span class="n">F</span><span class="p">,</span>  <span class="mf">2.4</span><span class="p">);</span>
+   <span class="n">Write</span> <span class="p">(</span><span class="n">F</span><span class="p">,</span>  <span class="mf">6.7</span><span class="p">);</span>
+   <span class="n">Close</span> <span class="p">(</span><span class="n">F</span><span class="p">);</span>
+
+   <span class="kr">declare</span>
+      <span class="n">Value</span> <span class="p">:</span> <span class="kt">Float</span><span class="p">;</span>
+   <span class="kr">begin</span>
+      <span class="n">Open</span> <span class="p">(</span><span class="n">F</span><span class="p">,</span> <span class="n">In_File</span><span class="p">,</span> <span class="n">File_Name</span><span class="p">);</span>
+      <span class="kr">while</span> <span class="ow">not</span> <span class="n">End_Of_File</span> <span class="p">(</span><span class="n">F</span><span class="p">)</span> <span class="kr">loop</span>
+         <span class="n">Read</span> <span class="p">(</span><span class="n">F</span><span class="p">,</span> <span class="n">Value</span><span class="p">);</span>
+         <span class="n">Ada</span><span class="p">.</span><span class="n">Text_IO</span><span class="p">.</span><span class="n">Put_Line</span> <span class="p">(</span><span class="kt">Float</span><span class="p">&#39;</span><span class="na">Image</span> <span class="p">(</span><span class="n">Value</span><span class="p">));</span>
+      <span class="kr">end</span> <span class="kr">loop</span><span class="p">;</span>
+      <span class="n">Close</span> <span class="p">(</span><span class="n">F</span><span class="p">);</span>
+   <span class="kr">end</span><span class="p">;</span>
+<span class="kr">end</span> <span class="nf">Show_Dir_Float_IO</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>В отличие от последовательного ввода-вывода, прямой ввод-вывод
+позволяет получить доступ к любой позиции в файле. Однако он не
+предлагает возможность добавлять информацию в файл. Вместо этого он
+предоставляет режим <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Inout_File</span></span></code>, позволяющий читать и записывать в файл через
+один и тот же элемент <code class="code highlight ada docutils literal notranslate"><span class="keyword type"><span class="pre">File_Type</span></span></code>.</p>
+<p>Чтобы получить доступ к любой позиции в файле, вызовите процедуру <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Set_Index</span></span></code>,
+чтобы установить новую позицию / индекс. Вы можете использовать
+функцию <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Index</span></span></code> для получения текущего индекса. Посмотрим на пример:</p>
+<div class="ada-run highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kn">with</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>
+<span class="kn">with</span> <span class="nn">Ada.Direct_IO</span><span class="p">;</span>
+
+<span class="kd">procedure</span> <span class="nf">Show_Dir_Float_In_Out_File</span> <span class="kr">is</span>
+   <span class="kd">package</span> <span class="nc">Float_IO</span> <span class="kr">is new</span> <span class="nc">Ada.Direct_IO</span> <span class="p">(</span>Float<span class="p">);</span>
+   <span class="kn">use</span> <span class="nn">Float_IO</span><span class="p">;</span>
+
+   <span class="n">F</span>         <span class="p">:</span> <span class="n">Float_IO</span><span class="p">.</span><span class="kt">File_Type</span><span class="p">;</span>
+   <span class="no">File_Name</span> <span class="p">:</span> <span class="kr">constant</span> <span class="kt">String</span> <span class="p">:=</span> <span class="s">&quot;float_file.bin&quot;</span><span class="p">;</span>
+<span class="kr">begin</span>
+   <span class="c1">--  Open file for input / output</span>
+   <span class="n">Create</span> <span class="p">(</span><span class="n">F</span><span class="p">,</span> <span class="n">Inout_File</span><span class="p">,</span> <span class="n">File_Name</span><span class="p">);</span>
+   <span class="n">Write</span> <span class="p">(</span><span class="n">F</span><span class="p">,</span>  <span class="mf">1.5</span><span class="p">);</span>
+   <span class="n">Write</span> <span class="p">(</span><span class="n">F</span><span class="p">,</span>  <span class="mf">2.4</span><span class="p">);</span>
+   <span class="n">Write</span> <span class="p">(</span><span class="n">F</span><span class="p">,</span>  <span class="mf">6.7</span><span class="p">);</span>
+
+   <span class="c1">--  Set index to previous position and overwrite value</span>
+   <span class="n">Set_Index</span> <span class="p">(</span><span class="n">F</span><span class="p">,</span> <span class="n">Index</span> <span class="p">(</span><span class="n">F</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">);</span>
+   <span class="n">Write</span> <span class="p">(</span><span class="n">F</span><span class="p">,</span>  <span class="mf">7.7</span><span class="p">);</span>
+
+   <span class="kr">declare</span>
+      <span class="n">Value</span> <span class="p">:</span> <span class="kt">Float</span><span class="p">;</span>
+   <span class="kr">begin</span>
+      <span class="c1">--  Set index to start of file</span>
+      <span class="n">Set_Index</span> <span class="p">(</span><span class="n">F</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+
+      <span class="kr">while</span> <span class="ow">not</span> <span class="n">End_Of_File</span> <span class="p">(</span><span class="n">F</span><span class="p">)</span> <span class="kr">loop</span>
+         <span class="n">Read</span> <span class="p">(</span><span class="n">F</span><span class="p">,</span> <span class="n">Value</span><span class="p">);</span>
+         <span class="n">Ada</span><span class="p">.</span><span class="n">Text_IO</span><span class="p">.</span><span class="n">Put_Line</span> <span class="p">(</span><span class="kt">Float</span><span class="p">&#39;</span><span class="na">Image</span> <span class="p">(</span><span class="n">Value</span><span class="p">));</span>
+      <span class="kr">end</span> <span class="kr">loop</span><span class="p">;</span>
+      <span class="n">Close</span> <span class="p">(</span><span class="n">F</span><span class="p">);</span>
+   <span class="kr">end</span><span class="p">;</span>
+<span class="kr">end</span> <span class="nf">Show_Dir_Float_In_Out_File</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Запустив этот пример, мы видим, что файл содержит версию <code class="docutils literal notranslate"><span class="pre">7.7</span></code>, а не
+предыдущую версию <code class="docutils literal notranslate"><span class="pre">6.7</span></code>, которую мы написали. Мы перезаписали значение,
+изменив индекс на предыдущую позицию перед выполнением следующей
+записи.</p>
+<p>В этом примере мы использовали режим <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Inout_File</span></span></code>. Используя этот режим, мы просто
+вернули индекс в исходное положение перед чтением из файла (<code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Set_Index</span></span> <span class="punctuation"><span class="pre">(</span></span><span class="name"><span class="pre">F</span></span><span class="punctuation"><span class="pre">,</span></span> <span class="literal number integer"><span class="pre">1</span></span><span class="punctuation"><span class="pre">)</span></span></code>) вместо
+того, чтобы закрывать файл и повторно открывать его для чтения.</p>
+</section>
+<section id="id5">
+<h2>Потоковый ввод-вывод<a class="headerlink" href="#id5" title="Permalink to this headline"></a></h2>
+<p>Все предыдущие подходы к файловому вводу-выводу в двоичном формате
+(последовательный и прямой ввод-вывод) специфичны для одного типа
+данных (того, с помощью которого мы их создаем). Вы можете
+использовать эти подходы для записи объектов одного типа данных,
+которые могут быть массивом или записью (потенциально со многими
+полями), но если вам нужно создать и обработать файлы, которые
+включают разные типы данных, или любые объекты неограниченного типа,
+этих подходов недостаточно. Вместо этого вы должны использовать
+потоковый ввод-вывод.</p>
+<p>Потоковый ввод-вывод имеет некоторые общие черты с предыдущими
+подходами. Мы по-прежнему используем процедуры <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Create</span></span></code>, <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Open</span></span></code> и <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Close</span></span></code>. Однако вместо
+прямого доступа к файлу через элемент <code class="code highlight ada docutils literal notranslate"><span class="keyword type"><span class="pre">File_Type</span></span></code> вы используете элемент <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Stream_Access</span></span></code>. Для
+чтения и записи информации вы используете атрибуты <code class="code highlight ada docutils literal notranslate"><span class="punctuation"><span class="pre">'</span></span><span class="name attribute"><span class="pre">Read</span></span></code> или <code class="code highlight ada docutils literal notranslate"><span class="punctuation"><span class="pre">'</span></span><span class="name attribute"><span class="pre">Write</span></span></code> для типов
+данных, которые вы читаете или пишете.</p>
+<p>Давайте посмотрим на версию процедуры <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Show_Dir_Float_IO</span></span></code> из предыдущего раздела.
+Процедура использует потоковый ввод-вывод вместо прямого ввода-вывода:</p>
+<div class="ada-run highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kn">with</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>
+<span class="kn">with</span> <span class="nn">Ada.Streams.Stream_IO</span><span class="p">;</span> <span class="kn">use</span> <span class="nn">Ada.Streams.Stream_IO</span><span class="p">;</span>
+
+<span class="kd">procedure</span> <span class="nf">Show_Float_Stream</span> <span class="kr">is</span>
+   <span class="n">F</span>         <span class="p">:</span> <span class="kt">File_Type</span><span class="p">;</span>
+   <span class="n">S</span>         <span class="p">:</span> <span class="n">Stream_Access</span><span class="p">;</span>
+   <span class="no">File_Name</span> <span class="p">:</span> <span class="kr">constant</span> <span class="kt">String</span> <span class="p">:=</span> <span class="s">&quot;float_file.bin&quot;</span><span class="p">;</span>
+<span class="kr">begin</span>
+   <span class="n">Create</span> <span class="p">(</span><span class="n">F</span><span class="p">,</span> <span class="n">Out_File</span><span class="p">,</span> <span class="n">File_Name</span><span class="p">);</span>
+   <span class="n">S</span> <span class="p">:=</span> <span class="n">Stream</span> <span class="p">(</span><span class="n">F</span><span class="p">);</span>
+
+   <span class="kt">Float</span><span class="p">&#39;</span><span class="na">Write</span> <span class="p">(</span><span class="n">S</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">);</span>
+   <span class="kt">Float</span><span class="p">&#39;</span><span class="na">Write</span> <span class="p">(</span><span class="n">S</span><span class="p">,</span> <span class="mf">2.4</span><span class="p">);</span>
+   <span class="kt">Float</span><span class="p">&#39;</span><span class="na">Write</span> <span class="p">(</span><span class="n">S</span><span class="p">,</span> <span class="mf">6.7</span><span class="p">);</span>
+
+   <span class="n">Close</span> <span class="p">(</span><span class="n">F</span><span class="p">);</span>
+
+   <span class="kr">declare</span>
+      <span class="n">Value</span> <span class="p">:</span> <span class="kt">Float</span><span class="p">;</span>
+   <span class="kr">begin</span>
+      <span class="n">Open</span> <span class="p">(</span><span class="n">F</span><span class="p">,</span> <span class="n">In_File</span><span class="p">,</span> <span class="n">File_Name</span><span class="p">);</span>
+      <span class="n">S</span> <span class="p">:=</span> <span class="n">Stream</span> <span class="p">(</span><span class="n">F</span><span class="p">);</span>
+
+      <span class="kr">while</span> <span class="ow">not</span> <span class="n">End_Of_File</span> <span class="p">(</span><span class="n">F</span><span class="p">)</span> <span class="kr">loop</span>
+         <span class="kt">Float</span><span class="p">&#39;</span><span class="na">Read</span> <span class="p">(</span><span class="n">S</span><span class="p">,</span> <span class="n">Value</span><span class="p">);</span>
+         <span class="n">Ada</span><span class="p">.</span><span class="n">Text_IO</span><span class="p">.</span><span class="n">Put_Line</span> <span class="p">(</span><span class="kt">Float</span><span class="p">&#39;</span><span class="na">Image</span> <span class="p">(</span><span class="n">Value</span><span class="p">));</span>
+      <span class="kr">end</span> <span class="kr">loop</span><span class="p">;</span>
+      <span class="n">Close</span> <span class="p">(</span><span class="n">F</span><span class="p">);</span>
+   <span class="kr">end</span><span class="p">;</span>
+<span class="kr">end</span> <span class="nf">Show_Float_Stream</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>После вызова <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Create</span></span></code> мы получаем соответствующий элемент <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Stream_Access</span></span></code>, вызывая функцию <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Stream</span></span></code>.
+Затем мы используем этот поток для записи информации в файл через
+атрибут <code class="code highlight ada docutils literal notranslate"><span class="punctuation"><span class="pre">'</span></span><span class="name attribute"><span class="pre">Write</span></span></code> типа <code class="code highlight ada docutils literal notranslate"><span class="keyword type"><span class="pre">Float</span></span></code>. После закрытия файла и повторного открытия его для
+чтения мы снова получаем соответствующий элемент <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Stream_Access</span></span></code> и обрабатываем его
+для чтения информации из файла через атрибут <code class="code highlight ada docutils literal notranslate"><span class="punctuation"><span class="pre">'</span></span><span class="name attribute"><span class="pre">Read</span></span></code> типа <code class="code highlight ada docutils literal notranslate"><span class="keyword type"><span class="pre">Float</span></span></code>.</p>
+<p>Вы можете использовать потоки для создания и обработки файлов,
+содержащих разные типы данных в одном файле. Вы также можете читать и
+записывать неограниченные типы данных, такие как строки. Однако при
+использовании неограниченных типов данных вы должны вызывать атрибуты <code class="code highlight ada docutils literal notranslate"><span class="punctuation"><span class="pre">'</span></span><span class="name attribute"><span class="pre">Input</span></span></code>
+и <code class="code highlight ada docutils literal notranslate"><span class="punctuation"><span class="pre">'</span></span><span class="name attribute"><span class="pre">Output</span></span></code> неограниченного типа данных: эти атрибуты записывают информацию о
+границах или дискриминантах в дополнение к фактическим данным объекта.</p>
+<p>В следующем примере показан файловый ввод-вывод, который смешивает как
+строки разной длины, так и значения с плавающей запятой:</p>
+<div class="ada-run highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kn">with</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>
+<span class="kn">with</span> <span class="nn">Ada.Streams.Stream_IO</span><span class="p">;</span> <span class="kn">use</span> <span class="nn">Ada.Streams.Stream_IO</span><span class="p">;</span>
+
+<span class="kd">procedure</span> <span class="nf">Show_String_Stream</span> <span class="kr">is</span>
+   <span class="n">F</span>         <span class="p">:</span> <span class="kt">File_Type</span><span class="p">;</span>
+   <span class="n">S</span>         <span class="p">:</span> <span class="n">Stream_Access</span><span class="p">;</span>
+   <span class="no">File_Name</span> <span class="p">:</span> <span class="kr">constant</span> <span class="kt">String</span> <span class="p">:=</span> <span class="s">&quot;float_file.bin&quot;</span><span class="p">;</span>
+
+   <span class="kd">procedure</span> <span class="nf">Output</span> <span class="p">(</span><span class="nv">S</span>  <span class="p">: </span><span class="nv">Stream_Access</span><span class="p">;</span>
+                     <span class="nv">FV</span> <span class="p">: </span><span class="nv">Float</span><span class="p">;</span>
+                     <span class="nv">SV</span> <span class="p">: </span><span class="nv">String</span><span class="p">)</span> <span class="kr">is</span>
+   <span class="kr">begin</span>
+      <span class="kt">String</span><span class="p">&#39;</span><span class="na">Output</span> <span class="p">(</span><span class="n">S</span><span class="p">,</span> <span class="n">SV</span><span class="p">);</span>
+      <span class="kt">Float</span><span class="p">&#39;</span><span class="na">Output</span> <span class="p">(</span><span class="n">S</span><span class="p">,</span>  <span class="n">FV</span><span class="p">);</span>
+   <span class="kr">end</span> <span class="nf">Output</span><span class="p">;</span>
+
+   <span class="kd">procedure</span> <span class="nf">Input_Display</span> <span class="p">(</span><span class="nv">S</span> <span class="p">: </span><span class="nv">Stream_Access</span><span class="p">)</span> <span class="kr">is</span>
+      <span class="n">SV</span> <span class="p">:</span> <span class="kt">String</span> <span class="p">:=</span> <span class="kt">String</span><span class="p">&#39;</span><span class="na">Input</span> <span class="p">(</span><span class="n">S</span><span class="p">);</span>
+      <span class="n">FV</span> <span class="p">:</span> <span class="kt">Float</span>  <span class="p">:=</span> <span class="kt">Float</span><span class="p">&#39;</span><span class="na">Input</span> <span class="p">(</span><span class="n">S</span><span class="p">);</span>
+   <span class="kr">begin</span>
+      <span class="n">Ada</span><span class="p">.</span><span class="n">Text_IO</span><span class="p">.</span><span class="n">Put_Line</span> <span class="p">(</span><span class="kt">Float</span><span class="p">&#39;</span><span class="na">Image</span> <span class="p">(</span><span class="n">FV</span><span class="p">)</span>
+                            <span class="o">&amp;</span> <span class="s">&quot; --- &quot;</span> <span class="o">&amp;</span> <span class="n">SV</span><span class="p">);</span>
+   <span class="kr">end</span> <span class="nf">Input_Display</span><span class="p">;</span>
+
+<span class="kr">begin</span>
+   <span class="n">Create</span> <span class="p">(</span><span class="n">F</span><span class="p">,</span> <span class="n">Out_File</span><span class="p">,</span> <span class="n">File_Name</span><span class="p">);</span>
+   <span class="n">S</span> <span class="p">:=</span> <span class="n">Stream</span> <span class="p">(</span><span class="n">F</span><span class="p">);</span>
+
+   <span class="n">Output</span> <span class="p">(</span><span class="n">S</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="s">&quot;Hi!!&quot;</span><span class="p">);</span>
+   <span class="n">Output</span> <span class="p">(</span><span class="n">S</span><span class="p">,</span> <span class="mf">2.4</span><span class="p">,</span> <span class="s">&quot;Hello world!&quot;</span><span class="p">);</span>
+   <span class="n">Output</span> <span class="p">(</span><span class="n">S</span><span class="p">,</span> <span class="mf">6.7</span><span class="p">,</span> <span class="s">&quot;Something longer here...&quot;</span><span class="p">);</span>
+
+   <span class="n">Close</span> <span class="p">(</span><span class="n">F</span><span class="p">);</span>
+
+   <span class="n">Open</span> <span class="p">(</span><span class="n">F</span><span class="p">,</span> <span class="n">In_File</span><span class="p">,</span> <span class="n">File_Name</span><span class="p">);</span>
+   <span class="n">S</span> <span class="p">:=</span> <span class="n">Stream</span> <span class="p">(</span><span class="n">F</span><span class="p">);</span>
+
+   <span class="kr">while</span> <span class="ow">not</span> <span class="n">End_Of_File</span> <span class="p">(</span><span class="n">F</span><span class="p">)</span> <span class="kr">loop</span>
+      <span class="n">Input_Display</span> <span class="p">(</span><span class="n">S</span><span class="p">);</span>
+   <span class="kr">end</span> <span class="kr">loop</span><span class="p">;</span>
+   <span class="n">Close</span> <span class="p">(</span><span class="n">F</span><span class="p">);</span>
+
+<span class="kr">end</span> <span class="nf">Show_String_Stream</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Когда вы используете потоковый ввод-вывод, в файл не записывается
+никакая информация, указывающая тип данных, которые вы записали. Если
+файл содержит данные разных типов, при чтении файла вы должны
+ссылаться на типы в том же порядке, что и при его написании. В
+противном случае полученная информация будет повреждена. К сожалению,
+строгая типизация данных в этом случае вам не поможет. Написание
+простых процедур для файлового ввода-вывода (как в приведенном выше
+примере) может помочь обеспечить согласованность формата файла.</p>
+<p>Как и прямой ввод-вывод, поддержка потокового ввода-вывода также
+позволяет получить доступ к любому месту в файле. Однако при этом
+нужно быть предельно осторожным, чтобы положение нового индекса
+соответствовало ожидаемым типам данных.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          
+
+
+<footer>
+      
+      
+
+      
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+          
+            <a href="standard_library_numerics.html" class="btn btn-neutral float-right" title="Стандартная библиотека: Numerics" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+          
+          
+            <a href="standard_library_strings.html" class="btn btn-neutral" title="Стандартная библиотека: Строки" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+          
+        </div>
+  
+
+
+  <hr/>
+
+  <div class="legal">
+              Copyright &copy; 2022 AdaCore. All rights reserved.
+              &nbsp;&nbsp;
+              <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/80x15.png" /></a>
+              <br>
+              <a href="https://www.adacore.com/company/legal">Legal</a>
+              &nbsp; |  &nbsp;
+              <a href="https://www.adacore.com/company/privacy">Privacy Policy</a>
+              &nbsp; |  &nbsp;
+              <a href="https://github.com/AdaCore/learn/issues">Report an Issue</a>
+            </div> 
+
+</footer>
+
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+  <button id="scrollToTopBtn" title="Go to top"><i class="fas fa-caret-square-up"></i></button>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+</script>
+
+
+</body>
+</html>

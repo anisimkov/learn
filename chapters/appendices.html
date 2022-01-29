@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Приложения &mdash; learn.adacore.com</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Стандартная библиотека: Numerics" href="standard_library_numerics.html" />
+  <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-117428-14"></script>
+<script type="text/javascript">
+  if(!Cookies.get('AdaCore_staff')) {
+    // Global site tag (gtag.js) - Google Analytics
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-117428-14');
+    // End Global site tag (gtag.js) - Google Analytics
+
+    // Google Tag Manager
+    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-KD5HNRR');
+    // End Google Tag Manager
+
+    // Twitter universal website tag code
+    !function(e,t,n,s,u,a){e.twq||(s=e.twq=function(){s.exe?s.exe.apply(s,arguments):s.queue.push(arguments);},s.version='1.1',s.queue=[],u=t.createElement(n),u.async=!0,u.src='//static.ads-twitter.com/uwt.js',a=t.getElementsByTagName(n)[0],a.parentNode.insertBefore(u,a))}(window,document,'script');
+    // Insert Twitter Pixel ID and Standard Event data below
+    twq('init','o3mlc');
+    twq('track','PageView');
+    // End Twitter universal website tag code
+
+    // LinkedIn Tracking Tags
+    _linkedin_partner_id = "482585"; window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || []; window._linkedin_data_partner_ids.push(_linkedin_partner_id);
+    (function(){var s = document.getElementsByTagName("script")[0]; var b = document.createElement("script"); b.type = "text/javascript";b.async = true; b.src = "https://snap.licdn.com/li.lms-analytics/insight.min.js"; s.parentNode.insertBefore(b, s);})();
+    // End LinkedIn Tracking Tags
+  }
+</script>
+  <!--  Essential META Tags -->
+<meta property="og:title" content=“learn.adacore.com">
+<meta property="og:description" content="An interactive learning platform to teach the Ada and SPARK programming languages.">
+<meta property="og:image" content="https://learn.adacore.com/_static/learn_meta_img.jpeg">
+<meta property="og:url" content="https://learn.adacore.com">
+<meta name="twitter:card" content="summary_large_image">
+
+<!--  Non-Essential, But Recommended -->
+<meta property="og:site_name" content="learn.adacore.com">
+<meta name="twitter:image:alt" content="An interactive learning platform to teach the Ada and SPARK programming languages.">
+
+<!--  Non-Essential, But Required for Analytics -->
+<meta name="twitter:site" content="@AdaCoreCompany">
+
+</head>
+
+<body class="wy-body-for-nav">
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KD5HNRR"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  <!-- LinkedIn Tracking Tags (noscript) -->
+  <noscript> <img height="1" width="1" style="display:none;" alt="" src="https://dc.ads.linkedin.com/collect/?pid=482585&fmt=gif" /> </noscript>
+  <!-- End LinkedIn Tracking Tags (noscript) -->
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html">
+            <img src="../_static/logo.svg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Введение</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#id2">История</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#ada">Ada сегодня</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#id6">Философия</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#spark">SPARK</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="imperative_language.html">Императивы языка</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="imperative_language.html#hello-world">Hello world</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imperative_language.html#if-then-else">Императивы языка ‑ If / Then / Else</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imperative_language.html#loops">Императивы языка ‑ Loops</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="imperative_language.html#for">Циклы For</a></li>
+<li class="toctree-l3"><a class="reference internal" href="imperative_language.html#id2">Простой цикл</a></li>
+<li class="toctree-l3"><a class="reference internal" href="imperative_language.html#while">Циклы While</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="imperative_language.html#case">Императивы языка – оператор Case</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imperative_language.html#id3">Императивы языка – декларативные регионы</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imperative_language.html#id4">Императивы языка – условные выражения</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="imperative_language.html#if">Выражение If</a></li>
+<li class="toctree-l3"><a class="reference internal" href="imperative_language.html#id5">Выражение Case</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="subprograms.html">Подпрограммы</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="subprograms.html#id2">Подпрограммы</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="subprograms.html#id3">Вызовы подпрограмм</a></li>
+<li class="toctree-l3"><a class="reference internal" href="subprograms.html#id4">Вложенные подпрограммы</a></li>
+<li class="toctree-l3"><a class="reference internal" href="subprograms.html#id5">Вызов функций</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="subprograms.html#id6">Режимы параметров</a></li>
+<li class="toctree-l2"><a class="reference internal" href="subprograms.html#id7">Вызов процедуры</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="subprograms.html#in">Параметры in</a></li>
+<li class="toctree-l3"><a class="reference internal" href="subprograms.html#in-out">Параметры in out</a></li>
+<li class="toctree-l3"><a class="reference internal" href="subprograms.html#out">Параметры out</a></li>
+<li class="toctree-l3"><a class="reference internal" href="subprograms.html#id8">Предварительное объявление подпрограмм</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="subprograms.html#subprogram-renaming">Переименование</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="modular_programming.html">Модульное программирование</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="modular_programming.html#id2">Пакеты</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modular_programming.html#id3">Использование пакета</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modular_programming.html#id4">Тело пакета</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modular_programming.html#childpackages">Дочерние пакеты</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="modular_programming.html#id6">Дочерний пакет от дочернего пакета</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modular_programming.html#id7">Множественные потомки</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modular_programming.html#id8">Видимость</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="modular_programming.html#package-renaming">Переименование</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="strongly_typed_language.html">Сильно типизированный язык</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="strongly_typed_language.html#whatisatype">Что такое тип?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="strongly_typed_language.html#integers">Целочисленные типы ‑ Integers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="strongly_typed_language.html#id3">Семантика операций</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="strongly_typed_language.html#id4">Беззнаковые типы</a></li>
+<li class="toctree-l2"><a class="reference internal" href="strongly_typed_language.html#enumtypes">Перечисления</a></li>
+<li class="toctree-l2"><a class="reference internal" href="strongly_typed_language.html#id7">Типы с плавающей запятой</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="strongly_typed_language.html#id8">Основные свойства</a></li>
+<li class="toctree-l3"><a class="reference internal" href="strongly_typed_language.html#id9">Точность типов с плавающей запятой</a></li>
+<li class="toctree-l3"><a class="reference internal" href="strongly_typed_language.html#id10">Диапазон типов с плавающей запятой</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="strongly_typed_language.html#id11">Строгая типизация</a></li>
+<li class="toctree-l2"><a class="reference internal" href="strongly_typed_language.html#id12">Производные типы</a></li>
+<li class="toctree-l2"><a class="reference internal" href="strongly_typed_language.html#id13">Подтипы</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="strongly_typed_language.html#subtypealiases">Подтипы в качестве псевдонимов типов</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="records.html">Записи</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="records.html#id2">Объявление типа записи</a></li>
+<li class="toctree-l2"><a class="reference internal" href="records.html#id3">Агрегаты</a></li>
+<li class="toctree-l2"><a class="reference internal" href="records.html#id4">Выбор компонентов</a></li>
+<li class="toctree-l2"><a class="reference internal" href="records.html#record-comp-renaming">Переименование</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="arrays.html">Массивы</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="arrays.html#id2">Объявление типа массива</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays.html#id3">Индексирование</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays.html#id4">Более простые объявления массива</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays.html#id5">Атрибут диапазона</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays.html#unconstrainedarraytypes">Неограниченные массивы</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays.html#string">Предопределенный тип массива: String</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays.html#id7">Ограничения</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays.html#id8">Возврат неограниченных массивов</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays.html#id9">Объявление массивов (2)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays.html#id10">Срезы массива</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays.html#object-renaming">Переименование</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="more_about_types.html">Подробнее о типах</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="more_about_types.html#id2">Агрегаты: краткая информация</a></li>
+<li class="toctree-l2"><a class="reference internal" href="more_about_types.html#id3">Перегрузка и квалифицированные выражения</a></li>
+<li class="toctree-l2"><a class="reference internal" href="more_about_types.html#access">Типы Access (указатели)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="more_about_types.html#allocation">Распределение (по типу) ‑ Allocation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="more_about_types.html#id5">Разыменование</a></li>
+<li class="toctree-l3"><a class="reference internal" href="more_about_types.html#id6">Другие особенности</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="more_about_types.html#id7">Взаимно рекурсивные типы</a></li>
+<li class="toctree-l2"><a class="reference internal" href="more_about_types.html#id8">Подробнее о записях</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="more_about_types.html#id9">Типы записей с динамически изменяемым размером</a></li>
+<li class="toctree-l3"><a class="reference internal" href="more_about_types.html#id10">Записи с дискриминантом</a></li>
+<li class="toctree-l3"><a class="reference internal" href="more_about_types.html#c">Записи c вариантами</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="more_about_types.html#id11">Типы с фиксированной точкой</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="more_about_types.html#id12">Десятичные типы с фиксированной точкой</a></li>
+<li class="toctree-l3"><a class="reference internal" href="more_about_types.html#id13">Типы фиксированных точек</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="more_about_types.html#id14">Типы символов</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="privacy.html">Конфиденциальность</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="privacy.html#id3">Базовая инкапсуляция</a></li>
+<li class="toctree-l2"><a class="reference internal" href="privacy.html#id4">Абстрактные типы данных</a></li>
+<li class="toctree-l2"><a class="reference internal" href="privacy.html#id5">Ограниченные типы</a></li>
+<li class="toctree-l2"><a class="reference internal" href="privacy.html#id7">Дочерние пакеты и конфиденциальность</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="generics.html">Настраиваемые модули</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="generics.html#id2">Введение</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generics.html#id3">Формальное объявление типа</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generics.html#id4">Формальное объявление объекта</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generics.html#generic">Определение тела generic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generics.html#id5">Создание экземпляра generic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generics.html#id6">Generic пакеты</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generics.html#id7">Формальные подпрограммы</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generics.html#id8">Пример: экземпляры ввода / вывода</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generics.html#id9">Пример: АТД</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generics.html#swap">Пример: Обмен (Swap)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generics.html#reversing">Пример: Реверсирование (Reversing)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generics.html#id10">Пример: Тестовое приложение</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="exceptions.html">Исключения</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="exceptions.html#id2">Объявление исключения</a></li>
+<li class="toctree-l2"><a class="reference internal" href="exceptions.html#id3">Возбуждение исключения</a></li>
+<li class="toctree-l2"><a class="reference internal" href="exceptions.html#id4">Обработка исключения</a></li>
+<li class="toctree-l2"><a class="reference internal" href="exceptions.html#id5">Предопределенные исключения</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="contracts.html">Контрактное проектирование</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="contracts.html#id2">Пред- и постусловия</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contracts.html#id3">Предикаты</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contracts.html#id4">Инварианты типа</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="interfacing_with_c.html">Взаимодействие с языком C</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="interfacing_with_c.html#id1">Многоязычный проект</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interfacing_with_c.html#id2">Соглашение о типах</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interfacing_with_c.html#id3">Подпрограммы на других языках</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="interfacing_with_c.html#c-ada">Вызов подпрограмм C в Ada</a></li>
+<li class="toctree-l3"><a class="reference internal" href="interfacing_with_c.html#ada-c">Вызов подпрограмм Ada в C</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="interfacing_with_c.html#id4">Внешние переменные</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="interfacing_with_c.html#id5">Использование глобальных переменных C в Ada</a></li>
+<li class="toctree-l3"><a class="reference internal" href="interfacing_with_c.html#id6">Использование переменных Ada в C</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="interfacing_with_c.html#id7">Создание привязок</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="interfacing_with_c.html#id8">Адаптация привязок</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="object_oriented_programming.html">Объектно-ориентированное программирование</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="object_oriented_programming.html#id2">Производные типы</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_oriented_programming.html#id3">Типы с тегами</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_oriented_programming.html#id5">Типы расширяемые классами</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_oriented_programming.html#id6">Операции диспетчеризации</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_oriented_programming.html#id7">Точечная нотация</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_oriented_programming.html#id8">Частные и ограниченные типы с тегами</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_oriented_programming.html#id9">Типы доступа в классах</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="standard_library_containers.html">Стандартная библиотека: Контейнеры</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_containers.html#id2">Векторы</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_containers.html#id3">Создание экземпляра</a></li>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_containers.html#id4">Инициализация</a></li>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_containers.html#prepend-append">Добавление элементов - Prepend и Append</a></li>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_containers.html#id5">Доступ к первому и последнему элементам</a></li>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_containers.html#id6">Итерация</a></li>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_containers.html#id7">Поиск и изменение элементов</a></li>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_containers.html#id8">Вставка элементов</a></li>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_containers.html#id9">Удаление элементов</a></li>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_containers.html#id10">Другие операции</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_containers.html#id11">Множества</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_containers.html#id12">Инициализация и итерация</a></li>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_containers.html#id13">Операции с элементами</a></li>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_containers.html#id14">Другие операции</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_containers.html#id15">Неопределенные карты</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_containers.html#id16">Хэшированные карты</a></li>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_containers.html#id17">Упорядоченные карты</a></li>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_containers.html#id18">Сложность</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="standard_library_dates_times.html">Стандартная библиотека: Дата и время</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_dates_times.html#datestimes">Обработка даты и времени</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_dates_times.html#id3">Задержка с использованием даты</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_dates_times.html#id4">В режиме реального времени</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_dates_times.html#id5">Сравнительный анализ</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="standard_library_strings.html">Стандартная библиотека: Строки</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_strings.html#id2">Операции со строками</a></li>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_strings.html#id3">Ограничение строк фиксированной длины</a></li>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_strings.html#id4">Ограниченные строки</a></li>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_strings.html#unboundedstrings">Неограниченные строки</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="standard_library_files_streams.html">Стандартная библиотека: Файлы и потоки</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_files_streams.html#id2">Ввод/вывод текста</a></li>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_files_streams.html#id3">Последовательный ввод-вывод</a></li>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_files_streams.html#id4">Прямой ввод / вывод</a></li>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_files_streams.html#id5">Потоковый ввод-вывод</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="standard_library_numerics.html">Стандартная библиотека: Numerics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_numerics.html#id1">Элементарные функции</a></li>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_numerics.html#id2">Генерация случайных чисел</a></li>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_numerics.html#id3">Тип комплексного числа</a></li>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_numerics.html#id4">Манипулирование векторами и матрицами</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Приложения</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#a">Приложение A: Формальные типы настройки</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">Неограниченная версия типа</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#b">Приложение B: Контейнеры</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+  <i data-toggle="wy-nav-top" class="fas fa-bars"></i>
+    <a href="../index.html">
+    <img src="../_static/logo.svg" class="logo" alt="Logo"/>
+  </a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="id1">
+<h1>Приложения<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h1>
+<section id="a">
+<h2>Приложение A: Формальные типы настройки<a class="headerlink" href="#a" title="Permalink to this headline"></a></h2>
+<p>Следующие таблицы содержат примеры доступных формальных типов настраиваемых модулей:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 71%" />
+<col style="width: 29%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Формальный тип</p></th>
+<th class="head"><p>Фактический тип</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Неполный тип</p>
+<p><strong>Формат</strong>: <code class="code highlight ada docutils literal notranslate"><span class="keyword declaration"><span class="pre">type</span></span> <span class="keyword type"><span class="pre">T</span></span><span class="punctuation"><span class="pre">;</span></span></code></p>
+</td>
+<td><p>Любой тип</p></td>
+</tr>
+<tr class="row-odd"><td><p>Дискретный тип</p>
+<p><strong>Формат</strong>: <code class="code highlight ada docutils literal notranslate"><span class="keyword declaration"><span class="pre">type</span></span> <span class="keyword type"><span class="pre">T</span></span> <span class="keyword reserved"><span class="pre">is</span></span> <span class="punctuation"><span class="pre">(&lt;&gt;);</span></span></code></p>
+</td>
+<td><p>Любой целочисленный тип,
+модульный тип или тип
+перечисления</p></td>
+</tr>
+<tr class="row-even"><td><p>Тип диапазона</p>
+<p><strong>Формат</strong>: <code class="code highlight ada docutils literal notranslate"><span class="keyword declaration"><span class="pre">type</span></span> <span class="keyword type"><span class="pre">T</span></span> <span class="keyword reserved"><span class="pre">is</span></span> <span class="keyword reserved"><span class="pre">range</span></span> <span class="punctuation"><span class="pre">&lt;&gt;;</span></span></code></p>
+</td>
+<td><p>Любой целочисленный тип
+со знаком</p></td>
+</tr>
+<tr class="row-odd"><td><p>Модульный тип</p>
+<p><strong>Формат</strong>: <code class="code highlight ada docutils literal notranslate"><span class="keyword declaration"><span class="pre">type</span></span> <span class="keyword type"><span class="pre">T</span></span> <span class="keyword reserved"><span class="pre">is</span></span> <span class="operator word"><span class="pre">mod</span></span> <span class="punctuation"><span class="pre">&lt;&gt;;</span></span></code></p>
+</td>
+<td><p>Любой модульный тип</p></td>
+</tr>
+<tr class="row-even"><td><p>Тип с плавающей запятой</p>
+<p><strong>Формат</strong>: <code class="code highlight ada docutils literal notranslate"><span class="keyword declaration"><span class="pre">type</span></span> <span class="keyword type"><span class="pre">T</span></span> <span class="keyword reserved"><span class="pre">is</span></span> <span class="keyword reserved"><span class="pre">digits</span></span> <span class="punctuation"><span class="pre">&lt;&gt;;</span></span></code></p>
+</td>
+<td><p>Любой тип с плавающей
+запятой</p></td>
+</tr>
+<tr class="row-odd"><td><p>Двоичный тип с фиксированной запятой</p>
+<p><strong>Формат</strong>: <code class="code highlight ada docutils literal notranslate"><span class="keyword declaration"><span class="pre">type</span></span> <span class="keyword type"><span class="pre">T</span></span> <span class="keyword reserved"><span class="pre">is</span></span> <span class="keyword reserved"><span class="pre">delta</span></span> <span class="punctuation"><span class="pre">&lt;&gt;;</span></span></code></p>
+</td>
+<td><p>Любой двоичный тип с
+фиксированной точкой</p></td>
+</tr>
+<tr class="row-even"><td><p>Десятичный тип с фиксированной запятой</p>
+<p><strong>Формат</strong>: <code class="code highlight ada docutils literal notranslate"><span class="keyword declaration"><span class="pre">type</span></span> <span class="keyword type"><span class="pre">T</span></span> <span class="keyword reserved"><span class="pre">is</span></span> <span class="keyword reserved"><span class="pre">delta</span></span> <span class="punctuation"><span class="pre">&lt;&gt;</span></span> <span class="keyword reserved"><span class="pre">digits</span></span> <span class="punctuation"><span class="pre">&lt;&gt;;</span></span></code></p>
+</td>
+<td><p>Любой десятичный тип с
+фиксированной запятой</p></td>
+</tr>
+<tr class="row-odd"><td><p>Определенный неограниченный частный тип</p>
+<p><strong>Формат</strong>: <code class="code highlight ada docutils literal notranslate"><span class="keyword declaration"><span class="pre">type</span></span> <span class="keyword type"><span class="pre">T</span></span> <span class="keyword reserved"><span class="pre">is</span></span> <span class="keyword declaration"><span class="pre">private</span></span><span class="punctuation"><span class="pre">;</span></span></code></p>
+</td>
+<td><p>Любой неограниченный,
+определенный тип</p></td>
+</tr>
+<tr class="row-even"><td><p>Неограниченный частный тип с дискриминантом</p>
+<p><strong>Формат</strong>: <code class="code highlight ada docutils literal notranslate"><span class="keyword declaration"><span class="pre">type</span></span> <span class="keyword type"><span class="pre">T</span></span> <span class="punctuation"><span class="pre">(</span></span><span class="name variable"><span class="pre">D</span></span> <span class="punctuation"><span class="pre">:</span> </span><span class="name variable"><span class="pre">DT</span></span><span class="punctuation"><span class="pre">)</span></span> <span class="keyword reserved"><span class="pre">is</span></span> <span class="keyword declaration"><span class="pre">private</span></span><span class="punctuation"><span class="pre">;</span></span></code></p>
+</td>
+<td><p>Любой неограниченный тип
+с дискриминантом</p></td>
+</tr>
+<tr class="row-odd"><td><p>Тип доступа</p>
+<p><strong>Формат</strong>: <code class="code highlight ada docutils literal notranslate"><span class="keyword declaration"><span class="pre">type</span></span> <span class="keyword type"><span class="pre">A</span></span> <span class="keyword reserved"><span class="pre">is</span></span> <span class="keyword reserved"><span class="pre">access</span></span> <span class="name"><span class="pre">T</span></span><span class="punctuation"><span class="pre">;</span></span></code></p>
+</td>
+<td><p>Любой тип доступа для
+типа T</p></td>
+</tr>
+<tr class="row-even"><td><p>Определенный производный тип</p>
+<p><strong>Формат</strong>: <code class="code highlight ada docutils literal notranslate"><span class="keyword declaration"><span class="pre">type</span></span> <span class="keyword type"><span class="pre">T</span></span> <span class="keyword reserved"><span class="pre">is</span></span> <span class="keyword reserved"><span class="pre">new</span></span> <span class="name"><span class="pre">B</span></span><span class="punctuation"><span class="pre">;</span></span></code></p>
+</td>
+<td><p>Любой конкретный тип,
+полученный из базового
+типа B</p></td>
+</tr>
+<tr class="row-odd"><td><p>Ограниченный частный тип</p>
+<p><strong>Формат</strong>: <code class="code highlight ada docutils literal notranslate"><span class="keyword declaration"><span class="pre">type</span></span> <span class="keyword type"><span class="pre">T</span></span> <span class="keyword reserved"><span class="pre">is</span></span> <span class="keyword reserved"><span class="pre">limited</span></span> <span class="keyword declaration"><span class="pre">private</span></span><span class="punctuation"><span class="pre">;</span></span></code></p>
+</td>
+<td><p>Любой определенный тип,
+ограниченный или нет</p></td>
+</tr>
+<tr class="row-even"><td><p>Неполный тип тега</p>
+<p><strong>Формат</strong>: <code class="code highlight ada docutils literal notranslate"><span class="keyword declaration"><span class="pre">type</span></span> <span class="keyword type"><span class="pre">T</span></span> <span class="keyword reserved"><span class="pre">is</span></span> <span class="keyword reserved"><span class="pre">tagged</span></span><span class="punctuation"><span class="pre">;</span></span></code></p>
+</td>
+<td><p>Любой конкретный,
+определенный,
+тегированный тип</p></td>
+</tr>
+<tr class="row-odd"><td><p>Определенный частный тип с тегами</p>
+<p><strong>Формат</strong>: <code class="code highlight ada docutils literal notranslate"><span class="keyword declaration"><span class="pre">type</span></span> <span class="keyword type"><span class="pre">T</span></span> <span class="keyword reserved"><span class="pre">is</span></span> <span class="keyword reserved"><span class="pre">tagged</span></span> <span class="keyword declaration"><span class="pre">private</span></span><span class="punctuation"><span class="pre">;</span></span></code></p>
+</td>
+<td><p>Любой конкретный,
+определенный,
+тегированный тип</p></td>
+</tr>
+<tr class="row-even"><td><p>Определенный ограниченный частный тип с тегами</p>
+<p><strong>Формат</strong>: <code class="code highlight ada docutils literal notranslate"><span class="keyword declaration"><span class="pre">type</span></span> <span class="keyword type"><span class="pre">T</span></span> <span class="keyword reserved"><span class="pre">is</span></span> <span class="keyword reserved"><span class="pre">tagged</span></span> <span class="keyword reserved"><span class="pre">limited</span></span> <span class="keyword declaration"><span class="pre">private</span></span><span class="punctuation"><span class="pre">;</span></span></code></p>
+</td>
+<td><p>Любой конкретный
+определенный тип с тегом
+, ограниченный или нет.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Определенный абстрактный частный тип с тегами</p>
+<p><strong>Формат</strong>: <code class="code highlight ada docutils literal notranslate"><span class="keyword declaration"><span class="pre">type</span></span> <span class="keyword type"><span class="pre">T</span></span> <span class="keyword reserved"><span class="pre">is</span></span> <span class="keyword reserved"><span class="pre">abstract</span></span> <span class="keyword reserved"><span class="pre">tagged</span></span> <span class="keyword declaration"><span class="pre">private</span></span><span class="punctuation"><span class="pre">;</span></span></code></p>
+</td>
+<td><p>Любой неограниченный,
+определенный тип с тегом
+, абстрактный или
+конкретный</p></td>
+</tr>
+<tr class="row-even"><td><p>Определенный абстрактный ограниченный частный тип с тегами</p>
+<p><strong>Формат</strong>:
+<code class="code highlight ada docutils literal notranslate"><span class="keyword declaration"><span class="pre">type</span></span> <span class="keyword type"><span class="pre">T</span></span> <span class="keyword reserved"><span class="pre">is</span></span> <span class="keyword reserved"><span class="pre">abstract</span></span> <span class="keyword reserved"><span class="pre">tagged</span></span> <span class="keyword reserved"><span class="pre">limited</span></span> <span class="keyword declaration"><span class="pre">private</span></span><span class="punctuation"><span class="pre">;</span></span></code></p>
+</td>
+<td><p>Любой определенный тип с
+тегами, ограниченный или
+нет, абстрактный или
+конкретный</p></td>
+</tr>
+<tr class="row-odd"><td><p>Определенный производный тип с тегами</p>
+<p><strong>Формат</strong>: <code class="code highlight ada docutils literal notranslate"><span class="keyword declaration"><span class="pre">type</span></span> <span class="keyword type"><span class="pre">T</span></span> <span class="keyword reserved"><span class="pre">is</span></span> <span class="keyword reserved"><span class="pre">new</span></span> <span class="name"><span class="pre">B</span></span> <span class="keyword reserved"><span class="pre">with</span></span> <span class="keyword declaration"><span class="pre">private</span></span><span class="punctuation"><span class="pre">;</span></span></code></p>
+</td>
+<td><p>Любой конкретный тип с
+тегами, полученный из
+базового типа B</p></td>
+</tr>
+<tr class="row-even"><td><p>Определенный абстрактный производный тип с тегами</p>
+<p><strong>Формат</strong>: <code class="code highlight ada docutils literal notranslate"><span class="keyword declaration"><span class="pre">type</span></span> <span class="keyword type"><span class="pre">T</span></span> <span class="keyword reserved"><span class="pre">is</span></span> <span class="keyword reserved"><span class="pre">abstract</span></span> <span class="keyword reserved"><span class="pre">new</span></span> <span class="name"><span class="pre">B</span></span> <span class="keyword reserved"><span class="pre">with</span></span> <span class="keyword declaration"><span class="pre">private</span></span><span class="punctuation"><span class="pre">;</span></span></code></p>
+</td>
+<td><p>Любой тип с тегом,
+полученный из базового
+типа B или конкретного
+базового типа B</p></td>
+</tr>
+<tr class="row-odd"><td><p>Тип массива</p>
+<p><strong>Формат</strong>: <code class="code highlight ada docutils literal notranslate"><span class="keyword declaration"><span class="pre">type</span></span> <span class="keyword type"><span class="pre">A</span></span> <span class="keyword reserved"><span class="pre">is</span></span> <span class="keyword reserved"><span class="pre">array</span></span> <span class="punctuation"><span class="pre">(</span></span><span class="name"><span class="pre">R</span></span><span class="punctuation"><span class="pre">)</span></span> <span class="keyword reserved"><span class="pre">of</span></span> <span class="name"><span class="pre">T</span></span><span class="punctuation"><span class="pre">;</span></span></code></p>
+</td>
+<td><p>Любой тип массива с
+диапазоном R, содержащий
+элементы типа T</p></td>
+</tr>
+<tr class="row-even"><td><p>Тип интерфейса</p>
+<p><strong>Формат</strong>: <code class="code highlight ada docutils literal notranslate"><span class="keyword declaration"><span class="pre">type</span></span> <span class="keyword type"><span class="pre">T</span></span> <span class="keyword reserved"><span class="pre">is</span></span> <span class="keyword reserved"><span class="pre">interface</span></span><span class="punctuation"><span class="pre">;</span></span></code></p>
+</td>
+<td><p>Любой тип интерфейса T</p></td>
+</tr>
+<tr class="row-odd"><td><p>Ограниченный тип интерфейса</p>
+<p><strong>Формат</strong>: <code class="code highlight ada docutils literal notranslate"><span class="keyword declaration"><span class="pre">type</span></span> <span class="keyword type"><span class="pre">T</span></span> <span class="keyword reserved"><span class="pre">is</span></span> <span class="keyword reserved"><span class="pre">limited</span></span> <span class="keyword reserved"><span class="pre">interface</span></span><span class="punctuation"><span class="pre">;</span></span></code></p>
+</td>
+<td><p>Любой ограниченный тип
+интерфейса T</p></td>
+</tr>
+<tr class="row-even"><td><p>Тип интерфейса задачи</p>
+<p><strong>Формат</strong>: <code class="code highlight ada docutils literal notranslate"><span class="keyword declaration"><span class="pre">type</span></span> <span class="keyword type"><span class="pre">T</span></span> <span class="keyword reserved"><span class="pre">is</span></span> <span class="keyword declaration"><span class="pre">task</span></span> <span class="keyword reserved"><span class="pre">interface</span></span><span class="punctuation"><span class="pre">;</span></span></code></p>
+</td>
+<td><p>Любой тип интерфейса
+задачи T</p></td>
+</tr>
+<tr class="row-odd"><td><p>Тип синхронизированного интерфейса</p>
+<p><strong>Формат</strong>: <code class="code highlight ada docutils literal notranslate"><span class="keyword declaration"><span class="pre">type</span></span> <span class="keyword type"><span class="pre">T</span></span> <span class="keyword reserved"><span class="pre">is</span></span> <span class="keyword reserved"><span class="pre">synchronized</span></span> <span class="keyword reserved"><span class="pre">interface</span></span><span class="punctuation"><span class="pre">;</span></span></code></p>
+</td>
+<td><p>Любой синхронизированный
+интерфейс типа T</p></td>
+</tr>
+<tr class="row-even"><td><p>Тип защищенного интерфейса</p>
+<p><strong>Формат</strong>: <code class="code highlight ada docutils literal notranslate"><span class="keyword declaration"><span class="pre">type</span></span> <span class="keyword type"><span class="pre">T</span></span> <span class="keyword reserved"><span class="pre">is</span></span> <span class="keyword declaration"><span class="pre">protected</span></span> <span class="keyword reserved"><span class="pre">interface</span></span><span class="punctuation"><span class="pre">;</span></span></code></p>
+</td>
+<td><p>Любой защищенный
+интерфейс типа T</p></td>
+</tr>
+<tr class="row-odd"><td><p>Производный тип интерфейса</p>
+<p><strong>Формат</strong>: <code class="code highlight ada docutils literal notranslate"><span class="keyword declaration"><span class="pre">type</span></span> <span class="keyword type"><span class="pre">T</span></span> <span class="keyword reserved"><span class="pre">is</span></span> <span class="keyword reserved"><span class="pre">new</span></span> <span class="name"><span class="pre">B</span></span> <span class="keyword reserved"><span class="pre">and</span></span> <span class="name"><span class="pre">I</span></span> <span class="keyword reserved"><span class="pre">with</span></span> <span class="keyword declaration"><span class="pre">private</span></span><span class="punctuation"><span class="pre">;</span></span></code></p>
+</td>
+<td><p>Любой тип T, полученный
+из базового типа B и
+интерфейса I</p></td>
+</tr>
+<tr class="row-even"><td><p>Производный тип с несколькими интерфейсами</p>
+<p><strong>Формат</strong>:
+<code class="code highlight ada docutils literal notranslate"><span class="keyword declaration"><span class="pre">type</span></span> <span class="keyword type"><span class="pre">T</span></span> <span class="keyword reserved"><span class="pre">is</span></span> <span class="keyword reserved"><span class="pre">new</span></span> <span class="name"><span class="pre">B</span></span> <span class="keyword reserved"><span class="pre">and</span></span> <span class="name"><span class="pre">I1</span></span> <span class="keyword reserved"><span class="pre">and</span></span> <span class="name"><span class="pre">I2</span></span> <span class="keyword reserved"><span class="pre">with</span></span> <span class="keyword declaration"><span class="pre">private</span></span><span class="punctuation"><span class="pre">;</span></span></code></p>
+</td>
+<td><p>Любой тип T, полученный
+из базового типа B и
+интерфейсов I1 и I2</p></td>
+</tr>
+<tr class="row-odd"><td><p>Абстрактный производный тип интерфейса</p>
+<p><strong>Формат</strong>:
+<code class="code highlight ada docutils literal notranslate"><span class="keyword declaration"><span class="pre">type</span></span> <span class="keyword type"><span class="pre">T</span></span> <span class="keyword reserved"><span class="pre">is</span></span> <span class="keyword reserved"><span class="pre">abstract</span></span> <span class="keyword reserved"><span class="pre">new</span></span> <span class="name"><span class="pre">B</span></span> <span class="keyword reserved"><span class="pre">and</span></span> <span class="name"><span class="pre">I</span></span> <span class="keyword reserved"><span class="pre">with</span></span> <span class="keyword declaration"><span class="pre">private</span></span><span class="punctuation"><span class="pre">;</span></span></code></p>
+</td>
+<td><p>Любой тип T, полученный
+из абстрактного базового
+типа B и интерфейса I</p></td>
+</tr>
+<tr class="row-even"><td><p>Ограниченный производный тип интерфейса</p>
+<p><strong>Формат</strong>:
+<code class="code highlight ada docutils literal notranslate"><span class="keyword declaration"><span class="pre">type</span></span> <span class="keyword type"><span class="pre">T</span></span> <span class="keyword reserved"><span class="pre">is</span></span> <span class="keyword reserved"><span class="pre">limited</span></span> <span class="keyword reserved"><span class="pre">new</span></span> <span class="name"><span class="pre">B</span></span> <span class="keyword reserved"><span class="pre">and</span></span> <span class="name"><span class="pre">I</span></span> <span class="keyword reserved"><span class="pre">with</span></span> <span class="keyword declaration"><span class="pre">private</span></span><span class="punctuation"><span class="pre">;</span></span></code></p>
+</td>
+<td><p>Любой тип T, полученный
+из ограниченного
+базового типа B и
+ограниченного интерфейса</p></td>
+</tr>
+<tr class="row-odd"><td><p>Абстрактный ограниченный производный тип интерфейса</p>
+<p><strong>Формат</strong>:
+<code class="code highlight ada docutils literal notranslate"><span class="keyword declaration"><span class="pre">type</span></span> <span class="keyword type"><span class="pre">T</span></span> <span class="keyword reserved"><span class="pre">is</span></span> <span class="keyword reserved"><span class="pre">abstract</span></span> <span class="keyword reserved"><span class="pre">limited</span></span> <span class="keyword reserved"><span class="pre">new</span></span> <span class="name"><span class="pre">B</span></span> <span class="keyword reserved"><span class="pre">and</span></span> <span class="name"><span class="pre">I</span></span> <span class="keyword reserved"><span class="pre">with</span></span> <span class="keyword declaration"><span class="pre">private</span></span><span class="punctuation"><span class="pre">;</span></span></code></p>
+</td>
+<td><p>Любой тип T, полученный
+из абстрактного огранич.
+енного базового типа B и
+ограниченного интерфейса</p></td>
+</tr>
+<tr class="row-even"><td><p>Тип синхронизированного интерфейса</p>
+<p><strong>Формат</strong>:
+<code class="code highlight ada docutils literal notranslate"><span class="keyword declaration"><span class="pre">type</span></span> <span class="keyword type"><span class="pre">T</span></span> <span class="keyword reserved"><span class="pre">is</span></span> <span class="keyword reserved"><span class="pre">synchronized</span></span> <span class="keyword reserved"><span class="pre">new</span></span> <span class="name"><span class="pre">SI</span></span> <span class="keyword reserved"><span class="pre">with</span></span> <span class="keyword declaration"><span class="pre">private</span></span><span class="punctuation"><span class="pre">;</span></span></code></p>
+</td>
+<td><p>Любой тип T, полученный
+из синхронизированного
+интерфейса SI</p></td>
+</tr>
+<tr class="row-odd"><td><p>Абстрактный синхронизированный тип интерфейса</p>
+<p><strong>Формат</strong>:
+<code class="code highlight ada docutils literal notranslate"><span class="keyword declaration"><span class="pre">type</span></span> <span class="keyword type"><span class="pre">T</span></span> <span class="keyword reserved"><span class="pre">is</span></span> <span class="keyword reserved"><span class="pre">abstract</span></span> <span class="keyword reserved"><span class="pre">synchronized</span></span> <span class="keyword reserved"><span class="pre">new</span></span> <span class="name"><span class="pre">SI</span></span> <span class="keyword reserved"><span class="pre">with</span></span> <span class="keyword declaration"><span class="pre">private</span></span><span class="punctuation"><span class="pre">;</span></span></code></p>
+</td>
+<td><p>Любой тип T, полученный
+из синхронизированного
+интерфейса SI</p></td>
+</tr>
+</tbody>
+</table>
+<section id="id2">
+<h3>Неограниченная версия типа<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h3>
+<p>Многие из приведенных выше примеров могут быть использованы для формальных неопределенных
+(неограниченных) типов:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 71%" />
+<col style="width: 29%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Формальный тип</p></th>
+<th class="head"><p>Фактический тип</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Неопределенный неполный тип</p>
+<p><strong>Формат</strong>: <code class="code highlight ada docutils literal notranslate"><span class="keyword declaration"><span class="pre">type</span></span> <span class="keyword type"><span class="pre">T</span></span> <span class="punctuation"><span class="pre">(&lt;&gt;);</span></span></code></p>
+</td>
+<td><p>Любой тип</p></td>
+</tr>
+<tr class="row-odd"><td><p>Неопределенный неограниченный частный тип</p>
+<p><strong>Формат</strong>: <code class="code highlight ada docutils literal notranslate"><span class="keyword declaration"><span class="pre">type</span></span> <span class="keyword type"><span class="pre">T</span></span> <span class="punctuation"><span class="pre">(&lt;&gt;)</span></span> <span class="keyword reserved"><span class="pre">is</span></span> <span class="keyword declaration"><span class="pre">private</span></span><span class="punctuation"><span class="pre">;</span></span></code></p>
+</td>
+<td><p>Любой неограниченный тип
+неопределенный или
+определенный</p></td>
+</tr>
+<tr class="row-even"><td><p>Неопределенный ограниченный частный тип</p>
+<p><strong>Формат</strong>: <code class="code highlight ada docutils literal notranslate"><span class="keyword declaration"><span class="pre">type</span></span> <span class="keyword type"><span class="pre">T</span></span> <span class="punctuation"><span class="pre">(&lt;&gt;)</span></span> <span class="keyword reserved"><span class="pre">is</span></span> <span class="keyword reserved"><span class="pre">limited</span></span> <span class="keyword declaration"><span class="pre">private</span></span><span class="punctuation"><span class="pre">;</span></span></code></p>
+</td>
+<td><p>Любой тип, ограниченный
+или нет, неопределенный
+или определенный</p></td>
+</tr>
+<tr class="row-odd"><td><p>Неполный неопределенный частный тип с тегами</p>
+<p><strong>Формат</strong>: <code class="code highlight ada docutils literal notranslate"><span class="keyword declaration"><span class="pre">type</span></span> <span class="keyword type"><span class="pre">T</span></span> <span class="punctuation"><span class="pre">(&lt;&gt;)</span></span> <span class="keyword reserved"><span class="pre">is</span></span> <span class="keyword reserved"><span class="pre">tagged</span></span><span class="punctuation"><span class="pre">;</span></span></code></p>
+</td>
+<td><p>Любой конкретный тип с
+тегами, неопределенный
+или определенный</p></td>
+</tr>
+<tr class="row-even"><td><p>Неопределенный частный тип с тегами</p>
+<p><strong>Формат</strong>: <code class="code highlight ada docutils literal notranslate"><span class="keyword declaration"><span class="pre">type</span></span> <span class="keyword type"><span class="pre">T</span></span> <span class="punctuation"><span class="pre">(&lt;&gt;)</span></span> <span class="keyword reserved"><span class="pre">is</span></span> <span class="keyword reserved"><span class="pre">tagged</span></span> <span class="keyword declaration"><span class="pre">private</span></span><span class="punctuation"><span class="pre">;</span></span></code></p>
+</td>
+<td><p>Любой конкретный,
+ограниченный тип с
+тегами, неопределенный
+или определенный</p></td>
+</tr>
+<tr class="row-odd"><td><p>Неопределенный ограниченный частный тип с тегами</p>
+<p><strong>Формат</strong>: <code class="code highlight ada docutils literal notranslate"><span class="keyword declaration"><span class="pre">type</span></span> <span class="keyword type"><span class="pre">T</span></span> <span class="punctuation"><span class="pre">(&lt;&gt;)</span></span> <span class="keyword reserved"><span class="pre">is</span></span> <span class="keyword reserved"><span class="pre">tagged</span></span> <span class="keyword reserved"><span class="pre">limited</span></span> <span class="keyword declaration"><span class="pre">private</span></span><span class="punctuation"><span class="pre">;</span></span></code></p>
+</td>
+<td><p>Любой конкретный тип с
+тегами, ограниченный или
+нет, неопределенный или
+определенный</p></td>
+</tr>
+<tr class="row-even"><td><p>Неопределенный абстрактный частный тип с тегами</p>
+<p><strong>Формат</strong>: <code class="code highlight ada docutils literal notranslate"><span class="keyword declaration"><span class="pre">type</span></span> <span class="keyword type"><span class="pre">T</span></span> <span class="punctuation"><span class="pre">(&lt;&gt;)</span></span> <span class="keyword reserved"><span class="pre">is</span></span> <span class="keyword reserved"><span class="pre">abstract</span></span> <span class="keyword reserved"><span class="pre">tagged</span></span> <span class="keyword declaration"><span class="pre">private</span></span><span class="punctuation"><span class="pre">;</span></span></code></p>
+</td>
+<td><p>Любой неограниченный тип
+с тегами, неопределенный
+или определенный,
+абстрактный или
+конкретный</p></td>
+</tr>
+<tr class="row-odd"><td><p>Неопределенный абстрактный ограниченный частный тип с тегами</p>
+<p><strong>Формат</strong>:
+<code class="code highlight ada docutils literal notranslate"><span class="keyword declaration"><span class="pre">type</span></span> <span class="keyword type"><span class="pre">T</span></span> <span class="punctuation"><span class="pre">(&lt;&gt;)</span></span> <span class="keyword reserved"><span class="pre">is</span></span> <span class="keyword reserved"><span class="pre">abstract</span></span> <span class="keyword reserved"><span class="pre">tagged</span></span> <span class="keyword reserved"><span class="pre">limited</span></span> <span class="keyword declaration"><span class="pre">private</span></span><span class="punctuation"><span class="pre">;</span></span></code></p>
+</td>
+<td><p>Любой тип с тегами,
+ограниченный или нет,
+неопределенный или
+определенный,абстрактный
+или конкретный</p></td>
+</tr>
+<tr class="row-even"><td><p>Неопределенный производный тип с тегами</p>
+<p><strong>Формат</strong>: <code class="code highlight ada docutils literal notranslate"><span class="keyword declaration"><span class="pre">type</span></span> <span class="keyword type"><span class="pre">T</span></span> <span class="punctuation"><span class="pre">(&lt;&gt;)</span></span> <span class="keyword reserved"><span class="pre">is</span></span> <span class="keyword reserved"><span class="pre">new</span></span> <span class="name"><span class="pre">B</span></span> <span class="keyword reserved"><span class="pre">with</span></span> <span class="keyword declaration"><span class="pre">private</span></span><span class="punctuation"><span class="pre">;</span></span></code></p>
+</td>
+<td><p>Любой тип с тегами,
+производный от базового
+типа B, неопределенный
+или определенный</p></td>
+</tr>
+<tr class="row-odd"><td><p>Неопределенный абстрактный производный тип с тегами</p>
+<p><strong>Формат</strong>:
+<code class="code highlight ada docutils literal notranslate"><span class="keyword declaration"><span class="pre">type</span></span> <span class="keyword type"><span class="pre">T</span></span> <span class="punctuation"><span class="pre">(&lt;&gt;)</span></span> <span class="keyword reserved"><span class="pre">is</span></span> <span class="keyword reserved"><span class="pre">abstract</span></span> <span class="keyword reserved"><span class="pre">new</span></span> <span class="name"><span class="pre">B</span></span> <span class="keyword reserved"><span class="pre">with</span></span> <span class="keyword declaration"><span class="pre">private</span></span><span class="punctuation"><span class="pre">;</span></span></code></p>
+</td>
+<td><p>Любой тип с тегами,
+производный от базового
+типа B, неопределенный
+или определенный
+абстрактный или
+конкретный</p></td>
+</tr>
+</tbody>
+</table>
+<p>Те же примеры могут также содержать дискриминанты. В этом случае, <code class="code highlight ada docutils literal notranslate"><span class="punctuation"><span class="pre">(&lt;&gt;)</span></span></code>
+заменяется списком дискриминантов, например: <code class="code highlight ada docutils literal notranslate"><span class="punctuation"><span class="pre">(</span></span><span class="name"><span class="pre">D</span></span><span class="punctuation"><span class="pre">:</span></span> <span class="name"><span class="pre">DT</span></span><span class="punctuation"><span class="pre">)</span></span></code>.</p>
+</section>
+</section>
+<section id="b">
+<span id="containerstable"></span><h2>Приложение B: Контейнеры<a class="headerlink" href="#b" title="Permalink to this headline"></a></h2>
+<p>В следующей таблице показаны все контейнеры, доступные в Ada, включая их версии
+(стандартный, ограниченный, неограниченный, неопределенный):</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 13%" />
+<col style="width: 43%" />
+<col style="width: 6%" />
+<col style="width: 11%" />
+<col style="width: 13%" />
+<col style="width: 14%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Категория</p></th>
+<th class="head"><p>Контейнер</p></th>
+<th class="head"><p>Std</p></th>
+<th class="head"><p>Bounded</p></th>
+<th class="head"><p>Unbounded</p></th>
+<th class="head"><p>Indefinite</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Вектор</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Vectors</span></code></p></td>
+<td><p>Y</p></td>
+<td><p>Y</p></td>
+<td></td>
+<td><p>Y</p></td>
+</tr>
+<tr class="row-odd"><td><p>Список</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Doubly</span> <span class="pre">Linked</span> <span class="pre">Lists</span></code></p></td>
+<td><p>Y</p></td>
+<td><p>Y</p></td>
+<td></td>
+<td><p>Y</p></td>
+</tr>
+<tr class="row-even"><td><p>Карта</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Hashed</span> <span class="pre">Maps</span></code></p></td>
+<td><p>Y</p></td>
+<td><p>Y</p></td>
+<td></td>
+<td><p>Y</p></td>
+</tr>
+<tr class="row-odd"><td><p>Карта</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Ordered</span> <span class="pre">Maps</span></code></p></td>
+<td><p>Y</p></td>
+<td><p>Y</p></td>
+<td></td>
+<td><p>Y</p></td>
+</tr>
+<tr class="row-even"><td><p>Множество</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Hashed</span> <span class="pre">Sets</span></code></p></td>
+<td><p>Y</p></td>
+<td><p>Y</p></td>
+<td></td>
+<td><p>Y</p></td>
+</tr>
+<tr class="row-odd"><td><p>Множество</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Ordered</span> <span class="pre">Sets</span></code></p></td>
+<td><p>Y</p></td>
+<td><p>Y</p></td>
+<td></td>
+<td><p>Y</p></td>
+</tr>
+<tr class="row-even"><td><p>Дерево</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Multiway</span> <span class="pre">Trees</span></code></p></td>
+<td><p>Y</p></td>
+<td><p>Y</p></td>
+<td></td>
+<td><p>Y</p></td>
+</tr>
+<tr class="row-odd"><td><p>Универсаль</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Holders</span></code></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>Y</p></td>
+</tr>
+<tr class="row-even"><td><p>Очередь</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Synchronized</span> <span class="pre">Queue</span> <span class="pre">Interfaces</span></code></p></td>
+<td><p>Y</p></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Очередь</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Synchronized</span> <span class="pre">Queues</span></code></p></td>
+<td></td>
+<td><p>Y</p></td>
+<td><p>Y</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Очередь</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Priority</span> <span class="pre">Queues</span></code></p></td>
+<td></td>
+<td><p>Y</p></td>
+<td><p>Y</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>NOTE: Чтобы получить имя пакета контейнера, замените пробел на <code class="docutils literal notranslate"><span class="pre">_</span></code> в
+его названии. (Например, пакет для <code class="docutils literal notranslate"><span class="pre">Hashed</span> <span class="pre">Maps</span></code> называется <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Hashed_Maps</span></span></code>.)</p>
+<p>В следующей таблице представлены префиксы, применяемые к имени контейнера,
+которые зависят от его версии. Как указано в таблице, стандартная версия не
+имеет связанного с ней префикса.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 29%" />
+<col style="width: 71%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Версия</p></th>
+<th class="head"><p>Префикс именования</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Std</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Bounded</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Bounded_</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Unbounded</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Unbounded_</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Indefinite</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Indefinite_</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          
+
+
+<footer>
+      
+      
+
+      
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+          
+          
+            <a href="standard_library_numerics.html" class="btn btn-neutral" title="Стандартная библиотека: Numerics" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+          
+        </div>
+  
+
+
+  <hr/>
+
+  <div class="legal">
+              Copyright &copy; 2022 AdaCore. All rights reserved.
+              &nbsp;&nbsp;
+              <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/80x15.png" /></a>
+              <br>
+              <a href="https://www.adacore.com/company/legal">Legal</a>
+              &nbsp; |  &nbsp;
+              <a href="https://www.adacore.com/company/privacy">Privacy Policy</a>
+              &nbsp; |  &nbsp;
+              <a href="https://github.com/AdaCore/learn/issues">Report an Issue</a>
+            </div> 
+
+</footer>
+
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+  <button id="scrollToTopBtn" title="Go to top"><i class="fas fa-caret-square-up"></i></button>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+</script>
+
+
+</body>
+</html>

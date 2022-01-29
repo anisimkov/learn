@@ -1,0 +1,1731 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Стандартная библиотека: Контейнеры &mdash; learn.adacore.com</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Стандартная библиотека: Дата и время" href="standard_library_dates_times.html" />
+    <link rel="prev" title="Объектно-ориентированное программирование" href="object_oriented_programming.html" />
+  <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-117428-14"></script>
+<script type="text/javascript">
+  if(!Cookies.get('AdaCore_staff')) {
+    // Global site tag (gtag.js) - Google Analytics
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-117428-14');
+    // End Global site tag (gtag.js) - Google Analytics
+
+    // Google Tag Manager
+    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-KD5HNRR');
+    // End Google Tag Manager
+
+    // Twitter universal website tag code
+    !function(e,t,n,s,u,a){e.twq||(s=e.twq=function(){s.exe?s.exe.apply(s,arguments):s.queue.push(arguments);},s.version='1.1',s.queue=[],u=t.createElement(n),u.async=!0,u.src='//static.ads-twitter.com/uwt.js',a=t.getElementsByTagName(n)[0],a.parentNode.insertBefore(u,a))}(window,document,'script');
+    // Insert Twitter Pixel ID and Standard Event data below
+    twq('init','o3mlc');
+    twq('track','PageView');
+    // End Twitter universal website tag code
+
+    // LinkedIn Tracking Tags
+    _linkedin_partner_id = "482585"; window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || []; window._linkedin_data_partner_ids.push(_linkedin_partner_id);
+    (function(){var s = document.getElementsByTagName("script")[0]; var b = document.createElement("script"); b.type = "text/javascript";b.async = true; b.src = "https://snap.licdn.com/li.lms-analytics/insight.min.js"; s.parentNode.insertBefore(b, s);})();
+    // End LinkedIn Tracking Tags
+  }
+</script>
+  <!--  Essential META Tags -->
+<meta property="og:title" content=“learn.adacore.com">
+<meta property="og:description" content="An interactive learning platform to teach the Ada and SPARK programming languages.">
+<meta property="og:image" content="https://learn.adacore.com/_static/learn_meta_img.jpeg">
+<meta property="og:url" content="https://learn.adacore.com">
+<meta name="twitter:card" content="summary_large_image">
+
+<!--  Non-Essential, But Recommended -->
+<meta property="og:site_name" content="learn.adacore.com">
+<meta name="twitter:image:alt" content="An interactive learning platform to teach the Ada and SPARK programming languages.">
+
+<!--  Non-Essential, But Required for Analytics -->
+<meta name="twitter:site" content="@AdaCoreCompany">
+
+</head>
+
+<body class="wy-body-for-nav">
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KD5HNRR"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  <!-- LinkedIn Tracking Tags (noscript) -->
+  <noscript> <img height="1" width="1" style="display:none;" alt="" src="https://dc.ads.linkedin.com/collect/?pid=482585&fmt=gif" /> </noscript>
+  <!-- End LinkedIn Tracking Tags (noscript) -->
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html">
+            <img src="../_static/logo.svg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Введение</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#id2">История</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#ada">Ada сегодня</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#id6">Философия</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#spark">SPARK</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="imperative_language.html">Императивы языка</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="imperative_language.html#hello-world">Hello world</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imperative_language.html#if-then-else">Императивы языка ‑ If / Then / Else</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imperative_language.html#loops">Императивы языка ‑ Loops</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="imperative_language.html#for">Циклы For</a></li>
+<li class="toctree-l3"><a class="reference internal" href="imperative_language.html#id2">Простой цикл</a></li>
+<li class="toctree-l3"><a class="reference internal" href="imperative_language.html#while">Циклы While</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="imperative_language.html#case">Императивы языка – оператор Case</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imperative_language.html#id3">Императивы языка – декларативные регионы</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imperative_language.html#id4">Императивы языка – условные выражения</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="imperative_language.html#if">Выражение If</a></li>
+<li class="toctree-l3"><a class="reference internal" href="imperative_language.html#id5">Выражение Case</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="subprograms.html">Подпрограммы</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="subprograms.html#id2">Подпрограммы</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="subprograms.html#id3">Вызовы подпрограмм</a></li>
+<li class="toctree-l3"><a class="reference internal" href="subprograms.html#id4">Вложенные подпрограммы</a></li>
+<li class="toctree-l3"><a class="reference internal" href="subprograms.html#id5">Вызов функций</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="subprograms.html#id6">Режимы параметров</a></li>
+<li class="toctree-l2"><a class="reference internal" href="subprograms.html#id7">Вызов процедуры</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="subprograms.html#in">Параметры in</a></li>
+<li class="toctree-l3"><a class="reference internal" href="subprograms.html#in-out">Параметры in out</a></li>
+<li class="toctree-l3"><a class="reference internal" href="subprograms.html#out">Параметры out</a></li>
+<li class="toctree-l3"><a class="reference internal" href="subprograms.html#id8">Предварительное объявление подпрограмм</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="subprograms.html#subprogram-renaming">Переименование</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="modular_programming.html">Модульное программирование</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="modular_programming.html#id2">Пакеты</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modular_programming.html#id3">Использование пакета</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modular_programming.html#id4">Тело пакета</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modular_programming.html#childpackages">Дочерние пакеты</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="modular_programming.html#id6">Дочерний пакет от дочернего пакета</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modular_programming.html#id7">Множественные потомки</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modular_programming.html#id8">Видимость</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="modular_programming.html#package-renaming">Переименование</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="strongly_typed_language.html">Сильно типизированный язык</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="strongly_typed_language.html#whatisatype">Что такое тип?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="strongly_typed_language.html#integers">Целочисленные типы ‑ Integers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="strongly_typed_language.html#id3">Семантика операций</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="strongly_typed_language.html#id4">Беззнаковые типы</a></li>
+<li class="toctree-l2"><a class="reference internal" href="strongly_typed_language.html#enumtypes">Перечисления</a></li>
+<li class="toctree-l2"><a class="reference internal" href="strongly_typed_language.html#id7">Типы с плавающей запятой</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="strongly_typed_language.html#id8">Основные свойства</a></li>
+<li class="toctree-l3"><a class="reference internal" href="strongly_typed_language.html#id9">Точность типов с плавающей запятой</a></li>
+<li class="toctree-l3"><a class="reference internal" href="strongly_typed_language.html#id10">Диапазон типов с плавающей запятой</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="strongly_typed_language.html#id11">Строгая типизация</a></li>
+<li class="toctree-l2"><a class="reference internal" href="strongly_typed_language.html#id12">Производные типы</a></li>
+<li class="toctree-l2"><a class="reference internal" href="strongly_typed_language.html#id13">Подтипы</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="strongly_typed_language.html#subtypealiases">Подтипы в качестве псевдонимов типов</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="records.html">Записи</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="records.html#id2">Объявление типа записи</a></li>
+<li class="toctree-l2"><a class="reference internal" href="records.html#id3">Агрегаты</a></li>
+<li class="toctree-l2"><a class="reference internal" href="records.html#id4">Выбор компонентов</a></li>
+<li class="toctree-l2"><a class="reference internal" href="records.html#record-comp-renaming">Переименование</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="arrays.html">Массивы</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="arrays.html#id2">Объявление типа массива</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays.html#id3">Индексирование</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays.html#id4">Более простые объявления массива</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays.html#id5">Атрибут диапазона</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays.html#unconstrainedarraytypes">Неограниченные массивы</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays.html#string">Предопределенный тип массива: String</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays.html#id7">Ограничения</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays.html#id8">Возврат неограниченных массивов</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays.html#id9">Объявление массивов (2)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays.html#id10">Срезы массива</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arrays.html#object-renaming">Переименование</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="more_about_types.html">Подробнее о типах</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="more_about_types.html#id2">Агрегаты: краткая информация</a></li>
+<li class="toctree-l2"><a class="reference internal" href="more_about_types.html#id3">Перегрузка и квалифицированные выражения</a></li>
+<li class="toctree-l2"><a class="reference internal" href="more_about_types.html#access">Типы Access (указатели)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="more_about_types.html#allocation">Распределение (по типу) ‑ Allocation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="more_about_types.html#id5">Разыменование</a></li>
+<li class="toctree-l3"><a class="reference internal" href="more_about_types.html#id6">Другие особенности</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="more_about_types.html#id7">Взаимно рекурсивные типы</a></li>
+<li class="toctree-l2"><a class="reference internal" href="more_about_types.html#id8">Подробнее о записях</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="more_about_types.html#id9">Типы записей с динамически изменяемым размером</a></li>
+<li class="toctree-l3"><a class="reference internal" href="more_about_types.html#id10">Записи с дискриминантом</a></li>
+<li class="toctree-l3"><a class="reference internal" href="more_about_types.html#c">Записи c вариантами</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="more_about_types.html#id11">Типы с фиксированной точкой</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="more_about_types.html#id12">Десятичные типы с фиксированной точкой</a></li>
+<li class="toctree-l3"><a class="reference internal" href="more_about_types.html#id13">Типы фиксированных точек</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="more_about_types.html#id14">Типы символов</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="privacy.html">Конфиденциальность</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="privacy.html#id3">Базовая инкапсуляция</a></li>
+<li class="toctree-l2"><a class="reference internal" href="privacy.html#id4">Абстрактные типы данных</a></li>
+<li class="toctree-l2"><a class="reference internal" href="privacy.html#id5">Ограниченные типы</a></li>
+<li class="toctree-l2"><a class="reference internal" href="privacy.html#id7">Дочерние пакеты и конфиденциальность</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="generics.html">Настраиваемые модули</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="generics.html#id2">Введение</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generics.html#id3">Формальное объявление типа</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generics.html#id4">Формальное объявление объекта</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generics.html#generic">Определение тела generic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generics.html#id5">Создание экземпляра generic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generics.html#id6">Generic пакеты</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generics.html#id7">Формальные подпрограммы</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generics.html#id8">Пример: экземпляры ввода / вывода</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generics.html#id9">Пример: АТД</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generics.html#swap">Пример: Обмен (Swap)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generics.html#reversing">Пример: Реверсирование (Reversing)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generics.html#id10">Пример: Тестовое приложение</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="exceptions.html">Исключения</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="exceptions.html#id2">Объявление исключения</a></li>
+<li class="toctree-l2"><a class="reference internal" href="exceptions.html#id3">Возбуждение исключения</a></li>
+<li class="toctree-l2"><a class="reference internal" href="exceptions.html#id4">Обработка исключения</a></li>
+<li class="toctree-l2"><a class="reference internal" href="exceptions.html#id5">Предопределенные исключения</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="contracts.html">Контрактное проектирование</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="contracts.html#id2">Пред- и постусловия</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contracts.html#id3">Предикаты</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contracts.html#id4">Инварианты типа</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="interfacing_with_c.html">Взаимодействие с языком C</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="interfacing_with_c.html#id1">Многоязычный проект</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interfacing_with_c.html#id2">Соглашение о типах</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interfacing_with_c.html#id3">Подпрограммы на других языках</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="interfacing_with_c.html#c-ada">Вызов подпрограмм C в Ada</a></li>
+<li class="toctree-l3"><a class="reference internal" href="interfacing_with_c.html#ada-c">Вызов подпрограмм Ada в C</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="interfacing_with_c.html#id4">Внешние переменные</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="interfacing_with_c.html#id5">Использование глобальных переменных C в Ada</a></li>
+<li class="toctree-l3"><a class="reference internal" href="interfacing_with_c.html#id6">Использование переменных Ada в C</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="interfacing_with_c.html#id7">Создание привязок</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="interfacing_with_c.html#id8">Адаптация привязок</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="object_oriented_programming.html">Объектно-ориентированное программирование</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="object_oriented_programming.html#id2">Производные типы</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_oriented_programming.html#id3">Типы с тегами</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_oriented_programming.html#id5">Типы расширяемые классами</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_oriented_programming.html#id6">Операции диспетчеризации</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_oriented_programming.html#id7">Точечная нотация</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_oriented_programming.html#id8">Частные и ограниченные типы с тегами</a></li>
+<li class="toctree-l2"><a class="reference internal" href="object_oriented_programming.html#id9">Типы доступа в классах</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Стандартная библиотека: Контейнеры</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">Векторы</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id3">Создание экземпляра</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">Инициализация</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#prepend-append">Добавление элементов - Prepend и Append</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">Доступ к первому и последнему элементам</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">Итерация</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">Поиск и изменение элементов</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id8">Вставка элементов</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id9">Удаление элементов</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id10">Другие операции</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id11">Множества</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id12">Инициализация и итерация</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id13">Операции с элементами</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id14">Другие операции</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id15">Неопределенные карты</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id16">Хэшированные карты</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id17">Упорядоченные карты</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id18">Сложность</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="standard_library_dates_times.html">Стандартная библиотека: Дата и время</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_dates_times.html#datestimes">Обработка даты и времени</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_dates_times.html#id3">Задержка с использованием даты</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_dates_times.html#id4">В режиме реального времени</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="standard_library_dates_times.html#id5">Сравнительный анализ</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="standard_library_strings.html">Стандартная библиотека: Строки</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_strings.html#id2">Операции со строками</a></li>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_strings.html#id3">Ограничение строк фиксированной длины</a></li>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_strings.html#id4">Ограниченные строки</a></li>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_strings.html#unboundedstrings">Неограниченные строки</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="standard_library_files_streams.html">Стандартная библиотека: Файлы и потоки</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_files_streams.html#id2">Ввод/вывод текста</a></li>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_files_streams.html#id3">Последовательный ввод-вывод</a></li>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_files_streams.html#id4">Прямой ввод / вывод</a></li>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_files_streams.html#id5">Потоковый ввод-вывод</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="standard_library_numerics.html">Стандартная библиотека: Numerics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_numerics.html#id1">Элементарные функции</a></li>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_numerics.html#id2">Генерация случайных чисел</a></li>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_numerics.html#id3">Тип комплексного числа</a></li>
+<li class="toctree-l2"><a class="reference internal" href="standard_library_numerics.html#id4">Манипулирование векторами и матрицами</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="appendices.html">Приложения</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="appendices.html#a">Приложение A: Формальные типы настройки</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="appendices.html#id2">Неограниченная версия типа</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="appendices.html#b">Приложение B: Контейнеры</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+  <i data-toggle="wy-nav-top" class="fas fa-bars"></i>
+    <a href="../index.html">
+    <img src="../_static/logo.svg" class="logo" alt="Logo"/>
+  </a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="containers">
+<span id="id1"></span><h1>Стандартная библиотека: Контейнеры<a class="headerlink" href="#containers" title="Permalink to this headline"></a></h1>
+<p>В предыдущих главах мы использовали массивы в качестве стандартного
+способа, который группирует нескольких объектов определенного типа
+данных. Во многих случаях массивы достаточно хороши для
+манипулирования этими объектами. Однако бывают ситуации, которые
+требуют большей гибкости и более продвинутых операций. Для этих
+случаев Ada предоставляет поддержку контейнеров - таких как векторы и
+наборы - в своей стандартной библиотеке.</p>
+<p>Здесь мы представляем введение в контейнеры. Список всех контейнеров,
+имеющихся в Ada, см. в <a class="reference internal" href="appendices.html#containerstable"><span class="std std-ref">Приложении B</span></a>.</p>
+<section id="id2">
+<h2>Векторы<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h2>
+<p>В следующих разделах мы представляем общий обзор векторов, включая
+создание экземпляров, инициализацию и операции с векторными элементами
+и векторами.</p>
+<section id="id3">
+<h3>Создание экземпляра<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h3>
+<p>Вот пример, показывающий создание и объявление вектора <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">V</span></span></code>:</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kn">with</span> <span class="nn">Ada.Containers.Vectors</span><span class="p">;</span>
+
+<span class="kd">procedure</span> <span class="nf">Show_Vector_Inst</span> <span class="kr">is</span>
+
+   <span class="kd">package</span> <span class="nc">Integer_Vectors</span> <span class="kr">is new</span>
+     <span class="nc">Ada.Containers.Vectors</span>
+       <span class="p">(</span><span class="nv">Index_Type</span>   <span class="p">=&gt;</span> Natural<span class="p">,</span>
+        <span class="nv">Element_Type</span> <span class="p">=&gt;</span> Integer<span class="p">);</span>
+
+   <span class="n">V</span> <span class="p">:</span> <span class="n">Integer_Vectors</span><span class="p">.</span><span class="n">Vector</span><span class="p">;</span>
+<span class="kr">begin</span>
+   <span class="kc">null</span><span class="p">;</span>
+<span class="kr">end</span> <span class="nf">Show_Vector_Inst</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Контейнеры основаны на пакетах generic, поэтому мы не можем просто
+объявить вектор, как если бы объявляли массив определенного типа:</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="p">:</span> <span class="kr">array</span> <span class="p">(</span><span class="mi">1</span> <span class="p">..</span> <span class="mi">10</span><span class="p">)</span> <span class="kr">of</span> <span class="kt">Integer</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Вместо этого нам сначала нужно создать экземпляр одного из этих
+пакетов. Мы используем пакет контейнера (в данном случае
+<code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Ada</span></span><span class="punctuation"><span class="pre">.</span></span><span class="name"><span class="pre">Containers</span></span><span class="punctuation"><span class="pre">.</span></span><span class="name"><span class="pre">Vectors</span></span></code>) и создаем
+его экземпляр, чтобы создать экземпляр generic пакета для желаемого
+типа. Только тогда мы сможем объявить вектор, используя тип из
+созданного пакета. Этот экземпляр необходимо создавать для любого типа
+контейнера из стандартной библиотеки.</p>
+<p>При создании экземпляра <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Integer_Vectors</span></span></code> мы указываем, что вектор
+содержит элементы типа <code class="code highlight ada docutils literal notranslate"><span class="keyword type"><span class="pre">Integer</span></span></code>, указывая его как <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Element_Type</span></span></code>.
+Устанавливая для <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Index_Type</span></span></code> значение <code class="code highlight ada docutils literal notranslate"><span class="keyword type"><span class="pre">Natural</span></span></code>, мы указываем,
+что допустимый диапазон включает все натуральные числа. При желании мы
+могли бы использовать более ограниченный диапазон.</p>
+</section>
+<section id="id4">
+<h3>Инициализация<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h3>
+<p>Один из способов инициализации вектора - это объединение элементов. Мы
+используем оператор <code class="code highlight ada docutils literal notranslate"><span class="operator"><span class="pre">&amp;</span></span></code>, как показано в следующем примере:</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kn">with</span> <span class="nn">Ada.Containers</span><span class="p">;</span> <span class="kn">use</span> <span class="nn">Ada.Containers</span><span class="p">;</span>
+<span class="kn">with</span> <span class="nn">Ada.Containers.Vectors</span><span class="p">;</span>
+
+<span class="kn">with</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span> <span class="kn">use</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>
+
+<span class="kd">procedure</span> <span class="nf">Show_Vector_Init</span> <span class="kr">is</span>
+
+   <span class="kd">package</span> <span class="nc">Integer_Vectors</span> <span class="kr">is new</span>
+     <span class="nc">Ada.Containers.Vectors</span>
+       <span class="p">(</span><span class="nv">Index_Type</span>   <span class="p">=&gt;</span> Natural<span class="p">,</span>
+        <span class="nv">Element_Type</span> <span class="p">=&gt;</span> Integer<span class="p">);</span>
+
+   <span class="kn">use</span> <span class="nn">Integer_Vectors</span><span class="p">;</span>
+
+   <span class="n">V</span> <span class="p">:</span> <span class="n">Vector</span> <span class="p">:=</span> <span class="mi">20</span> <span class="o">&amp;</span> <span class="mi">10</span> <span class="o">&amp;</span> <span class="mi">0</span> <span class="o">&amp;</span> <span class="mi">13</span><span class="p">;</span>
+<span class="kr">begin</span>
+   <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;Vector has &quot;</span>
+             <span class="o">&amp;</span> <span class="n">Count_Type</span><span class="p">&#39;</span><span class="na">Image</span> <span class="p">(</span><span class="n">V</span><span class="p">.</span><span class="n">Length</span><span class="p">)</span>
+             <span class="o">&amp;</span> <span class="s">&quot; elements&quot;</span><span class="p">);</span>
+<span class="kr">end</span> <span class="nf">Show_Vector_Init</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Мы указываем <code class="code highlight ada docutils literal notranslate"><span class="keyword namespace"><span class="pre">use</span></span> <span class="name namespace"><span class="pre">Integer_Vectors</span></span></code>, поэтому у нас есть прямой доступ к
+типам и операциям из созданного пакета. Кроме того, в примере вводится еще
+одна операция с вектором: <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Length</span></span></code>, которая извлекает количество
+элементов в векторе. Мы можем использовать точечную нотацию, потому что
+<code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Vector</span></span></code> - это тегированный тип, что
+позволяет нам писать либо <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">V</span></span><span class="punctuation"><span class="pre">.</span></span><span class="name"><span class="pre">Length</span></span></code>, либо <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Length</span></span> <span class="punctuation"><span class="pre">(</span></span><span class="name"><span class="pre">V</span></span><span class="punctuation"><span class="pre">)</span></span></code>.</p>
+</section>
+<section id="prepend-append">
+<h3>Добавление элементов - Prepend и Append<a class="headerlink" href="#prepend-append" title="Permalink to this headline"></a></h3>
+<p>Вы добавляете элементы в вектор с помощью операций <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Prepend</span></span></code> и
+<code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Append</span></span></code>. Как следует из названий, эти операции добавляют элементы
+в начало или конец вектора соответственно. Например:</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kn">with</span> <span class="nn">Ada.Containers</span><span class="p">;</span> <span class="kn">use</span> <span class="nn">Ada.Containers</span><span class="p">;</span>
+<span class="kn">with</span> <span class="nn">Ada.Containers.Vectors</span><span class="p">;</span>
+
+<span class="kn">with</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span> <span class="kn">use</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>
+
+<span class="kd">procedure</span> <span class="nf">Show_Vector_Append</span> <span class="kr">is</span>
+
+   <span class="kd">package</span> <span class="nc">Integer_Vectors</span> <span class="kr">is new</span>
+     <span class="nc">Ada.Containers.Vectors</span>
+       <span class="p">(</span><span class="nv">Index_Type</span>   <span class="p">=&gt;</span> Natural<span class="p">,</span>
+        <span class="nv">Element_Type</span> <span class="p">=&gt;</span> Integer<span class="p">);</span>
+
+   <span class="kn">use</span> <span class="nn">Integer_Vectors</span><span class="p">;</span>
+
+   <span class="n">V</span> <span class="p">:</span> <span class="n">Vector</span><span class="p">;</span>
+<span class="kr">begin</span>
+   <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;Appending some elements to the vector...&quot;</span><span class="p">);</span>
+   <span class="n">V</span><span class="p">.</span><span class="n">Append</span> <span class="p">(</span><span class="mi">20</span><span class="p">);</span>
+   <span class="n">V</span><span class="p">.</span><span class="n">Append</span> <span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+   <span class="n">V</span><span class="p">.</span><span class="n">Append</span> <span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+   <span class="n">V</span><span class="p">.</span><span class="n">Append</span> <span class="p">(</span><span class="mi">13</span><span class="p">);</span>
+   <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;Finished appending.&quot;</span><span class="p">);</span>
+
+   <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;Prepending some elements to the vector...&quot;</span><span class="p">);</span>
+   <span class="n">V</span><span class="p">.</span><span class="n">Prepend</span> <span class="p">(</span><span class="mi">30</span><span class="p">);</span>
+   <span class="n">V</span><span class="p">.</span><span class="n">Prepend</span> <span class="p">(</span><span class="mi">40</span><span class="p">);</span>
+   <span class="n">V</span><span class="p">.</span><span class="n">Prepend</span> <span class="p">(</span><span class="mi">100</span><span class="p">);</span>
+   <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;Finished prepending.&quot;</span><span class="p">);</span>
+
+   <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;Vector has &quot;</span>
+             <span class="o">&amp;</span> <span class="n">Count_Type</span><span class="p">&#39;</span><span class="na">Image</span> <span class="p">(</span><span class="n">V</span><span class="p">.</span><span class="n">Length</span><span class="p">)</span>
+             <span class="o">&amp;</span> <span class="s">&quot; elements&quot;</span><span class="p">);</span>
+<span class="kr">end</span> <span class="nf">Show_Vector_Append</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>В этом примере элементы помещаются в вектор в следующей
+последовательности: (100, 40, 30, 20, 10, 0, 13).</p>
+<p>Справочное руководство указывает, что сложность наихудшего случая
+должна быть:</p>
+<ul class="simple">
+<li><p>O(log N) для операции <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Append</span></span></code> и</p></li>
+<li><p>O(N log N) для операции <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Prepend</span></span></code>.</p></li>
+</ul>
+</section>
+<section id="id5">
+<h3>Доступ к первому и последнему элементам<a class="headerlink" href="#id5" title="Permalink to this headline"></a></h3>
+<p>Мы получаем доступ к первому и последнему элементам вектора с помощью
+функций <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">First_Element</span></span></code> и <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Last_Element</span></span></code>. Например:</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kn">with</span> <span class="nn">Ada.Containers</span><span class="p">;</span> <span class="kn">use</span> <span class="nn">Ada.Containers</span><span class="p">;</span>
+<span class="kn">with</span> <span class="nn">Ada.Containers.Vectors</span><span class="p">;</span>
+
+<span class="kn">with</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span> <span class="kn">use</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>
+
+<span class="kd">procedure</span> <span class="nf">Show_Vector_First_Last_Element</span> <span class="kr">is</span>
+
+   <span class="kd">package</span> <span class="nc">Integer_Vectors</span> <span class="kr">is new</span>
+     <span class="nc">Ada.Containers.Vectors</span>
+       <span class="p">(</span><span class="nv">Index_Type</span>   <span class="p">=&gt;</span> Natural<span class="p">,</span>
+        <span class="nv">Element_Type</span> <span class="p">=&gt;</span> Integer<span class="p">);</span>
+
+   <span class="kn">use</span> <span class="nn">Integer_Vectors</span><span class="p">;</span>
+
+   <span class="kd">function</span> <span class="nf">Img</span> <span class="p">(</span><span class="nv">I</span> <span class="p">: </span><span class="nv">Integer</span><span class="p">)</span>    <span class="kr">return</span> <span class="kt">String</span>
+     <span class="kr">renames</span> <span class="kt">Integer</span><span class="p">&#39;</span><span class="na">Image</span><span class="p">;</span>
+   <span class="kd">function</span> <span class="nf">Img</span> <span class="p">(</span><span class="nv">I</span> <span class="p">: </span><span class="nv">Count_Type</span><span class="p">)</span> <span class="kr">return</span> <span class="kt">String</span>
+     <span class="kr">renames</span> <span class="n">Count_Type</span><span class="p">&#39;</span><span class="na">Image</span><span class="p">;</span>
+
+   <span class="n">V</span> <span class="p">:</span> <span class="n">Vector</span> <span class="p">:=</span> <span class="mi">20</span> <span class="o">&amp;</span> <span class="mi">10</span> <span class="o">&amp;</span> <span class="mi">0</span> <span class="o">&amp;</span> <span class="mi">13</span><span class="p">;</span>
+<span class="kr">begin</span>
+   <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;Vector has &quot;</span>
+             <span class="o">&amp;</span> <span class="n">Img</span> <span class="p">(</span><span class="n">V</span><span class="p">.</span><span class="n">Length</span><span class="p">)</span>
+             <span class="o">&amp;</span> <span class="s">&quot; elements&quot;</span><span class="p">);</span>
+
+   <span class="c1">--  Using V.First_Element to</span>
+   <span class="c1">--  retrieve first element</span>
+   <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;First element is &quot;</span>
+             <span class="o">&amp;</span> <span class="n">Img</span> <span class="p">(</span><span class="n">V</span><span class="p">.</span><span class="n">First_Element</span><span class="p">));</span>
+
+   <span class="c1">--  Using V.Last_Element to</span>
+   <span class="c1">--  retrieve last element</span>
+   <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;Last element is &quot;</span>
+             <span class="o">&amp;</span> <span class="n">Img</span> <span class="p">(</span><span class="n">V</span><span class="p">.</span><span class="n">Last_Element</span><span class="p">));</span>
+<span class="kr">end</span> <span class="nf">Show_Vector_First_Last_Element</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Вы можете поменять местами элементы, вызвав процедуру <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Swap</span></span></code> и получив
+ссылку (<em>курсор</em>) на первый и последний элементы вектора, вызвав
+<code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">First</span></span></code> и <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Last</span></span></code>.
+Курсор позволяет нам перебирать контейнер и обрабатывать отдельные
+элементы из него.</p>
+<p>С помощью этих операций мы можем написать код, чтобы поменять местами
+первый и последний элементы вектора:</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kn">with</span> <span class="nn">Ada.Containers</span><span class="p">;</span> <span class="kn">use</span> <span class="nn">Ada.Containers</span><span class="p">;</span>
+<span class="kn">with</span> <span class="nn">Ada.Containers.Vectors</span><span class="p">;</span>
+
+<span class="kn">with</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span> <span class="kn">use</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>
+
+<span class="kd">procedure</span> <span class="nf">Show_Vector_First_Last_Element</span> <span class="kr">is</span>
+
+   <span class="kd">package</span> <span class="nc">Integer_Vectors</span> <span class="kr">is new</span>
+     <span class="nc">Ada.Containers.Vectors</span>
+       <span class="p">(</span><span class="nv">Index_Type</span>   <span class="p">=&gt;</span> Natural<span class="p">,</span>
+        <span class="nv">Element_Type</span> <span class="p">=&gt;</span> Integer<span class="p">);</span>
+
+   <span class="kn">use</span> <span class="nn">Integer_Vectors</span><span class="p">;</span>
+
+   <span class="kd">function</span> <span class="nf">Img</span> <span class="p">(</span><span class="nv">I</span> <span class="p">: </span><span class="nv">Integer</span><span class="p">)</span> <span class="kr">return</span> <span class="kt">String</span>
+     <span class="kr">renames</span> <span class="kt">Integer</span><span class="p">&#39;</span><span class="na">Image</span><span class="p">;</span>
+
+   <span class="n">V</span> <span class="p">:</span> <span class="n">Vector</span> <span class="p">:=</span> <span class="mi">20</span> <span class="o">&amp;</span> <span class="mi">10</span> <span class="o">&amp;</span> <span class="mi">0</span> <span class="o">&amp;</span> <span class="mi">13</span><span class="p">;</span>
+<span class="kr">begin</span>
+   <span class="c1">--  We use V.First and V.Last to retrieve</span>
+   <span class="c1">--  cursor for first and last elements.</span>
+   <span class="c1">--  We use V.Swap to swap elements.</span>
+   <span class="n">V</span><span class="p">.</span><span class="n">Swap</span> <span class="p">(</span><span class="n">V</span><span class="p">.</span><span class="n">First</span><span class="p">,</span> <span class="n">V</span><span class="p">.</span><span class="n">Last</span><span class="p">);</span>
+
+   <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;First element is now &quot;</span>
+             <span class="o">&amp;</span> <span class="n">Img</span> <span class="p">(</span><span class="n">V</span><span class="p">.</span><span class="n">First_Element</span><span class="p">));</span>
+   <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;Last element is now &quot;</span>
+             <span class="o">&amp;</span> <span class="n">Img</span> <span class="p">(</span><span class="n">V</span><span class="p">.</span><span class="n">Last_Element</span><span class="p">));</span>
+<span class="kr">end</span> <span class="nf">Show_Vector_First_Last_Element</span><span class="p">;</span>
+</pre></div>
+</div>
+</section>
+<section id="id6">
+<h3>Итерация<a class="headerlink" href="#id6" title="Permalink to this headline"></a></h3>
+<p>Самый простой способ перебрать контейнер - использовать цикл
+<code class="code highlight ada docutils literal notranslate"><span class="keyword reserved"><span class="pre">for</span></span> <span class="name"><span class="pre">E</span></span> <span class="keyword reserved"><span class="pre">of</span></span> <span class="name"><span class="pre">Our_Container</span></span></code>.
+Это дает нам ссылку (<code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">E</span></span></code>) на элемент в текущей позиции. Затем мы можем
+напрямую использовать <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">E</span></span></code>. Например:</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kn">with</span> <span class="nn">Ada.Containers.Vectors</span><span class="p">;</span>
+
+<span class="kn">with</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span> <span class="kn">use</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>
+
+<span class="kd">procedure</span> <span class="nf">Show_Vector_Iteration</span> <span class="kr">is</span>
+
+   <span class="kd">package</span> <span class="nc">Integer_Vectors</span> <span class="kr">is new</span>
+     <span class="nc">Ada.Containers.Vectors</span>
+       <span class="p">(</span><span class="nv">Index_Type</span>   <span class="p">=&gt;</span> Natural<span class="p">,</span>
+        <span class="nv">Element_Type</span> <span class="p">=&gt;</span> Integer<span class="p">);</span>
+
+   <span class="kn">use</span> <span class="nn">Integer_Vectors</span><span class="p">;</span>
+
+   <span class="kd">function</span> <span class="nf">Img</span> <span class="p">(</span><span class="nv">I</span> <span class="p">: </span><span class="nv">Integer</span><span class="p">)</span> <span class="kr">return</span> <span class="kt">String</span>
+     <span class="kr">renames</span> <span class="kt">Integer</span><span class="p">&#39;</span><span class="na">Image</span><span class="p">;</span>
+
+   <span class="n">V</span> <span class="p">:</span> <span class="n">Vector</span> <span class="p">:=</span> <span class="mi">20</span> <span class="o">&amp;</span> <span class="mi">10</span> <span class="o">&amp;</span> <span class="mi">0</span> <span class="o">&amp;</span> <span class="mi">13</span><span class="p">;</span>
+<span class="kr">begin</span>
+   <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;Vector elements are: &quot;</span><span class="p">);</span>
+
+   <span class="c1">--</span>
+   <span class="c1">--  Using for ... of loop to iterate:</span>
+   <span class="c1">--</span>
+   <span class="kr">for</span> <span class="n">E</span> <span class="kr">of</span> <span class="n">V</span> <span class="kr">loop</span>
+      <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;- &quot;</span> <span class="o">&amp;</span> <span class="n">Img</span> <span class="p">(</span><span class="n">E</span><span class="p">));</span>
+   <span class="kr">end</span> <span class="kr">loop</span><span class="p">;</span>
+
+<span class="kr">end</span> <span class="nf">Show_Vector_Iteration</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Этот код отображает каждый элемент из вектора <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">V</span></span></code>.</p>
+<p>Поскольку нам дана ссылка, мы можем отобразить не только значение
+элемента, но и изменить его. Например, мы могли бы легко записать
+цикл, чтобы добавить один к каждому элементу вектора <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">V</span></span></code>:</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kr">for</span> <span class="n">E</span> <span class="kr">of</span> <span class="n">V</span> <span class="kr">loop</span>
+   <span class="n">E</span> <span class="p">:=</span> <span class="n">E</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+<span class="kr">end</span> <span class="kr">loop</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Мы также можем использовать индексы для доступа к векторным элементам.
+Формат аналогичен циклу по элементам массива: мы используем в цикле
+<code class="code highlight ada docutils literal notranslate"><span class="keyword reserved"><span class="pre">for</span></span> <span class="name"><span class="pre">I</span></span> <span class="operator word"><span class="pre">in</span></span> <span class="operator"><span class="pre">&lt;</span></span><span class="keyword reserved"><span class="pre">range</span></span><span class="operator"><span class="pre">&gt;</span></span></code>. Диапазон предоставляется <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">V</span></span><span class="punctuation"><span class="pre">.</span></span><span class="name"><span class="pre">First_Index</span></span></code>
+и <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">V</span></span><span class="punctuation"><span class="pre">.</span></span><span class="name"><span class="pre">Last_Index</span></span></code>. Мы можем получить доступ к
+текущему элементу, используя его как индекс массива: <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">V</span></span> <span class="punctuation"><span class="pre">(</span></span><span class="name"><span class="pre">I</span></span><span class="punctuation"><span class="pre">)</span></span></code>.
+Например:</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kn">with</span> <span class="nn">Ada.Containers.Vectors</span><span class="p">;</span>
+
+<span class="kn">with</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span> <span class="kn">use</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>
+
+<span class="kd">procedure</span> <span class="nf">Show_Vector_Index_Iteration</span> <span class="kr">is</span>
+
+   <span class="kd">package</span> <span class="nc">Integer_Vectors</span> <span class="kr">is new</span>
+     <span class="nc">Ada.Containers.Vectors</span>
+       <span class="p">(</span><span class="nv">Index_Type</span>   <span class="p">=&gt;</span> Natural<span class="p">,</span>
+        <span class="nv">Element_Type</span> <span class="p">=&gt;</span> Integer<span class="p">);</span>
+
+   <span class="kn">use</span> <span class="nn">Integer_Vectors</span><span class="p">;</span>
+
+   <span class="n">V</span> <span class="p">:</span> <span class="n">Vector</span> <span class="p">:=</span> <span class="mi">20</span> <span class="o">&amp;</span> <span class="mi">10</span> <span class="o">&amp;</span> <span class="mi">0</span> <span class="o">&amp;</span> <span class="mi">13</span><span class="p">;</span>
+<span class="kr">begin</span>
+   <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;Vector elements are: &quot;</span><span class="p">);</span>
+
+   <span class="c1">--</span>
+   <span class="c1">--  Using indices in a &quot;for I in ...&quot; loop</span>
+   <span class="c1">--  to iterate:</span>
+   <span class="c1">--</span>
+   <span class="kr">for</span> <span class="n">I</span> <span class="ow">in</span> <span class="n">V</span><span class="p">.</span><span class="n">First_Index</span> <span class="p">..</span> <span class="n">V</span><span class="p">.</span><span class="n">Last_Index</span> <span class="kr">loop</span>
+      <span class="c1">--  Displaying current index I</span>
+      <span class="n">Put</span> <span class="p">(</span><span class="s">&quot;- [&quot;</span>
+           <span class="o">&amp;</span> <span class="n">Extended_Index</span><span class="p">&#39;</span><span class="na">Image</span> <span class="p">(</span><span class="n">I</span><span class="p">)</span>
+           <span class="o">&amp;</span> <span class="s">&quot;] &quot;</span><span class="p">);</span>
+
+      <span class="n">Put</span> <span class="p">(</span><span class="kt">Integer</span><span class="p">&#39;</span><span class="na">Image</span> <span class="p">(</span><span class="n">V</span> <span class="p">(</span><span class="n">I</span><span class="p">)));</span>
+
+      <span class="c1">--  We could also use the V.Element (I)</span>
+      <span class="c1">--  function to retrieve the element at</span>
+      <span class="c1">--  the current index I</span>
+
+      <span class="n">New_Line</span><span class="p">;</span>
+   <span class="kr">end</span> <span class="kr">loop</span><span class="p">;</span>
+
+<span class="kr">end</span> <span class="nf">Show_Vector_Index_Iteration</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Здесь, помимо отображения векторных элементов, мы также отображаем
+каждый индекс <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">I</span></span></code>, точно так же, как то, что мы можем сделать для
+индексов массива. Кроме того, мы можем получить доступ к элементу,
+используя либо краткую форму <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">V</span></span> <span class="punctuation"><span class="pre">(</span></span><span class="name"><span class="pre">I</span></span><span class="punctuation"><span class="pre">)</span></span></code>, либо более длинную форму
+<code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">V</span></span><span class="punctuation"><span class="pre">.</span></span><span class="name"><span class="pre">Element</span></span> <span class="punctuation"><span class="pre">(</span></span><span class="name"><span class="pre">I</span></span><span class="punctuation"><span class="pre">)</span></span></code>, но не <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">V</span></span><span class="punctuation"><span class="pre">.</span></span><span class="name"><span class="pre">I</span></span></code>.</p>
+<p>Как упоминалось в предыдущем разделе, курсоры можно использовать для
+итерации по контейнерам. Для этого используйте функцию <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Iterate</span></span></code>,
+которая извлекает курсор для каждой позиции в векторе. Соответствующий цикл
+имеет формат <code class="code highlight ada docutils literal notranslate"><span class="keyword reserved"><span class="pre">for</span></span> <span class="name"><span class="pre">C</span></span> <span class="operator word"><span class="pre">in</span></span> <span class="name"><span class="pre">V</span></span><span class="punctuation"><span class="pre">.</span></span><span class="name"><span class="pre">Iterate</span></span> <span class="keyword reserved"><span class="pre">loop</span></span></code>. Как и в предыдущем примере с
+использованием индексов, можно снова получить доступ к текущему элементу,
+используя курсор в качестве индекса массива <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">V</span></span> <span class="punctuation"><span class="pre">(</span></span><span class="name"><span class="pre">C</span></span><span class="punctuation"><span class="pre">)</span></span></code>. Например:</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kn">with</span> <span class="nn">Ada.Containers.Vectors</span><span class="p">;</span>
+
+<span class="kn">with</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span> <span class="kn">use</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>
+
+<span class="kd">procedure</span> <span class="nf">Show_Vector_Cursor_Iteration</span> <span class="kr">is</span>
+
+   <span class="kd">package</span> <span class="nc">Integer_Vectors</span> <span class="kr">is new</span>
+     <span class="nc">Ada.Containers.Vectors</span>
+       <span class="p">(</span><span class="nv">Index_Type</span>   <span class="p">=&gt;</span> Natural<span class="p">,</span>
+        <span class="nv">Element_Type</span> <span class="p">=&gt;</span> Integer<span class="p">);</span>
+
+   <span class="kn">use</span> <span class="nn">Integer_Vectors</span><span class="p">;</span>
+
+   <span class="n">V</span> <span class="p">:</span> <span class="n">Vector</span> <span class="p">:=</span> <span class="mi">20</span> <span class="o">&amp;</span> <span class="mi">10</span> <span class="o">&amp;</span> <span class="mi">0</span> <span class="o">&amp;</span> <span class="mi">13</span><span class="p">;</span>
+<span class="kr">begin</span>
+   <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;Vector elements are: &quot;</span><span class="p">);</span>
+
+   <span class="c1">--</span>
+   <span class="c1">--  Use a cursor to iterate in a loop:</span>
+   <span class="c1">--</span>
+   <span class="kr">for</span> <span class="n">C</span> <span class="ow">in</span> <span class="n">V</span><span class="p">.</span><span class="n">Iterate</span> <span class="kr">loop</span>
+      <span class="c1">--  Using To_Index function to retrieve</span>
+      <span class="c1">--  the index for the cursor position</span>
+      <span class="n">Put</span> <span class="p">(</span><span class="s">&quot;- [&quot;</span>
+           <span class="o">&amp;</span> <span class="n">Extended_Index</span><span class="p">&#39;</span><span class="na">Image</span> <span class="p">(</span><span class="n">To_Index</span> <span class="p">(</span><span class="n">C</span><span class="p">))</span>
+           <span class="o">&amp;</span> <span class="s">&quot;] &quot;</span><span class="p">);</span>
+
+      <span class="n">Put</span> <span class="p">(</span><span class="kt">Integer</span><span class="p">&#39;</span><span class="na">Image</span> <span class="p">(</span><span class="n">V</span> <span class="p">(</span><span class="n">C</span><span class="p">)));</span>
+
+      <span class="c1">--  We could use Element (C) to retrieve</span>
+      <span class="c1">--  the vector element for the cursor</span>
+      <span class="c1">--  position</span>
+
+      <span class="n">New_Line</span><span class="p">;</span>
+   <span class="kr">end</span> <span class="kr">loop</span><span class="p">;</span>
+
+   <span class="c1">--  Alternatively, we could iterate with a</span>
+   <span class="c1">--  while-loop:</span>
+   <span class="c1">--</span>
+   <span class="c1">--  declare</span>
+   <span class="c1">--     C : Cursor := V.First;</span>
+   <span class="c1">--  begin</span>
+   <span class="c1">--     while C /= No_Element loop</span>
+   <span class="c1">--        some processing here...</span>
+   <span class="c1">--</span>
+   <span class="c1">--        C := Next (C);</span>
+   <span class="c1">--     end loop;</span>
+   <span class="c1">--  end;</span>
+
+<span class="kr">end</span> <span class="nf">Show_Vector_Cursor_Iteration</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Мы также могли бы использовать более длинную форму <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Element</span></span> <span class="punctuation"><span class="pre">(</span></span><span class="name"><span class="pre">C</span></span><span class="punctuation"><span class="pre">)</span></span></code>, вместо
+<code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">V</span></span> <span class="punctuation"><span class="pre">(</span></span><span class="name"><span class="pre">C</span></span><span class="punctuation"><span class="pre">)</span></span></code>, для доступа к элементу в цикле. В этом примере мы используем
+функцию <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">To_Index</span></span></code> для получения индекса, соответствующего текущему
+курсору.</p>
+<p>Как показано в комментариях после цикла, мы также можем использовать
+цикл <code class="code highlight ada docutils literal notranslate"><span class="keyword reserved"><span class="pre">while</span></span> <span class="punctuation"><span class="pre">...</span></span> <span class="keyword reserved"><span class="pre">loop</span></span></code> для перебора вектора. В этом случае мы должны
+начать с курсора для первого элемента (полученного путем вызова
+<code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">V</span></span><span class="punctuation"><span class="pre">.</span></span><span class="name"><span class="pre">First</span></span></code>), а затем вызвать <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Next</span></span> <span class="punctuation"><span class="pre">(</span></span><span class="name"><span class="pre">C</span></span><span class="punctuation"><span class="pre">)</span></span></code>, чтобы получить курсор для
+последующих элементов. <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Next</span></span> <span class="punctuation"><span class="pre">(</span></span><span class="name"><span class="pre">C</span></span><span class="punctuation"><span class="pre">)</span></span></code> возвращает <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">No_Element</span></span></code>, когда
+курсор достигает конца вектора. Вы можете напрямую изменять элементы,
+используя ссылку.</p>
+<p>Вот как это выглядит при использовании, как индексов, так и курсоров:</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="c1">--  Modify vector elements using index</span>
+<span class="kr">for</span> <span class="n">I</span> <span class="ow">in</span> <span class="n">V</span><span class="p">.</span><span class="n">First_Index</span> <span class="p">..</span> <span class="n">V</span><span class="p">.</span><span class="n">Last_Index</span> <span class="kr">loop</span>
+   <span class="n">V</span> <span class="p">(</span><span class="n">I</span><span class="p">)</span> <span class="p">:=</span> <span class="n">V</span> <span class="p">(</span><span class="n">I</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+<span class="kr">end</span> <span class="kr">loop</span><span class="p">;</span>
+
+<span class="c1">--  Modify vector elements using cursor</span>
+<span class="kr">for</span> <span class="n">C</span> <span class="ow">in</span> <span class="n">V</span><span class="p">.</span><span class="n">Iterate</span> <span class="kr">loop</span>
+   <span class="n">V</span> <span class="p">(</span><span class="n">C</span><span class="p">)</span> <span class="p">:=</span> <span class="n">V</span> <span class="p">(</span><span class="n">C</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+<span class="kr">end</span> <span class="kr">loop</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Справочное руководство требует, чтобы сложность доступа к элементу в
+наихудшем случае составляла O (log N).</p>
+<p>Другой способ изменения элементов вектора - использование
+<em>процедуры обработки</em>, которая берет отдельный элемент и выполняет над ним
+некоторую обработку. Вы можете вызвать <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Update_Element</span></span></code> и передать как
+курсор, так и доступ к процедуре процесса. Например:</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kn">with</span> <span class="nn">Ada.Containers.Vectors</span><span class="p">;</span>
+
+<span class="kn">with</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span> <span class="kn">use</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>
+
+<span class="kd">procedure</span> <span class="nf">Show_Vector_Update</span> <span class="kr">is</span>
+
+   <span class="kd">package</span> <span class="nc">Integer_Vectors</span> <span class="kr">is new</span>
+     <span class="nc">Ada.Containers.Vectors</span>
+       <span class="p">(</span><span class="nv">Index_Type</span>   <span class="p">=&gt;</span> Natural<span class="p">,</span>
+        <span class="nv">Element_Type</span> <span class="p">=&gt;</span> Integer<span class="p">);</span>
+
+   <span class="kn">use</span> <span class="nn">Integer_Vectors</span><span class="p">;</span>
+
+   <span class="kd">procedure</span> <span class="nf">Add_One</span> <span class="p">(</span><span class="nv">I</span> <span class="p">: </span><span class="nv">in</span> <span class="nv">out</span> <span class="nv">Integer</span><span class="p">)</span> <span class="kr">is</span>
+   <span class="kr">begin</span>
+      <span class="n">I</span> <span class="p">:=</span> <span class="n">I</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+   <span class="kr">end</span> <span class="nf">Add_One</span><span class="p">;</span>
+
+   <span class="n">V</span> <span class="p">:</span> <span class="n">Vector</span> <span class="p">:=</span> <span class="mi">20</span> <span class="o">&amp;</span> <span class="mi">10</span> <span class="o">&amp;</span> <span class="mi">12</span><span class="p">;</span>
+<span class="kr">begin</span>
+   <span class="c1">--</span>
+   <span class="c1">--  Use V.Update_Element to process elements</span>
+   <span class="c1">--</span>
+   <span class="kr">for</span> <span class="n">C</span> <span class="ow">in</span> <span class="n">V</span><span class="p">.</span><span class="n">Iterate</span> <span class="kr">loop</span>
+      <span class="n">V</span><span class="p">.</span><span class="n">Update_Element</span> <span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="n">Add_One</span><span class="p">&#39;</span><span class="na">Access</span><span class="p">);</span>
+   <span class="kr">end</span> <span class="kr">loop</span><span class="p">;</span>
+
+<span class="kr">end</span> <span class="nf">Show_Vector_Update</span><span class="p">;</span>
+</pre></div>
+</div>
+</section>
+<section id="id7">
+<h3>Поиск и изменение элементов<a class="headerlink" href="#id7" title="Permalink to this headline"></a></h3>
+<p>Вы можете найти определенный элемент в векторе, получив его индекс.
+<code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Find_Index</span></span></code> извлекает индекс первого элемента, соответствующего
+искомому значению. В качестве альтернативы вы можете использовать
+<code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Find</span></span></code>, чтобы получить курсор, ссылающийся на этот элемент. Например:</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kn">with</span> <span class="nn">Ada.Containers.Vectors</span><span class="p">;</span>
+
+<span class="kn">with</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span> <span class="kn">use</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>
+
+<span class="kd">procedure</span> <span class="nf">Show_Find_Vector_Element</span> <span class="kr">is</span>
+
+   <span class="kd">package</span> <span class="nc">Integer_Vectors</span> <span class="kr">is new</span>
+     <span class="nc">Ada.Containers.Vectors</span>
+       <span class="p">(</span><span class="nv">Index_Type</span>   <span class="p">=&gt;</span> Natural<span class="p">,</span>
+        <span class="nv">Element_Type</span> <span class="p">=&gt;</span> Integer<span class="p">);</span>
+
+   <span class="kn">use</span> <span class="nn">Integer_Vectors</span><span class="p">;</span>
+
+   <span class="n">V</span> <span class="p">:</span> <span class="n">Vector</span> <span class="p">:=</span> <span class="mi">20</span> <span class="o">&amp;</span> <span class="mi">10</span> <span class="o">&amp;</span> <span class="mi">0</span> <span class="o">&amp;</span> <span class="mi">13</span><span class="p">;</span>
+   <span class="n">Idx</span> <span class="p">:</span> <span class="n">Extended_Index</span><span class="p">;</span>
+   <span class="n">C</span>   <span class="p">:</span> <span class="kt">Cursor</span><span class="p">;</span>
+<span class="kr">begin</span>
+   <span class="c1">--  Using Find_Index to retrieve the index</span>
+   <span class="c1">--  of element with value 10</span>
+   <span class="n">Idx</span> <span class="p">:=</span> <span class="n">V</span><span class="p">.</span><span class="n">Find_Index</span> <span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+   <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;Index of element with value 10 is &quot;</span>
+             <span class="o">&amp;</span> <span class="n">Extended_Index</span><span class="p">&#39;</span><span class="na">Image</span> <span class="p">(</span><span class="n">Idx</span><span class="p">));</span>
+
+   <span class="c1">--  Using Find to retrieve the cursor for</span>
+   <span class="c1">--  the element with value 13</span>
+   <span class="n">C</span>   <span class="p">:=</span> <span class="n">V</span><span class="p">.</span><span class="n">Find</span> <span class="p">(</span><span class="mi">13</span><span class="p">);</span>
+   <span class="n">Idx</span> <span class="p">:=</span> <span class="n">To_Index</span> <span class="p">(</span><span class="n">C</span><span class="p">);</span>
+   <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;Index of element with value 13 is &quot;</span>
+             <span class="o">&amp;</span> <span class="n">Extended_Index</span><span class="p">&#39;</span><span class="na">Image</span> <span class="p">(</span><span class="n">Idx</span><span class="p">));</span>
+<span class="kr">end</span> <span class="nf">Show_Find_Vector_Element</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Как мы видели в предыдущем разделе, мы можем получить прямой доступ к
+векторным элементам с помощью индекса или курсора. Однако возникает
+исключение, если мы пытаемся получить доступ к элементу с недопустимым
+индексом или курсором, поэтому мы должны проверить, действителен ли
+индекс или курсор, прежде чем использовать его для доступа к элементу.
+В нашем примере <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Find_Index</span></span></code> или <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Find</span></span></code> могли не найти элемент
+в векторе. Мы проверяем эту возможность, сравнивая индекс с <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">No_Index</span></span></code>
+или курсора с <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">No_Element</span></span></code>. Например:</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="c1">--  Modify vector element using index</span>
+<span class="kr">if</span> <span class="n">Idx</span> <span class="o">/=</span> <span class="n">No_Index</span> <span class="kr">then</span>
+   <span class="n">V</span> <span class="p">(</span><span class="n">Idx</span><span class="p">)</span> <span class="p">:=</span> <span class="mi">11</span><span class="p">;</span>
+<span class="kr">end</span> <span class="kr">if</span><span class="p">;</span>
+
+<span class="c1">--  Modify vector element using cursor</span>
+<span class="kr">if</span> <span class="n">C</span> <span class="o">/=</span> <span class="n">No_Element</span> <span class="kr">then</span>
+   <span class="n">V</span> <span class="p">(</span><span class="n">C</span><span class="p">)</span> <span class="p">:=</span> <span class="mi">14</span><span class="p">;</span>
+<span class="kr">end</span> <span class="kr">if</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Вместо того, чтобы писать <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">V</span></span> <span class="punctuation"><span class="pre">(</span></span><span class="name"><span class="pre">C</span></span><span class="punctuation"><span class="pre">)</span></span> <span class="punctuation"><span class="pre">:=</span></span> <span class="literal number integer"><span class="pre">14</span></span></code>, мы могли бы использовать более
+длинную форму <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">V</span></span><span class="punctuation"><span class="pre">.</span></span><span class="name"><span class="pre">Replace_Element</span></span> <span class="punctuation"><span class="pre">(</span></span><span class="name"><span class="pre">C</span></span><span class="punctuation"><span class="pre">,</span></span> <span class="literal number integer"><span class="pre">14</span></span><span class="punctuation"><span class="pre">)</span></span></code>.</p>
+</section>
+<section id="id8">
+<h3>Вставка элементов<a class="headerlink" href="#id8" title="Permalink to this headline"></a></h3>
+<p>В предыдущих разделах мы видели примеры того, как добавлять элементы в
+вектор:</p>
+<ul class="simple">
+<li><p>с помощью оператора конкатенации (<code class="code highlight ada docutils literal notranslate"><span class="operator"><span class="pre">&amp;</span></span></code>) в объявлении вектора, или</p></li>
+<li><p>вызов процедур <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Prepend</span></span></code> и <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Append</span></span></code>.</p></li>
+</ul>
+<p>Вы можете захотеть вставить элемент в определенную позицию, например,
+перед определенным элементом в векторе. Вы делаете это, вызывая
+<code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Insert</span></span></code>. Например:</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kn">with</span> <span class="nn">Ada.Containers</span><span class="p">;</span> <span class="kn">use</span> <span class="nn">Ada.Containers</span><span class="p">;</span>
+<span class="kn">with</span> <span class="nn">Ada.Containers.Vectors</span><span class="p">;</span>
+
+<span class="kn">with</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span> <span class="kn">use</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>
+
+<span class="kd">procedure</span> <span class="nf">Show_Vector_Insert</span> <span class="kr">is</span>
+
+   <span class="kd">package</span> <span class="nc">Integer_Vectors</span> <span class="kr">is new</span>
+     <span class="nc">Ada.Containers.Vectors</span>
+       <span class="p">(</span><span class="nv">Index_Type</span>   <span class="p">=&gt;</span> Natural<span class="p">,</span>
+        <span class="nv">Element_Type</span> <span class="p">=&gt;</span> Integer<span class="p">);</span>
+
+   <span class="kn">use</span> <span class="nn">Integer_Vectors</span><span class="p">;</span>
+
+   <span class="kd">procedure</span> <span class="nf">Show_Elements</span> <span class="p">(</span><span class="nv">V</span> <span class="p">: </span><span class="nv">Vector</span><span class="p">)</span> <span class="kr">is</span>
+   <span class="kr">begin</span>
+      <span class="n">New_Line</span><span class="p">;</span>
+      <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;Vector has &quot;</span>
+                <span class="o">&amp;</span> <span class="n">Count_Type</span><span class="p">&#39;</span><span class="na">Image</span> <span class="p">(</span><span class="n">V</span><span class="p">.</span><span class="n">Length</span><span class="p">)</span>
+                <span class="o">&amp;</span> <span class="s">&quot; elements&quot;</span><span class="p">);</span>
+
+      <span class="kr">if</span> <span class="ow">not</span> <span class="n">V</span><span class="p">.</span><span class="n">Is_Empty</span> <span class="kr">then</span>
+         <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;Vector elements are: &quot;</span><span class="p">);</span>
+         <span class="kr">for</span> <span class="n">E</span> <span class="kr">of</span> <span class="n">V</span> <span class="kr">loop</span>
+            <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;- &quot;</span> <span class="o">&amp;</span> <span class="kt">Integer</span><span class="p">&#39;</span><span class="na">Image</span> <span class="p">(</span><span class="n">E</span><span class="p">));</span>
+         <span class="kr">end</span> <span class="kr">loop</span><span class="p">;</span>
+      <span class="kr">end</span> <span class="kr">if</span><span class="p">;</span>
+   <span class="kr">end</span> <span class="nf">Show_Elements</span><span class="p">;</span>
+
+   <span class="n">V</span> <span class="p">:</span> <span class="n">Vector</span> <span class="p">:=</span> <span class="mi">20</span> <span class="o">&amp;</span> <span class="mi">10</span> <span class="o">&amp;</span> <span class="mi">12</span><span class="p">;</span>
+   <span class="n">C</span> <span class="p">:</span> <span class="kt">Cursor</span><span class="p">;</span>
+<span class="kr">begin</span>
+   <span class="n">Show_Elements</span> <span class="p">(</span><span class="n">V</span><span class="p">);</span>
+
+   <span class="n">New_Line</span><span class="p">;</span>
+   <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;Adding element with value 9 (before 10)...&quot;</span><span class="p">);</span>
+
+   <span class="c1">--</span>
+   <span class="c1">--  Using V.Insert to insert the element</span>
+   <span class="c1">--  into the vector</span>
+   <span class="c1">--</span>
+   <span class="n">C</span> <span class="p">:=</span> <span class="n">V</span><span class="p">.</span><span class="n">Find</span> <span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+   <span class="kr">if</span> <span class="n">C</span> <span class="o">/=</span> <span class="n">No_Element</span> <span class="kr">then</span>
+      <span class="n">V</span><span class="p">.</span><span class="n">Insert</span> <span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="mi">9</span><span class="p">);</span>
+   <span class="kr">end</span> <span class="kr">if</span><span class="p">;</span>
+
+   <span class="n">Show_Elements</span> <span class="p">(</span><span class="n">V</span><span class="p">);</span>
+
+<span class="kr">end</span> <span class="nf">Show_Vector_Insert</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>В этом примере мы ищем элемент со значением 10. Если он найден, перед
+ним вставляется элемент со значением 9.</p>
+</section>
+<section id="id9">
+<h3>Удаление элементов<a class="headerlink" href="#id9" title="Permalink to this headline"></a></h3>
+<p>Вы можете удалить элементы из вектора, передав действительный индекс
+или курсор в процедуру удаления <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Delete</span></span></code>. Если мы объединим это с
+функциями <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Find_Index</span></span></code> и <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Find</span></span></code> из предыдущего раздела, мы
+сможем написать программу, которая ищет определенный элемент и удаляет
+его, если он найден:</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kn">with</span> <span class="nn">Ada.Containers.Vectors</span><span class="p">;</span>
+
+<span class="kn">with</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span> <span class="kn">use</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>
+
+<span class="kd">procedure</span> <span class="nf">Show_Remove_Vector_Element</span> <span class="kr">is</span>
+   <span class="kd">package</span> <span class="nc">Integer_Vectors</span> <span class="kr">is new</span>
+     <span class="nc">Ada.Containers.Vectors</span>
+       <span class="p">(</span><span class="nv">Index_Type</span>   <span class="p">=&gt;</span> Natural<span class="p">,</span>
+        <span class="nv">Element_Type</span> <span class="p">=&gt;</span> Integer<span class="p">);</span>
+
+   <span class="kn">use</span> <span class="nn">Integer_Vectors</span><span class="p">;</span>
+
+   <span class="n">V</span> <span class="p">:</span> <span class="n">Vector</span> <span class="p">:=</span> <span class="mi">20</span> <span class="o">&amp;</span> <span class="mi">10</span> <span class="o">&amp;</span> <span class="mi">0</span> <span class="o">&amp;</span> <span class="mi">13</span> <span class="o">&amp;</span> <span class="mi">10</span> <span class="o">&amp;</span> <span class="mi">13</span><span class="p">;</span>
+   <span class="n">Idx</span> <span class="p">:</span> <span class="n">Extended_Index</span><span class="p">;</span>
+   <span class="n">C</span>   <span class="p">:</span> <span class="kt">Cursor</span><span class="p">;</span>
+<span class="kr">begin</span>
+   <span class="c1">--  Use Find_Index to retrieve index of</span>
+   <span class="c1">--  the element with value 10</span>
+   <span class="n">Idx</span> <span class="p">:=</span> <span class="n">V</span><span class="p">.</span><span class="n">Find_Index</span> <span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+
+   <span class="c1">--  Checking whether index is valid</span>
+   <span class="kr">if</span> <span class="n">Idx</span> <span class="o">/=</span> <span class="n">No_Index</span> <span class="kr">then</span>
+      <span class="c1">--  Removing element using V.Delete</span>
+      <span class="n">V</span><span class="p">.</span><span class="n">Delete</span> <span class="p">(</span><span class="n">Idx</span><span class="p">);</span>
+   <span class="kr">end</span> <span class="kr">if</span><span class="p">;</span>
+
+   <span class="c1">--  Use Find to retrieve cursor for</span>
+   <span class="c1">--  the element with value 13</span>
+   <span class="n">C</span> <span class="p">:=</span> <span class="n">V</span><span class="p">.</span><span class="n">Find</span> <span class="p">(</span><span class="mi">13</span><span class="p">);</span>
+
+   <span class="c1">--  Check whether index is valid</span>
+   <span class="kr">if</span> <span class="n">C</span> <span class="o">/=</span> <span class="n">No_Element</span> <span class="kr">then</span>
+      <span class="c1">--  Remove element using V.Delete</span>
+      <span class="n">V</span><span class="p">.</span><span class="n">Delete</span> <span class="p">(</span><span class="n">C</span><span class="p">);</span>
+   <span class="kr">end</span> <span class="kr">if</span><span class="p">;</span>
+
+<span class="kr">end</span> <span class="nf">Show_Remove_Vector_Element</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Мы можем расширить этот подход, чтобы удалить все элементы,
+соответствующие определенному значению. Нам просто нужно продолжать
+поиск элемента в цикле, пока мы не получим недопустимый индекс или
+курсор. Например:</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kn">with</span> <span class="nn">Ada.Containers</span><span class="p">;</span> <span class="kn">use</span> <span class="nn">Ada.Containers</span><span class="p">;</span>
+<span class="kn">with</span> <span class="nn">Ada.Containers.Vectors</span><span class="p">;</span>
+
+<span class="kn">with</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span> <span class="kn">use</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>
+
+<span class="kd">procedure</span> <span class="nf">Show_Remove_Vector_Elements</span> <span class="kr">is</span>
+
+   <span class="kd">package</span> <span class="nc">Integer_Vectors</span> <span class="kr">is new</span>
+     <span class="nc">Ada.Containers.Vectors</span>
+       <span class="p">(</span><span class="nv">Index_Type</span>   <span class="p">=&gt;</span> Natural<span class="p">,</span>
+        <span class="nv">Element_Type</span> <span class="p">=&gt;</span> Integer<span class="p">);</span>
+
+   <span class="kn">use</span> <span class="nn">Integer_Vectors</span><span class="p">;</span>
+
+   <span class="kd">procedure</span> <span class="nf">Show_Elements</span> <span class="p">(</span><span class="nv">V</span> <span class="p">: </span><span class="nv">Vector</span><span class="p">)</span> <span class="kr">is</span>
+   <span class="kr">begin</span>
+      <span class="n">New_Line</span><span class="p">;</span>
+      <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;Vector has &quot;</span>
+                <span class="o">&amp;</span> <span class="n">Count_Type</span><span class="p">&#39;</span><span class="na">Image</span> <span class="p">(</span><span class="n">V</span><span class="p">.</span><span class="n">Length</span><span class="p">)</span>
+                <span class="o">&amp;</span> <span class="s">&quot; elements&quot;</span><span class="p">);</span>
+
+      <span class="kr">if</span> <span class="ow">not</span> <span class="n">V</span><span class="p">.</span><span class="n">Is_Empty</span> <span class="kr">then</span>
+         <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;Vector elements are: &quot;</span><span class="p">);</span>
+         <span class="kr">for</span> <span class="n">E</span> <span class="kr">of</span> <span class="n">V</span> <span class="kr">loop</span>
+            <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;- &quot;</span> <span class="o">&amp;</span> <span class="kt">Integer</span><span class="p">&#39;</span><span class="na">Image</span> <span class="p">(</span><span class="n">E</span><span class="p">));</span>
+         <span class="kr">end</span> <span class="kr">loop</span><span class="p">;</span>
+      <span class="kr">end</span> <span class="kr">if</span><span class="p">;</span>
+   <span class="kr">end</span> <span class="nf">Show_Elements</span><span class="p">;</span>
+
+   <span class="n">V</span> <span class="p">:</span> <span class="n">Vector</span> <span class="p">:=</span> <span class="mi">20</span> <span class="o">&amp;</span> <span class="mi">10</span> <span class="o">&amp;</span> <span class="mi">0</span> <span class="o">&amp;</span> <span class="mi">13</span> <span class="o">&amp;</span> <span class="mi">10</span> <span class="o">&amp;</span> <span class="mi">14</span> <span class="o">&amp;</span> <span class="mi">13</span><span class="p">;</span>
+<span class="kr">begin</span>
+   <span class="n">Show_Elements</span> <span class="p">(</span><span class="n">V</span><span class="p">);</span>
+
+   <span class="c1">--</span>
+   <span class="c1">--  Remove elements using an index</span>
+   <span class="c1">--</span>
+   <span class="kr">declare</span>
+      <span class="no">E</span> <span class="p">:</span> <span class="kr">constant</span> <span class="kt">Integer</span> <span class="p">:=</span> <span class="mi">10</span><span class="p">;</span>
+      <span class="n">I</span> <span class="p">:</span> <span class="n">Extended_Index</span><span class="p">;</span>
+   <span class="kr">begin</span>
+      <span class="n">New_Line</span><span class="p">;</span>
+      <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;Removing all elements with value of &quot;</span>
+                <span class="o">&amp;</span> <span class="kt">Integer</span><span class="p">&#39;</span><span class="na">Image</span> <span class="p">(</span><span class="n">E</span><span class="p">)</span> <span class="o">&amp;</span> <span class="s">&quot;...&quot;</span><span class="p">);</span>
+      <span class="kr">loop</span>
+         <span class="n">I</span> <span class="p">:=</span> <span class="n">V</span><span class="p">.</span><span class="n">Find_Index</span> <span class="p">(</span><span class="n">E</span><span class="p">);</span>
+         <span class="kr">exit</span> <span class="kr">when</span> <span class="n">I</span> <span class="o">=</span> <span class="n">No_Index</span><span class="p">;</span>
+         <span class="n">V</span><span class="p">.</span><span class="n">Delete</span> <span class="p">(</span><span class="n">I</span><span class="p">);</span>
+      <span class="kr">end</span> <span class="kr">loop</span><span class="p">;</span>
+   <span class="kr">end</span><span class="p">;</span>
+
+   <span class="c1">--</span>
+   <span class="c1">--  Remove elements using a cursor</span>
+   <span class="c1">--</span>
+   <span class="kr">declare</span>
+      <span class="no">E</span> <span class="p">:</span> <span class="kr">constant</span> <span class="kt">Integer</span> <span class="p">:=</span> <span class="mi">13</span><span class="p">;</span>
+      <span class="n">C</span> <span class="p">:</span> <span class="kt">Cursor</span><span class="p">;</span>
+   <span class="kr">begin</span>
+      <span class="n">New_Line</span><span class="p">;</span>
+      <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;Removing all elements with value of &quot;</span>
+                <span class="o">&amp;</span> <span class="kt">Integer</span><span class="p">&#39;</span><span class="na">Image</span> <span class="p">(</span><span class="n">E</span><span class="p">)</span> <span class="o">&amp;</span> <span class="s">&quot;...&quot;</span><span class="p">);</span>
+      <span class="kr">loop</span>
+         <span class="n">C</span> <span class="p">:=</span> <span class="n">V</span><span class="p">.</span><span class="n">Find</span> <span class="p">(</span><span class="n">E</span><span class="p">);</span>
+         <span class="kr">exit</span> <span class="kr">when</span> <span class="n">C</span> <span class="o">=</span> <span class="n">No_Element</span><span class="p">;</span>
+         <span class="n">V</span><span class="p">.</span><span class="n">Delete</span> <span class="p">(</span><span class="n">C</span><span class="p">);</span>
+      <span class="kr">end</span> <span class="kr">loop</span><span class="p">;</span>
+   <span class="kr">end</span><span class="p">;</span>
+
+   <span class="n">Show_Elements</span> <span class="p">(</span><span class="n">V</span><span class="p">);</span>
+<span class="kr">end</span> <span class="nf">Show_Remove_Vector_Elements</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>В этом примере мы удаляем из вектора все элементы со значением 10,
+получая их индекс. Точно так же мы удаляем все элементы со значением
+13, извлекая их курсор.</p>
+</section>
+<section id="id10">
+<h3>Другие операции<a class="headerlink" href="#id10" title="Permalink to this headline"></a></h3>
+<p>Мы видели некоторые операции с векторными элементами. Здесь мы увидим
+операции с вектором в целом. Наиболее заметным является объединение
+нескольких векторов, но мы также увидим операции с векторами, такие
+как операции сортировки и сортировки слияния, которые рассматривают
+вектор как последовательность элементов и работают с вектором, при
+этом учитывают отношения элементов друг к другу.</p>
+<p>Мы выполняем конкатенацию векторов с помощью оператора <code class="code highlight ada docutils literal notranslate"><span class="operator"><span class="pre">&amp;</span></span></code> для векторов.
+Рассмотрим два вектора <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">V1</span></span></code> и <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">V2</span></span></code>. Мы можем объединить их,
+выполнив <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">V</span></span> <span class="punctuation"><span class="pre">:=</span></span> <span class="name"><span class="pre">V1</span></span> <span class="operator"><span class="pre">&amp;</span></span> <span class="name"><span class="pre">V2</span></span></code>. Результирующий вектор содержится в <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">V</span></span></code>.</p>
+<p>Общий пакет <code class="code highlight ada docutils literal notranslate"><span class="keyword declaration"><span class="pre">Generic</span></span><span class="literal number integer"><span class="pre">_</span></span><span class="name"><span class="pre">Sorting</span></span></code> является дочерним пакетом
+<code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Ada</span></span><span class="punctuation"><span class="pre">.</span></span><span class="name"><span class="pre">Containers</span></span><span class="punctuation"><span class="pre">.</span></span><span class="name"><span class="pre">Vectors</span></span></code>. Он содержит операции
+сортировки и объединения. Поскольку это общий пакет, вы не можете
+использовать его напрямую, но должны создать его экземпляр. Чтобы
+использовать эти операции с вектором целочисленных значений
+(<code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Integer_Vectors</span></span></code> в нашем
+примере), вам необходимо создать его непосредственно как дочерний
+элемент <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Integer_Vectors</span></span></code>. Следующий пример поясняет, как это сделать.</p>
+<p>После создания экземпляра <code class="code highlight ada docutils literal notranslate"><span class="keyword declaration"><span class="pre">Generic</span></span><span class="literal number integer"><span class="pre">_</span></span><span class="name"><span class="pre">Sorting</span></span></code> мы делаем все операции
+доступными для нас с
+помощью оператора <code class="code highlight ada docutils literal notranslate"><span class="keyword namespace"><span class="pre">use</span></span></code>. Затем мы можем вызвать <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Sort</span></span></code>, чтобы
+отсортировать
+вектор, и <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Merge</span></span></code>, чтобы объединить один вектор с другим.</p>
+<p>В следующем примере представлен код, который управляет тремя векторами
+(<code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">V1</span></span></code>, <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">V2</span></span></code>, <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">V3</span></span></code>) с помощью операций конкатенации,
+сортировки и слияния:</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kn">with</span> <span class="nn">Ada.Containers</span><span class="p">;</span> <span class="kn">use</span> <span class="nn">Ada.Containers</span><span class="p">;</span>
+<span class="kn">with</span> <span class="nn">Ada.Containers.Vectors</span><span class="p">;</span>
+
+<span class="kn">with</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span> <span class="kn">use</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>
+
+<span class="kd">procedure</span> <span class="nf">Show_Vector_Ops</span> <span class="kr">is</span>
+
+   <span class="kd">package</span> <span class="nc">Integer_Vectors</span> <span class="kr">is new</span>
+     <span class="nc">Ada.Containers.Vectors</span>
+       <span class="p">(</span><span class="nv">Index_Type</span>   <span class="p">=&gt;</span> Natural<span class="p">,</span>
+        <span class="nv">Element_Type</span> <span class="p">=&gt;</span> Integer<span class="p">);</span>
+
+   <span class="kd">package</span> <span class="nc">Integer_Vectors_Sorting</span> <span class="kr">is new</span> <span class="nc">Integer_Vectors.Generic_Sorting</span><span class="p">;</span>
+
+   <span class="kn">use</span> <span class="nn">Integer_Vectors</span><span class="p">;</span>
+   <span class="kn">use</span> <span class="nn">Integer_Vectors_Sorting</span><span class="p">;</span>
+
+   <span class="kd">procedure</span> <span class="nf">Show_Elements</span> <span class="p">(</span><span class="nv">V</span> <span class="p">: </span><span class="nv">Vector</span><span class="p">)</span> <span class="kr">is</span>
+   <span class="kr">begin</span>
+      <span class="n">New_Line</span><span class="p">;</span>
+      <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;Vector has &quot;</span>
+                <span class="o">&amp;</span> <span class="n">Count_Type</span><span class="p">&#39;</span><span class="na">Image</span> <span class="p">(</span><span class="n">V</span><span class="p">.</span><span class="n">Length</span><span class="p">)</span>
+                <span class="o">&amp;</span> <span class="s">&quot; elements&quot;</span><span class="p">);</span>
+
+      <span class="kr">if</span> <span class="ow">not</span> <span class="n">V</span><span class="p">.</span><span class="n">Is_Empty</span> <span class="kr">then</span>
+         <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;Vector elements are: &quot;</span><span class="p">);</span>
+         <span class="kr">for</span> <span class="n">E</span> <span class="kr">of</span> <span class="n">V</span> <span class="kr">loop</span>
+            <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;- &quot;</span> <span class="o">&amp;</span> <span class="kt">Integer</span><span class="p">&#39;</span><span class="na">Image</span> <span class="p">(</span><span class="n">E</span><span class="p">));</span>
+         <span class="kr">end</span> <span class="kr">loop</span><span class="p">;</span>
+      <span class="kr">end</span> <span class="kr">if</span><span class="p">;</span>
+   <span class="kr">end</span> <span class="nf">Show_Elements</span><span class="p">;</span>
+
+   <span class="n">V</span><span class="p">,</span> <span class="n">V1</span><span class="p">,</span> <span class="n">V2</span><span class="p">,</span> <span class="n">V3</span> <span class="p">:</span> <span class="n">Vector</span><span class="p">;</span>
+<span class="kr">begin</span>
+   <span class="n">V1</span> <span class="p">:=</span> <span class="mi">10</span> <span class="o">&amp;</span> <span class="mi">12</span> <span class="o">&amp;</span> <span class="mi">18</span><span class="p">;</span>
+   <span class="n">V2</span> <span class="p">:=</span> <span class="mi">11</span> <span class="o">&amp;</span> <span class="mi">13</span> <span class="o">&amp;</span> <span class="mi">19</span><span class="p">;</span>
+   <span class="n">V3</span> <span class="p">:=</span> <span class="mi">15</span> <span class="o">&amp;</span> <span class="mi">19</span><span class="p">;</span>
+
+   <span class="n">New_Line</span><span class="p">;</span>
+   <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;---- V1 ----&quot;</span><span class="p">);</span>
+   <span class="n">Show_Elements</span> <span class="p">(</span><span class="n">V1</span><span class="p">);</span>
+
+   <span class="n">New_Line</span><span class="p">;</span>
+   <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;---- V2 ----&quot;</span><span class="p">);</span>
+   <span class="n">Show_Elements</span> <span class="p">(</span><span class="n">V2</span><span class="p">);</span>
+
+   <span class="n">New_Line</span><span class="p">;</span>
+   <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;---- V3 ----&quot;</span><span class="p">);</span>
+   <span class="n">Show_Elements</span> <span class="p">(</span><span class="n">V3</span><span class="p">);</span>
+
+   <span class="n">New_Line</span><span class="p">;</span>
+   <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;Concatenating V1, V2 and V3 into V:&quot;</span><span class="p">);</span>
+
+   <span class="n">V</span> <span class="p">:=</span> <span class="n">V1</span> <span class="o">&amp;</span> <span class="n">V2</span> <span class="o">&amp;</span> <span class="n">V3</span><span class="p">;</span>
+
+   <span class="n">Show_Elements</span> <span class="p">(</span><span class="n">V</span><span class="p">);</span>
+
+   <span class="n">New_Line</span><span class="p">;</span>
+   <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;Sorting V:&quot;</span><span class="p">);</span>
+
+   <span class="n">Sort</span> <span class="p">(</span><span class="n">V</span><span class="p">);</span>
+
+   <span class="n">Show_Elements</span> <span class="p">(</span><span class="n">V</span><span class="p">);</span>
+
+   <span class="n">New_Line</span><span class="p">;</span>
+   <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;Merging V2 into V1:&quot;</span><span class="p">);</span>
+
+   <span class="n">Merge</span> <span class="p">(</span><span class="n">V1</span><span class="p">,</span> <span class="n">V2</span><span class="p">);</span>
+
+   <span class="n">Show_Elements</span> <span class="p">(</span><span class="n">V1</span><span class="p">);</span>
+
+<span class="kr">end</span> <span class="nf">Show_Vector_Ops</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Справочное руководство требует, чтобы худшей сложностью вызова для
+сортировки <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Sort</span></span></code> было O(Nsup:<cite>2</cite>) и средняя сложность должна
+быть лучше, чем O(Nsup:<cite>2</cite>).</p>
+</section>
+</section>
+<section id="id11">
+<h2>Множества<a class="headerlink" href="#id11" title="Permalink to this headline"></a></h2>
+<p>Наборы (или множества – set) являются другим классом контейнеров. В то
+время как векторы позволяют вставлять дублированные элементы, наборы
+гарантируют, что дублированных элементов не существует.</p>
+<p>В следующих разделах мы рассмотрим операции, которые вы можете
+выполнять с наборами. Однако, поскольку многие операции с векторами
+аналогичны тем, которые используются для наборов, мы рассмотрим их
+здесь более быстро. Пожалуйста, обратитесь к разделу о векторах для
+более подробного обсуждения.</p>
+<section id="id12">
+<h3>Инициализация и итерация<a class="headerlink" href="#id12" title="Permalink to this headline"></a></h3>
+<p>Чтобы инициализировать набор, вы можете вызвать процедуру <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Insert</span></span></code>.Если
+вы это сделаете, вам нужно убедиться, что не вставляются повторяющиеся
+элементы: если вы попытаетесь вставить дубликат, вы получите
+исключение. Если у вас меньше контроля над вставляемыми элементами,
+поэтому могут быть дубликаты, вы можете вместо этого использовать
+другой вариант:</p>
+<ul class="simple">
+<li><p>версия <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Insert</span></span></code>, которая возвращает логическое значение, указывающее,
+была ли вставка успешной;</p></li>
+<li><p>процедура <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Include</span></span></code>, которая молча игнорирует любую попытку вставить
+дублированный элемент.</p></li>
+</ul>
+<p>Чтобы перебрать набор, вы можете использовать цикл <code class="code highlight ada docutils literal notranslate"><span class="keyword reserved"><span class="pre">for</span></span> <span class="name"><span class="pre">E</span></span> <span class="keyword reserved"><span class="pre">of</span></span> <span class="name"><span class="pre">S</span></span></code>, как вы
+видели для векторов. Это дает вам ссылку на каждый элемент в наборе.</p>
+<p>Посмотрим на пример:</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kn">with</span> <span class="nn">Ada.Containers</span><span class="p">;</span> <span class="kn">use</span> <span class="nn">Ada.Containers</span><span class="p">;</span>
+<span class="kn">with</span> <span class="nn">Ada.Containers.Ordered_Sets</span><span class="p">;</span>
+
+<span class="kn">with</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span> <span class="kn">use</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>
+
+<span class="kd">procedure</span> <span class="nf">Show_Set_Init</span> <span class="kr">is</span>
+
+   <span class="kd">package</span> <span class="nc">Integer_Sets</span> <span class="kr">is new</span>
+     <span class="nc">Ada.Containers.Ordered_Sets</span>
+       <span class="p">(</span><span class="nv">Element_Type</span> <span class="p">=&gt;</span> Integer<span class="p">);</span>
+
+   <span class="kn">use</span> <span class="nn">Integer_Sets</span><span class="p">;</span>
+
+   <span class="n">S</span> <span class="p">:</span> <span class="n">Set</span><span class="p">;</span>
+   <span class="c1">--  Same as:  S : Integer_Sets.Set;</span>
+   <span class="n">C</span> <span class="p">:</span> <span class="kt">Cursor</span><span class="p">;</span>
+   <span class="n">Ins</span> <span class="p">:</span> <span class="kt">Boolean</span><span class="p">;</span>
+<span class="kr">begin</span>
+   <span class="n">S</span><span class="p">.</span><span class="n">Insert</span> <span class="p">(</span><span class="mi">20</span><span class="p">);</span>
+   <span class="n">S</span><span class="p">.</span><span class="n">Insert</span> <span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+   <span class="n">S</span><span class="p">.</span><span class="n">Insert</span> <span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+   <span class="n">S</span><span class="p">.</span><span class="n">Insert</span> <span class="p">(</span><span class="mi">13</span><span class="p">);</span>
+
+   <span class="c1">--  Calling S.Insert(0) now would raise</span>
+   <span class="c1">--  Constraint_Error because this element</span>
+   <span class="c1">--  is already in the set. We instead call a</span>
+   <span class="c1">--  version of Insert that doesn&#39;t raise an</span>
+   <span class="c1">--  exception but instead returns a Boolean</span>
+   <span class="c1">--  indicating the status</span>
+
+   <span class="n">S</span><span class="p">.</span><span class="n">Insert</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">Ins</span><span class="p">);</span>
+   <span class="kr">if</span> <span class="ow">not</span> <span class="n">Ins</span> <span class="kr">then</span>
+      <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;Inserting 0 into set was not successful&quot;</span><span class="p">);</span>
+   <span class="kr">end</span> <span class="kr">if</span><span class="p">;</span>
+
+   <span class="c1">--  We can also call S.Include instead</span>
+   <span class="c1">--  If the element is already present,</span>
+   <span class="c1">--  the set remains unchanged</span>
+   <span class="n">S</span><span class="p">.</span><span class="n">Include</span> <span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+   <span class="n">S</span><span class="p">.</span><span class="n">Include</span> <span class="p">(</span><span class="mi">13</span><span class="p">);</span>
+   <span class="n">S</span><span class="p">.</span><span class="n">Include</span> <span class="p">(</span><span class="mi">14</span><span class="p">);</span>
+
+   <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;Set has &quot;</span>
+             <span class="o">&amp;</span> <span class="n">Count_Type</span><span class="p">&#39;</span><span class="na">Image</span> <span class="p">(</span><span class="n">S</span><span class="p">.</span><span class="n">Length</span><span class="p">)</span>
+             <span class="o">&amp;</span> <span class="s">&quot; elements&quot;</span><span class="p">);</span>
+
+   <span class="c1">--</span>
+   <span class="c1">--  Iterate over set using for .. of loop</span>
+   <span class="c1">--</span>
+   <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;Elements:&quot;</span><span class="p">);</span>
+   <span class="kr">for</span> <span class="n">E</span> <span class="kr">of</span> <span class="n">S</span> <span class="kr">loop</span>
+       <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;- &quot;</span> <span class="o">&amp;</span> <span class="kt">Integer</span><span class="p">&#39;</span><span class="na">Image</span> <span class="p">(</span><span class="n">E</span><span class="p">));</span>
+   <span class="kr">end</span> <span class="kr">loop</span><span class="p">;</span>
+<span class="kr">end</span> <span class="nf">Show_Set_Init</span><span class="p">;</span>
+</pre></div>
+</div>
+</section>
+<section id="id13">
+<h3>Операции с элементами<a class="headerlink" href="#id13" title="Permalink to this headline"></a></h3>
+<p>В этом разделе мы кратко рассмотрим следующие операции над
+множествами:</p>
+<ul class="simple">
+<li><p><code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Delete</span></span></code> и <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Exclude</span></span></code>, чтобы удалить элементы;</p></li>
+<li><p><code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Contains</span></span></code> и <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Find</span></span></code>, чтобы проверить существование элементов.</p></li>
+</ul>
+<p>Чтобы удалить элементы, вы вызываете процедуру <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Delete</span></span></code>. Однако,
+аналогично описанной выше процедуре <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Insert</span></span></code>, <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Delete</span></span></code> вызывает
+исключение, если элемент, подлежащий удалению, отсутствует в наборе. Когда
+элемент может не существовать во время удаления и вы хотите разрешить этот
+случай. Тогда вы можете вызвать процедуру <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Exclude</span></span></code>, которая молча
+игнорирует любую попытку удалить несуществующий элемент.</p>
+<p><code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Contains</span></span></code> возвращает логическое значение Boolean, указывающее,
+содержится ли значение в наборе. <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Find</span></span></code> также ищет элемент в наборе,
+но возвращает курсор на элемент или <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">No_Element</span></span></code>, если элемент не
+существует. Вы можете использовать любую из этих функций для поиска элементов
+в наборе.</p>
+<p>Давайте рассмотрим пример, в котором используются эти операции:</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kn">with</span> <span class="nn">Ada.Containers</span><span class="p">;</span> <span class="kn">use</span> <span class="nn">Ada.Containers</span><span class="p">;</span>
+<span class="kn">with</span> <span class="nn">Ada.Containers.Ordered_Sets</span><span class="p">;</span>
+
+<span class="kn">with</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span> <span class="kn">use</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>
+
+<span class="kd">procedure</span> <span class="nf">Show_Set_Element_Ops</span> <span class="kr">is</span>
+
+   <span class="kd">package</span> <span class="nc">Integer_Sets</span> <span class="kr">is new</span>
+     <span class="nc">Ada.Containers.Ordered_Sets</span>
+       <span class="p">(</span><span class="nv">Element_Type</span> <span class="p">=&gt;</span> Integer<span class="p">);</span>
+
+   <span class="kn">use</span> <span class="nn">Integer_Sets</span><span class="p">;</span>
+
+   <span class="kd">procedure</span> <span class="nf">Show_Elements</span> <span class="p">(</span><span class="nv">S</span> <span class="p">: </span><span class="nv">Set</span><span class="p">)</span> <span class="kr">is</span>
+   <span class="kr">begin</span>
+      <span class="n">New_Line</span><span class="p">;</span>
+      <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;Set has &quot;</span>
+                <span class="o">&amp;</span> <span class="n">Count_Type</span><span class="p">&#39;</span><span class="na">Image</span> <span class="p">(</span><span class="n">S</span><span class="p">.</span><span class="n">Length</span><span class="p">)</span>
+                <span class="o">&amp;</span> <span class="s">&quot; elements&quot;</span><span class="p">);</span>
+      <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;Elements:&quot;</span><span class="p">);</span>
+      <span class="kr">for</span> <span class="n">E</span> <span class="kr">of</span> <span class="n">S</span> <span class="kr">loop</span>
+         <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;- &quot;</span> <span class="o">&amp;</span> <span class="kt">Integer</span><span class="p">&#39;</span><span class="na">Image</span> <span class="p">(</span><span class="n">E</span><span class="p">));</span>
+      <span class="kr">end</span> <span class="kr">loop</span><span class="p">;</span>
+   <span class="kr">end</span> <span class="nf">Show_Elements</span><span class="p">;</span>
+
+   <span class="n">S</span> <span class="p">:</span> <span class="n">Set</span><span class="p">;</span>
+<span class="kr">begin</span>
+   <span class="n">S</span><span class="p">.</span><span class="n">Insert</span> <span class="p">(</span><span class="mi">20</span><span class="p">);</span>
+   <span class="n">S</span><span class="p">.</span><span class="n">Insert</span> <span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+   <span class="n">S</span><span class="p">.</span><span class="n">Insert</span> <span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+   <span class="n">S</span><span class="p">.</span><span class="n">Insert</span> <span class="p">(</span><span class="mi">13</span><span class="p">);</span>
+
+   <span class="n">S</span><span class="p">.</span><span class="n">Delete</span> <span class="p">(</span><span class="mi">13</span><span class="p">);</span>
+
+   <span class="c1">--  Calling S.Delete (13) again raises</span>
+   <span class="c1">--  Constraint_Error because the element</span>
+   <span class="c1">--  is no longer present in the set, so</span>
+   <span class="c1">--  it can&#39;t be deleted. We can call</span>
+   <span class="c1">--  V.Exclude instead:</span>
+   <span class="n">S</span><span class="p">.</span><span class="n">Exclude</span> <span class="p">(</span><span class="mi">13</span><span class="p">);</span>
+
+   <span class="kr">if</span> <span class="n">S</span><span class="p">.</span><span class="n">Contains</span> <span class="p">(</span><span class="mi">20</span><span class="p">)</span> <span class="kr">then</span>
+      <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;Found element 20 in set&quot;</span><span class="p">);</span>
+   <span class="kr">end</span> <span class="kr">if</span><span class="p">;</span>
+
+   <span class="c1">--  Alternatively, we could use S.Find</span>
+   <span class="c1">--  instead of S.Contains</span>
+   <span class="kr">if</span> <span class="n">S</span><span class="p">.</span><span class="n">Find</span> <span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">/=</span> <span class="n">No_Element</span> <span class="kr">then</span>
+      <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;Found element 0 in set&quot;</span><span class="p">);</span>
+   <span class="kr">end</span> <span class="kr">if</span><span class="p">;</span>
+
+   <span class="n">Show_Elements</span> <span class="p">(</span><span class="n">S</span><span class="p">);</span>
+<span class="kr">end</span> <span class="nf">Show_Set_Element_Ops</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>В дополнение к упорядоченным наборам, используемым в приведенных выше
+примерах, стандартная библиотека также предлагает хешированные наборы.
+Справочное руководство требует следующей средней сложности каждой
+операции:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 34%" />
+<col style="width: 36%" />
+<col style="width: 30%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Операции</p></th>
+<th class="head"><p><code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Ordered_Sets</span></span></code></p></th>
+<th class="head"><p><code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Hashed_Sets</span></span></code></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><ul class="simple">
+<li><p>Insert</p></li>
+<li><p>Include</p></li>
+<li><p>Replace</p></li>
+<li><p>Delete</p></li>
+<li><p>Exclude</p></li>
+<li><p>Find</p></li>
+</ul>
+</td>
+<td><p>O((log N)<sup>2</sup>)
+или лучше</p></td>
+<td><p>O(log N)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Подпрограмма с
+использованием курсора</p></td>
+<td><p>O(1)</p></td>
+<td><p>O(1)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id14">
+<h3>Другие операции<a class="headerlink" href="#id14" title="Permalink to this headline"></a></h3>
+<p>Предыдущие разделы в основном касались операций с отдельными
+элементами набора. Но Ada также предоставляет типичные операции над
+множеством: объединение, пересечение, разность и симметричное
+различие. В отличие от некоторых векторных операций, которые мы видели
+раньше (например, слияния - <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Merge</span></span></code>), здесь вы можете использовать
+встроенные операторы, такие как <code class="code highlight ada docutils literal notranslate"><span class="operator"><span class="pre">-</span></span></code>. В следующей таблице перечислены
+операции и связанный с ними оператор:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 44%" />
+<col style="width: 56%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Операции над множеством</p></th>
+<th class="head"><p>Оператор</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Объединение</p></td>
+<td><p><code class="code highlight ada docutils literal notranslate"><span class="keyword reserved"><span class="pre">or</span></span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Пересечение</p></td>
+<td><p><code class="code highlight ada docutils literal notranslate"><span class="operator word"><span class="pre">and</span></span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Разность</p></td>
+<td><p><code class="code highlight ada docutils literal notranslate"><span class="operator"><span class="pre">-</span></span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Симметричное различие</p></td>
+<td><p><code class="code highlight ada docutils literal notranslate"><span class="keyword reserved"><span class="pre">xor</span></span></code></p></td>
+</tr>
+</tbody>
+</table>
+<p>В следующем примере используются эти операторы:</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kn">with</span> <span class="nn">Ada.Containers</span><span class="p">;</span> <span class="kn">use</span> <span class="nn">Ada.Containers</span><span class="p">;</span>
+<span class="kn">with</span> <span class="nn">Ada.Containers.Ordered_Sets</span><span class="p">;</span>
+
+<span class="kn">with</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span> <span class="kn">use</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>
+
+<span class="kd">procedure</span> <span class="nf">Show_Set_Ops</span> <span class="kr">is</span>
+
+   <span class="kd">package</span> <span class="nc">Integer_Sets</span> <span class="kr">is new</span>
+     <span class="nc">Ada.Containers.Ordered_Sets</span>
+       <span class="p">(</span><span class="nv">Element_Type</span> <span class="p">=&gt;</span> Integer<span class="p">);</span>
+
+   <span class="kn">use</span> <span class="nn">Integer_Sets</span><span class="p">;</span>
+
+   <span class="kd">procedure</span> <span class="nf">Show_Elements</span> <span class="p">(</span><span class="nv">S</span> <span class="p">: </span><span class="nv">Set</span><span class="p">)</span> <span class="kr">is</span>
+   <span class="kr">begin</span>
+      <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;Elements:&quot;</span><span class="p">);</span>
+      <span class="kr">for</span> <span class="n">E</span> <span class="kr">of</span> <span class="n">S</span> <span class="kr">loop</span>
+         <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;- &quot;</span> <span class="o">&amp;</span> <span class="kt">Integer</span><span class="p">&#39;</span><span class="na">Image</span> <span class="p">(</span><span class="n">E</span><span class="p">));</span>
+      <span class="kr">end</span> <span class="kr">loop</span><span class="p">;</span>
+   <span class="kr">end</span> <span class="nf">Show_Elements</span><span class="p">;</span>
+
+   <span class="kd">procedure</span> <span class="nf">Show_Op</span> <span class="p">(</span><span class="nv">S</span>       <span class="p">: </span><span class="nv">Set</span><span class="p">;</span>
+                      <span class="nv">Op_Name</span> <span class="p">: </span><span class="nv">String</span><span class="p">)</span> <span class="kr">is</span>
+   <span class="kr">begin</span>
+      <span class="n">New_Line</span><span class="p">;</span>
+      <span class="n">Put_Line</span> <span class="p">(</span><span class="n">Op_Name</span>
+                <span class="o">&amp;</span> <span class="s">&quot;(set #1, set #2) has &quot;</span>
+                <span class="o">&amp;</span> <span class="n">Count_Type</span><span class="p">&#39;</span><span class="na">Image</span> <span class="p">(</span><span class="n">S</span><span class="p">.</span><span class="n">Length</span><span class="p">)</span>
+                <span class="o">&amp;</span> <span class="s">&quot; elements&quot;</span><span class="p">);</span>
+   <span class="kr">end</span> <span class="nf">Show_Op</span><span class="p">;</span>
+
+   <span class="n">S1</span><span class="p">,</span> <span class="n">S2</span><span class="p">,</span> <span class="n">S3</span> <span class="p">:</span> <span class="n">Set</span><span class="p">;</span>
+<span class="kr">begin</span>
+   <span class="n">S1</span><span class="p">.</span><span class="n">Insert</span> <span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+   <span class="n">S1</span><span class="p">.</span><span class="n">Insert</span> <span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+   <span class="n">S1</span><span class="p">.</span><span class="n">Insert</span> <span class="p">(</span><span class="mi">13</span><span class="p">);</span>
+
+   <span class="n">S2</span><span class="p">.</span><span class="n">Insert</span> <span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+   <span class="n">S2</span><span class="p">.</span><span class="n">Insert</span> <span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+   <span class="n">S2</span><span class="p">.</span><span class="n">Insert</span> <span class="p">(</span><span class="mi">14</span><span class="p">);</span>
+
+   <span class="n">S3</span><span class="p">.</span><span class="n">Insert</span> <span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+   <span class="n">S3</span><span class="p">.</span><span class="n">Insert</span> <span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+
+   <span class="n">New_Line</span><span class="p">;</span>
+   <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;---- Set #1 ----&quot;</span><span class="p">);</span>
+   <span class="n">Show_Elements</span> <span class="p">(</span><span class="n">S1</span><span class="p">);</span>
+
+   <span class="n">New_Line</span><span class="p">;</span>
+   <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;---- Set #2 ----&quot;</span><span class="p">);</span>
+   <span class="n">Show_Elements</span> <span class="p">(</span><span class="n">S2</span><span class="p">);</span>
+
+   <span class="n">New_Line</span><span class="p">;</span>
+   <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;---- Set #3 ----&quot;</span><span class="p">);</span>
+   <span class="n">Show_Elements</span> <span class="p">(</span><span class="n">S3</span><span class="p">);</span>
+
+   <span class="n">New_Line</span><span class="p">;</span>
+   <span class="kr">if</span> <span class="n">S3</span><span class="p">.</span><span class="n">Is_Subset</span> <span class="p">(</span><span class="n">S1</span><span class="p">)</span> <span class="kr">then</span>
+      <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;S3 is a subset of S1&quot;</span><span class="p">);</span>
+   <span class="kr">else</span>
+      <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;S3 is not a subset of S1&quot;</span><span class="p">);</span>
+   <span class="kr">end</span> <span class="kr">if</span><span class="p">;</span>
+
+   <span class="n">S3</span> <span class="p">:=</span> <span class="n">S1</span> <span class="ow">and</span> <span class="n">S2</span><span class="p">;</span>
+   <span class="n">Show_Op</span> <span class="p">(</span><span class="n">S3</span><span class="p">,</span> <span class="s">&quot;Intersection&quot;</span><span class="p">);</span>
+   <span class="n">Show_Elements</span> <span class="p">(</span><span class="n">S3</span><span class="p">);</span>
+
+   <span class="n">S3</span> <span class="p">:=</span> <span class="n">S1</span> <span class="kr">or</span> <span class="n">S2</span><span class="p">;</span>
+   <span class="n">Show_Op</span> <span class="p">(</span><span class="n">S3</span><span class="p">,</span> <span class="s">&quot;Union&quot;</span><span class="p">);</span>
+   <span class="n">Show_Elements</span> <span class="p">(</span><span class="n">S3</span><span class="p">);</span>
+
+   <span class="n">S3</span> <span class="p">:=</span> <span class="n">S1</span> <span class="o">-</span> <span class="n">S2</span><span class="p">;</span>
+   <span class="n">Show_Op</span> <span class="p">(</span><span class="n">S3</span><span class="p">,</span> <span class="s">&quot;Difference&quot;</span><span class="p">);</span>
+   <span class="n">Show_Elements</span> <span class="p">(</span><span class="n">S3</span><span class="p">);</span>
+
+   <span class="n">S3</span> <span class="p">:=</span> <span class="n">S1</span> <span class="kr">xor</span> <span class="n">S2</span><span class="p">;</span>
+   <span class="n">Show_Op</span> <span class="p">(</span><span class="n">S3</span><span class="p">,</span> <span class="s">&quot;Symmetric difference&quot;</span><span class="p">);</span>
+   <span class="n">Show_Elements</span> <span class="p">(</span><span class="n">S3</span><span class="p">);</span>
+
+<span class="kr">end</span> <span class="nf">Show_Set_Ops</span><span class="p">;</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="id15">
+<h2>Неопределенные карты<a class="headerlink" href="#id15" title="Permalink to this headline"></a></h2>
+<p>В предыдущих разделах были представлены контейнеры для элементов
+определенных типов. Хотя большинство примеров в этих разделах
+представляли целочисленные типы <code class="code highlight ada docutils literal notranslate"><span class="keyword type"><span class="pre">Integer</span></span></code> как тип элемента контейнеров,
+контейнеры также могут использоваться с неопределенными типами,
+примером которых является тип <code class="code highlight ada docutils literal notranslate"><span class="keyword type"><span class="pre">String</span></span></code>. Однако неопределенные типы
+требуют другого вида контейнеров, разработанных специально для них.</p>
+<p>Мы также будем изучать другой класс контейнеров: карты. Они связывают
+ключ с определенным значением. Примером карты является связь «один к
+одному» между человеком и его возрастом. Если мы считаем имя человека
+ключевым, то значение - возраст человека.</p>
+<section id="id16">
+<h3>Хэшированные карты<a class="headerlink" href="#id16" title="Permalink to this headline"></a></h3>
+<p>Хэшированные карты - это карты, которые используют хэш в качестве
+ключа. Сам хэш вычисляется с помощью предоставленной вами функции.</p>
+<div class="admonition- admonition">
+<p class="admonition-title">На других языках</p>
+<p>Хэшированные карты похожи на словари в Python и хэши в Perl. Одно из
+основных отличий заключается в том, что эти языки сценариев позволяют
+использовать разные типы для значений, содержащихся в одной карте, в
+то время как в Ada как тип ключа, так и значение указываются в
+экземпляре пакета и остаются постоянными для этой конкретной карты. У
+вас не может быть карты, на которой два элемента разных типов или два
+ключа разных типов. Если вы хотите использовать несколько типов, вы
+должны создать разные карты для каждого и использовать только один тип
+на каждой карте.</p>
+</div>
+<p>При создании экземпляра хешированной карты из
+<code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Ada</span></span><span class="punctuation"><span class="pre">.</span></span><span class="name"><span class="pre">Containers</span></span><span class="punctuation"><span class="pre">.</span></span><span class="name"><span class="pre">Indefinite_Hashed_Maps</span></span></code> мы указываем следующие элементы:</p>
+<ul class="simple">
+<li><p><code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Key_Type</span></span></code>: тип ключа</p></li>
+<li><p><code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Element_Type</span></span></code>: тип элемента</p></li>
+<li><p><code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Hash</span></span></code><code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Key_Type</span></span></code></p></li>
+<li><p><code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Equivalent_Keys</span></span></code>: оператор равенства (например, <code class="code highlight ada docutils literal notranslate"><span class="operator"><span class="pre">=</span></span></code>), который
+указывает, должны ли два ключа считаться равными.</p>
+<ul>
+<li><p>Если тип, указанный в <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Key_Type</span></span></code>, имеет стандартный оператор, вы
+можете использовать его. В примере мы так и делаем. Мы указываем этот
+оператор как значение <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Equivalent_Keys</span></span></code>.</p></li>
+</ul>
+</li>
+</ul>
+<p>В следующем примере мы будем использовать строку в качестве типа
+ключа. Мы будем использовать функцию <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Hash</span></span></code>, предоставляемую стандартной
+библиотекой для строк (в пакете <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Ada</span></span><span class="punctuation"><span class="pre">.</span></span><span class="name"><span class="pre">Strings</span></span></code>), и стандартный оператор
+равенства.</p>
+<p>Вы добавляете элементы в хешированную карту, вызывая <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Insert</span></span></code>. Если
+элемент уже содержится в карте <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">M</span></span></code>, вы можете получить к нему доступ
+напрямую, используя его ключ. Например, вы можете изменить значение элемента,
+вызвав <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">M</span></span> <span class="punctuation"><span class="pre">(</span></span><span class="literal string"><span class="pre">&quot;My_Key&quot;</span></span><span class="punctuation"><span class="pre">)</span></span> <span class="punctuation"><span class="pre">:=</span></span> <span class="literal number integer"><span class="pre">10</span></span></code>. Если ключ не найден, возникает исключение.
+Чтобы проверить, доступен ли ключ, используйте функцию <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Contains</span></span></code> (как
+мы видели выше в разделе о наборах).</p>
+<p>Посмотрим на пример:</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kn">with</span> <span class="nn">Ada.Containers.Indefinite_Hashed_Maps</span><span class="p">;</span>
+<span class="kn">with</span> <span class="nn">Ada.Strings.Hash</span><span class="p">;</span>
+
+<span class="kn">with</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span> <span class="kn">use</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>
+
+<span class="kd">procedure</span> <span class="nf">Show_Hashed_Map</span> <span class="kr">is</span>
+
+   <span class="kd">package</span> <span class="nc">Integer_Hashed_Maps</span> <span class="kr">is new</span>
+     <span class="nc">Ada.Containers.Indefinite_Hashed_Maps</span>
+       <span class="p">(</span><span class="nv">Key_Type</span>        <span class="p">=&gt;</span> String<span class="p">,</span>
+        <span class="nv">Element_Type</span>    <span class="p">=&gt;</span> Integer<span class="p">,</span>
+        <span class="nv">Hash</span>            <span class="p">=&gt;</span> Ada.Strings.Hash<span class="p">,</span>
+        <span class="nv">Equivalent_Keys</span> <span class="p">=&gt;</span> &quot;<span class="o">=</span>&quot;<span class="p">);</span>
+
+   <span class="kn">use</span> <span class="nn">Integer_Hashed_Maps</span><span class="p">;</span>
+
+   <span class="n">M</span> <span class="p">:</span> <span class="n">Map</span><span class="p">;</span>
+   <span class="c1">--  Same as:</span>
+   <span class="c1">--</span>
+   <span class="c1">--  M : Integer_Hashed_Maps.Map;</span>
+<span class="kr">begin</span>
+   <span class="n">M</span><span class="p">.</span><span class="n">Include</span> <span class="p">(</span><span class="s">&quot;Alice&quot;</span><span class="p">,</span> <span class="mi">24</span><span class="p">);</span>
+   <span class="n">M</span><span class="p">.</span><span class="n">Include</span> <span class="p">(</span><span class="s">&quot;John&quot;</span><span class="p">,</span>  <span class="mi">40</span><span class="p">);</span>
+   <span class="n">M</span><span class="p">.</span><span class="n">Include</span> <span class="p">(</span><span class="s">&quot;Bob&quot;</span><span class="p">,</span>   <span class="mi">28</span><span class="p">);</span>
+
+   <span class="kr">if</span> <span class="n">M</span><span class="p">.</span><span class="n">Contains</span> <span class="p">(</span><span class="s">&quot;Alice&quot;</span><span class="p">)</span> <span class="kr">then</span>
+      <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;Alice&#39;s age is &quot;</span>
+                <span class="o">&amp;</span> <span class="kt">Integer</span><span class="p">&#39;</span><span class="na">Image</span> <span class="p">(</span><span class="n">M</span> <span class="p">(</span><span class="s">&quot;Alice&quot;</span><span class="p">)));</span>
+   <span class="kr">end</span> <span class="kr">if</span><span class="p">;</span>
+
+   <span class="c1">--  Update Alice&#39;s age</span>
+   <span class="c1">--  Key must already exist in M.</span>
+   <span class="c1">--  Otherwise an exception is raised.</span>
+   <span class="n">M</span> <span class="p">(</span><span class="s">&quot;Alice&quot;</span><span class="p">)</span> <span class="p">:=</span> <span class="mi">25</span><span class="p">;</span>
+
+   <span class="n">New_Line</span><span class="p">;</span> <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;Name &amp; Age:&quot;</span><span class="p">);</span>
+   <span class="kr">for</span> <span class="n">C</span> <span class="ow">in</span> <span class="n">M</span><span class="p">.</span><span class="n">Iterate</span> <span class="kr">loop</span>
+      <span class="n">Put_Line</span> <span class="p">(</span><span class="n">Key</span> <span class="p">(</span><span class="n">C</span><span class="p">)</span> <span class="o">&amp;</span> <span class="s">&quot;: &quot;</span>
+                <span class="o">&amp;</span> <span class="kt">Integer</span><span class="p">&#39;</span><span class="na">Image</span> <span class="p">(</span><span class="n">M</span> <span class="p">(</span><span class="n">C</span><span class="p">)));</span>
+   <span class="kr">end</span> <span class="kr">loop</span><span class="p">;</span>
+
+<span class="kr">end</span> <span class="nf">Show_Hashed_Map</span><span class="p">;</span>
+</pre></div>
+</div>
+</section>
+<section id="id17">
+<h3>Упорядоченные карты<a class="headerlink" href="#id17" title="Permalink to this headline"></a></h3>
+<p>Ordered maps share many features with hashed maps. The main
+differences are:</p>
+<ul class="simple">
+<li><p>A hash function isn't needed. Instead, you must provide an ordering
+function (<code class="code highlight ada docutils literal notranslate"><span class="operator"><span class="pre">&lt;</span></span></code> operator), which the ordered map will use to order
+elements and allow fast access, O(log N), using a binary search.</p>
+<ul>
+<li><p>If the type specified in <code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Key_Type</span></span></code> has a standard <code class="code highlight ada docutils literal notranslate"><span class="operator"><span class="pre">&lt;</span></span></code>
+operator, you can use it in a similar way as we did for
+<code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Equivalent_Keys</span></span></code> above for hashed maps.</p></li>
+</ul>
+</li>
+</ul>
+<p>Let's see an example:</p>
+<div class="highlight-ada notranslate"><div class="highlight"><pre><span></span><span class="kn">with</span> <span class="nn">Ada.Containers.Indefinite_Ordered_Maps</span><span class="p">;</span>
+
+<span class="kn">with</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span> <span class="kn">use</span> <span class="nn">Ada.Text_IO</span><span class="p">;</span>
+
+<span class="kd">procedure</span> <span class="nf">Show_Ordered_Map</span> <span class="kr">is</span>
+
+   <span class="kd">package</span> <span class="nc">Integer_Ordered_Maps</span> <span class="kr">is new</span>
+     <span class="nc">Ada.Containers.Indefinite_Ordered_Maps</span>
+       <span class="p">(</span><span class="nv">Key_Type</span>        <span class="p">=&gt;</span> String<span class="p">,</span>
+        <span class="nv">Element_Type</span>    <span class="p">=&gt;</span> Integer<span class="p">);</span>
+
+   <span class="kn">use</span> <span class="nn">Integer_Ordered_Maps</span><span class="p">;</span>
+
+   <span class="n">M</span> <span class="p">:</span> <span class="n">Map</span><span class="p">;</span>
+<span class="kr">begin</span>
+   <span class="n">M</span><span class="p">.</span><span class="n">Include</span> <span class="p">(</span><span class="s">&quot;Alice&quot;</span><span class="p">,</span> <span class="mi">24</span><span class="p">);</span>
+   <span class="n">M</span><span class="p">.</span><span class="n">Include</span> <span class="p">(</span><span class="s">&quot;John&quot;</span><span class="p">,</span>  <span class="mi">40</span><span class="p">);</span>
+   <span class="n">M</span><span class="p">.</span><span class="n">Include</span> <span class="p">(</span><span class="s">&quot;Bob&quot;</span><span class="p">,</span>   <span class="mi">28</span><span class="p">);</span>
+
+   <span class="kr">if</span> <span class="n">M</span><span class="p">.</span><span class="n">Contains</span> <span class="p">(</span><span class="s">&quot;Alice&quot;</span><span class="p">)</span> <span class="kr">then</span>
+      <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;Alice&#39;s age is &quot;</span>
+                <span class="o">&amp;</span> <span class="kt">Integer</span><span class="p">&#39;</span><span class="na">Image</span> <span class="p">(</span><span class="n">M</span> <span class="p">(</span><span class="s">&quot;Alice&quot;</span><span class="p">)));</span>
+   <span class="kr">end</span> <span class="kr">if</span><span class="p">;</span>
+
+   <span class="c1">--  Update Alice&#39;s age</span>
+   <span class="c1">--  Key must already exist in M</span>
+   <span class="n">M</span> <span class="p">(</span><span class="s">&quot;Alice&quot;</span><span class="p">)</span> <span class="p">:=</span> <span class="mi">25</span><span class="p">;</span>
+
+   <span class="n">New_Line</span><span class="p">;</span> <span class="n">Put_Line</span> <span class="p">(</span><span class="s">&quot;Name &amp; Age:&quot;</span><span class="p">);</span>
+   <span class="kr">for</span> <span class="n">C</span> <span class="ow">in</span> <span class="n">M</span><span class="p">.</span><span class="n">Iterate</span> <span class="kr">loop</span>
+      <span class="n">Put_Line</span> <span class="p">(</span><span class="n">Key</span> <span class="p">(</span><span class="n">C</span><span class="p">)</span> <span class="o">&amp;</span> <span class="s">&quot;: &quot;</span>
+                <span class="o">&amp;</span> <span class="kt">Integer</span><span class="p">&#39;</span><span class="na">Image</span> <span class="p">(</span><span class="n">M</span> <span class="p">(</span><span class="n">C</span><span class="p">)));</span>
+   <span class="kr">end</span> <span class="kr">loop</span><span class="p">;</span>
+
+<span class="kr">end</span> <span class="nf">Show_Ordered_Map</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Вы можете увидеть большое сходство между примерами, приведенными выше,
+и примерами из предыдущего раздела. Фактически, поскольку оба типа
+карт имеют много общих операций, нам не нужно было вносить
+существенные изменения, когда мы изменили наш пример, чтобы
+использовать упорядоченные карты вместо хешированных карт. Основное
+различие видно, когда мы запускаем примеры: вывод хешированной карты
+обычно неупорядочен, но вывод упорядоченной карты всегда упорядочен,
+как следует из ее имени.</p>
+</section>
+<section id="id18">
+<h3>Сложность<a class="headerlink" href="#id18" title="Permalink to this headline"></a></h3>
+<p>Хэшированные карты, как правило, являются самой быстрой структурой
+данных, доступной в Ada, если необходимо связать разнородные ключи со
+значениями и быстро найти их. В большинстве случаев они немного
+быстрее упорядоченных карт. Так что если вам не нужна упорядоченная
+последовательность, используйте хэшированные карты.</p>
+<p>Справочное руководство требует следующей средней сложности операций:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 34%" />
+<col style="width: 36%" />
+<col style="width: 30%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Операции</p></th>
+<th class="head"><p><code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Ordered_Maps</span></span></code></p></th>
+<th class="head"><p><code class="code highlight ada docutils literal notranslate"><span class="name"><span class="pre">Hashed_Maps</span></span></code></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><ul class="simple">
+<li><p>Insert</p></li>
+<li><p>Include</p></li>
+<li><p>Replace</p></li>
+<li><p>Delete</p></li>
+<li><p>Exclude</p></li>
+<li><p>Find</p></li>
+</ul>
+</td>
+<td><p>O((log N)<sup>2</sup>) or better</p></td>
+<td><p>O(log N)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Подпрограмма с
+использованием курсора</p></td>
+<td><p>O(1)</p></td>
+<td><p>O(1)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          
+
+
+<footer>
+      
+      
+
+      
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+          
+            <a href="standard_library_dates_times.html" class="btn btn-neutral float-right" title="Стандартная библиотека: Дата и время" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+          
+          
+            <a href="object_oriented_programming.html" class="btn btn-neutral" title="Объектно-ориентированное программирование" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+          
+        </div>
+  
+
+
+  <hr/>
+
+  <div class="legal">
+              Copyright &copy; 2022 AdaCore. All rights reserved.
+              &nbsp;&nbsp;
+              <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/80x15.png" /></a>
+              <br>
+              <a href="https://www.adacore.com/company/legal">Legal</a>
+              &nbsp; |  &nbsp;
+              <a href="https://www.adacore.com/company/privacy">Privacy Policy</a>
+              &nbsp; |  &nbsp;
+              <a href="https://github.com/AdaCore/learn/issues">Report an Issue</a>
+            </div> 
+
+</footer>
+
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+  <button id="scrollToTopBtn" title="Go to top"><i class="fas fa-caret-square-up"></i></button>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+</script>
+
+
+</body>
+</html>
